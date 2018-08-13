@@ -18,6 +18,7 @@ class KwNodeFun extends BaseKwNode {
     }
 
     isValidFunInitStatement(initNode) {
+        //i.e the init statement must be initialized with number and not a string or variable
         return /[0-9]+/i.test(initNode.right.value);
     }
 
