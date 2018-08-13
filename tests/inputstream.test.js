@@ -3,8 +3,7 @@ const constants = require("../constants.js");
 
 describe("InputStream Tests", () => {
     let inputStream;
-    const code = `tí a = 3; tí b = 4;
-                  sopé a;`;
+    const code = `tí a = 3;`;
 
     beforeEach(() => {
         inputStream = new InputStream(code);
@@ -20,25 +19,21 @@ describe("InputStream Tests", () => {
         expect(inputStream.peek()).toBe("í");
     });
 
-    test("ThrowError - It should throw an error message", () => {
-        while (inputStream.peek() != constants.NEW_LINE) {
-            inputStream.next();
-        }
-
+    test("ThrowError - It should throw an error message while specifying the location of the error accurately", () => {
+        inputStream.code = "\n";
         inputStream.next(); //read in the new line character
+
         expect(() => {
             inputStream.throwError("Testing error msg");
         }).toThrow(`There's an error at line 2 near column 0.\nTesting error msg`);
     });
 
     test("isNotEndOfFile - It should confirm that the inputstream has not read in the last char in the file", () => {
-        expect(inputStream.isNotEndOfFile()).toBe(true)
+        expect(inputStream.isNotEndOfFile()).toBe(true);
     })
 
     test("isEndOfFile - It should confirm that the inputstream has read in the last char in the file", () => {
-        while (inputStream.isNotEndOfFile()) {
-            inputStream.next();
-        }
+        inputStream.code = "";
 
         expect(inputStream.isEndOfFile()).toBe(true);
     })
