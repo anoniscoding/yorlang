@@ -14,7 +14,7 @@ class KwNodeFun extends BaseKwNode {
             return this.parseNode(init);
         }
 
-        this.parser.tokenInput.throwError(`Invalid ${constants.KW.FUN} initialization block`);
+        this.lexer.throwError(`Invalid ${constants.KW.FUN} initialization block`);
     }
 
     isValidFunInitStatement(initNode) {
@@ -37,7 +37,7 @@ class KwNodeFun extends BaseKwNode {
         node.increment = kwNodeTi.setParser(this.parser).getNode();
 
         if (this.isInValidFunIncrementStatement(node))
-            this.parser.tokenInput.throwError("Invalid yorlang decrement or increment operation");
+            this.lexer.throwError("Invalid yorlang decrement or increment operation");
 
         this.parser.skipPunctuation(constants.SYM.R_BRACKET);
         node.body = this.parser.parseBlock(constants.KW.FUN);
