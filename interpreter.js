@@ -1,0 +1,6 @@
+class Interpreter {
+
+    evaluate(node) {
+        
+    }
+}
