@@ -13,7 +13,7 @@ class InputStream {
     next() {
         const character = this.code.charAt(this.position++);
         
-        if (character === constants.STATEMENT_TERMINATOR || character === constants.NEW_LINE) {
+        if (character === constants.NEW_LINE) {
             this.column = 0; this.line++;
         } else {
             this.column++;
@@ -28,7 +28,7 @@ class InputStream {
     }
 
     throwError(msg) {
-        throw new Error(`There's an error at line ${this.line} near column ${this.column}. \n ${msg}`);
+        throw new Error(`There's an error at line ${this.line} near column ${this.column}.\n${msg}`);
     }
 
     isEndOfFile() {

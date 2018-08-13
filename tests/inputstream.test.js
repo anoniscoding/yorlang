@@ -1,81 +1,46 @@
-
 const InputStream = require("../inputstream.js");
-const Lexer = require("../lexer.js");
+const constants = require("../constants.js");
 
-const code = `
-#Sample program to be interpreted
+describe("InputStream Tests", () => {
+    let inputStream;
+    const code = `tí a = 3; tí b = 4;
+                  sopé a;`;
 
-tí akoko = 7.51;
-tí ikeji = 2;
-tí aropo = akoko / 3 + ikeji * 2;
-sopé aropo;
+    beforeEach(() => {
+        inputStream = new InputStream(code);
+    });
 
-tí niOruko = òótó;
+    test("Peek - It should peek at the next character without discarding it from the stream", () => {
+        expect(inputStream.peek()).toBe("t");
+        expect(inputStream.next()).toBe("t");
+    });
 
-sé (akoko > aropo && òótó) {
-    sopé "omowe";
-} tàbí {
-    sopé "olodo"; 
-}
+    test("Next - It should read in the next character and discard it from the stream", () => {
+        expect(inputStream.next()).toBe("t");
+        expect(inputStream.peek()).toBe("í");
+    });
 
-sé (niOruko) {
-    sopé "o ni oruko";
-}
+    test("ThrowError - It should throw an error message", () => {
+        while (inputStream.peek() != constants.NEW_LINE) {
+            inputStream.next();
+        }
 
-sé (niOruko) {}
+        inputStream.next(); //read in the new line character
+        expect(() => {
+            inputStream.throwError("Testing error msg");
+        }).toThrow(`There's an error at line 2 near column 0.\nTesting error msg`);
+    });
 
-tí oruko = "";
+    test("isNotEndOfFile - It should confirm that the inputstream has not read in the last char in the file", () => {
+        expect(inputStream.isNotEndOfFile()).toBe(true)
+    })
 
-isé koOruko(orukoMi) {
-    tí oruko = orukoMi;
-    
-    fún (tí i =0; i < 10; tí i = i + 1;) {
-        sopé i;
-    }
+    test("isEndOfFile - It should confirm that the inputstream has read in the last char in the file", () => {
+        while (inputStream.isNotEndOfFile()) {
+            inputStream.next();
+        }
 
-    isé teAkori() {
-        sopé "adupe";
-    }
+        expect(inputStream.isEndOfFile()).toBe(true);
+    })
 
-    nígbàtí ((ikeji < aropo) && (ikeji > 0)) {
-        sopé "a jura wa lo tijakadi ko";
-        tí ikeji = ikeji + 1;
-    }
-
-    teAkori();
-}
-
-isé teOruko() {
-    sopé oruko;
-}
-
-fún (tí i =45; ((i < 200) && (i > 0)); tí i = i + i;) {
-    sopé i;
-}
-
-isé seIsiro(a, b) {
-    tí a = a * 2;
-    tí c = a + b;
-    padà c;
-}
-
-koOruko("anu");
-teOruko();
-tí d = seIsiro(1,2);
-
-tí c = (15 /3) + (3 * 2);
-
-nígbàtí (ikeji < aropo) {
-    sopé "ikeji kere si aropo";
-    tí ikeji = ikeji + 1;
-    
-    sé (ikeji > c) {
-        kúrò;
-    }
-}
-`;
-
-
-const ast = (new Lexer(new InputStream(code)))
-
-console.log(ast.astList[0])
+});
