@@ -3,29 +3,25 @@ const constants = require("./constants.js");
 class Lexer {
 
     constructor(inputStream) {
-        this.input = inputStream;
-        this.keywords = [
-            constants.KW.TI, constants.KW.NIGBATI, constants.KW.SE, constants.KW.SOPE, 
-            constants.KW.TABI, constants.KW.OOTO, constants.KW.IRO, constants.KW.ISE, 
-            constants.KW.FUN, constants.KW.PADA, constants.KW.KURO
-        ];
+        this.inputStream = inputStream;
+        this.keywords = constants.LIST.KEYWORDS;
         this.currentToken = null;
     }
 
     isWhiteSpace(ws) {
-        return " \t\n".indexOf(ws) >= 0;
+        return constants.LIST.WHITESPACES.indexOf(ws) >= 0;
     }
 
     isPunctuation(punc) {
-        return "(){};,".indexOf(punc) >= 0;
+        return constants.LIST.PUNCTUATIONS.indexOf(punc) >= 0;
     }
 
     isIdentifier(id) {
-        return /[a-z]|í|é|ò|ó|à|ú/i.test(id);
+        return constants.REGEX.IDENTIFIER.test(id);
     }
 
     isOperator(op) {
-        return "+-*/%<>=!|&".indexOf(op) >= 0;
+        return constants.LIST.OPERATORS.indexOf(op) >= 0;
     }
 
     isKeyword(kw) {
@@ -33,14 +29,14 @@ class Lexer {
     }
 
     isDigit(dig) {
-       return /[0-9]/i.test(dig);
+       return constants.REGEX.DIGIT.test(dig);
     }
 
     readWhile(predicate) {
         let str = "";
 
-        while (this.input.isNotEndOfFile() && predicate(this.input.peek())) {
-            str += this.input.next();
+        while (this.inputStream.isNotEndOfFile() && predicate(this.inputStream.peek())) {
+            str += this.inputStream.next();
         }
 
         return str;
@@ -48,12 +44,16 @@ class Lexer {
 
     readString() {
         const stringEnd = constants.SYM.STR_QUOTE;
-        this.input.next(); //needed to skip the opening quote symbol '"'
+        this.inputStream.next(); //needed to skip the opening quote symbol '"'
         const str = this.readWhile((ch) => {
             return (ch == stringEnd) ? false : true;
         });
 
-        this.input.next(); //needed to skip the closing quote symbol '"'
+        if (this.inputStream.peek() == stringEnd)
+            this.inputStream.next(); //needed to skip the closing quote symbol '"'
+        else 
+            this.inputStream.throwError(`Expecting '${stringEnd}' but found unexpected char`);
+
         return { type: constants.STRING, value: str };
     }
 
@@ -84,14 +84,14 @@ class Lexer {
         this.readWhile((ch) => {
             return ch != constants.NEW_LINE;
         });
-        this.input.next(); //skips the "\n" symbol
+        this.inputStream.next(); //skips the "\n" symbol
     }
 
     readNext() {
         this.readWhile(this.isWhiteSpace);
-        if (this.input.isEndOfFile()) return null;
+        if (this.inputStream.isEndOfFile()) return null;
 
-        const ch = this.input.peek();
+        const ch = this.inputStream.peek();
         if (ch == constants.SYM.COMMENT) {
             this.skipComments();
             return this.readNext();
@@ -99,10 +99,10 @@ class Lexer {
         if (ch == constants.SYM.STR_QUOTE) return this.readString();
         if (this.isDigit(ch)) return this.readNumber();
         if (this.isIdentifier(ch)) return this.readIdentifier();
-        if (this.isPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.input.next() }
+        if (this.isPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.inputStream.next() }
         if (this.isOperator(ch)) return { type: constants.OPERATOR, value: this.readWhile(this.isOperator) }
 
-        this.input.throwError(`Cant handle character  '${ch}'`);
+        this.inputStream.throwError(`Cant handle character  '${ch}'`);
     }
 
     peek() {
@@ -127,7 +127,7 @@ class Lexer {
     }
 
     throwError(msg) {
-        this.input.throwError(msg);
+        this.inputStream.throwError(msg);
     }
 }
 

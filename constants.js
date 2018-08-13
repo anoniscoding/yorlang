@@ -37,11 +37,29 @@ const SYMBOLS = {
     R_BRACKET: ")"
 };
 
+const LIST = {
+    PUNCTUATIONS: ["(",")","{","}",";"],
+    OPERATORS: ["+","-","*","/","%","<",">","=","!","|","&"],
+    WHITESPACES: [" ","\t","\n"],
+    KEYWORDS: [
+        KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
+        KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
+        KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO
+    ]
+}
+
+const REGEX = {
+    DIGIT: /[0-9]/i,
+    IDENTIFIER: /[a-z]|í|é|ò|ó|à|ú/i,
+}
+
 const constants = {
     STATEMENT_TERMINATOR : ";",
     NEW_LINE: "\n",
     KW: KEYWORDS,
     SYM: SYMBOLS,
+    LIST: LIST,
+    REGEX: REGEX,
     KEYWORD: "keyword",
     VARIABLE: "variable",
     STRING: "string",
@@ -50,7 +68,7 @@ const constants = {
     PUNCTUATION: "punctuation",
     OPERATOR: "operator",
     GET_TI: "getTi",
-    CALL_ISE: "callIse"
+    CALL_ISE: "callIse",
 };
 
 module.exports = constants;
