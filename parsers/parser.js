@@ -3,43 +3,43 @@ const kwnodes = require("./kwnodes");
 class Parser {
 
     constructor(tokenInput) {
-        this.tokenInput = tokenInput;
+        this.lexer = tokenInput;
         this.isArithmeticExpression = true;
         this.currentBlockType = [];
     }
 
     isPunctuation(punc) {
-        const token = this.tokenInput.peek();
+        const token = this.lexer.peek();
         return token && token.type == constants.PUNCTUATION && (token.value == punc);
     }
 
     isOperator(op) {
-        const token = this.tokenInput.peek();
+        const token = this.lexer.peek();
         return token && token.type == constants.OPERATOR && (token.value == op);
     }
 
     isKeyword(kw) {
-        const token = this.tokenInput.peek();
+        const token = this.lexer.peek();
         return token && token.type == constants.KEYWORD && (token.value == kw);
     }
 
     skipPunctuation(punc) {
-        if (this.isPunctuation(punc)) this.tokenInput.next();
-        else this.tokenInput.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
+        if (this.isPunctuation(punc)) this.lexer.next();
+        else this.lexer.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
     }
 
     skipOperator(op) {
-        if (this.isOperator(op)) this.tokenInput.next();
-        else this.tokenInput.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
+        if (this.isOperator(op)) this.lexer.next();
+        else this.lexer.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
     }
 
     skipKeyword(kw) {
-        if (this.isKeyword(kw)) this.tokenInput.next();
-        else this.tokenInput.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
+        if (this.isKeyword(kw)) this.lexer.next();
+        else this.lexer.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
     }
 
     getCurrentTokenValue() {
-        return this.tokenInput.peek() ? this.tokenInput.peek().value : null;
+        return this.lexer.peek() ? this.lexer.peek().value : null;
     }
 
     //backtracking is used in handling operator precedence while parsing the expression
@@ -78,10 +78,10 @@ class Parser {
     parseWhile(operatorList, parseOperationWithLesserPrecedence) {
         let node = parseOperationWithLesserPrecedence.bind(this)();
 
-        while (operatorList.indexOf(this.tokenInput.peek().value) >= 0) {
+        while (operatorList.indexOf(this.lexer.peek().value) >= 0) {
             node = {
                 left : node,
-                operation : this.tokenInput.next().value,
+                operation : this.lexer.next().value,
                 right : parseOperationWithLesserPrecedence.bind(this)(),
                 value : null
             };
@@ -91,7 +91,7 @@ class Parser {
     }
 
     parseNodeLiteral() {
-        const token = this.tokenInput.peek();
+        const token = this.lexer.peek();
 
         //handles operator precedence with bracket
         if (token.value == constants.SYM.L_BRACKET) {
@@ -110,7 +110,7 @@ class Parser {
             return this.parseBool();
         }
 
-        this.tokenInput.throwError(`Cannot process unexpected token: ${token.type}`);
+        this.lexer.throwError(`Cannot process unexpected token: ${token.type}`);
     }
 
     parseBracketExpression(isArithmetic) {
@@ -124,10 +124,10 @@ class Parser {
     }
 
     parseVariableLiteral() {
-        const current = this.tokenInput.next();
+        const current = this.lexer.next();
 
         //if current variable is a function call
-        if (this.tokenInput.peek().value == constants.SYM.L_BRACKET) {
+        if (this.lexer.peek().value == constants.SYM.L_BRACKET) {
             return this.parseCallIse(current);
         }
 
@@ -139,7 +139,7 @@ class Parser {
 
     parseLeaf() {
         return {
-            value: this.tokenInput.next().value,
+            value: this.lexer.next().value,
             left: null,
             right: null,
             operation: null
@@ -147,18 +147,18 @@ class Parser {
     }
 
     parseBool() {
-        if ([constants.KW.OOTO, constants.KW.IRO].indexOf(this.tokenInput.peek().value) >= 0) {
+        if ([constants.KW.OOTO, constants.KW.IRO].indexOf(this.lexer.peek().value) >= 0) {
             return this.parseLeaf();
         }
             
-        this.tokenInput.throwError(`Expecting yorlang boolean(iró|òótó) but found ${token.value}`);
+        this.lexer.throwError(`Expecting yorlang boolean(iró|òótó) but found ${token.value}`);
     }
 
     parseBlock(currentBlock) {
         this.currentBlockType.push(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
-        while (this.tokenInput.isNotEndOfFile() && this.tokenInput.peek().value != constants.SYM.R_PAREN) {
+        while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
             block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
@@ -168,9 +168,9 @@ class Parser {
     }
 
     parseVarname() {
-        return  (this.tokenInput.peek().type == constants.VARIABLE) 
-                ? { name: this.tokenInput.next().value }
-                : this.tokenInput.throwError(`Expecting variable but found ${token}`);
+        return  (this.lexer.peek().type == constants.VARIABLE) 
+                ? { name: this.lexer.next().value }
+                : this.lexer.throwError(`Expecting variable but found ${token}`);
     }
 
     parseCallIse(token) {
@@ -187,14 +187,14 @@ class Parser {
             return node;
         }
         
-        this.tokenInput.throwError(`Expecting yorlang function call but found ${this.tokenInput.peek().type}`);
+        this.lexer.throwError(`Expecting yorlang function call but found ${this.lexer.peek().type}`);
     }
 
     delimited(start, stop, separator, parser, predicate) {
         const varList = []; let firstVar = true;
 
         this.skipPunctuation(start);
-        while(this.tokenInput.isNotEndOfFile()) {
+        while(this.lexer.isNotEndOfFile()) {
             if (this.isPunctuation(stop)) break;
             if (firstVar) firstVar = false; else this.skipPunctuation(separator);
             if (this.isPunctuation(stop)) break; //this is necessary for an optional last separator
@@ -206,10 +206,10 @@ class Parser {
     }
 
     parseIseVarsOrValues(predicate) {
-        var token = this.tokenInput.next();
+        var token = this.lexer.next();
         if (predicate(token)) return token.value;
 
-        this.tokenInput.throwError(`Cannot process unexpected token: ${token.type}`);
+        this.lexer.throwError(`Cannot process unexpected token: ${token.type}`);
     }
 
     getCurrentBlockType() {
@@ -221,7 +221,7 @@ class Parser {
     }
 
     parseAst() {
-        const token = this.tokenInput.peek();
+        const token = this.lexer.peek();
 
         if ((kwnodes[token.value] != undefined)) {
             const kwNode = kwnodes[token.value];
@@ -229,18 +229,18 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = this.parseCallIse(this.tokenInput.next());
+            const node = this.parseCallIse(this.lexer.next());
             this.skipPunctuation(constants.STATEMENT_TERMINATOR);
             return node;
         }
 
-        this.tokenInput.throwError(`Cannot process unexpected token : ${token.value}`);
+        this.lexer.throwError(`Cannot process unexpected token : ${token.value}`);
     }
 
     parseProgram() {
         const astList = [];
 
-        while (this.tokenInput.isNotEndOfFile()) {
+        while (this.lexer.isNotEndOfFile()) {
             astList.push(this.parseAst());
         }
 
