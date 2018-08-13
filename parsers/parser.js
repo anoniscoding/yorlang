@@ -162,7 +162,7 @@ class Parser {
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
         while (this.tokenInput.isNotEndOfFile() && this.tokenInput.peek().value != constants.SYM.R_PAREN) {
-            block.push(this.parseProgram());
+            block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
         this.currentBlockType.pop();
@@ -223,7 +223,7 @@ class Parser {
         return this.currentBlockType.length > 0;
     }
 
-    parseProgram() {
+    parseAst() {
         const token = this.tokenInput.peek();
 
         if ((kwnodes[token.value] != undefined)) {
@@ -240,14 +240,14 @@ class Parser {
         this.tokenInput.throwError(`Cannot process unexpected token : ${token.value}`);
     }
 
-    parseFromTopToBottom() {
-        const astList = []; //ast means abstract syntax tree
+    parseProgram() {
+        const astList = [];
 
         while (this.tokenInput.isNotEndOfFile()) {
-            astList.push(this.parseProgram());
+            astList.push(this.parseAst());
         }
 
-        return { type: constants.PROGRAM, astList: astList };
+        return {type: constants.PROGRAM, astList: astList};
     }
 }
 
@@ -324,7 +324,7 @@ nígbàtí (ikeji < aropo) {
 }
 `
 
-const ast = new Parser(new Lexer(new InputStream(code))).parseFromTopToBottom()
+const ast = new Parser(new Lexer(new InputStream(code))).parseProgram()
 
 console.log(ast.astList[0])
 
