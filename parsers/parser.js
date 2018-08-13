@@ -56,15 +56,15 @@ class Parser {
     }
 
     parseGreaterLesserEquality() {
-        const conditionalOperatorsList = [
+        const operatorList = [
             constants.SYM.L_THAN, constants.SYM.G_THAN, constants.SYM.G_THAN_OR_EQ,  
             constants.SYM.L_THAN_OR_EQ, constants.SYM.EQ, constants.SYM.NOT_EQ
         ];
 
         if (this.isArithmeticExpression)
-            return this.parseWhile(conditionalOperatorsList, this.parsePlusMinus);
+            return this.parseWhile(operatorList, this.parsePlusMinus);
         else
-            return this.parseWhile(conditionalOperatorsList, this.parseNodeLiteral); //it is a boolean expression
+            return this.parseWhile(operatorList, this.parseNodeLiteral); //it is a boolean expression
     }
 
     parsePlusMinus() {
