@@ -38,7 +38,7 @@ const SYMBOLS = {
 };
 
 const LIST = {
-    PUNCTUATIONS: ["(",")","{","}",";"],
+    PUNCTUATIONS: ["(",")","{","}",";",","],
     OPERATORS: ["+","-","*","/","%","<",">","=","!","|","&"],
     WHITESPACES: [" ","\t","\n"],
     KEYWORDS: [
