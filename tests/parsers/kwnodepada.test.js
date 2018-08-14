@@ -1,0 +1,92 @@
+const kwNodePada = require("../../parsers/kwnodepada.js")
+const Parser = require("../../parsers/parser.js");
+const Lexer = require("../../lexer.js");
+const InputStream = require("../../inputstream.js");
+const constants = require("../../constants.js");
+
+describe("KwNodePada test suite", () => {
+    let parser;
+
+    beforeEach(() => {
+        parser = new Parser(new Lexer(new InputStream()));
+    });
+
+    test("it should return node with body.value of type number", () => {
+        parser.lexer.inputStream.code = 'padà 2;';
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                value: 2,
+                left: null,
+                right: null,
+                operation: null
+            }
+        };
+
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("it should return node with body.value of type string", () => {
+        parser.lexer.inputStream.code = 'padà "anu";';
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                value: "anu",
+                left: null,
+                right: null,
+                operation: null
+            }
+        };
+
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("It should return node with body.operation of type getTi i.e return a variable", () => {
+        parser.lexer.inputStream.code = 'padà sum;';
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                name: "sum",
+                operation: constants.GET_TI
+            }
+        };
+
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("It should return node with body.operation of type callIse i.e return the value of a function call", () => {
+        parser.lexer.inputStream.code = 'padà sum(1,2);';
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                operation: constants.CALL_ISE,
+                name: "sum",
+                args: [1,2]
+            }
+        };
+
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("It should return node with body.value of type bool", () => {
+        parser.lexer.inputStream.code = 'padà iró;';
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                value: "iró",
+                left: null,
+                right: null,
+                operation: null
+            }
+        };
+
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("It should skip the semicolon after the keyword padà", () => {
+        parser.lexer.inputStream.code = 'padà iró;';
+        kwNodePada.setParser(parser).getNode();
+
+        expect(parser.lexer.peek()).toBe(null);
+    });
+});
