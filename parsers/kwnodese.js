@@ -12,7 +12,7 @@ class KwNodeSe extends BaseKwNode {
             then: this.parser.parseBlock(constants.KW.SE),
         };
 
-        if (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.TABI) {
+        if (this.parser.lexer.isNotEndOfFile() && this.parser.lexer.peek().value == constants.KW.TABI) {
             this.parser.skipKeyword(constants.KW.TABI);
             node.else = this.parser.parseBlock(constants.KW.TABI);
         }

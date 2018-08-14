@@ -5,7 +5,7 @@ class KwNodeKuro extends BaseKwNode {
 
     getNode() {
         const node = {
-            operation: this.lexer.next().value,
+            operation: this.parser.lexer.next().value,
         };
         this.parser.skipPunctuation(constants.STATEMENT_TERMINATOR);
         

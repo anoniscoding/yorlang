@@ -2,8 +2,8 @@ const constants = require("../constants.js");
 const kwnodes = require("./kwnodes");
 class Parser {
 
-    constructor(tokenInput) {
-        this.lexer = tokenInput;
+    constructor(lexer) {
+        this.lexer = lexer;
         this.isArithmeticExpression = true;
         this.currentBlockType = [];
     }

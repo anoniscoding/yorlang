@@ -5,7 +5,7 @@ class KwNodeIse extends BaseKwNode {
 
     getNode() {
         if (this.parser.isBlockType() && this.parser.getCurrentBlockType() != constants.KW.ISE)
-            this.lexer.throwError("Cannot create a yorlang function within a non function block");
+            this.parser.lexer.throwError("Cannot create a yorlang function within a non function block");
         
         return this.parseNode();
     }
