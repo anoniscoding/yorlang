@@ -54,7 +54,7 @@ describe("Lexer Tests", () => {
     });
 
     test("IsKeyword - it should confirm that it is not a keyword", () => {
-        expect(lexer.isKeyword("beautiful")).toBe(false);
+        expect(lexer.isKeyword("aldkfjdkfjekj")).toBe(false);
     });
 
     test("IsDigit - it should confirm that it is a digit", () => {
@@ -71,7 +71,7 @@ describe("Lexer Tests", () => {
         expect(lexer.readWhile(lexer.isDigit)).toBe("23");
     });
 
-    test("ReadWhile - it should stop concatenating chars to string when the given predicate is true", () => {
+    test("ReadWhile - it should stop concatenating chars to string when the given predicate is false", () => {
         lexer.inputStream.code = "a23";
 
         expect(lexer.readWhile(lexer.isIdentifier)).toBe("a");
@@ -109,10 +109,21 @@ describe("Lexer Tests", () => {
         expect(lexer.readNumber()).toEqual({type: constants.NUMBER, value: 50.32});
     });
 
-    test("SkipComments - it should return a number token", () => {
+    test("ReadNumber - it should return a number token with a single decimal points", () => {
+        lexer.inputStream.code = "50.32.5";
+
+        expect(lexer.readNumber()).toEqual({type: constants.NUMBER, value: 50.32});
+    });
+
+    test("SkipComments - it should skip all comments", () => {
         lexer.inputStream.code = "#comments\na";
         lexer.skipComments();
         expect(lexer.inputStream.peek()).toBe("a");
+    });
+
+    test("SkipWhiteSpaces - it should should skip whitespaces", () => {
+        lexer.inputStream.code = "    \n\ttí";
+        expect(lexer.next()).toEqual({type: constants.KEYWORD, value: "tí"});
     });
 
     test("ReadNext - it should return the next token", () => {
