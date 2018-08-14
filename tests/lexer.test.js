@@ -98,9 +98,9 @@ describe("Lexer Tests", () => {
     });
 
     test("ReadIdentifier - it should return a keyword token", () => {
-        lexer.inputStream.code = "tí";
+        lexer.inputStream.code = `${constants.KW.TI}`;
 
-        expect(lexer.readIdentifier()).toEqual({type: constants.KEYWORD, value: "tí"});
+        expect(lexer.readIdentifier()).toEqual({type: constants.KEYWORD, value: `${constants.KW.TI}`});
     });
 
     test("ReadNumber - it should return a number token", () => {
@@ -123,13 +123,13 @@ describe("Lexer Tests", () => {
 
     test("SkipWhiteSpaces - it should should skip whitespaces", () => {
         lexer.inputStream.code = "    \n\ttí";
-        expect(lexer.next()).toEqual({type: constants.KEYWORD, value: "tí"});
+        expect(lexer.next()).toEqual({type: constants.KEYWORD, value: `${constants.KW.TI}`});
     });
 
     test("ReadNext - it should return the next token", () => {
-        lexer.inputStream.code = "sopé 2";
+        lexer.inputStream.code = `${constants.KW.SOPE} 2`;
 
-        expect(lexer.readNext()).toEqual({type: constants.KEYWORD, value: "sopé"});
+        expect(lexer.readNext()).toEqual({type: constants.KEYWORD, value: `${constants.KW.SOPE}`});
     });
 
     test("ReadNext - it should throw an error when it can't recognize a token", () => {
@@ -154,7 +154,7 @@ describe("Lexer Tests", () => {
     });
 
     test("IsNotEndOfFile - It should confirm that the lexer has not read in the last token", () => {
-        lexer.inputStream.code = "tí";
+        lexer.inputStream.code = "abc";
 
         expect(lexer.isNotEndOfFile()).toBe(true);
     });
