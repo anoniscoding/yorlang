@@ -16,6 +16,7 @@ describe("InputStream Tests", () => {
 
     test("Next - It should read in the next character and discard it from the stream", () => {
         inputStream.code = "tí";
+
         expect(inputStream.next()).toBe("t");
         expect(inputStream.peek()).toBe("í");
     });
@@ -23,7 +24,6 @@ describe("InputStream Tests", () => {
     test("ThrowError - It should throw an error message while specifying the location of the error accurately", () => {
         inputStream.code = "\n";
         inputStream.next(); //read in the new line character
-        
         const errorMsg = "Testing error msg";
 
         expect(() => {
@@ -33,6 +33,7 @@ describe("InputStream Tests", () => {
 
     test("isNotEndOfFile - It should confirm that the inputstream has not read in the last char in the file", () => {
         inputStream.code = "tí";
+
         expect(inputStream.isNotEndOfFile()).toBe(true);
     });
 
