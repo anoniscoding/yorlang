@@ -13,7 +13,7 @@ class InputStream {
     next() {
         const character = this.code.charAt(this.position++);
         
-        if (character === constants.NEW_LINE) {
+        if (character === constants.SYM.NEW_LINE) {
             this.column = 0; this.line++;
         } else {
             this.column++;

@@ -22,7 +22,7 @@ describe("InputStream Tests", () => {
     });
 
     test("ThrowError - It should throw an error message while specifying the location of the error accurately", () => {
-        inputStream.code = "\n";
+        inputStream.code = `${constants.SYM.NEW_LINE}`;
         inputStream.next(); //read in the new line character
         const errorMsg = "Testing error msg";
 

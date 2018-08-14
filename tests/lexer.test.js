@@ -116,7 +116,7 @@ describe("Lexer Tests", () => {
     });
 
     test("SkipComments - it should skip all comments", () => {
-        lexer.inputStream.code = "#comments\na";
+        lexer.inputStream.code = `${constants.SYM.COMMENT} comment ${constants.SYM.NEW_LINE}a`;
         lexer.skipComments();
         expect(lexer.inputStream.peek()).toBe("a");
     });

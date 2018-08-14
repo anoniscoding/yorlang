@@ -9,7 +9,7 @@ class KwNodeSope extends BaseKwNode {
             operation: constants.KW.SOPE,
             stringNode: this.parser.parseNodeLiteral()
         }
-        this.parser.skipPunctuation(constants.STATEMENT_TERMINATOR);
+        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }

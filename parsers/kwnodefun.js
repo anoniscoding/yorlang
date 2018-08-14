@@ -32,7 +32,7 @@ class KwNodeFun extends BaseKwNode {
         node.condition = this.parser.parseExpression();
         this.parser.isArithmeticExpression = true; //set back to default
         
-        this.parser.skipPunctuation(constants.STATEMENT_TERMINATOR);
+        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         node.increment = kwNodeTi.setParser(this.parser).getNode();
 

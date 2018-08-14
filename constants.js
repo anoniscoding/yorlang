@@ -17,6 +17,7 @@ const SYMBOLS = {
     PERIOD: ".",
     OR: "||",
     AND: "&&",
+    BINARY_AND: "&",
     L_THAN: "<",
     G_THAN: ">",
     G_THAN_OR_EQ: ">=",
@@ -31,16 +32,35 @@ const SYMBOLS = {
     REMAINDER: "%",
     L_PAREN: "{",
     R_PAREN: "}",
+    L_SQ_BRACKET: "[",
+    R_SQ_BRACKET: "]",
     COMMA: ",",
     COMMENT: "#",
     L_BRACKET: "(",
-    R_BRACKET: ")"
+    R_BRACKET: ")",
+    STATEMENT_TERMINATOR : ";",
+    NEW_LINE: "\n",
+    TAB_SPACE: "\t",
+    EMPTY_SPACE: " ",
+    EXCLAMATION_POINT: "!",
+    PIPE: "|",
+
 };
 
 const LIST = {
-    PUNCTUATIONS: ["(",")","{","}",";",","],
-    OPERATORS: ["+","-","*","/","%","<",">","=","!","|","&"],
-    WHITESPACES: [" ","\t","\n"],
+    PUNCTUATIONS: [ 
+        SYMBOLS.L_BRACKET, SYMBOLS.R_BRACKET, SYMBOLS.L_PAREN,
+        SYMBOLS.R_PAREN, SYMBOLS.STATEMENT_TERMINATOR, SYMBOLS.COMMA,
+    ],
+    OPERATORS: [
+        SYMBOLS.PLUS, SYMBOLS.MINUS, SYMBOLS.MULTIPLY,
+        SYMBOLS.DIVIDE, SYMBOLS.REMAINDER, SYMBOLS.L_THAN,
+        SYMBOLS.G_THAN, SYMBOLS.EQ, SYMBOLS.EXCLAMATION_POINT, 
+        SYMBOLS.PIPE, SYMBOLS.BINARY_AND
+    ],
+    WHITESPACES: [ 
+        SYMBOLS.EMPTY_SPACE, SYMBOLS.TAB_SPACE, SYMBOLS.NEW_LINE 
+    ],
     KEYWORDS: [
         KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
@@ -54,8 +74,6 @@ const REGEX = {
 }
 
 const constants = {
-    STATEMENT_TERMINATOR : ";",
-    NEW_LINE: "\n",
     KW: KEYWORDS,
     SYM: SYMBOLS,
     LIST: LIST,

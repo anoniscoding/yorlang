@@ -82,7 +82,7 @@ class Lexer {
 
     skipComments() {
         this.readWhile((ch) => {
-            return ch != constants.NEW_LINE;
+            return ch != constants.SYM.NEW_LINE;
         });
         this.inputStream.next(); //skips the "\n" symbol
     }

@@ -13,7 +13,7 @@ class KwNodeTi extends BaseKwNode {
 
         this.parser.skipOperator(constants.SYM.ASSIGN);
         node.right  = this.parser.parseExpression();
-        this.parser.skipPunctuation(constants.STATEMENT_TERMINATOR);
+        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }

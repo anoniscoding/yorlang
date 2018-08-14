@@ -230,7 +230,7 @@ class Parser {
 
         if (token.type == constants.VARIABLE) {
             const node = this.parseCallIse(this.lexer.next());
-            this.skipPunctuation(constants.STATEMENT_TERMINATOR);
+            this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }
 

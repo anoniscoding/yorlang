@@ -9,7 +9,7 @@ class KwNodePada extends BaseKwNode {
             operation: constants.KW.PADA,
             body: this.parser.parseExpression()
         };
-        this.parser.skipPunctuation(constants.STATEMENT_TERMINATOR);
+        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }
