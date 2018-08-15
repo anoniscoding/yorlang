@@ -88,6 +88,8 @@ const constants = {
     OPERATOR: "operator",
     GET_TI: "getTi",
     CALL_ISE: "callIse",
+    R_BRACKET_SYM_NAME: "R_BRACKET",
+    L_BRACKET_SYM_NAME: "R_BRACKET"
 };
 
 module.exports = constants;
