@@ -9,12 +9,16 @@ class Parser {
         this.currentBlockType = [];
         this.expressionPunctuationTokens = {};
         this.nodeLiteralTypeTokens = {};
-        this.init();
+        this.initNodeExpresssionPunctuationTypeParsers();
+        this.initNodeLiteralTypeTokenParsers();
     }
 
-    init() {
+    initNodeExpresssionPunctuationTypeParsers() {
         this.expressionPunctuationTokens[constants.L_BRACKET_SYM_NAME] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
         this.expressionPunctuationTokens[constants.R_BRACKET_SYM_NAME] = this.parseArray.bind(this);
+    }
+
+    initNodeLiteralTypeTokenParsers() {
         this.nodeLiteralTypeTokens[constants.VARIABLE] = this.parseVariableLiteral.bind(this);
         this.nodeLiteralTypeTokens[constants.NUMBER] = this.parseLeaf.bind(this);
         this.nodeLiteralTypeTokens[constants.STRING] = this.parseLeaf.bind(this);
