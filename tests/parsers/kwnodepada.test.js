@@ -83,11 +83,11 @@ describe("KwNodePada test suite", () => {
     });
 
     test("It should return node with body.value of type bool", () => {
-        parser.lexer.inputStream.code = `${constants.KW.PADA} iró;`;
+        parser.lexer.inputStream.code = `${constants.KW.PADA} ${constants.KW.IRO};`;
         const expectedNode = {
             operation: constants.KW.PADA,
             body: {
-                value: "iró",
+                value: `${constants.KW.IRO}`,
                 left: null,
                 right: null,
                 operation: null

@@ -28,6 +28,9 @@ class KwNodeFun extends BaseKwNode {
             init : init
         };
 
+        //This is not using parseBracketExpression because 
+        //parseBracketExpression expects L_PAREN
+        //L_PAREN in fun is optional
         this.parser.isArithmeticExpression = false;
         node.condition = this.parser.parseExpression();
         this.parser.isArithmeticExpression = true; //set back to default

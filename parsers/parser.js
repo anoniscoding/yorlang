@@ -1,11 +1,28 @@
 const constants = require("../constants.js");
 const kwnodes = require("./kwnodes");
+
+
+const nodeLiteralTypeTokens = {
+
+}
 class Parser {
 
     constructor(lexer) {
         this.lexer = lexer;
         this.isArithmeticExpression = true;
         this.currentBlockType = [];
+        this.nodeLiteralValueTokens = {};
+        this.nodeLiteralTypeTokens = {};
+        this.init();
+    }
+
+    init() {
+        this.nodeLiteralValueTokens["L_BRACKET"] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
+        this.nodeLiteralValueTokens["R_BRACKET"] = this.parseArray.bind(this);
+        this.nodeLiteralTypeTokens[constants.VARIABLE] = this.parseVariableLiteral.bind(this);
+        this.nodeLiteralTypeTokens[constants.NUMBER] = this.parseLeaf.bind(this);
+        this.nodeLiteralTypeTokens[constants.STRING] = this.parseLeaf.bind(this);
+        this.nodeLiteralTypeTokens[constants.KEYWORD] = this.parseBool.bind(this);
     }
 
     isPunctuation(punc) {
@@ -93,31 +110,22 @@ class Parser {
     parseNodeLiteral() {
         const token = this.lexer.peek();
 
-        //handles operator precedence with bracket
-        if (token.value == constants.SYM.L_BRACKET) {
-            return this.parseBracketExpression(true);
+        const constantsPropertyList = Object.keys(constants.SYM);
+        const constantsPropertyValuesList = Object.values(constants.SYM);
+        const index = constantsPropertyValuesList.indexOf(token.value)
+
+        if (this.nodeLiteralValueTokens[constantsPropertyList[index]] != undefined) {  
+            return this.nodeLiteralValueTokens[constantsPropertyList[index]]();
         }
 
-        if (token.value == constants.SYM.L_SQ_BRACKET) {
-            return this.parseArray();
-        }
-        
-        if (token.type == constants.VARIABLE) {
-            return this.parseVariableLiteral();
-        }
-
-        if ([constants.NUMBER, constants.STRING].indexOf(token.type) >= 0) {
-            return this.parseLeaf();
-        }
-
-        if (token.type == constants.KEYWORD) {
-            return this.parseBool();
+        if (this.nodeLiteralTypeTokens[token.type] != undefined) {
+            return this.nodeLiteralTypeTokens[token.type]();
         }
 
         this.lexer.throwError(`Cannot process unexpected token: ${token.type}`);
     }
 
-    parseBracketExpression(isArithmetic) {
+    parseBracketExpression(isArithmetic = true) {
         this.skipPunctuation(constants.SYM.L_BRACKET);
         this.isArithmeticExpression = isArithmetic;
         const node = this.parseExpression();
