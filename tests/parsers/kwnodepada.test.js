@@ -97,10 +97,46 @@ describe("KwNodePada test suite", () => {
         expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
     });
 
+    test("It should return node with body.operation 'array' ", () => {
+        parser.lexer.inputStream.code = `${constants.KW.PADA} [1,2];`;
+
+        const expectedNode = {
+                operation: constants.KW.PADA,
+                body: {
+                    operation: constants.ARRAY,
+                    body: [{type: constants.NUMBER, value: 1}, {type: constants.NUMBER, value: 2}]
+                }
+            };
+    
+                expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("It should return node with body.operation 'array' when array is empty", () => {
+        parser.lexer.inputStream.code = `${constants.KW.PADA} [];`;
+
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                operation: constants.ARRAY,
+                body: []
+            }
+        };
+    
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
     test("It should skip the semicolon after the keyword padà", () => {
         parser.lexer.inputStream.code = `${constants.KW.PADA} iró;`;
         kwNodePada.setParser(parser).getNode();
 
         expect(parser.lexer.peek()).toBe(null);
+    });
+
+    test("It should throw an error when given invalid data", () => {
+        parser.lexer.inputStream.code = `${constants.KW.PADA} );`;
+
+        expect(() => {
+            kwNodePada.setParser(parser).getNode();
+        }).toThrow();
     });
 });

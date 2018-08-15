@@ -14,7 +14,7 @@ class Parser {
     initNodeExpresssionPunctuationTokenParsers() {
         this.expressionPunctuationTokens = {};
         this.expressionPunctuationTokens[constants.L_BRACKET_SYM_NAME] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
-        this.expressionPunctuationTokens[constants.R_BRACKET_SYM_NAME] = this.parseArray.bind(this);
+        this.expressionPunctuationTokens[constants.L_SQ_BRACKET_SYM_NAME] = this.parseArray.bind(this);
     }
 
     initNodeLiteralTypeTokenParsers() {
@@ -139,8 +139,9 @@ class Parser {
     parseArray(arrayNameToken) {
         const node = {};
         node.operation = constants.ARRAY;
-
+        console.log("a"+arrayNameToken)
         if (arrayNameToken == undefined) { //it is an array literal e.g [1,2,3]
+            console.log("here")
             node.body = this.delimited( 
                 constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
                 this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
