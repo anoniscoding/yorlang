@@ -60,7 +60,7 @@ describe("KwNodeTi test suite", () => {
         expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
     });
 
-    test("it should return node with operation assign for a array assignment operation", () => {
+    test("it should return node with operation assign for an array assignment operation", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI} a = [1,2];`;
 
         const expectedNode = {
@@ -73,5 +73,70 @@ describe("KwNodeTi test suite", () => {
         }
         
         expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("it should return node with operation assign for bracket expression", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = (15 /3) + (3 * 2);`;
+
+        const expectedNode = {
+            left: {
+                name: "a"
+            },  
+            operation: constants.SYM.ASSIGN,        
+            right: {
+                left: {
+                    left: {
+                        left: null, 
+                        operation: null, 
+                        right: null, 
+                        value: 15
+                    }, 
+                    operation: "/", 
+                    right: {
+                        left: null, 
+                        operation: null, 
+                        right: null, 
+                        value: 3
+                    }, 
+                    value: null
+                }, 
+                operation: "+", 
+                right: {
+                    left: {
+                        left: null,
+                        operation: null, 
+                        right: null, 
+                        value: 3
+                    }, 
+                    operation: "*", 
+                    right: {
+                        left: null, 
+                        operation: null, 
+                        right: null, 
+                        value: 2
+                    }, 
+                    value: null
+                }, 
+                value: null
+            }
+        }
+        
+        expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("it should throw an error when given invalid data", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = ;`;
+        
+        expect( () => {
+            kwNodeTi.setParser(parser).getNode()
+        }).toThrow();
+    });
+
+    test("it should throw an error when variable is not initialized", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a ;`;
+        
+        expect(() => {
+            kwNodeTi.setParser(parser).getNode()
+        }).toThrow();
     });
 })
