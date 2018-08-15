@@ -74,10 +74,8 @@ class Parser {
             constants.SYM.L_THAN_OR_EQ, constants.SYM.EQ, constants.SYM.NOT_EQ
         ];
 
-        if (this.isArithmeticExpression)
-            return this.parseWhile(operatorList, this.parsePlusMinus);
-        else
-            return this.parseWhile(operatorList, this.parseNodeLiteral); //it is a boolean expression
+        if (this.isArithmeticExpression) return this.parseWhile(operatorList, this.parsePlusMinus);
+        else return this.parseWhile(operatorList, this.parseNodeLiteral); //it is a boolean expression
     }
 
     parsePlusMinus() {
