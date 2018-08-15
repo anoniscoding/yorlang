@@ -38,17 +38,17 @@ class Parser {
 
     skipPunctuation(punc) {
         if (this.isPunctuation(punc)) this.lexer.next();
-        else this.lexer.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
+        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipOperator(op) {
         if (this.isOperator(op)) this.lexer.next();
-        else this.lexer.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
+        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipKeyword(kw) {
         if (this.isKeyword(kw)) this.lexer.next();
-        else this.lexer.throwError(`Cannot process unexpected token: ${this.getCurrentTokenValue()}`);
+        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     getCurrentTokenValue() {
@@ -110,7 +110,7 @@ class Parser {
         const constantsPropertyValuesList = Object.values(constants.SYM);
         const index = constantsPropertyValuesList.indexOf(token.value)
 
-        //it is parsing a punctuation type that can be used in an expression e.g (, [
+        //it will parse a punctuation token type that can be used in an expression e.g (, [
         if (this.nodeLiteralValueTokens[constantsPropertyList[index]] != undefined) {  
             return this.nodeLiteralValueTokens[constantsPropertyList[index]]();
         }
@@ -119,7 +119,7 @@ class Parser {
             return this.nodeLiteralTypeTokens[token.type]();
         }
 
-        this.lexer.throwError(`Cannot process unexpected token: ${token.type}`);
+        this.lexer.throwError(this.getGenericErrorMsg(token.type));
     }
 
     parseBracketExpression(isArithmetic = true) {
@@ -240,7 +240,7 @@ class Parser {
         var token = this.lexer.next();
         if (predicate(token)) return token;
 
-        this.lexer.throwError(`Cannot process unexpected token: ${token.type}`);
+        this.lexer.throwError(this.getGenericErrorMsg(token.type));
     }
 
     getCurrentBlockType() {
@@ -249,6 +249,10 @@ class Parser {
 
     isBlockType() {
         return this.currentBlockType.length > 0;
+    }
+
+    getGenericErrorMsg(value) {
+        return `Cannot process unexpected token : ${value}`
     }
 
     parseAst() {
@@ -269,7 +273,7 @@ class Parser {
             return node;
         }
 
-        this.lexer.throwError(`Cannot process unexpected token : ${token.value}`);
+        this.lexer.throwError(this.getGenericErrorMsg(token.value));
     }
 
     parseProgram() {
