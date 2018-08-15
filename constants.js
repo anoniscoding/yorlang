@@ -32,25 +32,25 @@ const SYMBOLS = {
     REMAINDER: "%",
     L_PAREN: "{",
     R_PAREN: "}",
-    L_SQ_BRACKET: "[",
-    R_SQ_BRACKET: "]",
     COMMA: ",",
     COMMENT: "#",
     L_BRACKET: "(",
     R_BRACKET: ")",
+    L_SQ_BRACKET: "[",
+    R_SQ_BRACKET: "]",
     STATEMENT_TERMINATOR : ";",
     NEW_LINE: "\n",
     TAB_SPACE: "\t",
     EMPTY_SPACE: " ",
     EXCLAMATION_POINT: "!",
-    PIPE: "|",
-
+    PIPE: "|"
 };
 
 const LIST = {
     PUNCTUATIONS: [ 
         SYMBOLS.L_BRACKET, SYMBOLS.R_BRACKET, SYMBOLS.L_PAREN,
         SYMBOLS.R_PAREN, SYMBOLS.STATEMENT_TERMINATOR, SYMBOLS.COMMA,
+        SYMBOLS.L_SQ_BRACKET, SYMBOLS.R_SQ_BRACKET
     ],
     OPERATORS: [
         SYMBOLS.PLUS, SYMBOLS.MINUS, SYMBOLS.MULTIPLY,
@@ -81,6 +81,7 @@ const constants = {
     KEYWORD: "keyword",
     VARIABLE: "variable",
     STRING: "string",
+    ARRAY: "array",
     NUMBER: "number",
     PROGRAM: "program",
     PUNCTUATION: "punctuation",

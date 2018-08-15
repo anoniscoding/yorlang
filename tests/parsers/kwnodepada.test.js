@@ -55,13 +55,27 @@ describe("KwNodePada test suite", () => {
     });
 
     test("It should return node with body.operation of type callIse i.e return the value of a function call", () => {
-        parser.lexer.inputStream.code = `${constants.KW.PADA} sum(1,2);`;
+        parser.lexer.inputStream.code = `${constants.KW.PADA} sum(1,a);`;
         const expectedNode = {
             operation: constants.KW.PADA,
             body: {
                 operation: constants.CALL_ISE,
                 name: "sum",
-                args: [1,2]
+                args: [{type: constants.NUMBER, value: 1}, {type: constants.VARIABLE, value: "a"}]
+            }
+        };
+
+        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+    });
+
+    test("It should return node with body.operation of type array element i.e return the value of an array element", () => {
+        parser.lexer.inputStream.code = `${constants.KW.PADA} sum[1];`;
+        const expectedNode = {
+            operation: constants.KW.PADA,
+            body: {
+                operation: constants.ARRAY,
+                name: "sum",
+                index: 1
             }
         };
 

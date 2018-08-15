@@ -97,6 +97,10 @@ class Parser {
         if (token.value == constants.SYM.L_BRACKET) {
             return this.parseBracketExpression(true);
         }
+
+        if (token.value == constants.SYM.L_SQ_BRACKET) {
+            return this.parseArray();
+        }
         
         if (token.type == constants.VARIABLE) {
             return this.parseVariableLiteral();
@@ -123,16 +127,44 @@ class Parser {
         return node;
     }
 
+    parseArray(currentToken) {
+        const node = {};
+        node.operation = constants.ARRAY;
+
+        if (currentToken == undefined) { //it is an array literal e.g [1,2,3]
+            node.body = this.delimited( 
+                constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
+                this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
+            );
+        } else { //it is an array element a[0]
+            node.name = currentToken.value
+            this.skipPunctuation(constants.SYM.L_SQ_BRACKET);
+            node.index = this.lexer.next().value;
+            this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
+        }
+
+        return node;
+    }
+
+    isNumStringVariable(token) {
+        return token.type == constants.NUMBER || token.type == constants.STRING || token.type == constants.VARIABLE;
+    }
+
     parseVariableLiteral() {
-        const current = this.lexer.next();
+        const currentToken = this.lexer.next();
 
         //if current variable is a function call
         if (this.lexer.peek().value == constants.SYM.L_BRACKET) {
-            return this.parseCallIse(current);
+            return this.parseCallIse(currentToken);
+        }
+
+        //if current variable is an array element
+        if (this.lexer.peek().value == constants.SYM.L_SQ_BRACKET) {
+            return this.parseArray(currentToken);
         }
 
         return {
-            name: current.value,
+            name: currentToken.value,
             operation: constants.GET_TI
         };
     }
@@ -174,20 +206,14 @@ class Parser {
     }
 
     parseCallIse(token) {
-        if (this.isPunctuation("(")) {
-            const node = {
-                operation: constants.CALL_ISE,
-                name: token.value,
-                args: this.delimited( 
-                    constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
-                    this.parseIseVarsOrValues.bind(this), (token) => {
-                    return token.type == constants.NUMBER || token.type == constants.STRING || token.type == constants.VARIABLE
-                })
-            }; 
-            return node;
-        }
-        
-        this.lexer.throwError(`Expecting yorlang function call but found ${this.lexer.peek().type}`);
+        return {
+            operation: constants.CALL_ISE,
+            name: token.value,
+            args: this.delimited( 
+                constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
+                this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
+            )
+        }; 
     }
 
     delimited(start, stop, separator, parser, predicate) {
@@ -205,9 +231,9 @@ class Parser {
         return varList;
     }
 
-    parseIseVarsOrValues(predicate) {
+    getTokenThatSatisfiesPredicate(predicate) {
         var token = this.lexer.next();
-        if (predicate(token)) return token.value;
+        if (predicate(token)) return token;
 
         this.lexer.throwError(`Cannot process unexpected token: ${token.type}`);
     }
@@ -224,8 +250,12 @@ class Parser {
         const token = this.lexer.peek();
 
         if ((kwnodes[token.value] != undefined)) {
-            const kwNode = kwnodes[token.value];
-            return kwNode.setParser(this).getNode();
+            try {
+                const kwNode = kwnodes[token.value];
+                return kwNode.setParser(this).getNode();
+            } catch(err) {
+                throw err;
+            }
         }
 
         if (token.type == constants.VARIABLE) {
