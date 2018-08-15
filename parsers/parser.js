@@ -139,9 +139,8 @@ class Parser {
     parseArray(arrayNameToken) {
         const node = {};
         node.operation = constants.ARRAY;
-        console.log("a"+arrayNameToken)
+
         if (arrayNameToken == undefined) { //it is an array literal e.g [1,2,3]
-            console.log("here")
             node.body = this.delimited( 
                 constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
                 this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
