@@ -110,6 +110,7 @@ class Parser {
         const constantsPropertyValuesList = Object.values(constants.SYM);
         const index = constantsPropertyValuesList.indexOf(token.value)
 
+        //it is parsing a punctuation type that can be used in an expression e.g (, [
         if (this.nodeLiteralValueTokens[constantsPropertyList[index]] != undefined) {  
             return this.nodeLiteralValueTokens[constantsPropertyList[index]]();
         }
