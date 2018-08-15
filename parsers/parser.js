@@ -116,7 +116,7 @@ class Parser {
         const index = constantsPropertyValuesList.indexOf(token.value);
         const punc_name = constantsPropertyList[index];
 
-        //it will parse a punctuation token type that can be used in an expression e.g (, [
+        //check if it is a punctuation token type that can be used in an expression e.g (, [
         if (this.punctuationValueTokens[punc_name] != undefined) {  
             return this.punctuationValueTokens[punc_name]();
         }
