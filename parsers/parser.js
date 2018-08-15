@@ -1,10 +1,6 @@
 const constants = require("../constants.js");
 const kwnodes = require("./kwnodes");
 
-
-const nodeLiteralTypeTokens = {
-
-}
 class Parser {
 
     constructor(lexer) {
