@@ -82,14 +82,6 @@ describe("KwNodeSope test suite", () => {
         expect(kwNodeSope.setParser(parser).getNode()).toEqual(expectedNode);
     });
 
-    test("It should throw an error when given invalid input", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} ();`;
-
-        expect(() => {
-            kwNodeSope.setParser(parser).getNode()        
-        }).toThrow();
-    });
-
     test(`It should skip the semicolon after the keyword ${constants.KW.SOPE}`, () => {
         parser.lexer.inputStream.code = `${constants.KW.SOPE} a;`;
         kwNodeSope.setParser(parser).getNode();
@@ -97,11 +89,17 @@ describe("KwNodeSope test suite", () => {
         expect(parser.lexer.peek()).toBe(null);
     });
 
-    test("It should throw an error when given invalid data", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} );`;
+    test("It should throw an error when given invalid input", () => {
+        parser.lexer.inputStream.code = `${constants.KW.SOPE} [2,3];`;
+
+        expect(kwNodeSope.setParser(parser).getNode()).toBeTruthy();
+    });
+
+    test("It should throw an error when given invalid input", () => {
+        parser.lexer.inputStream.code = `${constants.KW.SOPE} (2,3);`;
 
         expect(() => {
-            kwNodeSope.setParser(parser).getNode();
+            kwNodeSope.setParser(parser).getNode()        
         }).toThrow();
     });
 });
