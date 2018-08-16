@@ -12,17 +12,17 @@ class Parser {
     }
 
     initNodeExpresssionPunctuationTokenParsers() {
-        this.expressionPunctuationTokens = {};
-        this.expressionPunctuationTokens[constants.L_BRACKET_SYM_NAME] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
-        this.expressionPunctuationTokens[constants.L_SQ_BRACKET_SYM_NAME] = this.parseArray.bind(this);
+        this.expressionPunctuationParsers = {};
+        this.expressionPunctuationParsers[constants.L_BRACKET_SYM_NAME] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
+        this.expressionPunctuationParsers[constants.L_SQ_BRACKET_SYM_NAME] = this.parseArray.bind(this);
     }
 
     initNodeLiteralTypeTokenParsers() {
-        this.nodeLiteralTypeTokens = {};
-        this.nodeLiteralTypeTokens[constants.VARIABLE] = this.parseVariableLiteral.bind(this);
-        this.nodeLiteralTypeTokens[constants.NUMBER] = this.parseLeaf.bind(this);
-        this.nodeLiteralTypeTokens[constants.STRING] = this.parseLeaf.bind(this);
-        this.nodeLiteralTypeTokens[constants.KEYWORD] = this.parseBool.bind(this);
+        this.nodeLiteralTypeParsers = {};
+        this.nodeLiteralTypeParsers[constants.VARIABLE] = this.parseVariableLiteral.bind(this);
+        this.nodeLiteralTypeParsers[constants.NUMBER] = this.parseLeaf.bind(this);
+        this.nodeLiteralTypeParsers[constants.STRING] = this.parseLeaf.bind(this);
+        this.nodeLiteralTypeParsers[constants.KEYWORD] = this.parseBool.bind(this);
     }
 
     isPunctuation(punc) {
@@ -108,8 +108,8 @@ class Parser {
     parseNodeLiteral() {
         const token = this.lexer.peek();
 
-        if (this.nodeLiteralTypeTokens[token.type] != undefined) {
-            return this.nodeLiteralTypeTokens[token.type]();
+        if (this.nodeLiteralTypeParsers[token.type] != undefined) {
+            return this.nodeLiteralTypeParsers[token.type]();
         }
 
         //find the name of the property of the current token value
@@ -119,8 +119,8 @@ class Parser {
         const property_name = constantsPropertyList[index];
 
         //check if property_name is a punctuation that can be used in an expression e.g (, [
-        if (this.expressionPunctuationTokens[property_name] != undefined) {  
-            return this.expressionPunctuationTokens[property_name]();
+        if (this.expressionPunctuationParsers[property_name] != undefined) {  
+            return this.expressionPunctuationParsers[property_name]();
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
