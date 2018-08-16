@@ -9,7 +9,7 @@ describe("KwNodeSope test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-    })
+    });
 
     test("it should return node with operation sope with body of token number", () => {
         parser.lexer.inputStream.code = `${constants.KW.SOPE} 2;`;
