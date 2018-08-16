@@ -9,7 +9,8 @@ const KEYWORDS = {
     FUN: "fún",
     PADA: "padà",
     KURO: "kúrò",
-    SE: "sé"
+    SE: "sé",
+    YI: "yí"
 };
 
 const SYMBOLS = {
@@ -64,7 +65,7 @@ const LIST = {
     KEYWORDS: [
         KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
-        KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO
+        KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI
     ]
 }
 
