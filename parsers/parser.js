@@ -116,11 +116,11 @@ class Parser {
         const constantsPropertyList = Object.keys(constants.SYM);
         const constantsPropertyValuesList = Object.values(constants.SYM);
         const index = constantsPropertyValuesList.indexOf(token.value);
-        const punc_name = constantsPropertyList[index];
+        const property_name = constantsPropertyList[index];
 
-        //check if it is a punctuation token that can be used in an expression e.g (, [
-        if (this.expressionPunctuationTokens[punc_name] != undefined) {  
-            return this.expressionPunctuationTokens[punc_name]();
+        //check if property_name is a punctuation that can be used in an expression e.g (, [
+        if (this.expressionPunctuationTokens[property_name] != undefined) {  
+            return this.expressionPunctuationTokens[property_name]();
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
