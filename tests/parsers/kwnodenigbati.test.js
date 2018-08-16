@@ -79,7 +79,8 @@ describe("KwNodeNigbati test suite", () => {
                 }, 
                 value: null
             }, 
-            operation: constants.KW.NIGBATI}
+            operation: constants.KW.NIGBATI
+        }
 
         expect(kwNodeNigbati.setParser(parser).getNode()).toEqual(expectedNode);
     });
