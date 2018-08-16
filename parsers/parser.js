@@ -112,7 +112,7 @@ class Parser {
             return this.nodeLiteralTypeTokens[token.type]();
         }
 
-        //find the name of the current token value property
+        //find the name of the property of the current token value
         const constantsPropertyList = Object.keys(constants.SYM);
         const constantsPropertyValuesList = Object.values(constants.SYM);
         const index = constantsPropertyValuesList.indexOf(token.value);
