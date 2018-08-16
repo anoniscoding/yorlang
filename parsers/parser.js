@@ -141,7 +141,7 @@ class Parser {
         node.operation = constants.ARRAY;
 
         if (arrayNameToken == undefined) { //it is an array literal e.g [1,2,3]
-            node.body = this.delimited( 
+            node.body = this.parseDelimited( 
                 constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
                 this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
             );
@@ -218,14 +218,14 @@ class Parser {
         return {
             operation: constants.CALL_ISE,
             name: token.value,
-            args: this.delimited( 
+            args: this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
                 this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
             )
         }; 
     }
 
-    delimited(start, stop, separator, parser, predicate) {
+    parseDelimited(start, stop, separator, parser, predicate) {
         const varList = []; let firstVar = true;
 
         this.skipPunctuation(start);
