@@ -47,11 +47,6 @@ describe("KwNodeSe test suite", () => {
                 sopé "adupe";
             }
         
-            ${constants.KW.NIGBATI} ((ikeji < aropo) && (ikeji > 0)) {
-                sopé "a jura wa lo tijakadi ko";
-                tí ikeji = ikeji + 1;
-            }
-        
             ${constants.KW.PADA} teAkori();
         }`;
 

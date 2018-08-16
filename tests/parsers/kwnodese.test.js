@@ -53,6 +53,14 @@ describe("KwNodeSe test suite", () => {
         expect(kwNodeSe.setParser(parser).getNode()).toEqual(expectedNode);
     });
 
+    test("it should return a valid se node for nested blocks", () => {
+        parser.lexer.inputStream.code = `${constants.KW.SE} (niOruko) {
+            ${constants.KW.SE} (niOruko) {}
+        }`;
+
+        expect(kwNodeSe.setParser(parser).getNode()).toBeTruthy();
+    });
+
     test("it should return a valid se and tabi node", () => {
         parser.lexer.inputStream.code = `${constants.KW.SE} (aropo && òótó) {} tàbí {}`;
 
