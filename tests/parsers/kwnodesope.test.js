@@ -23,7 +23,7 @@ describe("KwNodeSope test suite", () => {
             }
         }
 
-        expect(kwNodeSope.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation sope with body of token string", () => {
@@ -38,7 +38,7 @@ describe("KwNodeSope test suite", () => {
             }
         }
 
-        expect(kwNodeSope.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation sope with body of token variable", () => {
@@ -51,7 +51,7 @@ describe("KwNodeSope test suite", () => {
             }
         }
 
-        expect(kwNodeSope.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation sope with body of node callIse", () => {
@@ -65,7 +65,7 @@ describe("KwNodeSope test suite", () => {
             }
         }
 
-        expect(kwNodeSope.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation sope with body of node array element", () => {
@@ -79,27 +79,27 @@ describe("KwNodeSope test suite", () => {
             }
         }
 
-        expect(kwNodeSope.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test(`It should skip the semicolon after the keyword ${constants.KW.SOPE}`, () => {
         parser.lexer.inputStream.code = `${constants.KW.SOPE} a;`;
-        kwNodeSope.setParser(parser).getNode();
+        kwNodeSope.getNode.call(parser);
 
         expect(parser.lexer.peek()).toBe(null);
     });
 
-    test("It should throw an error when given invalid input", () => {
+    test("it should return node with operation sope with body of node array literal", () => {
         parser.lexer.inputStream.code = `${constants.KW.SOPE} [2,3];`;
 
-        expect(kwNodeSope.setParser(parser).getNode()).toBeTruthy();
+        expect(kwNodeSope.getNode.call(parser)).toBeTruthy();
     });
 
     test("It should throw an error when given invalid input", () => {
         parser.lexer.inputStream.code = `${constants.KW.SOPE} (2,3);`;
 
         expect(() => {
-            kwNodeSope.setParser(parser).getNode()        
+            kwNodeSope.getNode.call(parser)        
         }).toThrow();
     });
 });

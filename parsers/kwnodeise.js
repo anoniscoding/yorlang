@@ -4,23 +4,23 @@ const BaseKwNode = require("./basekwnode");
 class KwNodeIse extends BaseKwNode {
 
     getNode() {
-        if (this.parser.isBlockType() && this.parser.getCurrentBlockType() != constants.KW.ISE)
-            this.parser.lexer.throwError("Cannot create a yorlang function within a non function block");
+        if (this.isBlockType() && this.getCurrentBlockType() != constants.KW.ISE)
+            this.lexer.throwError("Cannot create a yorlang function within a non function block");
         
-        return this.parseNode();
+        return this.parseIseNode();
     }
 
-    parseNode() {
-        this.parser.skipKeyword(constants.KW.ISE);
+    parseIseNode() {
+        this.skipKeyword(constants.KW.ISE);
 
         return {
             operation: constants.KW.ISE,
-            name: this.parser.parseVarname(),
-            vars: this.parser.parseDelimited( 
+            name: this.parseVarname(),
+            vars: this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
-                this.parser.getTokenThatSatisfiesPredicate.bind(this.parser), (token) => {return token.type == constants.VARIABLE;
+                this.getTokenThatSatisfiesPredicate.bind(this), (token) => {return token.type == constants.VARIABLE;
             }),
-            body: this.parser.parseBlock(constants.KW.ISE),
+            body: this.parseBlock(constants.KW.ISE),
         };
     }
 }

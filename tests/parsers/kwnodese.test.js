@@ -35,10 +35,10 @@ describe("KwNodeSe test suite", () => {
             ]
         }
 
-        expect(kwNodeSe.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
 
-    test("it should return a valid se node when body then is empty", () => {
+    test("it should return a valid se node when body is empty", () => {
         parser.lexer.inputStream.code = `${constants.KW.SE} (niOruko) {}`;
 
         const expectedNode = {
@@ -46,11 +46,11 @@ describe("KwNodeSe test suite", () => {
                 name: "niOruko", 
                 operation: constants.GET_TI
             }, 
-            "operation": constants.KW.SE, 
+            operation: constants.KW.SE, 
             then: []
         }
 
-        expect(kwNodeSe.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return a valid se node for nested blocks", () => {
@@ -58,7 +58,7 @@ describe("KwNodeSe test suite", () => {
             ${constants.KW.SE} (niOruko) {}
         }`;
 
-        expect(kwNodeSe.setParser(parser).getNode()).toBeTruthy();
+        expect(kwNodeSe.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should return a valid se and tabi node", () => {
@@ -84,14 +84,14 @@ describe("KwNodeSe test suite", () => {
             then: []
         };
 
-        expect(kwNodeSe.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
 
-    test("it should return a valid se and tabi node", () => {
+    test("it should throw an error when given an invalid se and tabi node", () => {
         parser.lexer.inputStream.code = `${constants.KW.SE} aropo && òótó) {} tàbí {}`;
 
         expect(() => {
-            kwNodeSe.setParser(parser).getNode();
+            kwNodeSe.getNode.call(parser);
         }).toThrow();
     });
 

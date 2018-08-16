@@ -4,12 +4,12 @@ const BaseKwNode = require("./basekwnode");
 class KwNodePada extends BaseKwNode {
 
     getNode() {
-        this.parser.skipKeyword(constants.KW.PADA);
+        this.skipKeyword(constants.KW.PADA);
         const node = {
             operation: constants.KW.PADA,
-            body: this.parser.parseExpression()
+            body: this.parseExpression()
         };
-        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }

@@ -8,7 +8,7 @@ class KwNodeYi extends BaseKwNode {
     }
 
     getNode() {
-        this.kwNodeEjo = new KwNodeEjo().setParser(this.parser);
+        const kwNodeEjo = new KwNodeEjo();
         const node = {
             operation: constants.KW.YI,
             yivalue: null,
@@ -16,24 +16,24 @@ class KwNodeYi extends BaseKwNode {
             padasi: []
         };
 
-        this.parser.skipKeyword(constants.KW.YI);
-        node.yivalue = this.parser.parseBracketExpression();
-        this.parser.skipPunctuation(constants.SYM.L_PAREN);
+        this.skipKeyword(constants.KW.YI);
+        node.yivalue = this.parseBracketExpression();
+        this.skipPunctuation(constants.SYM.L_PAREN);
 
-        while (this.parser.lexer.isNotEndOfFile() && this.parser.lexer.peek().value == constants.KW.EJO) {
-            node.body.push(this.kwNodeEjo.getNode());
+        while (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.EJO) {
+            node.body.push(kwNodeEjo.getNode.call(this));
         }
 
-        if (this.parser.isKeyword(constants.KW.PADASI)) {
-            this.parser.skipKeyword(constants.KW.PADASI);
-            this.parser.skipPunctuation(constants.SYM.COLON);
+        if (this.isKeyword(constants.KW.PADASI)) {
+            this.skipKeyword(constants.KW.PADASI);
+            this.skipPunctuation(constants.SYM.COLON);
 
-            while (this.parser.lexer.isNotEndOfFile() && this.parser.lexer.peek().value != constants.SYM.R_PAREN) {
-                node.padasi.push(this.parser.parseAst());
+            while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
+                node.padasi.push(this.parseAst());
             }
         }
 
-        this.parser.skipPunctuation(constants.SYM.R_PAREN);
+        this.skipPunctuation(constants.SYM.R_PAREN);
 
         return node;
     }
@@ -48,17 +48,17 @@ class KwNodeEjo extends BaseKwNode {
             body: []
         }
 
-        this.parser.skipKeyword(constants.KW.EJO);
-        node.ejovalue = this.parser.parseExpression();
-        this.parser.skipPunctuation(constants.SYM.COLON);
+        this.skipKeyword(constants.KW.EJO);
+        node.ejovalue = this.parseExpression();
+        this.skipPunctuation(constants.SYM.COLON);
 
-        const canParseEjo = () =>  this.parser.lexer.isNotEndOfFile() 
-                                        && this.parser.lexer.peek().value != constants.KW.EJO 
-                                        && this.parser.lexer.peek().value != constants.KW.PADASI;
+        const canParseEjo = () =>  this.lexer.isNotEndOfFile() 
+                                        && this.lexer.peek().value != constants.KW.EJO 
+                                        && this.lexer.peek().value != constants.KW.PADASI;
         
 
         while (canParseEjo()) {
-            node.body.push(this.parser.parseAst());
+            node.body.push(this.parseAst());
         }
 
         return node;

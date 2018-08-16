@@ -25,7 +25,7 @@ describe("KwNodeTi test suite", () => {
             }
         }
         
-        expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation assign for a string assignment operation", () => {
@@ -42,7 +42,7 @@ describe("KwNodeTi test suite", () => {
             }
         }
         
-        expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation assign for a variable assignment operation", () => {
@@ -57,7 +57,7 @@ describe("KwNodeTi test suite", () => {
             }
         }
         
-        expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation assign for an array assignment operation", () => {
@@ -72,7 +72,7 @@ describe("KwNodeTi test suite", () => {
             }
         }
         
-        expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with operation assign for bracket expression", () => {
@@ -121,14 +121,14 @@ describe("KwNodeTi test suite", () => {
             }
         }
         
-        expect(kwNodeTi.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
-    test("it should throw an error when given invalid data", () => {
+    test("it should throw an error when given invalid assignment operation", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI} a = ;`;
         
-        expect( () => {
-            kwNodeTi.setParser(parser).getNode()
+        expect(() => {
+            kwNodeTi.getNode.call(parser)
         }).toThrow();
     });
 
@@ -136,7 +136,7 @@ describe("KwNodeTi test suite", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI} a ;`;
         
         expect(() => {
-            kwNodeTi.setParser(parser).getNode()
+            kwNodeTi.getNode.call(parser)
         }).toThrow();
     });
 })

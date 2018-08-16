@@ -82,7 +82,7 @@ describe("KwNodeNigbati test suite", () => {
             operation: constants.KW.NIGBATI
         }
 
-        expect(kwNodeNigbati.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeNigbati.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return valid nigbati node for nested blocks", () => {
@@ -95,7 +95,7 @@ describe("KwNodeNigbati test suite", () => {
             }
         }`;
 
-        expect(kwNodeNigbati.setParser(parser).getNode()).toBeTruthy();
+        expect(kwNodeNigbati.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should throw an error when given invalid construct", () => {
@@ -105,7 +105,7 @@ describe("KwNodeNigbati test suite", () => {
         }`;
 
         expect(() => {
-            kwNodeNigbati.setParser(parser).getNode()
+            kwNodeNigbati.getNode.call(parser)
         }).toThrow();
     });
 });

@@ -15,12 +15,12 @@ describe("KwNodeKuro test suite", () => {
     test("It should return a kúrò node ast", () => {
         const expectedNode = {operation: constants.KW.KURO};
 
-        expect(kwNodeKuro.setParser(parser).getNode())
+        expect(kwNodeKuro.getNode.call(parser))
             .toEqual(expectedNode);
     });
 
     test("It should skip the semicolon after the keyword kúrò", () => {
-        kwNodeKuro.setParser(parser).getNode();
+        kwNodeKuro.getNode.call(parser);
         
         expect(parser.lexer.peek()).toBe(null);
     });

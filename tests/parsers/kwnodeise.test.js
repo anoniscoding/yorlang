@@ -4,7 +4,7 @@ const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("KwNodeSe test suite", () => {
+describe("KwNodeIse test suite", () => {
     let parser;
 
     beforeEach(() => {
@@ -32,7 +32,7 @@ describe("KwNodeSe test suite", () => {
             ]
         }
 
-        expect(kwNodeIse.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeIse.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return valid ise node for nested blocks", () => {
@@ -50,14 +50,14 @@ describe("KwNodeSe test suite", () => {
             ${constants.KW.PADA} teAkori();
         }`;
 
-        expect(kwNodeIse.setParser(parser).getNode()).toBeTruthy();
+        expect(kwNodeIse.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should throw an error when given invalid ise", () => {
         parser.lexer.inputStream.code = `${constants.KW.ISE} (teOruko(a,b) {}`;
 
         expect(() => {
-            kwNodeIse.setParser(parser).getNode()
+            kwNodeIse.getNode.call(parser)
         }).toThrow();
     });
 });

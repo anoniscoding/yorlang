@@ -6,15 +6,9 @@ class BaseKwNode {
             throw new Error("Cannot instantiate abstract class BaseKwNode");
         }
     }
-    
-    setParser(parser) {
-        this.parser = parser;
-        return this;
-    }
 
-    //Child classes must override this method
     getNode() {
-        throw new Error(`${this.constructor.name} must override getNode`);
+        throw new Error(`Subclass must override getNode`);
     }
 }
 

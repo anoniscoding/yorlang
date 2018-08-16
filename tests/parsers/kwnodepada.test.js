@@ -23,7 +23,7 @@ describe("KwNodePada test suite", () => {
             }
         };
 
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return node with body.value of type string", () => {
@@ -38,7 +38,7 @@ describe("KwNodePada test suite", () => {
             }
         };
 
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.operation of type getTi i.e return a variable", () => {
@@ -51,7 +51,7 @@ describe("KwNodePada test suite", () => {
             }
         };
 
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.operation of type callIse i.e return the value of a function call", () => {
@@ -65,7 +65,7 @@ describe("KwNodePada test suite", () => {
             }
         };
 
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.operation of type array element i.e return the value of an array element", () => {
@@ -79,7 +79,7 @@ describe("KwNodePada test suite", () => {
             }
         };
 
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.value of type bool", () => {
@@ -94,7 +94,7 @@ describe("KwNodePada test suite", () => {
             }
         };
 
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.operation 'array' ", () => {
@@ -108,7 +108,7 @@ describe("KwNodePada test suite", () => {
                 }
             };
     
-                expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+                expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.operation 'array' when array is empty", () => {
@@ -122,21 +122,21 @@ describe("KwNodePada test suite", () => {
             }
         };
     
-        expect(kwNodePada.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should skip the semicolon after the keyword padà", () => {
         parser.lexer.inputStream.code = `${constants.KW.PADA} iró;`;
-        kwNodePada.setParser(parser).getNode();
+        kwNodePada.getNode.call(parser);
 
         expect(parser.lexer.peek()).toBe(null);
     });
 
-    test("It should throw an error when given invalid data", () => {
+    test("It should throw an error when given invalid pada node", () => {
         parser.lexer.inputStream.code = `${constants.KW.PADA} );`;
 
         expect(() => {
-            kwNodePada.setParser(parser).getNode();
+            kwNodePada.getNode.call(parser);
         }).toThrow();
     });
 });

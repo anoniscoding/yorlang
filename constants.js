@@ -71,18 +71,26 @@ const LIST = {
         KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI,
         KEYWORDS.EJO, KEYWORDS.PADASI
     ]
-}
+};
 
 const REGEX = {
     DIGIT: /[0-9]/i,
     IDENTIFIER: /[a-z]|í|é|ò|ó|à|ú/i,
-}
+};
+
+const PARSERSHELPERS = {
+    PARSE_ISE_NODE: "parseIseNode",
+    PARSE_FUN_NODE: "parseFunNode",
+    IS_VALID_FUN_INIT_STATEMENT: "isValidFunInitStatement",
+    IS_INVALID_FUN_INCREMENT_STATEMENT: "isInValidFunIncrementStatement"
+};
 
 const constants = {
     KW: KEYWORDS,
     SYM: SYMBOLS,
     LIST: LIST,
     REGEX: REGEX,
+    PH: PARSERSHELPERS,
     KEYWORD: "keyword",
     VARIABLE: "variable",
     STRING: "string",

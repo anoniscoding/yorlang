@@ -4,7 +4,7 @@ const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("KwNodeSope test suite", () => {
+describe("KwNodeYi test suite", () => {
     let parser;
 
     beforeEach(() => {
@@ -90,10 +90,10 @@ describe("KwNodeSope test suite", () => {
             }
         };
 
-        expect(kwNodeYi.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeYi.getNode.call(parser)).toEqual(expectedNode);
     });
 
-    test("it should return a valid yi node", () => {
+    test("it should throw an error when an invalid yi node is given", () => {
         parser.lexer.inputStream.code = `${constants.KW.YI} name) {
             ${constants.KW.EJO} "anu":
                 ${constants.KW.SOPE} "it is anu";
@@ -106,7 +106,7 @@ describe("KwNodeSope test suite", () => {
         }`;
 
         expect(() => {
-            kwNodeYi.setParser(parser).getNode();
+            kwNodeYi.getNode.call(parser);
         }).toThrow();
     });
 

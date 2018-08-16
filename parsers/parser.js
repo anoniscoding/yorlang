@@ -1,6 +1,7 @@
 const constants = require("../constants.js");
-const kwnodes = require("./kwnodes");
-
+const kwnodes = require("./kwnodes.js");
+const helpers = require("./parser_helper_function.js");
+const BaseKwNode = require("./basekwnode");
 class Parser {
 
     constructor(lexer) {
@@ -263,12 +264,9 @@ class Parser {
         const token = this.lexer.peek();
 
         if ((kwnodes[token.value] != undefined)) {
-            try {
-                const kwNode = kwnodes[token.value];
-                return kwNode.setParser(this).getNode();
-            } catch(err) {
-                throw err;
-            }
+            const kwNode = kwnodes[token.value];
+            if (kwNode instanceof BaseKwNode) return kwNode.getNode.call(this);
+            else throw new Error("Node must be a subclass of BaseKwNode");
         }
 
         if (token.type == constants.VARIABLE) {
@@ -290,5 +288,10 @@ class Parser {
         return {type: constants.PROGRAM, astList: astList};
     }
 }
+
+const helpersNameList = Object.keys(helpers);
+helpersNameList.forEach((helperName,index,array) => {
+    Parser.prototype[helperName] = helpers[helperName];
+})
 
 module.exports = Parser;

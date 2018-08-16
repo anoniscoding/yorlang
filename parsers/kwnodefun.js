@@ -5,16 +5,16 @@ const kwNodeTi =  require("./kwnodeti.js");
 class KwNodeFun extends BaseKwNode {
 
     getNode() {
-        this.parser.skipKeyword(constants.KW.FUN);
-        this.parser.skipPunctuation(constants.SYM.L_BRACKET);
+        this.skipKeyword(constants.KW.FUN);
+        this.skipPunctuation(constants.SYM.L_BRACKET);
 
-        const init = kwNodeTi.setParser(this.parser).getNode();
+        const init = kwNodeTi.getNode.call(this);
 
         if (this.isValidFunInitStatement(init)) {
-            return this.parseNode(init);
+            return this.parseFunNode(init);
         }
 
-        this.parser.lexer.throwError(`Invalid ${constants.KW.FUN} initialization block`);
+        this.lexer.throwError(`Invalid ${constants.KW.FUN} initialization block`);
     }
 
     isValidFunInitStatement(initNode) {
@@ -22,7 +22,7 @@ class KwNodeFun extends BaseKwNode {
         return /[0-9]+/i.test(initNode.right.value);
     }
 
-    parseNode(init) {
+    parseFunNode(init) {
         const node = {
             operation : constants.KW.FUN,
             init : init
@@ -31,19 +31,19 @@ class KwNodeFun extends BaseKwNode {
         //This is not using parseBracketExpression because 
         //parseBracketExpression expects L_PAREN
         //L_PAREN in fun is optional
-        this.parser.isArithmeticExpression = false;
-        node.condition = this.parser.parseExpression();
-        this.parser.isArithmeticExpression = true; //set back to default
+        this.isArithmeticExpression = false;
+        node.condition = this.parseExpression();
+        this.isArithmeticExpression = true; //set back to default
         
-        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
-        node.increment = kwNodeTi.setParser(this.parser).getNode();
+        node.increment = kwNodeTi.getNode.call(this);
 
         if (this.isInValidFunIncrementStatement(node))
-            this.parser.lexer.throwError("Invalid yorlang decrement or increment operation");
+            this.lexer.throwError("Invalid yorlang decrement or increment operation");
 
-        this.parser.skipPunctuation(constants.SYM.R_BRACKET);
-        node.body = this.parser.parseBlock(constants.KW.FUN);
+        this.skipPunctuation(constants.SYM.R_BRACKET);
+        node.body = this.parseBlock(constants.KW.FUN);
 
         return node;
     }

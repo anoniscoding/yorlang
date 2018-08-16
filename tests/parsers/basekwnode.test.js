@@ -4,7 +4,7 @@ const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 
-describe("BasekwNode ", () => {
+describe("BasekwNode test suite ", () => {
 
     test("Constructor - it should throw error while attempting to instantiate constructor", () => {
         expect(() => {
@@ -15,9 +15,8 @@ describe("BasekwNode ", () => {
     test("GetNode - it should throw error while attempting to call getNode on subClass that has not overridden getNode", () => {
         parser = new Parser(new Lexer(new InputStream("code")));
 
-
         expect(() => {
-            kwNodeMock.setParser(parser).getNode();
-        }).toThrow("KwNodeMock must override getNode");
+            kwNodeMock.getNode.call(this);
+        }).toThrow("Subclass must override getNode");
     });
 })

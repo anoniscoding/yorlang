@@ -4,16 +4,16 @@ const BaseKwNode = require("./basekwnode");
 class KwNodeTi extends BaseKwNode {
 
     getNode() {
-        this.parser.skipKeyword(constants.KW.TI);
+        this.skipKeyword(constants.KW.TI);
 
         const node =  {
             operation: constants.SYM.ASSIGN,
-            left: this.parser.parseVarname()
+            left: this.parseVarname()
         };
 
-        this.parser.skipOperator(constants.SYM.ASSIGN);
-        node.right  = this.parser.parseExpression();
-        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        this.skipOperator(constants.SYM.ASSIGN);
+        node.right  = this.parseExpression();
+        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }

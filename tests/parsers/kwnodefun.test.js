@@ -4,7 +4,7 @@ const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("KwNodeSe test suite", () => {
+describe("KwNodeFun test suite", () => {
     let parser;
 
     beforeEach(() => {
@@ -65,7 +65,7 @@ describe("KwNodeSe test suite", () => {
             operation: constants.KW.FUN
         };
 
-        expect(kwNodeFun.setParser(parser).getNode()).toEqual(expectedNode);
+        expect(kwNodeFun.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return a valid fun node for nested blocks", () => {
@@ -73,7 +73,7 @@ describe("KwNodeSe test suite", () => {
             ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {}
         }`;
 
-        expect(kwNodeFun.setParser(parser).getNode()).toBeTruthy();
+        expect(kwNodeFun.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should throw an error when given invalid fun node", () => {
@@ -82,7 +82,7 @@ describe("KwNodeSe test suite", () => {
         }`;
 
         expect(() => {
-            kwNodeFun.setParser(parser).getNode();
+            kwNodeFun.getNode.call(parser);
         }).toThrow();
     });
 

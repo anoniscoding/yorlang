@@ -4,10 +4,11 @@ const BaseKwNode = require("./basekwnode.js");
 class KwNodeKuro extends BaseKwNode {
 
     getNode() {
+        console.log(this.lexer)
         const node = {
-            operation: this.parser.lexer.next().value,
+            operation: this.lexer.next().value,
         };
-        this.parser.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
         
         return node;
     }
