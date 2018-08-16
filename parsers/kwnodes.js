@@ -7,6 +7,7 @@ const kwNodeFun = require("./kwnodefun.js");
 const kwNodePada = require("./kwnodepada.js");
 const kwNodeKuro = require("./kwnodekuro.js");
 const kwNodeIse = require("./kwnodeise.js");
+const kwNodeYi = require("./kwnodeyi.js");
 
 const KwNodes = {};
 KwNodes[constants.KW.TI] = kwNodeTi;
@@ -17,5 +18,6 @@ KwNodes[constants.KW.FUN] = kwNodeFun;
 KwNodes[constants.KW.PADA] = kwNodePada;
 KwNodes[constants.KW.KURO] = kwNodeKuro;
 KwNodes[constants.KW.ISE] = kwNodeIse;
+KwNodes[constants.KW.YI] = kwNodeYi;
 
 module.exports = KwNodes;
