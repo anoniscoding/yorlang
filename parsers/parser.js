@@ -151,6 +151,11 @@ class Parser {
             this.skipPunctuation(constants.SYM.L_SQ_BRACKET);
             node.index = this.lexer.next().value;
             this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
+
+            if (this.isOperator(constants.SYM.ASSIGN)) {// a[0] = b = c = 2;
+                node.right = this.parseExpression();
+                this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+            }
         }
 
         return node;
@@ -173,10 +178,16 @@ class Parser {
             return this.parseArray(currentToken);
         }
 
-        return {
+        const node =  {
             name: currentToken.value,
             operation: constants.GET_TI
         };
+
+        if(this.isOperator(constants.SYM.ASSIGN)) { //a = b = c = 2;
+            node.right = this.parseExpression();
+        }
+
+        return node;
     }
 
     parseLeaf() {
@@ -270,7 +281,7 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = this.parseCallIse(this.lexer.next());
+            const node = this.parseVariableLiteral(this.lexer.next());
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }
@@ -282,7 +293,9 @@ class Parser {
         const astList = [];
 
         while (this.lexer.isNotEndOfFile()) {
+            this.currentBlockType.push(constants.PROGRAM);
             astList.push(this.parseAst());
+            this.currentBlockType.pop();
         }
 
         return {type: constants.PROGRAM, astList: astList};
