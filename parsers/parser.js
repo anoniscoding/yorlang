@@ -181,7 +181,7 @@ class Parser {
             operation: constants.GET_TI
         };
 
-        if(this.isOperator(constants.SYM.ASSIGN)) { //a = b = c = 2;
+        if (this.isOperator(constants.SYM.ASSIGN)) { //a = b = c = 2;
             node.right = this.parseExpression();
         }
 
@@ -290,9 +290,11 @@ class Parser {
     parseProgram() {
         const astList = [];
 
+        this.currentBlockType.push(constants.PROGRAM)
         while (this.lexer.isNotEndOfFile()) {
             astList.push(this.parseAst());
         }
+        this.currentBlockType.pop();
 
         return {type: constants.PROGRAM, astList: astList};
     }
@@ -301,6 +303,6 @@ class Parser {
 const helpersNameList = Object.keys(helpers);
 helpersNameList.forEach((helperName,index,array) => {
     Parser.prototype[helperName] = helpers[helperName];
-})
+});
 
 module.exports = Parser;
