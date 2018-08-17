@@ -152,9 +152,8 @@ class Parser {
             node.index = this.lexer.next().value;
             this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
 
-            if (this.isOperator(constants.SYM.ASSIGN)) {// a[0] = b = c = 2
-                node.right = this.parseExpression();
-            }
+            if (this.isOperator(constants.SYM.ASSIGN)) 
+                node.right = this.parseExpression(); // a[0] = b = c = 2
         }
 
         return node;
