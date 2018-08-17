@@ -10,7 +10,7 @@ describe("KwNodeKuro test suite", () => {
     beforeEach(() => {
         const code = `${constants.KW.KURO};`;
         parser = new Parser(new Lexer(new InputStream(code)));
-    })
+    });
 
     test("It should return a kúrò node ast", () => {
         const expectedNode = {operation: constants.KW.KURO};

@@ -266,7 +266,7 @@ class Parser {
         if ((kwnodes[token.value] != undefined)) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseKwNode) return kwNode.getNode.call(this);
-            else throw new Error("Node must be a subclass of BaseKwNode");
+            else throw new Error(`${token.value} must be a subclass of BaseKwNode`);
         }
 
         if (token.type == constants.VARIABLE) {
