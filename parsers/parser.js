@@ -152,9 +152,8 @@ class Parser {
             node.index = this.lexer.next().value;
             this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
 
-            if (this.isOperator(constants.SYM.ASSIGN)) {// a[0] = b = c = 2;
+            if (this.isOperator(constants.SYM.ASSIGN)) {// a[0] = b = c = 2
                 node.right = this.parseExpression();
-                this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             }
         }
 
@@ -293,9 +292,7 @@ class Parser {
         const astList = [];
 
         while (this.lexer.isNotEndOfFile()) {
-            this.currentBlockType.push(constants.PROGRAM);
             astList.push(this.parseAst());
-            this.currentBlockType.pop();
         }
 
         return {type: constants.PROGRAM, astList: astList};
