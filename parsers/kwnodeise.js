@@ -18,8 +18,8 @@ class KwNodeIse extends BaseKwNode {
             name: this.parseVarname(),
             vars: this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
-                this.getTokenThatSatisfiesPredicate.bind(this), (token) => {return token.type == constants.VARIABLE;
-            }),
+                this.getTokenThatSatisfiesPredicate.bind(this), (token) => token.type == constants.VARIABLE
+            ),
             body: this.parseBlock(constants.KW.ISE),
         };
     }
