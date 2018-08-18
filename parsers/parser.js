@@ -172,14 +172,6 @@ class Parser {
         };
     }
 
-    parseBool() {
-        if ([constants.KW.OOTO, constants.KW.IRO].indexOf(this.lexer.peek().value) >= 0) {
-            return this.parseLeaf();
-        }
-            
-        this.lexer.throwError(`Expecting yorlang boolean(iró|òótó) but found ${token.value}`);
-    }
-
     parseBlock(currentBlock) {
         this.currentBlockType.push(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
@@ -197,17 +189,6 @@ class Parser {
         return  (this.lexer.peek().type == constants.VARIABLE) 
                 ? { name: this.lexer.next().value }
                 : this.lexer.throwError(`Expecting variable but found ${token}`);
-    }
-
-    parseCallIse(token) {
-        return {
-            operation: constants.CALL_ISE,
-            name: token.value,
-            args: this.parseDelimited( 
-                constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
-                this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
-            )
-        }; 
     }
 
     parseDelimited(start, stop, separator, parser, predicate) {
@@ -254,7 +235,7 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = this.parseCallIse(this.lexer.next());
+            const node = nodeLiterals[constants.VARIABLE].getNodeLiteral.call(this);
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }
