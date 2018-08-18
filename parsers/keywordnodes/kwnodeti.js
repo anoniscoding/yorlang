@@ -1,5 +1,6 @@
 const constants = require("../../constants.js");
 const BaseKwNode = require("./basekwnode");
+const variableTypes = require("../nodeLiterals/variabletypes.js");
 
 class KwNodeTi extends BaseKwNode {
 
@@ -12,10 +13,15 @@ class KwNodeTi extends BaseKwNode {
 
         node.left = this.parseVarname();
 
-        //if current variable is an array element
-        if (this.lexer.peek().value === constants.SYM.L_SQ_BRACKET) {
-            node.left = arrayNl.getNodeLiteral.call(this, node.name);
+        const nextTokenValue = this.lexer.peek().value;
+
+        //if current variable is not a function call
+        if (nextTokenValue != constants.SYM.L_BRACKET) {
+            if (variableTypes[nextTokenValue] != undefined) {
+                return variableTypes[nextTokenValue].getNodeLiteral.call(this, currentToken);
+            }
         }
+        
 
         this.skipOperator(constants.SYM.ASSIGN);
         node.right  = this.parseExpression();
