@@ -1,6 +1,6 @@
 class BaseKwNode {
 
-    //Make BaseKwNode act like an abstract class. Make the constructor private
+    //Make BaseKwNode act like an interface.
     constructor() {
         if (this.constructor == BaseKwNode) {
             throw new Error("Cannot instantiate abstract class BaseKwNode");
