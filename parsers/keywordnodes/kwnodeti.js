@@ -17,11 +17,10 @@ class KwNodeTi extends BaseKwNode {
 
         //if current variable is not a function call
         if (nextTokenValue != constants.SYM.L_BRACKET) {
-            if (variableTypes[nextTokenValue] != undefined) {
-                return variableTypes[nextTokenValue].getNodeLiteral.call(this, currentToken);
+            if (variableTypes[nextTokenValue] != undefined) { //current variable could be an array element or object property etc
+                node.left = variableTypes[nextTokenValue].getNodeLiteral.call(this, currentToken);
             }
         }
-        
 
         this.skipOperator(constants.SYM.ASSIGN);
         node.right  = this.parseExpression();
