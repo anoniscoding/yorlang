@@ -1,7 +1,8 @@
 const constants = require("../constants.js");
-const kwnodes = require("./kwnodes.js");
+const kwnodes = require("./keywordnodes/kwnodes.js");
+const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const helpers = require("./parser_helper_function.js");
-const BaseKwNode = require("./basekwnode");
+const BaseKwNode = require("./keywordnodes/basekwnode.js");
 class Parser {
 
     constructor(lexer) {
@@ -9,21 +10,12 @@ class Parser {
         this.isArithmeticExpression = true;
         this.currentBlockType = [];
         this.initNodeExpresssionPunctuationTokenParsers();
-        this.initNodeLiteralTypeTokenParsers();
     }
 
     initNodeExpresssionPunctuationTokenParsers() {
         this.expressionPunctuationParsers = {};
         this.expressionPunctuationParsers[constants.L_BRACKET_SYM_NAME] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
         this.expressionPunctuationParsers[constants.L_SQ_BRACKET_SYM_NAME] = this.parseArray.bind(this);
-    }
-
-    initNodeLiteralTypeTokenParsers() {
-        this.nodeLiteralTypeParsers = {};
-        this.nodeLiteralTypeParsers[constants.VARIABLE] = this.parseVariableLiteral.bind(this);
-        this.nodeLiteralTypeParsers[constants.NUMBER] = this.parseLeaf.bind(this);
-        this.nodeLiteralTypeParsers[constants.STRING] = this.parseLeaf.bind(this);
-        this.nodeLiteralTypeParsers[constants.KEYWORD] = this.parseBool.bind(this);
     }
 
     isPunctuation(punc) {
@@ -109,8 +101,8 @@ class Parser {
     parseNodeLiteral() {
         const token = this.lexer.peek();
 
-        if (this.nodeLiteralTypeParsers[token.type] != undefined) {
-            return this.nodeLiteralTypeParsers[token.type]();
+        if (nodeLiterals[token.type] != undefined) {
+            return nodeLiterals[token.type].getNodeLiteral.call(this);
         }
 
         //find the name of the property of the current token value
@@ -138,7 +130,7 @@ class Parser {
     }
 
     parseArray(arrayNameToken) {
-        const node = {};
+        let node = {};
         node.operation = constants.ARRAY;
 
         if (arrayNameToken == undefined) { //it is an array literal e.g [1,2,3]
@@ -152,8 +144,15 @@ class Parser {
             node.index = this.lexer.next().value;
             this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
 
-            if (this.isOperator(constants.SYM.ASSIGN)) 
-                node.right = this.parseExpression(); // a[0] = b = c = 2
+            if (this.isOperator(constants.SYM.ASSIGN)) {
+                this.skipOperator(constants.SYM.ASSIGN);
+                node = {
+                    left: node,
+                    right: this.parseExpression(),
+                    operation: constants.SYM.ASSIGN,
+                    value: null                
+                }; // a[0] = b = c = 2
+            }
         }
 
         return node;
@@ -161,31 +160,6 @@ class Parser {
 
     isNumStringVariable(token) {
         return token.type == constants.NUMBER || token.type == constants.STRING || token.type == constants.VARIABLE;
-    }
-
-    parseVariableLiteral() {
-        const currentToken = this.lexer.next();
-
-        //if current variable is a function call
-        if (this.lexer.peek().value == constants.SYM.L_BRACKET) {
-            return this.parseCallIse(currentToken);
-        }
-
-        //if current variable is an array element
-        if (this.lexer.peek().value == constants.SYM.L_SQ_BRACKET) {
-            return this.parseArray(currentToken);
-        }
-
-        const node =  {
-            name: currentToken.value,
-            operation: constants.GET_TI
-        };
-
-        if (this.isOperator(constants.SYM.ASSIGN)) { //a = b = c = 2;
-            node.right = this.parseExpression();
-        }
-
-        return node;
     }
 
     parseLeaf() {
@@ -266,7 +240,7 @@ class Parser {
     }
 
     getGenericErrorMsg(value) {
-        return `Cannot process unexpected token : ${value}`
+        return `Cannot process unexpected token : ${value}`;
     }
 
     parseAst() {
@@ -279,7 +253,7 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = this.parseVariableLiteral(this.lexer.next());
+            const node = this.parseCallIse(this.lexer.next());
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }
@@ -290,7 +264,7 @@ class Parser {
     parseProgram() {
         const astList = [];
 
-        this.currentBlockType.push(constants.PROGRAM)
+        this.currentBlockType.push(constants.PROGRAM);
         while (this.lexer.isNotEndOfFile()) {
             astList.push(this.parseAst());
         }

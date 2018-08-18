@@ -1,4 +1,4 @@
-const constants = require("../constants.js");
+const constants = require("../../constants.js");
 const kwNodeTi =  require("./kwnodeti.js");
 const kwNodeSope = require("./kwnodesope.js");
 const kwNodeSe = require("./kwnodese");

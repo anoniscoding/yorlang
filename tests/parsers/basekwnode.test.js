@@ -1,4 +1,4 @@
-const BaseKwNode = require("../../parsers/basekwnode.js");
+const BaseKwNode = require("../../parsers/keywordnodes/basekwnode.js");
 const kwNodeMock = require("../mocks/kwnode.mock.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");

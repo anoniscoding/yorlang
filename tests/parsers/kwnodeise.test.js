@@ -1,4 +1,4 @@
-const kwNodeIse = require("../../parsers/kwnodeise.js")
+const kwNodeIse = require("../../parsers/keywordnodes/kwnodeise.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");

@@ -90,4 +90,129 @@ describe("KwNodeKuro test suite", () => {
 
         expect(parser.getCurrentTokenValue()).toBeTruthy();
     });
+
+    test("ParseExpression - it should return node number literal", () => {
+        parser.lexer.inputStream.code = `7.51;`;
+
+        const expectedNode = {
+            left: null,
+            operation: null,
+            right: null,
+            value: 7.51,
+        };
+
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseExpression - it should return node string literal", () => {
+        parser.lexer.inputStream.code = `"beautiful";`;
+
+        const expectedNode = {
+           left: null,
+           operation: null,
+           right: null,
+           value: "beautiful",
+        };
+
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseExpression - it should return node variable literal", () => {
+        parser.lexer.inputStream.code = `name;`;
+
+        const expectedNode = {
+            name: "name",
+            operation: constants.GET_TI
+        };
+
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseExpression - it should return node array literal", () => {
+        parser.lexer.inputStream.code = `[1,a];`;
+
+        const expectedNode = {
+            body: [
+                {
+                    type: constants.NUMBER,
+                    value: 1
+                },
+                {
+                    type: constants.VARIABLE,
+                    value: "a"
+                }
+            ],
+            operation: constants.ARRAY
+        };
+
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseExpression - it should return node array element literal", () => {
+        parser.lexer.inputStream.code = `a[0];`;
+
+        const expectedNode = {
+            name: "a",
+            index: 0,
+            operation: constants.ARRAY
+        };
+
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseExpression - it should return node literal", () => {
+        parser.lexer.inputStream.code = `((i < 200) && (i > 0));`;
+
+        const expectedNode = {
+               left:  {
+                 left:  {
+                   name: "i",
+                   operation: constants.GET_TI,
+                 },
+                 operation: constants.SYM.L_THAN,
+                 right:  {
+                   left: null,
+                   operation: null,
+                   right: null,
+                   value: 200,
+                 },
+                 value: null,
+               },
+               operation: constants.SYM.AND,
+               right:  {
+                 left:  {
+                   name: "i",
+                   operation: constants.GET_TI,
+                 },
+                 operation: constants.SYM.G_THAN,
+                 right:  {
+                   left: null,
+                   operation: null,
+                   right: null,
+                   value: 0,
+                 },
+                 value: null,
+               },
+               value: null,
+        };
+
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseCallIse - it should return node callIse", () => {
+        parser.lexer.inputStream.code = `koOruko("anu");;`;
+
+        const expectedNode = {
+               args: [
+                  {
+                   type: "string",
+                   value: "anu",
+                 },
+               ],
+               name: "koOruko",
+               operation: "callIse",
+            };
+
+        expect(parser.parseCallIse(parser.lexer.next())).toEqual(expectedNode);
+    });
 });

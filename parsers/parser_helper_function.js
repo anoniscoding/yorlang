@@ -1,6 +1,6 @@
 const constants = require("../constants.js");
-const kwNodeIse = require("./kwnodeise.js");
-const kwNodeFun = require("./kwnodefun.js");
+const kwNodeIse = require("./keywordnodes/kwnodeise.js");
+const kwNodeFun = require("./keywordnodes/kwnodefun.js");
 
 const helper = {}
 helper[constants.PH.PARSE_ISE_NODE] = kwNodeIse.parseIseNode;
