@@ -1,8 +1,8 @@
-const kwNodeSope = require("../../parsers/keywordnodes/kwnodesope.js");
-const Parser = require("../../parsers/parser.js");
-const Lexer = require("../../lexer.js");
-const InputStream = require("../../inputstream.js");
-const constants = require("../../constants.js");
+const kwNodeSope = require("../../../parsers/keywordnodes/kwnodesope.js");
+const Parser = require("../../../parsers/parser.js");
+const Lexer = require("../../../lexer.js");
+const InputStream = require("../../../inputstream.js");
+const constants = require("../../../constants.js");
 
 describe("KwNodeSope test suite", () => {
     let parser;

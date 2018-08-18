@@ -3,6 +3,7 @@ const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const helpers = require("./parser_helper_function.js");
 const BaseKwNode = require("./keywordnodes/basekwnode.js");
+
 class Parser {
 
     constructor(lexer) {
