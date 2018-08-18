@@ -18,12 +18,10 @@ class VariableNl extends BaseNodeLiteral {
             return arrayNl.getNodeLiteral.call(this, currentToken);
         }
 
-        let node =  {
+        return {
             name: currentToken.value,
             operation: constants.GET_TI
         };
-
-        return node;
     }
 }
 
