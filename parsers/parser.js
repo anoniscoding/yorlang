@@ -48,7 +48,11 @@ class Parser {
 
     //backtracking is used in handling operator precedence while parsing the expression
     parseExpression() {
-       return this.parseOr();
+       return this.parseAssign();
+    }
+
+    parseAssign() {
+        return this.parseWhile([constants.SYM.ASSIGN], this.parseOr);
     }
 
     parseOr() {
