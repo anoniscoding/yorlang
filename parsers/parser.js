@@ -8,8 +8,17 @@ class Parser {
 
     constructor(lexer) {
         this.lexer = lexer;
-        this.isArithmeticExpression = true;
         this.currentBlockType = [];
+        this.initIsArithmeticExpression();
+    }
+
+    initIsArithmeticExpression() {
+        //a work around for creating a private variable with getters and setters
+        var isArithmeticExpression = true;
+        this.setIsArithmeticExpression = (isArithmetic) => {
+            isArithmeticExpression = isArithmetic;
+        }
+        this.isArithmeticExpression = () => isArithmeticExpression
     }
 
     isPunctuation(punc) {
@@ -69,7 +78,7 @@ class Parser {
             constants.SYM.L_THAN_OR_EQ, constants.SYM.EQ, constants.SYM.NOT_EQ
         ];
 
-        if (this.isArithmeticExpression) return this.parseWhile(operatorList, this.parsePlusMinus);
+        if (this.isArithmeticExpression()) return this.parseWhile(operatorList, this.parsePlusMinus);
         else return this.parseWhile(operatorList, this.parseNodeLiteral); //it is a boolean expression
     }
 
