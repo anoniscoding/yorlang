@@ -10,13 +10,6 @@ class Parser {
         this.lexer = lexer;
         this.isArithmeticExpression = true;
         this.currentBlockType = [];
-        this.initNodeExpresssionPunctuationTokenParsers();
-    }
-
-    initNodeExpresssionPunctuationTokenParsers() {
-        this.expressionPunctuationParsers = {};
-        this.expressionPunctuationParsers[constants.L_BRACKET_SYM_NAME] = this.parseBracketExpression.bind(this); //handle operator precedence with bracket
-        this.expressionPunctuationParsers[constants.L_SQ_BRACKET_SYM_NAME] = this.parseArray.bind(this);
     }
 
     isPunctuation(punc) {
@@ -113,21 +106,11 @@ class Parser {
         const property_name = constantsPropertyList[index];
 
         //check if property_name is a punctuation that can be used in an expression e.g (, [
-        if (this.expressionPunctuationParsers[property_name] != undefined) {  
-            return this.expressionPunctuationParsers[property_name]();
+        if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) {  
+            return nodeLiterals[constants.EXP_PUNC][property_name].getNodeLiteral.call(this);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
-    }
-
-    parseBracketExpression(isArithmetic = true) {
-        this.skipPunctuation(constants.SYM.L_BRACKET);
-        this.isArithmeticExpression = isArithmetic;
-        const node = this.parseExpression();
-        this.isArithmeticExpression = true; //set back to default
-        this.skipPunctuation(constants.SYM.R_BRACKET);
-
-        return node;
     }
 
     parseArray(arrayNameToken) {

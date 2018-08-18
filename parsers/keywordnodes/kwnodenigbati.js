@@ -1,5 +1,6 @@
 const constants = require("../../constants.js");
 const BaseKwNode = require("./basekwnode");
+const brackExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
 class KwNodeNigbati extends BaseKwNode {
 
@@ -8,7 +9,7 @@ class KwNodeNigbati extends BaseKwNode {
 
         return {
             operation: constants.KW.NIGBATI,
-            condition: this.parseBracketExpression(false),
+            condition: brackExpressionNl.getNodeLiteral.call(this, false),
             body: this.parseBlock(constants.KW.NIGBATI)
         };
     }

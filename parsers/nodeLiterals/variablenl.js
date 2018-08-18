@@ -18,6 +18,7 @@ class VariableNl extends BaseNodeLiteral {
             return arrayNl.getNodeLiteral.call(this, currentToken);
         }
 
+        //TODO figure out how to throw error when code is running in a block and we have something like name;
         let node =  {
             name: currentToken.value,
             operation: constants.GET_TI

@@ -199,20 +199,20 @@ describe("KwNodeKuro test suite", () => {
         expect(parser.parseExpression()).toEqual(expectedNode);
     });
 
-    test("ParseCallIse - it should return node callIse", () => {
-        parser.lexer.inputStream.code = `koOruko("anu");;`;
+    // test("ParseCallIse - it should return node callIse", () => {
+    //     parser.lexer.inputStream.code = `koOruko("anu");;`;
 
-        const expectedNode = {
-               args: [
-                  {
-                   type: "string",
-                   value: "anu",
-                 },
-               ],
-               name: "koOruko",
-               operation: "callIse",
-            };
+    //     const expectedNode = {
+    //            args: [
+    //               {
+    //                type: "string",
+    //                value: "anu",
+    //              },
+    //            ],
+    //            name: "koOruko",
+    //            operation: "callIse",
+    //         };
 
-        expect(parser.parseCallIse(parser.lexer.next())).toEqual(expectedNode);
-    });
+    //     expect(parser.parseCallIse(parser.lexer.next())).toEqual(expectedNode);
+    // });
 });
