@@ -119,7 +119,7 @@ class Parser {
         const index = constantsPropertyValuesList.indexOf(token.value);
         const property_name = constantsPropertyList[index];
 
-        //check if property_name is a punctuation that can be used in an expression e.g (, [
+        //check if the property name is a punctuation that can be used in an expression e.g (, [
         if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) {  
             return nodeLiterals[constants.EXP_PUNC][property_name].getNodeLiteral.call(this);
         }
