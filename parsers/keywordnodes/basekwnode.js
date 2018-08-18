@@ -8,7 +8,7 @@ class BaseKwNode {
     }
 
     getNode() {
-        throw new Error(`Subclass must override getNode`);
+        throw new Error(`Class of type BaseKwNode must implement getNode()`);
     }
 }
 

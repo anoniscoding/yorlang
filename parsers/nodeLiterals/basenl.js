@@ -8,7 +8,7 @@ class BaseNodeLiteral {
     }
 
     getNodeLiteral() {
-        throw new Error(`Subclass must override getNodeLiteral`);
+        throw new Error(`Class of type BaseNodeLiteral must implement getNode()`);
     }
 }
 

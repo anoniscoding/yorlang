@@ -12,11 +12,11 @@ describe("BasekwNode test suite ", () => {
         }).toThrow("Cannot instantiate abstract class BaseKwNode");
     });
 
-    test("GetNode - it should throw error while attempting to call getNode on subClass that has not overridden getNode", () => {
+    test("GetNode - it should throw error while attempting to call getNode on a class that has not overridden getNode", () => {
         parser = new Parser(new Lexer(new InputStream("code")));
 
         expect(() => {
             kwNodeMock.getNode.call(this);
-        }).toThrow("Subclass must override getNode");
+        }).toThrow("Class of type BaseKwNode must implement getNode()");
     });
 })
