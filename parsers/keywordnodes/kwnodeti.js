@@ -8,8 +8,14 @@ class KwNodeTi extends BaseKwNode {
 
         const node =  {
             operation: constants.SYM.ASSIGN,
-            left: this.parseVarname()
         };
+
+        node.left = this.parseVarname();
+
+        //if current variable is an array element
+        if (this.lexer.peek().value === constants.SYM.L_SQ_BRACKET) {
+            node.left = arrayNl.getNodeLiteral.call(this, node.name);
+        }
 
         this.skipOperator(constants.SYM.ASSIGN);
         node.right  = this.parseExpression();

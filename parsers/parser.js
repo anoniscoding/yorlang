@@ -3,6 +3,7 @@ const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const helpers = require("./parser_helper_function.js");
 const BaseKwNode = require("./keywordnodes/basekwnode.js");
+const callIseNl = require("./nodeLiterals/callIseNl.js");
 
 class Parser {
 
@@ -14,11 +15,11 @@ class Parser {
 
     initIsArithmeticExpression() {
         //a work around for creating a private variable with getters and setters
-        var isArithmeticExpression = true;
+        var _isArithmeticExpression = true;
         this.setIsArithmeticExpression = (isArithmetic) => {
-            isArithmeticExpression = isArithmetic;
+            _isArithmeticExpression = isArithmetic;
         }
-        this.isArithmeticExpression = () => isArithmeticExpression
+        this.isArithmeticExpression = () => _isArithmeticExpression;
     }
 
     isPunctuation(punc) {
@@ -202,7 +203,7 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = nodeLiterals[constants.VARIABLE].getNodeLiteral.call(this);
+            const node = callIseNl.getNodeLiteral.call(this);
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }

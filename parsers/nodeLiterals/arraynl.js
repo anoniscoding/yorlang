@@ -17,16 +17,6 @@ class ArrayNl extends BaseNodeLiteral {
             this.skipPunctuation(constants.SYM.L_SQ_BRACKET);
             node.index = this.lexer.next().value;
             this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
-
-            if (this.isOperator(constants.SYM.ASSIGN)) {
-                this.skipOperator(constants.SYM.ASSIGN);
-                node = {
-                    left: node,
-                    right: this.parseExpression(),
-                    operation: constants.SYM.ASSIGN,
-                    value: null                
-                }; // a[0] = b = c = 2
-            }
         }
 
         return node;
