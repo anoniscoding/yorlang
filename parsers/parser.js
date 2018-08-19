@@ -2,7 +2,7 @@ const constants = require("../constants.js");
 const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const helpers = require("./parser_helper_function.js");
-const BaseKwNode = require("./keywordnodes/basekwnode.js");
+const BaseNode = require("./basenode.js");
 const callIseNl = require("./nodeLiterals/callIseNl.js");
 
 class Parser {
@@ -110,7 +110,7 @@ class Parser {
         const token = this.lexer.peek();
 
         if (nodeLiterals[token.type] != undefined) {
-            return nodeLiterals[token.type].getNodeLiteral.call(this);
+            return nodeLiterals[token.type].getNode.call(this);
         }
 
         //find the name of the property of the current token value
@@ -121,7 +121,7 @@ class Parser {
 
         //check if the property name is a punctuation that can be used in an expression e.g (, [
         if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) {  
-            return nodeLiterals[constants.EXP_PUNC][property_name].getNodeLiteral.call(this);
+            return nodeLiterals[constants.EXP_PUNC][property_name].getNode.call(this);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
@@ -198,12 +198,12 @@ class Parser {
 
         if ((kwnodes[token.value] != undefined)) {
             const kwNode = kwnodes[token.value];
-            if (kwNode instanceof BaseKwNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the class Parser
-            else throw new Error(`${token.value} must implement method getNode() of BaseKwNode`);
+            if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the class Parser
+            else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = callIseNl.getNodeLiteral.call(this);
+            const node = callIseNl.getNode.call(this);
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }

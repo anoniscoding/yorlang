@@ -1,9 +1,9 @@
-const BaseNodeLiteral = require("./basenl.js");
+const BaseNode = require("../basenode.js");
 const constants = require("../../constants.js");
 
-class CallIseNl extends BaseNodeLiteral {
+class CallIseNl extends BaseNode {
 
-    getNodeLiteral(token) {
+    getNode(token) {
         return {
             operation: constants.CALL_ISE,
             name: token.value,

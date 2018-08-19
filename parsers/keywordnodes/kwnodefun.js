@@ -1,8 +1,8 @@
 const constants = require("../../constants.js");
-const BaseKwNode = require("./basekwnode");
+const BaseNode = require("../basenode.js");
 const kwNodeTi =  require("./kwnodeti.js");
 
-class KwNodeFun extends BaseKwNode {
+class KwNodeFun extends BaseNode {
 
     getNode() {
         this.skipKeyword(constants.KW.FUN);

@@ -1,9 +1,9 @@
-const BaseNodeLiteral = require("./basenl.js");
+const BaseNode = require("../basenode.js");
 const constants = require("../../constants.js");
 
-class ArrayNl extends BaseNodeLiteral {
+class ArrayNl extends BaseNode {
 
-    getNodeLiteral(arrayNameToken) {
+    getNode(arrayNameToken) {
         let node = {};
         node.operation = constants.ARRAY;
 

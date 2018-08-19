@@ -1,12 +1,8 @@
 const constants = require("../../constants.js");
-const BaseKwNode = require("./basekwnode");
+const BaseNode = require("../basenode.js");
 const brackExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
-class KwNodeYi extends BaseKwNode {
-
-    constructor() {
-        super();
-    }
+class KwNodeYi extends BaseNode {
 
     getNode() {
         const kwNodeEjo = new KwNodeEjo();
@@ -18,7 +14,7 @@ class KwNodeYi extends BaseKwNode {
         };
 
         this.skipKeyword(constants.KW.YI);
-        node.yivalue = brackExpressionNl.getNodeLiteral.call(this);
+        node.yivalue = brackExpressionNl.getNode.call(this);
         this.skipPunctuation(constants.SYM.L_PAREN);
 
         while (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.EJO) {
@@ -40,7 +36,7 @@ class KwNodeYi extends BaseKwNode {
     }
 }
 
-class KwNodeEjo extends BaseKwNode {
+class KwNodeEjo extends BaseNode {
 
     getNode() {
         const node = {

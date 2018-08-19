@@ -1,7 +1,7 @@
 const constants = require("../../constants.js");
-const BaseKwNode = require("./basekwnode.js");
+const BaseNode = require("../basenode.js");
 
-class KwNodeKuro extends BaseKwNode {
+class KwNodeKuro extends BaseNode {
 
     getNode() {
         const node = {

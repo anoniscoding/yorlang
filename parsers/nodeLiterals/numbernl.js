@@ -1,8 +1,8 @@
-const BaseNodeLiteral = require("./basenl.js");
+const BaseNode = require("../basenode.js");
 
-class NumberNl extends BaseNodeLiteral {
+class NumberNl extends BaseNode {
 
-    getNodeLiteral() {
+    getNode() {
         return this.parseLeaf();
     }
 }

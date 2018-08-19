@@ -1,15 +1,15 @@
-const BaseKwNode = require("../../../parsers/keywordnodes/basekwnode.js");
+const BaseNode = require("../../../parsers/basenode.js");
 const kwNodeMock = require("../../mocks/kwnode.mock.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 
-describe("BasekwNode test suite ", () => {
+describe("BaseNode test suite ", () => {
 
     test("Constructor - it should throw error while attempting to instantiate constructor", () => {
         expect(() => {
-            new BaseKwNode()
-        }).toThrow("Cannot instantiate abstract class BaseKwNode");
+            new BaseNode()
+        }).toThrow("Cannot instantiate abstract class BaseNode");
     });
 
     test("GetNode - it should throw error while attempting to call getNode on a class that has not overridden getNode", () => {
@@ -17,6 +17,6 @@ describe("BasekwNode test suite ", () => {
 
         expect(() => {
             kwNodeMock.getNode.call(this);
-        }).toThrow("Class of type BaseKwNode must implement getNode()");
+        }).toThrow("Class of type BaseNode must implement getNode()");
     });
 })

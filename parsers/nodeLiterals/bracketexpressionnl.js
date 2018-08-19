@@ -1,9 +1,9 @@
-const BaseNodeLiteral = require("./basenl.js");
+const BaseNode = require("../basenode.js");
 const constants = require("../../constants.js");
 
-class BracketExpressionNl extends BaseNodeLiteral {
+class BracketExpressionNl extends BaseNode {
 
-    getNodeLiteral(isArithmetic = true) {
+    getNode(isArithmetic = true) {
         this.skipPunctuation(constants.SYM.L_BRACKET);
         this.setIsArithmeticExpression(isArithmetic);
         const node = this.parseExpression();

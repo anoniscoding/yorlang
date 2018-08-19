@@ -1,15 +1,15 @@
 const constants = require("../../constants.js");
-const BaseNodeLiteral = require("./basenl.js");
+const BaseNode = require("../basenode.js");
 const variableTypes = require("./variabletypes");
 
-class VariableNl extends BaseNodeLiteral {
+class VariableNl extends BaseNode {
 
-    getNodeLiteral() { 
+    getNode() { 
         const currentToken = this.lexer.next();
 
         const nextTokenValue = this.lexer.peek().value;
         if (variableTypes[nextTokenValue] != undefined) {
-            return variableTypes[nextTokenValue].getNodeLiteral.call(this, currentToken);
+            return variableTypes[nextTokenValue].getNode.call(this, currentToken);
         }
 
         return {

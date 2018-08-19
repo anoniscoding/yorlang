@@ -1,9 +1,9 @@
 const constants = require("../../constants.js");
-const BaseNodeLiteral = require("./basenl.js");
+const BaseNode = require("../basenode.js");
 
-class KeywordNl extends BaseNodeLiteral {
+class KeywordNl extends BaseNode {
 
-    getNodeLiteral() {
+    getNode() {
         //if keyword is boolean
         if ([constants.KW.OOTO, constants.KW.IRO].indexOf(this.lexer.peek().value) >= 0) {
             return this.parseLeaf();

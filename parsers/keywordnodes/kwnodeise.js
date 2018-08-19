@@ -1,7 +1,7 @@
 const constants = require("../../constants.js");
-const BaseKwNode = require("./basekwnode");
+const BaseNode = require("../basenode.js");
 
-class KwNodeIse extends BaseKwNode {
+class KwNodeIse extends BaseNode {
 
     getNode() {
         if (this.isBlockType() && this.getCurrentBlockType() != constants.KW.ISE)
