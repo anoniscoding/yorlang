@@ -3,6 +3,7 @@ const leafNl = require("./leafnl.js");
 const keywordNl = require("./keywordnl");
 const variableNl = require("./variablenl.js");
 const arrayNl = require("./arraynl.js");
+const callIseNl = require("./callIseNl.js");
 const bracketExpressionNl = require("./bracketexpressionnl.js");
 
 const nodeLiterals = {};
@@ -11,6 +12,7 @@ nodeLiterals[constants.VARIABLE] = variableNl;
 nodeLiterals[constants.NUMBER] = leafNl;
 nodeLiterals[constants.STRING] = leafNl;
 nodeLiterals[constants.KEYWORD] = keywordNl;
+nodeLiterals[constants.CALL_ISE] = callIseNl;
 nodeLiterals[constants.EXP_PUNC][constants.L_SQ_BRACKET_SYM_NAME] = arrayNl;
 nodeLiterals[constants.EXP_PUNC][constants.L_BRACKET_SYM_NAME] = bracketExpressionNl;
 

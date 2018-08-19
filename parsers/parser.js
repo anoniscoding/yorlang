@@ -3,7 +3,6 @@ const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const helpers = require("./parser_helper_function.js");
 const BaseNode = require("./basenode.js");
-const callIseNl = require("./nodeLiterals/callIseNl.js");
 
 class Parser {
 
@@ -194,7 +193,7 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = callIseNl.getNode.call(this);
+            const node = nodeLiterals[constants.CALL_ISE].getNode.call(this);
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }
