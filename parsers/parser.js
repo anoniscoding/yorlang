@@ -131,15 +131,6 @@ class Parser {
         return token.type == constants.NUMBER || token.type == constants.STRING || token.type == constants.VARIABLE;
     }
 
-    parseLeaf() {
-        return {
-            value: this.lexer.next().value,
-            left: null,
-            right: null,
-            operation: null
-        };
-    }
-
     parseBlock(currentBlock) {
         this.currentBlockType.push(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
