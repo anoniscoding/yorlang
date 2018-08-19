@@ -29,9 +29,7 @@ describe("KwNodeNigbati test suite", () => {
                     operation: constants.KW.SOPE
                 }, 
                 {
-                    left: {
-                        name: "ikeji"
-                    }, 
+                    left: "ikeji", 
                     operation: constants.SYM.ASSIGN, 
                     right: {
                         left: {

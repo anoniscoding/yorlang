@@ -16,9 +16,7 @@ describe("KwNodeIse test suite", () => {
 
         const expectedNode = {
             body: [], 
-            name: {
-                name: "teOruko"
-            }, 
+            name: "teOruko", 
             operation: constants.KW.ISE, 
             vars: [
                 {

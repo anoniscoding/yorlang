@@ -16,7 +16,7 @@ describe("KwNodeTi test suite", () => {
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
-            left: { name: "a" },
+            left: "a",
             right: {
                 value: 1,
                 left: null,
@@ -33,7 +33,7 @@ describe("KwNodeTi test suite", () => {
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
-            left: { name: "a" },
+            left:  "a",
             right: {
                 value: "blue",
                 left: null,
@@ -50,7 +50,26 @@ describe("KwNodeTi test suite", () => {
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
-            left: { name: "a" },
+            left: "a",
+            right: {
+                name: "b",
+                operation: constants.GET_TI
+            }
+        }
+        
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
+    });
+
+    test("it should return node with operation assign for an array elemnt variable assignment operation", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a[0] = b;`;
+
+        const expectedNode = {
+            operation: constants.SYM.ASSIGN,
+            left: {
+                index: 0, 
+                name: "a", 
+                operation: constants.ARRAY
+            },
             right: {
                 name: "b",
                 operation: constants.GET_TI
@@ -65,7 +84,7 @@ describe("KwNodeTi test suite", () => {
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
-            left: { name: "a" },
+            left: "a",
             right: {
                 operation: constants.ARRAY,
                 body: [{type: constants.NUMBER, value: 1}, {type: constants.NUMBER, value: 2}], 
@@ -79,9 +98,7 @@ describe("KwNodeTi test suite", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI} a = (15 /3) + (3 * 2);`;
 
         const expectedNode = {
-            left: {
-                name: "a"
-            },  
+            left: "a",  
             operation: constants.SYM.ASSIGN,        
             right: {
                 left: {

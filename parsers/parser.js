@@ -145,7 +145,7 @@ class Parser {
 
     parseVarname() {
         return  (this.lexer.peek().type == constants.VARIABLE) 
-                ? { name: this.lexer.next().value }
+                ? this.lexer.next().value
                 : this.lexer.throwError(`Expecting variable but found ${token}`);
     }
 

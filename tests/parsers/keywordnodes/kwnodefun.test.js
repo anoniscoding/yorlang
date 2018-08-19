@@ -31,9 +31,7 @@ describe("KwNodeFun test suite", () => {
                 value: null
             }, 
             increment: {
-                left: {
-                    name: "i"
-                }, 
+                left: "i", 
                 operation: constants.SYM.ASSIGN, 
                 right: {
                     left: {
@@ -51,9 +49,7 @@ describe("KwNodeFun test suite", () => {
                 }
             }, 
             init: {
-                left: {
-                    name: "i"
-                }, 
+                left: "i", 
                 operation: constants.SYM.ASSIGN, 
                 right: {
                     left: null, 

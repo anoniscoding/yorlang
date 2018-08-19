@@ -18,7 +18,7 @@ class KwNodeTi extends BaseNode {
         //if current variable is not a function call
         if (nextTokenValue != constants.SYM.L_BRACKET) {
             if (variableTypes[nextTokenValue] != undefined) { //current variable could be an array element or object property etc
-                node.left = variableTypes[nextTokenValue].getNodeLiteral.call(this, currentToken);
+                node.left = variableTypes[nextTokenValue].getNode.call(this, {value: node.left});
             }
         }
 
