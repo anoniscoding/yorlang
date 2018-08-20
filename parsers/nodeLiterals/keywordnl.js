@@ -4,6 +4,13 @@ const BaseNode = require("../basenode.js");
 
 class KeywordNl extends BaseNode {
 
+    constructor() {
+        super()
+        if (!(leafNl instanceof BaseNode)) {
+            throw new Error("Dependency leafNl must extend BaseNode");
+        } 
+    }
+
     getNode() {
         //if keyword is boolean
         if ([constants.KW.OOTO, constants.KW.IRO].indexOf(this.lexer.peek().value) >= 0) {

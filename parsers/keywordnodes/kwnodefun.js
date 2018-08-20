@@ -4,6 +4,13 @@ const kwNodeTi =  require("./kwnodeti.js");
 
 class KwNodeFun extends BaseNode {
 
+    constructor() {
+        super()
+        if (!(kwNodeTi instanceof BaseNode)) {
+            throw new Error("Dependency kwNodeTi must extend BaseNode");
+        } 
+    }
+
     getNode() {
         this.skipKeyword(constants.KW.FUN);
         this.skipPunctuation(constants.SYM.L_BRACKET);

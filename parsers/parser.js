@@ -109,7 +109,9 @@ class Parser {
         const token = this.lexer.peek();
 
         if (nodeLiterals[token.type] != undefined) {
-            return nodeLiterals[token.type].getNode.call(this);
+            const nlNode = nodeLiterals[token.type];
+            if (nlNode instanceof BaseNode) return nlNode.getNode.call(this);
+            else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
         }
 
         //find the name of the property of the current token value
@@ -119,8 +121,10 @@ class Parser {
         const property_name = constantsPropertyList[index];
 
         //check if the property name is a punctuation that can be used in an expression e.g (, [
-        if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) {  
-            return nodeLiterals[constants.EXP_PUNC][property_name].getNode.call(this);
+        if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) { 
+            const nlNode = nodeLiterals[constants.EXP_PUNC][property_name];
+            if (nlNode instanceof BaseNode) return nlNode.getNode.call(this);
+            else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
