@@ -7,7 +7,7 @@ class KwNodeFun extends BaseNode {
     constructor() {
         super()
         if (!(kwNodeTi instanceof BaseNode)) {
-            throw new Error("Dependency kwNodeTi must extend BaseNode");
+            throw new Error("Dependency kwNodeTi must be of type BaseNode");
         } 
     }
 

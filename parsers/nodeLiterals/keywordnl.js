@@ -7,7 +7,7 @@ class KeywordNl extends BaseNode {
     constructor() {
         super()
         if (!(leafNl instanceof BaseNode)) {
-            throw new Error("Dependency leafNl must extend BaseNode");
+            throw new Error("Dependency leafNl must be of type BaseNode");
         } 
     }
 

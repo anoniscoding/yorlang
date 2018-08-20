@@ -7,7 +7,7 @@ class KwNodeSe extends BaseNode {
     constructor() {
         super()
         if (!(bracketExpressionNl instanceof BaseNode)) {
-            throw new Error("Dependency brackExpressionNl must extend BaseNode");
+            throw new Error("Dependency brackExpressionNl must be of type BaseNode");
         } 
     }
 
