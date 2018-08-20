@@ -109,8 +109,8 @@ class Parser {
         const token = this.lexer.peek();
 
         if (nodeLiterals[token.type] != undefined) {
-            const nlNode = nodeLiterals[token.type];
-            if (nlNode instanceof BaseNode) return nlNode.getNode.call(this);
+            const nodeliteral = nodeLiterals[token.type];
+            if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
             else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
         }
 
@@ -122,8 +122,8 @@ class Parser {
 
         //check if the property name is a punctuation that can be used in an expression e.g (, [
         if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) { 
-            const nlNode = nodeLiterals[constants.EXP_PUNC][property_name];
-            if (nlNode instanceof BaseNode) return nlNode.getNode.call(this);
+            const nodeliteral = nodeLiterals[constants.EXP_PUNC][property_name];
+            if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
             else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
         }
 
