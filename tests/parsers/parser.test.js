@@ -3,7 +3,7 @@ const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("KwNodeKuro test suite", () => {
+describe("Parser test suite", () => {
     let parser;
 
     beforeEach(() => {

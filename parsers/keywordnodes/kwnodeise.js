@@ -7,10 +7,6 @@ class KwNodeIse extends BaseNode {
         if (this.isBlockType() && this.getCurrentBlockType() != constants.KW.ISE)
             this.lexer.throwError("Cannot create a yorlang function within a non function block");
         
-        return this.parseIseNode();
-    }
-
-    parseIseNode() {
         this.skipKeyword(constants.KW.ISE);
 
         return {
@@ -21,7 +17,7 @@ class KwNodeIse extends BaseNode {
                 this.getTokenThatSatisfiesPredicate.bind(this), (token) => token.type == constants.VARIABLE
             ),
             body: this.parseBlock(constants.KW.ISE),
-        };
+        };    
     }
 }
 
