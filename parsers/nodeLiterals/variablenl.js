@@ -9,7 +9,9 @@ class VariableNl extends BaseNode {
 
         const nextTokenValue = this.lexer.peek().value;
         if (variableTypes[nextTokenValue] != undefined) {
-            return variableTypes[nextTokenValue].getNode.call(this, currentToken);
+            const variableType = variableTypes[nextTokenValue];
+            if (variableType instanceof BaseNode) return variableType.getNode.call(this, currentToken);
+            else throw new Error(`Dependency ${variableType} must be of type BaseNode`);
         }
 
         return {
