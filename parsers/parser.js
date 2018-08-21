@@ -124,7 +124,7 @@ class Parser {
         if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) { 
             const nodeliteral = nodeLiterals[constants.EXP_PUNC][property_name];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(`${token.value} must of type BaseNode`);
+            else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
@@ -197,7 +197,9 @@ class Parser {
         }
 
         if (token.type == constants.VARIABLE) {
-            const node = nodeLiterals[constants.CALL_ISE].getNode.call(this);
+            const node = nodeLiterals[constants.CALL_ISE];
+            if (node instanceof BaseNode) node.getNode.call(this);
+            else throw new Error(`${token.value} must be of type BaseNode`);
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;
         }

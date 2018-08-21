@@ -90,4 +90,10 @@ describe("Parser test suite", () => {
 
         expect(parser.getCurrentTokenValue()).toBeTruthy();
     });
+
+    test("ParseExpression - it should parse expression", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI};`;
+
+        expect(parser.getCurrentTokenValue()).toBeTruthy();
+    });
 });
