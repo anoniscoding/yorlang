@@ -93,7 +93,7 @@ class Parser {
     parseWhile(operatorList, parseOperationWithLesserPrecedence) {
         let node = parseOperationWithLesserPrecedence.bind(this)();
 
-        while (operatorList.indexOf(this.lexer.peek().value) >= 0) {
+        while (this.lexer.isNotEndOfFile() && operatorList.indexOf(this.lexer.peek().value) >= 0) {
             node = {
                 left : node,
                 operation : this.lexer.next().value,
@@ -196,12 +196,15 @@ class Parser {
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
-        if (token.type == constants.VARIABLE) {
-            const node = nodeLiterals[constants.CALL_ISE];
-            if (node instanceof BaseNode) node.getNode.call(this);
-            else throw new Error(`${token.value} must be of type BaseNode`);
-            this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
-            return node;
+        if (token.type == constants.VARIABLE) { //then a function call is expected
+            let nodeliteral = nodeLiterals[constants.CALL_ISE];
+            if (nodeliteral instanceof BaseNode) {
+                nodeliteral = nodeliteral.getNode.call(this, this.lexer.next());
+                this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+                return nodeliteral;
+            } 
+            
+            throw new Error(`${token.value} must be of type BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.value));

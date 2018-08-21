@@ -1,5 +1,6 @@
 {
     "scripts": {
-      "test": "jest"
+      "test": "jest",
+      "coverage": "node_modules/.bin/jest --coverage"
     }
   }

@@ -92,8 +92,50 @@ describe("Parser test suite", () => {
     });
 
     test("ParseExpression - it should parse expression", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI};`;
+        parser.lexer.inputStream.code = `a = b[0] = 1`;
+          
+        const expectedNode = {
+            left: {
+                left: {
+                    name: "a", 
+                    operation: constants.GET_TI
+                }, 
+                operation: constants.SYM.ASSIGN, 
+                right: {
+                    index: 0, 
+                    name: "b", 
+                    operation: constants.ARRAY
+                }, 
+                value: null
+            }, 
+            operation: constants.SYM.ASSIGN, 
+            right: {
+                left: null, 
+                operation: null, 
+                right: null, 
+                value: 1
+            }, 
+            value: null
+        };
 
-        expect(parser.getCurrentTokenValue()).toBeTruthy();
+        expect(parser.parseExpression()).toEqual(expectedNode);
+    });
+
+    test("ParseAst - it should parse a function call in a program block", () => {
+        parser.lexer.inputStream.code = `koOruko();`;
+
+        const expectedNode = {
+            args: [], 
+            name: "koOruko", 
+            operation: constants.CALL_ISE
+        };
+
+        expect(parser.parseAst()).toEqual(expectedNode);
+    });
+
+    test("ParseAst - it should fail to parse a non function call in a program block", () => {
+        parser.lexer.inputStream.code = `a[];`;
+
+        expect(() => parser.parseAst()).toThrow();
     });
 });
