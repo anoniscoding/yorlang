@@ -115,7 +115,6 @@ class Parser {
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
-        //find the name of the property of the current token value
         const propertyName = this.getTokenValuePropertyName(token);
 
         //check if the property name is a punctuation that can be used in an expression e.g (, [
