@@ -55,6 +55,7 @@ class Parser {
         return this.lexer.peek() ? this.lexer.peek().value : null;
     }
 
+    //Recursive descent parsing technique
     //backtracking is used in handling operator precedence while parsing the expression
     parseExpression() {
        return this.parseAssign();
