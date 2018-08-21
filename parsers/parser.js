@@ -111,7 +111,7 @@ class Parser {
         if (nodeLiterals[token.type] != undefined) {
             const nodeliteral = nodeLiterals[token.type];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
+            else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
         //find the name of the property of the current token value
@@ -124,7 +124,7 @@ class Parser {
         if (nodeLiterals[constants.EXP_PUNC][property_name] != undefined) { 
             const nodeliteral = nodeLiterals[constants.EXP_PUNC][property_name];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
+            else throw new Error(`${token.value} must of type BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
@@ -193,7 +193,7 @@ class Parser {
         if ((kwnodes[token.value] != undefined)) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the class Parser
-            else throw new Error(`${token.value} must implement method getNode() of BaseNode`);
+            else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
         if (token.type == constants.VARIABLE) {
