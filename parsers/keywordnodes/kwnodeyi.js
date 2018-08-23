@@ -13,7 +13,7 @@ class KwNodeYi extends BaseNode {
 
     getNode() {
         const kwNodeEjo = new KwNodeEjo();
-        const node = {
+        let node = {
             operation: constants.KW.YI,
             yivalue: null,
             body: [],
@@ -28,6 +28,13 @@ class KwNodeYi extends BaseNode {
             node.body.push(kwNodeEjo.getNode.call(this));
         }
 
+        node = this.getYiNodeWithPadasi(node);
+        this.skipPunctuation(constants.SYM.R_PAREN);
+
+        return node;
+    }
+
+    getYiNodeWithPadasi(node) {
         if (this.isKeyword(constants.KW.PADASI)) {
             this.skipKeyword(constants.KW.PADASI);
             this.skipPunctuation(constants.SYM.COLON);
@@ -36,8 +43,6 @@ class KwNodeYi extends BaseNode {
                 node.padasi.push(this.parseAst());
             }
         }
-
-        this.skipPunctuation(constants.SYM.R_PAREN);
 
         return node;
     }

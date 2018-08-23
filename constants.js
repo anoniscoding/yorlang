@@ -79,7 +79,7 @@ const REGEX = {
 };
 
 const PARSERSHELPERS = {
-    PARSE_ISE_NODE: "parseIseNode",
+    GET_YI_NODE_WITH_PADASI: "getYiNodeWithPadasi",
     PARSE_FUN_NODE: "parseFunNode",
     IS_VALID_FUN_INIT_STATEMENT: "isValidFunInitStatement",
     IS_INVALID_FUN_INCREMENT_STATEMENT: "isInValidFunIncrementStatement"
