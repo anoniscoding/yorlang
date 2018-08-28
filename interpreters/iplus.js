@@ -6,3 +6,5 @@ class IPlus extends IBase {
         return this.evaluateNode(node.left) + this.evaluateNode(node.right);
     }
 }
+
+module.exports = new IPlus();
