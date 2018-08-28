@@ -188,7 +188,7 @@ class Parser {
         if ((kwnodes[token.value] != undefined)) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the class Parser
-            else throw new Error(`Registered ${kwNode} must be of type BaseNode`);
+            else throw new Error(`${kwNode} must be of type BaseNode`);
         }
 
         if (token.type == constants.VARIABLE) { //then a function call is expected
@@ -199,7 +199,7 @@ class Parser {
                 return nodeliteral;
             } 
             
-            throw new Error(`Registered ${nodeliteral} did not override getNode() of type BaseNode`);
+            throw new Error(`${nodeliteral} must be of type BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.value));

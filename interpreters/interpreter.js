@@ -17,7 +17,7 @@ class MainInterpreter {
         if (leafValue == undefined) {
             const interpreter = registeredInterpreters[Symbol.for(node.operation)]; 
             if (interpreter instanceof IBase) interpreter.interpreteNode.call(this, node);
-            else throw new Error(`Registered ${interpreter} did not override interpreteNode() of type IBase`);
+            else throw new Error(`Registered ${interpreter} must be of type IBase`);
         }
 
         return leafValue;
