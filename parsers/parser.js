@@ -145,7 +145,7 @@ class Parser {
     parseVarname() {
         return  (this.lexer.peek().type == constants.VARIABLE) 
                 ? this.lexer.next().value
-                : this.lexer.throwError(`Expecting variable but found ${token}`);
+                : this.lexer.throwError(this.getGenericErrorMsg(this.lexer.peek()));
     }
 
     parseDelimited(start, stop, separator, parser, predicate) {
