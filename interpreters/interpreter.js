@@ -1,3 +1,4 @@
+const registeredInterpreters = require("./interpreters.js");
 class Interpreter {
 
     constructor(astList){
@@ -10,17 +11,18 @@ class Interpreter {
         }
     }
 
-    interpreteNode(node) {
-        if (this.getLeafValue(node) == undefined) {
-            return registeredOperations[node.operation].operate.call(this)
+    evaluateNode(node) {
+        const leafValue = this.getLeafValue(node);
+        if (leafValue == undefined) {
+            return registeredInterpreters[Symbol.for(node.operation)].interpreteNode.call(this, node);
         }
 
-        return this.getLeafValue(node);
+        return leafValue;
     }
 
     evaluateAst() {
         for (let i = 0; i < this.astList.length; i++) {
-            this.interpreteNode(this.astList[i]);
+            this.evaluateNode(this.astList[i]);
         }
     }
 }
