@@ -102,8 +102,6 @@ const constants = {
     GET_TI: "getTi",
     CALL_ISE: "callIse",
     EXP_PUNC: "expression_punctuations",
-    L_SQ_BRACKET_SYM_NAME: "L_SQ_BRACKET",
-    L_BRACKET_SYM_NAME: "L_BRACKET"
 };
 
 module.exports = constants;

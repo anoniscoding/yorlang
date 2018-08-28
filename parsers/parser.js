@@ -115,24 +115,14 @@ class Parser {
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
-        const propertyName = this.getTokenValuePropertyName(token);
-
         //check if the property name is a punctuation that can be used in an expression e.g (, [
-        if (nodeLiterals[constants.EXP_PUNC][propertyName] != undefined) { 
-            const nodeliteral = nodeLiterals[constants.EXP_PUNC][propertyName];
+        if (nodeLiterals[constants.EXP_PUNC][Symbol.for(token.value)] != undefined) { 
+            const nodeliteral = nodeLiterals[constants.EXP_PUNC][Symbol.for(token.value)];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
-    }
-
-    getTokenValuePropertyName(token) {
-        const constantsPropertyList = Object.keys(constants.SYM);
-        const constantsPropertyValuesList = Object.values(constants.SYM);
-        const index = constantsPropertyValuesList.indexOf(token.value);
-        const propertyName = constantsPropertyList[index];
-        return propertyName;
     }
 
     isNumStringVariable(token) {
