@@ -1,5 +1,6 @@
 const registeredInterpreters = require("./interpreters.js");
-class Interpreter {
+const IBase = require("./ibase.js");
+class MainInterpreter {
 
     constructor(astList){
         this.astList = astList;
@@ -14,7 +15,9 @@ class Interpreter {
     evaluateNode(node) {
         const leafValue = this.getLeafValue(node);
         if (leafValue == undefined) {
-            return registeredInterpreters[Symbol.for(node.operation)].interpreteNode.call(this, node);
+            const interpreter = registeredInterpreters[Symbol.for(node.operation)]; 
+            if (interpreter instanceof IBase) interpreter.interpreteNode.call(this, node);
+            else throw new Error(`Registered ${interpreter} did not override interpreteNode() of type IBase`);
         }
 
         return leafValue;
@@ -27,4 +30,4 @@ class Interpreter {
     }
 }
 
-module.exports = Interpreter;
+module.exports = MainInterpreter;
