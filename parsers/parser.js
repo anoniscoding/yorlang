@@ -185,7 +185,7 @@ class Parser {
     parseAst() {
         const token = this.lexer.peek();
 
-        if ((kwnodes[token.value] != undefined)) {
+        if (kwnodes[token.value] != undefined) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the class Parser
             else throw new Error(`${kwNode} must be of type BaseNode`);
