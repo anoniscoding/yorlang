@@ -13,7 +13,7 @@ class Parser {
     }
 
     initIsArithmeticExpression() {
-        //a work around for creating a private variable with getters and setters
+        //a work around for creating a private field with getters and setters
         var _isArithmeticExpression = true;
         this.setIsArithmeticExpression = (isArithmetic) => {
             _isArithmeticExpression = isArithmetic;
@@ -91,14 +91,14 @@ class Parser {
         return this.parseWhile([constants.SYM.MULTIPLY, constants.SYM.DIVIDE, constants.SYM.REMAINDER], this.parseNodeLiteral);
     }
 
-    parseWhile(operatorList, parseOperationWithLesserPrecedence) {
-        let node = parseOperationWithLesserPrecedence.bind(this)();
+    parseWhile(operatorList, parseOperatorWithLesserPrecedence) {
+        let node = parseOperatorWithLesserPrecedence.bind(this)();
 
         while (this.lexer.isNotEndOfFile() && operatorList.indexOf(this.lexer.peek().value) >= 0) {
             node = {
                 left : node,
                 operation : this.lexer.next().value,
-                right : parseOperationWithLesserPrecedence.bind(this)(),
+                right : parseOperatorWithLesserPrecedence.bind(this)(),
                 value : null
             };
         }
@@ -218,8 +218,8 @@ class Parser {
     }
 }
 
-const helpersNameList = Object.keys(helpers);
-helpersNameList.forEach((helperName,index,array) => {
+const helpersList = Object.keys(helpers);
+helpersList.forEach((helperName,index,array) => {
     Parser.prototype[helperName] = helpers[helperName];
 });
 
