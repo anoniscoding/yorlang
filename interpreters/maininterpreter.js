@@ -1,5 +1,6 @@
 const registeredInterpreters = require("./interpreters.js");
 const IBase = require("./ibase.js");
+
 class MainInterpreter {
 
     constructor(astList){

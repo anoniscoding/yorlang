@@ -10,3 +10,5 @@ class IBase {
         throw new Error(`Class of type IBase must implement interpreteNode()`);
     }
 }
+
+module.exports = IBase;
