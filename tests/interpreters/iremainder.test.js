@@ -1,17 +1,17 @@
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
-const iPlus = require("../../interpreters/iplus.js");
+const iRemainder = require("../../interpreters/iremainder.js");
 const kwNodeTi = require("../../parsers/keywordnodes/kwnodeti.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("IPlus test suite", () => {
+describe("IRemainder test suite", () => {
 
-    test("it should interprete a plus operation", () => {
+    test("it should interprete a remainder operation", () => {
         let parser = new Parser(new Lexer(new InputStream()));
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = 3 + 5;`;
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = 15 % 5;`;
         const node = kwNodeTi.getNode.call(parser);
-        expect(iPlus.interpreteNode.call(new MainInterpreter(), node.right)).toBe(8);
+        expect(iRemainder.interpreteNode.call(new MainInterpreter(), node.right)).toBe(0);
     });
 });
