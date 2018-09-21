@@ -4,8 +4,10 @@ const IBase = require("./ibase.js");
 
 class MainInterpreter {
 
-    constructor(astList){
+    constructor(environment, astList) {
+        this.environment = () => environment;
         this.astList = astList;
+        this.scope = ["global"];
     }
 
     getLeafValue(leaf) {
@@ -31,6 +33,10 @@ class MainInterpreter {
         for (let i = 0; i < this.astList.length; i++) {
             this.evaluateNode(this.astList[i]);
         }
+    }
+
+    getCurrentScope() {
+        return this.scope[this.scope.length - 1];
     }
 }
 
