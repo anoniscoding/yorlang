@@ -7,7 +7,7 @@ class MainInterpreter {
     constructor(environment, astList) {
         this.environment = () => environment;
         this.astList = astList;
-        this.scope = ["global"];
+        this.scopeStack = ["global"];
     }
 
     getLeafValue(leaf) {
@@ -36,7 +36,7 @@ class MainInterpreter {
     }
 
     getCurrentScope() {
-        return this.scope[this.scope.length - 1];
+        return this.scopeStack[this.scopeStack.length - 1];
     }
 }
 
