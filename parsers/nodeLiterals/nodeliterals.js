@@ -13,7 +13,7 @@ nodeLiterals[constants.NUMBER] = leafNl;
 nodeLiterals[constants.STRING] = leafNl;
 nodeLiterals[constants.KEYWORD] = keywordNl;
 nodeLiterals[constants.CALL_ISE] = callIseNl;
-nodeLiterals[constants.EXP_PUNC][Symbol.for(constants.SYM.L_SQ_BRACKET)] = arrayNl;
-nodeLiterals[constants.EXP_PUNC][Symbol.for(constants.SYM.L_BRACKET)] = bracketExpressionNl;
+nodeLiterals[constants.EXP_PUNC][constants.SYM.L_SQ_BRACKET] = arrayNl;
+nodeLiterals[constants.EXP_PUNC][constants.SYM.L_BRACKET] = bracketExpressionNl;
 
 module.exports = nodeLiterals;

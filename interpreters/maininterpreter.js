@@ -21,9 +21,9 @@ class MainInterpreter {
     evaluateNode(node) {
         const leafValue = this.getLeafValue(node);
         if (leafValue == null) {
-            const interpreter = registeredInterpreters[Symbol.for(node.operation)]; 
+            const interpreter = registeredInterpreters[node.operation]; 
             if (interpreter instanceof IBase) return interpreter.interpreteNode.call(this, node);
-            else throw new Error(`Registered ${interpreter} must be of type IBase`);
+            else throw new Error(`interpreter must be of type IBase`);
         }
 
         return leafValue;

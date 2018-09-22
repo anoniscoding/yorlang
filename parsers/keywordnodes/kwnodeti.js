@@ -15,7 +15,7 @@ class KwNodeTi extends BaseNode {
 
         const nextTokenValue = this.lexer.peek().value;
 
-        //if current variable is not a function call
+        //if current variable declaration is not a function call
         if (nextTokenValue != constants.SYM.L_BRACKET) {
             if (variableTypes[nextTokenValue] != undefined) { //current variable could be an array element or object property etc
                 const variableType = variableTypes[nextTokenValue];

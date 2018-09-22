@@ -116,8 +116,8 @@ class Parser {
         }
 
         //check if the token value is a punctuation that can be used in an expression e.g (, [
-        if (nodeLiterals[constants.EXP_PUNC][Symbol.for(token.value)] != undefined) { 
-            const nodeliteral = nodeLiterals[constants.EXP_PUNC][Symbol.for(token.value)];
+        if (nodeLiterals[constants.EXP_PUNC][token.value] != undefined) { 
+            const nodeliteral = nodeLiterals[constants.EXP_PUNC][token.value];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
