@@ -6,6 +6,7 @@ const iMultiply = require("./imultiply.js");
 const iRemainder = require("./iremainder.js");
 const iNodeTi = require("./inodeti.js");
 const iNodeGetTi = require("./inodegetti.js");
+const iNodeSope = require("./inodesope.js");
 
 const interpreters = {};
 interpreters[constants.SYM.PLUS] = iPlus;
@@ -15,5 +16,6 @@ interpreters[constants.SYM.MULTIPLY] = iMultiply;
 interpreters[constants.SYM.REMAINDER] = iRemainder;
 interpreters[constants.SYM.ASSIGN] = iNodeTi;
 interpreters[constants.GET_TI] = iNodeGetTi;
+interpreters[constants.KW.SOPE] = iNodeSope;
 
 module.exports = interpreters;

@@ -29,4 +29,16 @@ describe("IMinus test suite", () => {
         iNodeSope.interpreteNode.call(mainInterpreter, node)
         expect(global.console.log).toHaveBeenCalledWith(3);
     });
+
+    test("it should print the value of variable to the console", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = 5;
+            ${constants.KW.SOPE} a;
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(global.console.log).toHaveBeenCalledWith(5);
+    });
 });
