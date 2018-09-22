@@ -29,6 +29,20 @@ describe("INodeTi test suite", () => {
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(3.142);
     });
 
+    test("it should assign string to a variable", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = "anu";`;
+        const node = kwNodeTi.getNode.call(parser);
+        iNodeTi.interpreteNode.call(mainInterpreter, node);
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("anu");
+    });
+
+    test("it should assign an array literal to a variable", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = [1,2];`;
+        const node = kwNodeTi.getNode.call(parser);
+        iNodeTi.interpreteNode.call(mainInterpreter, node);
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual([1,2]);
+    });
+
     test("it should interprete expression that contains a variable reference", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = 5;

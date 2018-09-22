@@ -7,7 +7,7 @@ const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("IMinus test suite", () => {
+describe("INodeSope test suite", () => {
     let mainInterpreter, parser;
 
     beforeEach(() => {
