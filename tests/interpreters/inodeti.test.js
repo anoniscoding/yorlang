@@ -28,4 +28,16 @@ describe("INodeTi test suite", () => {
         iNodeTi.interpreteNode.call(mainInterpreter, node);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(3.142);
     });
+
+    test("it should interprete expression that contains a reference", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = 5;
+            ${constants.KW.TI} b = ((a + 2) * (2 - 4)) / 2;
+        `;
+        
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toBe(-7);
+    });
 });
