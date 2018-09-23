@@ -10,7 +10,7 @@ class INodeSope extends IBase {
                 let arrayLiteral = iNodeGetTi.interpreteNode.call(this, node.body);
                 console.log(arrayLiteral[node.body.index]); break;
             case constants.GET_TI :
-                console.log(iNodeGetTi.interpreteNode.call(this, node.body));
+                console.log(iNodeGetTi.interpreteNode.call(this, node.body)); break;
             default : // node is a string/num/float
                 console.log(node.body.value);
         }
