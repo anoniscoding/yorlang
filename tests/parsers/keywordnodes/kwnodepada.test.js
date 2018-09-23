@@ -73,7 +73,7 @@ describe("KwNodePada test suite", () => {
         const expectedNode = {
             operation: constants.KW.PADA,
             body: {
-                operation: constants.ARRAY,
+                operation: constants.ARRAY_ELEM,
                 name: "sum",
                 index: 1
             }
@@ -104,7 +104,9 @@ describe("KwNodePada test suite", () => {
                 operation: constants.KW.PADA,
                 body: {
                     operation: constants.ARRAY,
-                    body: [{type: constants.NUMBER, value: 1}, {type: constants.NUMBER, value: 2}]
+                    body: [
+                        {left: null, operation: null, right: null, value: 1}, 
+                        {left: null, operation: null, right: null, value: 2}]
                 }
             };
     

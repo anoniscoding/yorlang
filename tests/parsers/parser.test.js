@@ -104,7 +104,7 @@ describe("Parser test suite", () => {
                 right: {
                     index: 0, 
                     name: "b", 
-                    operation: constants.ARRAY
+                    operation: constants.ARRAY_ELEM
                 }, 
                 value: null
             }, 

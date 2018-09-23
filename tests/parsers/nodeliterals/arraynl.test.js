@@ -16,18 +16,9 @@ describe("ArrayNodeLiteral test suite", () => {
 
         const expectedNode = {
             body: [
-                {
-                    type: constants.NUMBER, 
-                    value: 1
-                }, 
-                {
-                    type: constants.VARIABLE, 
-                    value: "a"
-                }, 
-                {
-                    type: constants.STRING, 
-                    value: "segun"
-                }
+                {left: null, operation: null, right: null, value: 1}, 
+                {name: "a", operation: constants.GET_TI}, 
+                {left: null, operation: null, right: null, value: "segun"}
             ], 
             operation: constants.ARRAY
         };
@@ -42,7 +33,7 @@ describe("ArrayNodeLiteral test suite", () => {
         const expectedNode = {
             index: 0, 
             name: "a", 
-            operation: constants.ARRAY
+            operation: constants.ARRAY_ELEM
         };
 
 

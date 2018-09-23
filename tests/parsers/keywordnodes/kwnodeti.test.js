@@ -68,7 +68,7 @@ describe("KwNodeTi test suite", () => {
             left: {
                 index: 0, 
                 name: "a", 
-                operation: constants.ARRAY
+                operation: constants.ARRAY_ELEM
             },
             right: {
                 name: "b",
@@ -80,14 +80,20 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for an array assignment operation", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = [1,2];`;
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = [1,"anu",b, c[0], [1,2]];`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
             left: "a",
             right: {
                 operation: constants.ARRAY,
-                body: [{type: constants.NUMBER, value: 1}, {type: constants.NUMBER, value: 2}], 
+                body: [
+                    {left: null, operation: null, right: null, value: 1}, 
+                    {left: null, operation: null, right: null, value: "anu"},
+                    {name: "b", operation: constants.GET_TI},
+                    {index: 0, name: "c", operation: constants.ARRAY_ELEM},
+                    {body: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}], operation: constants.ARRAY}
+                ], 
             }
         }
         

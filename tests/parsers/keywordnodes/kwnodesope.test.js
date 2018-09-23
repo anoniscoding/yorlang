@@ -73,7 +73,7 @@ describe("KwNodeSope test suite", () => {
         const expectedNode = {
             operation: constants.KW.SOPE,
             body: {
-                operation: constants.ARRAY,
+                operation: constants.ARRAY_ELEM,
                 name: "a",
                 index: 1
             }
