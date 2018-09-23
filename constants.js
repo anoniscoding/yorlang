@@ -95,6 +95,7 @@ const constants = {
     VARIABLE: "variable",
     STRING: "string",
     ARRAY: "array",
+    ARRAY_ELEM: "arrayElement",
     NUMBER: "number",
     PROGRAM: "program",
     PUNCTUATION: "punctuation",
