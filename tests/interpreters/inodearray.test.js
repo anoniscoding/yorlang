@@ -16,14 +16,50 @@ describe("INodeArray test suite", () => {
     });
 
     test("it should return an array literal", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = [1,2];`;
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = [1,2,b];`;
         const node = kwNodeTi.getNode.call(parser);
-        expect(iNodeArray.interpreteNode.call(mainInterpreter, node.right)).toEqual([1,2]);
+        expect(() => iNodeArray.interpreteNode.call(mainInterpreter, node.right)).toThrow();
     });
 
-    test("it should return an array literal", () => {
+    test("it should return an empty array literal", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI} a = [];`;
         const node = kwNodeTi.getNode.call(parser);
         expect(iNodeArray.interpreteNode.call(mainInterpreter, node.right)).toEqual([]);
+    });
+
+    test("it should interprete expression that contains a variable reference", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = 5;
+            ${constants.KW.TI} b = [1,2,a];
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,5]);
+    });
+
+    test("it should interprete expression that contains an array element reference", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [3,2];
+            ${constants.KW.TI} b = [1,2,a[0]];
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,3]);
+    });
+
+    test("it should interprete a multidimensional array", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [3,4];
+            ${constants.KW.TI} b = [[1,2], [3,a[1]]];
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([[1,2],[3,4]]);
     });
 });
