@@ -54,4 +54,16 @@ describe("INodeTi test suite", () => {
         mainInterpreter.evaluateAst();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toBe(-7);
     });
+
+    test("it should assign value to an array element", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [1,2];
+            ${constants.KW.TI} a[0] = "funmi";
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
+    });
 });
