@@ -41,4 +41,16 @@ describe("INodeSope test suite", () => {
         mainInterpreter.evaluateAst();
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
+
+    test("it should print the value of variable to the console", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [1,5];
+            ${constants.KW.SOPE} a[1];
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(global.console.log).toHaveBeenCalledWith(5);
+    });
 });

@@ -5,10 +5,15 @@ const iNodeGetTi = require("./inodegetti.js");
 class INodeSope extends IBase {
 
     interpreteNode(node) {
-        if (node.body.operation === null)
-            console.log(node.body.value)
-        else if (node.body.operation === constants.GET_TI )
-            console.log(iNodeGetTi.interpreteNode.call(this, node.body));    
+        switch(node.body.operation) {
+            case constants.ARRAY_ELEM :
+                let arrayLiteral = iNodeGetTi.interpreteNode.call(this, node.body);
+                console.log(arrayLiteral[node.body.index]); break;
+            case constants.GET_TI :
+                console.log(iNodeGetTi.interpreteNode.call(this, node.body));
+            default : // node is a string/num/float
+                console.log(node.body.value);
+        }
     }
 }
 
