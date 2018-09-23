@@ -1,21 +1,14 @@
 const constants = require("../constants.js");
-const iPlus = require("./iplus.js");
-const iMinus = require("./iminus.js");
-const iDivide = require("./idivide.js");
-const iMultiply = require("./imultiply.js");
-const iRemainder = require("./iremainder.js");
-const iNodeTi = require("./inodeti.js");
-const iNodeGetTi = require("./inodegetti.js");
-const iNodeSope = require("./inodesope.js");
 
 const interpreters = {};
-interpreters[constants.SYM.PLUS] = iPlus;
-interpreters[constants.SYM.MINUS] = iMinus;
-interpreters[constants.SYM.DIVIDE] = iDivide;
-interpreters[constants.SYM.MULTIPLY] = iMultiply;
-interpreters[constants.SYM.REMAINDER] = iRemainder;
-interpreters[constants.SYM.ASSIGN] = iNodeTi;
-interpreters[constants.GET_TI] = iNodeGetTi;
-interpreters[constants.KW.SOPE] = iNodeSope;
+interpreters[constants.SYM.PLUS] = require("./iplus.js");
+interpreters[constants.SYM.MINUS] = require("./iminus.js");
+interpreters[constants.SYM.DIVIDE] = require("./idivide.js");
+interpreters[constants.SYM.MULTIPLY] = require("./imultiply.js");
+interpreters[constants.SYM.REMAINDER] = require("./iremainder.js");
+interpreters[constants.SYM.ASSIGN] = require("./inodeti.js");
+interpreters[constants.GET_TI] = require("./inodegetti.js");
+interpreters[constants.KW.SOPE] = require("./inodesope.js");
+interpreters[constants.ARRAY] = require("./inodearray.js");
 
 module.exports = interpreters;

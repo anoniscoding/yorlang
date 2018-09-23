@@ -1,19 +1,14 @@
 const constants = require("../../constants.js");
 const leafNl = require("./leafnl.js");
-const keywordNl = require("./keywordnl");
-const variableNl = require("./variablenl.js");
-const arrayNl = require("./arraynl.js");
-const callIseNl = require("./callIseNl.js");
-const bracketExpressionNl = require("./bracketexpressionnl.js");
 
 const nodeLiterals = {};
 nodeLiterals[constants.EXP_PUNC] = {};
-nodeLiterals[constants.VARIABLE] = variableNl;
+nodeLiterals[constants.VARIABLE] = require("./variablenl.js");
 nodeLiterals[constants.NUMBER] = leafNl;
 nodeLiterals[constants.STRING] = leafNl;
-nodeLiterals[constants.KEYWORD] = keywordNl;
-nodeLiterals[constants.CALL_ISE] = callIseNl;
-nodeLiterals[constants.EXP_PUNC][constants.SYM.L_SQ_BRACKET] = arrayNl;
-nodeLiterals[constants.EXP_PUNC][constants.SYM.L_BRACKET] = bracketExpressionNl;
+nodeLiterals[constants.KEYWORD] = require("./keywordnl");
+nodeLiterals[constants.CALL_ISE] = require("./callIseNl.js");
+nodeLiterals[constants.EXP_PUNC][constants.SYM.L_SQ_BRACKET] = require("./arraynl.js");
+nodeLiterals[constants.EXP_PUNC][constants.SYM.L_BRACKET] = require("./bracketexpressionnl.js");
 
 module.exports = nodeLiterals;
