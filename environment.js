@@ -27,16 +27,13 @@ class Environment {
     }
 
     getIse(scope, childIse) {
-        if (this.iseDeclarations[scope] != undefined) 
+        if (this.iseDeclarations[scope] != undefined) {
             return this.iseDeclarations[scope][childIse];
+        }
     }
 
     sope(value) {
         console.log(value);
-    }
-
-    printAllVars() {
-        console.log(this.vars);
     }
 }
 

@@ -1,5 +1,4 @@
 const registeredInterpreters = require("./interpreters.js");
-const constants = require("../constants.js");
 const IBase = require("./ibase.js");
 
 class MainInterpreter {

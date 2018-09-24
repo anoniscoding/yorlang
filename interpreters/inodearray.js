@@ -13,7 +13,7 @@ class INodeArray extends IBase {
                 case constants.ARRAY :
                     arr.push(iNodeArray.interpreteNode.call(this,arrayItemNode)); break;
                 case constants.ARRAY_ELEM :
-                    let arrayLiteral = iNodeGetTi.interpreteNode.call(this, arrayItemNode);
+                    const arrayLiteral = iNodeGetTi.interpreteNode.call(this, arrayItemNode);
                     arr.push(arrayLiteral[arrayItemNode.index]); break;
                 default : //array item is a string/num/float
                     arr.push(arrayItemNode.value);
