@@ -100,6 +100,23 @@ describe("KwNodeTi test suite", () => {
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
+    test("it should return node with operation equals", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = 5 ==5 ;`;
+
+        const expectedNode = {
+            operation: constants.SYM.ASSIGN,
+            left: "a",
+            right: {
+                operation: constants.SYM.EQ,
+                right: {left: null, operation: null, right: null, value: 5},
+                left: {left: null, operation: null, right: null, value: 5},
+                value: null
+            }
+        }
+        
+        expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
+    });
+
     test("it should return node with operation assign for bracket expression", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI} a = (15 /3) + (3 * 2);`;
 
