@@ -1,10 +1,10 @@
 const IBase = require("./ibase.js");
 
-class IRemainder extends IBase {
+class INodeRemainder extends IBase {
 
     interpreteNode(node) {
         return this.evaluateNode(node.left) % this.evaluateNode(node.right);
     }
 }
 
-module.exports = new IRemainder();
+module.exports = new INodeRemainder();

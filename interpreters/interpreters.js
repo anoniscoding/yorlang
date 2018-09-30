@@ -1,11 +1,11 @@
 const constants = require("../constants.js");
 
 const interpreters = {};
-interpreters[constants.SYM.PLUS] = require("./iplus.js");
-interpreters[constants.SYM.MINUS] = require("./iminus.js");
-interpreters[constants.SYM.DIVIDE] = require("./idivide.js");
-interpreters[constants.SYM.MULTIPLY] = require("./imultiply.js");
-interpreters[constants.SYM.REMAINDER] = require("./iremainder.js");
+interpreters[constants.SYM.PLUS] = require("./inodeplus.js");
+interpreters[constants.SYM.MINUS] = require("./inodeminus.js");
+interpreters[constants.SYM.DIVIDE] = require("./inodedivide.js");
+interpreters[constants.SYM.MULTIPLY] = require("./inodemultiply.js");
+interpreters[constants.SYM.REMAINDER] = require("./inoderemainder.js");
 interpreters[constants.SYM.ASSIGN] = require("./inodeti.js");
 interpreters[constants.GET_TI] = require("./inodegetti.js");
 interpreters[constants.KW.SOPE] = require("./inodesope.js");
@@ -19,5 +19,6 @@ interpreters[constants.SYM.G_THAN_OR_EQ] = require("./inodegthanoreq.js");
 interpreters[constants.SYM.L_THAN_OR_EQ] = require("./inodelthanoreq.js");
 interpreters[constants.SYM.NOT_EQ] = require("./inodenoteq.js");
 interpreters[constants.KW.SE] = require("./inodese.js");
+interpreters[constants.KW.NIGBATI] = require("./inodenigbati.js");
 
 module.exports = interpreters;
