@@ -1,5 +1,5 @@
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
-const iPlus = require("../../interpreters/iplus.js");
+const iPlus = require("../../interpreters/inodeplus.js");
 const kwNodeTi = require("../../parsers/keywordnodes/kwnodeti.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");

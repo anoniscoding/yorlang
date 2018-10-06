@@ -20,5 +20,6 @@ interpreters[constants.SYM.L_THAN_OR_EQ] = require("./inodelthanoreq.js");
 interpreters[constants.SYM.NOT_EQ] = require("./inodenoteq.js");
 interpreters[constants.KW.SE] = require("./inodese.js");
 interpreters[constants.KW.NIGBATI] = require("./inodenigbati.js");
+interpreters[constants.KW.KURO] = require("./inodekuro.js");
 
 module.exports = interpreters;

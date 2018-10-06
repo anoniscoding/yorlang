@@ -10,7 +10,7 @@ class INodeArray extends IBase {
             switch (arrayItemNode.operation) {
                 case constants.GET_TI :
                     arr.push(iNodeGetTi.interpreteNode.call(this, arrayItemNode)); break;
-                case constants.ARRAY :
+                case constants.ARRAY : //for multidimensional arrays
                     arr.push(iNodeArray.interpreteNode.call(this,arrayItemNode)); break;
                 case constants.ARRAY_ELEM :
                     const arrayLiteral = iNodeGetTi.interpreteNode.call(this, arrayItemNode);

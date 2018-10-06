@@ -20,15 +20,32 @@ describe("INodeNigbati test suite", () => {
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
                 ${constants.KW.TI} a = a + 1;
+                ${constants.KW.SE} (a == 1) {
+                    ${constants.KW.KURO};
+                }
+                ${constants.KW.SOPE} a;
             }
         `;
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
         mainInterpreter.evaluateAst();
-        expect(global.console.log).toHaveBeenCalledWith(0);
-        expect(global.console.log).toHaveBeenCalledWith(1);
-        expect(global.console.log).toHaveBeenCalledWith(2);
+        expect(global.console.log).toHaveBeenCalledTimes(1);
+    });
+
+    test("it should interprete the nigbati keyword", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = 0;
+            ${constants.KW.NIGBATI} (a < 3) {
+                ${constants.KW.SOPE} a;
+                ${constants.KW.TI} a = a + 1;
+            }
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
     test("it should interprete nested nigbati keyword", () => {
@@ -48,9 +65,6 @@ describe("INodeNigbati test suite", () => {
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
         mainInterpreter.evaluateAst();
-        expect(global.console.log).toHaveBeenCalledWith(0);
-        expect(global.console.log).toHaveBeenCalledWith(1);
-        expect(global.console.log).toHaveBeenCalledWith(2);
-        expect(global.console.log).toHaveBeenCalledWith("anu");
+        expect(global.console.log).toHaveBeenCalledTimes(4);
     });
 });

@@ -5,14 +5,14 @@ class INodeSe extends IBase {
 
     interpreteNode(node) {
         if (this.evaluateNode(node.condition) !== constants.KW.IRO) {
-            node.then.forEach(element => {
-                this.evaluateNode(element);
-            });
+            for (let i = 0; i < node.then.length; i++) {
+                if (this.evaluateNode(node.then[i]) === constants.KW.KURO) return constants.KW.KURO;
+            }
         } else {
             if (node.else != undefined) {
-                node.else.forEach(element => {
-                    this.evaluateNode(element);
-                });
+                for (let i = 0; i < node.else.length; i++) {
+                    if (this.evaluateNode(node.else[i]) === constants.KW.KURO) return constants.KW.KURO;
+                }
             }
         }
     }

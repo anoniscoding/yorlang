@@ -4,6 +4,7 @@ const BaseNode = require("../basenode.js");
 class KwNodeKuro extends BaseNode {
 
     getNode() {
+        
         const node = {
             operation: this.lexer.next().value,
         };
