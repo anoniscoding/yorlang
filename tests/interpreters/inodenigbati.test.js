@@ -14,23 +14,26 @@ describe("INodeNigbati test suite", () => {
         global.console.log = jest.fn();
     });
 
-    test("it should interprete the nigbati keyword", () => {
+    test("it should interprete the nigbati keyword with kuro keyword", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
                 ${constants.KW.TI} a = a + 1;
-                ${constants.KW.SE} (a == 1) {
+                ${constants.KW.SE} (a == 2) {
                     ${constants.KW.KURO};
                 }
-                ${constants.KW.SOPE} a;
+                ${constants.KW.NIGBATI} (a < 2) {
+                    ${constants.KW.SOPE} a;
+                    ${constants.KW.KURO};
+                }
             }
         `;
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
         mainInterpreter.evaluateAst();
-        expect(global.console.log).toHaveBeenCalledTimes(1);
+        expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
     test("it should interprete the nigbati keyword", () => {
