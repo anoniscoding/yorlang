@@ -11,7 +11,7 @@ class INodeNigbati extends IBase {
                 if (this.evaluateNode(node.body[i]) === constants.KW.KURO) {
                     isBreakNigbatiLoop = true;
                     break;
-                } 
+                }
             }
 
             if (isBreakNigbatiLoop) break;

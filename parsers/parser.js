@@ -8,7 +8,7 @@ class Parser {
 
     constructor(lexer) {
         this.lexer = lexer;
-        this.currentBlockType = [];
+        this.blockTypeStack = [];
         this.initIsArithmeticExpression();
     }
 
@@ -130,14 +130,14 @@ class Parser {
     }
 
     parseBlock(currentBlock) {
-        this.currentBlockType.push(currentBlock);
+        this.blockTypeStack.push(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
         while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
             block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
-        this.currentBlockType.pop();
+        this.blockTypeStack.pop();
 
         return block;
     }
@@ -171,11 +171,11 @@ class Parser {
     }
 
     getCurrentBlockType() {
-        return this.currentBlockType[this.currentBlockType.length - 1];
+        return this.blockTypeStack[this.blockTypeStack.length - 1];
     }
 
     isBlockType() {
-        return this.currentBlockType.length > 0;
+        return this.blockTypeStack.length > 0;
     }
 
     getGenericErrorMsg(value) {
@@ -208,11 +208,11 @@ class Parser {
     parseProgram() {
         const astList = [];
 
-        this.currentBlockType.push(constants.PROGRAM);
+        this.blockTypeStack.push(constants.PROGRAM);
         while (this.lexer.isNotEndOfFile()) {
             astList.push(this.parseAst());
         }
-        this.currentBlockType.pop();
+        this.blockTypeStack.pop();
 
         return {type: constants.PROGRAM, astList: astList};
     }
