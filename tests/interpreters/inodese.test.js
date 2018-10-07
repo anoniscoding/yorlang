@@ -32,6 +32,18 @@ describe("INodeSe test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith(18);
     });
 
+    test("It should throw an error if it finds break within se block that is not within a loop", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} b = 2;
+
+            ${constants.KW.SE} (b == 2) {
+                ${constants.KW.KURO};
+            }
+        `;
+
+        expect(() => parser.parseProgram()).toThrow();
+    })
+
     test("it should interprete the se keyword and run the else block ", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = 6;

@@ -11,6 +11,9 @@ describe("CallIseLiteral test suite", () => {
         parser = new Parser(new Lexer(new InputStream()));
     });
 
+    //TODO remove isNumStringVariable and use parseNodeliteral so that arrays and array elements can be passed as params
+
+    
     test("it should parse valid callIse syntax with parameters", () => {
         parser.lexer.inputStream.code = `eeyan(1,"anu")`;
         isename = parser.lexer.next();

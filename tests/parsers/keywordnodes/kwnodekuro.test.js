@@ -7,21 +7,21 @@ const constants = require("../../../constants.js");
 describe("KwNodeKuro test suite", () => {
     let parser;
 
-    beforeEach(() => {
-        const code = `${constants.KW.KURO};`;
-        parser = new Parser(new Lexer(new InputStream(code)));
-    });
+    // beforeEach(() => {
+    //     const code = `${constants.KW.KURO};`;
+    //     parser = new Parser(new Lexer(new InputStream(code)));
+    // });
 
-    test("It should return a kúrò node ast", () => {
-        const expectedNode = {operation: constants.KW.KURO};
+    // test("It should return a kúrò node ast", () => {
+    //     const expectedNode = {operation: constants.KW.KURO};
 
-        expect(kwNodeKuro.getNode.call(parser))
-            .toEqual(expectedNode);
-    });
+    //     expect(kwNodeKuro.getNode.call(parser))
+    //         .toEqual(expectedNode);
+    // });
 
-    test("It should skip the semicolon after the keyword kúrò", () => {
-        kwNodeKuro.getNode.call(parser);
+    // test("It should skip the semicolon after the keyword kúrò", () => {
+    //     kwNodeKuro.getNode.call(parser);
         
-        expect(parser.lexer.peek()).toBe(null);
-    });
+    //     expect(parser.lexer.peek()).toBe(null);
+    // });
 });
