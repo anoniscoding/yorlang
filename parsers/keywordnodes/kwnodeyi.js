@@ -20,6 +20,7 @@ class KwNodeYi extends BaseNode {
             padasi: []
         };
 
+        this.blockTypeStack.push(constants.KW.YI);
         this.skipKeyword(constants.KW.YI);
         node.yivalue = bracketExpressionNl.getNode.call(this);
         this.skipPunctuation(constants.SYM.L_PAREN);
@@ -30,6 +31,7 @@ class KwNodeYi extends BaseNode {
 
         node = this.getYiNodeWithPadasi(node);
         this.skipPunctuation(constants.SYM.R_PAREN);
+        this.blockTypeStack.pop();
 
         return node;
     }
@@ -61,12 +63,12 @@ class KwNodeEjo extends BaseNode {
         node.ejovalue = this.parseExpression();
         this.skipPunctuation(constants.SYM.COLON);
 
-        const canParseEjo = () =>  this.lexer.isNotEndOfFile() 
+        const canParseEjoStatements = () =>  this.lexer.isNotEndOfFile() 
                                         && this.lexer.peek().value != constants.KW.EJO 
                                         && this.lexer.peek().value != constants.KW.PADASI;
         
 
-        while (canParseEjo()) {
+        while (canParseEjoStatements()) {
             node.body.push(this.parseAst());
         }
 

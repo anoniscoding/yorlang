@@ -8,7 +8,7 @@ class KwNodeKuro extends BaseNode {
             this.blockTypeStack.indexOf(constants.KW.YI) >= 0 ||
             this.blockTypeStack.indexOf(constants.KW.NIGBATI) >= 0
 
-        if (isExpectedKuroStatement) {
+            if (isExpectedKuroStatement) {
             const node = {
                 operation: this.lexer.next().value,
             };
