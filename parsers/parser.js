@@ -13,7 +13,7 @@ class Parser {
     }
 
     initBlockTypeStack() {
-        //a work around for creating a private field with getters and setters
+        //a work around for creating a private field with public accessors
         var _blockTypeStack = [];
         this.pushToBlockTypeStack = (blockName) => {
             _blockTypeStack.push(blockName);
