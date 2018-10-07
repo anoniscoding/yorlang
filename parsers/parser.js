@@ -8,12 +8,22 @@ class Parser {
 
     constructor(lexer) {
         this.lexer = lexer;
-        this.blockTypeStack = [];
+        this.initBlockTypeStack();
         this.initIsArithmeticExpression();
     }
 
-    initIsArithmeticExpression() {
+    initBlockTypeStack() {
         //a work around for creating a private field with getters and setters
+        var _blockTypeStack = [];
+        this.pushToBlockTypeStack = (blockName) => {
+            _blockTypeStack.push(blockName);
+        }
+        this.popBlockTypeStack = () => _blockTypeStack.pop();
+        this.peekBlockTypeStack = () => _blockTypeStack[_blockTypeStack.length - 1];
+        this.getBlockTypeStack = () => [..._blockTypeStack];
+    }
+
+    initIsArithmeticExpression() {
         var _isArithmeticExpression = true;
         this.setIsArithmeticExpression = (isArithmetic) => {
             _isArithmeticExpression = isArithmetic;
@@ -130,14 +140,14 @@ class Parser {
     }
 
     parseBlock(currentBlock) {
-        this.blockTypeStack.push(currentBlock);
+        this.pushToBlockTypeStack(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
         while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
             block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
-        this.blockTypeStack.pop();
+        this.popBlockTypeStack();
 
         return block;
     }
@@ -170,14 +180,6 @@ class Parser {
         this.lexer.throwError(this.getGenericErrorMsg(token.type));
     }
 
-    getCurrentBlockType() {
-        return this.blockTypeStack[this.blockTypeStack.length - 1];
-    }
-
-    isBlockType() {
-        return this.blockTypeStack.length > 0;
-    }
-
     getGenericErrorMsg(value) {
         return `Cannot process unexpected token : ${value}`;
     }
@@ -208,11 +210,11 @@ class Parser {
     parseProgram() {
         const astList = [];
 
-        this.blockTypeStack.push(constants.PROGRAM);
+        this.pushToBlockTypeStack(constants.PROGRAM);
         while (this.lexer.isNotEndOfFile()) {
             astList.push(this.parseAst());
         }
-        this.blockTypeStack.pop();
+        this.popBlockTypeStack();
 
         return {type: constants.PROGRAM, astList: astList};
     }

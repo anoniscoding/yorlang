@@ -20,7 +20,7 @@ class KwNodeYi extends BaseNode {
             padasi: []
         };
 
-        this.blockTypeStack.push(constants.KW.YI);
+        this.pushToBlockTypeStack(constants.KW.YI);
         this.skipKeyword(constants.KW.YI);
         node.yivalue = bracketExpressionNl.getNode.call(this);
         this.skipPunctuation(constants.SYM.L_PAREN);
@@ -31,7 +31,7 @@ class KwNodeYi extends BaseNode {
 
         node = this.getYiNodeWithPadasi(node);
         this.skipPunctuation(constants.SYM.R_PAREN);
-        this.blockTypeStack.pop();
+        this.popBlockTypeStack();
 
         return node;
     }

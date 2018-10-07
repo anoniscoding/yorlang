@@ -4,11 +4,11 @@ const BaseNode = require("../basenode.js");
 class KwNodeKuro extends BaseNode {
 
     getNode() {
-        const isExpectedKuroStatement = this.blockTypeStack.indexOf(constants.KW.FUN) >= 0 ||
-            this.blockTypeStack.indexOf(constants.KW.YI) >= 0 ||
-            this.blockTypeStack.indexOf(constants.KW.NIGBATI) >= 0
+        const isExpectedKuroStatement = this.getBlockTypeStack().indexOf(constants.KW.FUN) >= 0 ||
+            this.getBlockTypeStack().indexOf(constants.KW.YI) >= 0 ||
+            this.getBlockTypeStack().indexOf(constants.KW.NIGBATI) >= 0
 
-            if (isExpectedKuroStatement) {
+        if (isExpectedKuroStatement) {
             const node = {
                 operation: this.lexer.next().value,
             };

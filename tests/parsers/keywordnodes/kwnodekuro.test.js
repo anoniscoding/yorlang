@@ -14,14 +14,14 @@ describe("KwNodeKuro test suite", () => {
 
     test("It should return a kúrò node ast when kuro node is expected because it is within a loop", () => {
         const expectedNode = {operation: constants.KW.KURO};
-        parser.blockTypeStack.push(constants.KW.NIGBATI);
+        parser.pushToBlockTypeStack(constants.KW.NIGBATI);
 
         expect(kwNodeKuro.getNode.call(parser))
             .toEqual(expectedNode);
     });
 
     test("It should skip the semicolon after an expected keyword kúrò", () => {
-        parser.blockTypeStack.push(constants.KW.NIGBATI);
+        parser.pushToBlockTypeStack(constants.KW.NIGBATI);
         kwNodeKuro.getNode.call(parser);
         
         expect(parser.lexer.peek()).toBe(null);
