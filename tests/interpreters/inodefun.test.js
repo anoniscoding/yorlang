@@ -29,9 +29,9 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete nested fun node", () => {
         parser.lexer.inputStream.code = `
-            ${constants.KW.FUN} (tí i = 0; i < 2; tí i = i + 1;) {
+            ${constants.KW.FUN} (tí i = 1; i < 3; tí i = i + 1;) {
                 ${constants.KW.SOPE} i;
-                ${constants.KW.FUN} (tí j = 0; j < 2; tí j = j + 1;) {
+                ${constants.KW.FUN} (tí j = 0; j < 2; tí j = i + j;) {
                     ${constants.KW.SOPE} j;
                 }
             }
@@ -40,7 +40,7 @@ describe("INodeFun test suite", () => {
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
         mainInterpreter.evaluateAst();
-        expect(global.console.log).toHaveBeenCalledTimes(6);
+        expect(global.console.log).toHaveBeenCalledTimes(5);
     });
 
     test("it should interprete fun node with kuro keyword", () => {
