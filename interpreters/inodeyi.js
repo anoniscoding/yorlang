@@ -3,8 +3,10 @@ const IBase = require("./ibase.js");
 class INodeYi extends IBase {
 
     interpreteNode(node) {
+        const yivalue = this.evaluateNode(node.yivalue);
+        
         for (let ejoIndex = 0; ejoIndex < node.yibody.length; ejoIndex++) {
-            const doesEjoValueMatchYiValue = node.yibody[ejoIndex].ejovalue.value === this.evaluateNode(node.yivalue)
+            const doesEjoValueMatchYiValue = node.yibody[ejoIndex].ejovalue.value === yivalue;
 
             if (doesEjoValueMatchYiValue) {
                 for (let i = 0; i < node.yibody[ejoIndex].ejobody.length; i++) {
