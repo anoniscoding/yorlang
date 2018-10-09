@@ -82,4 +82,14 @@ describe("KwNodeFun test suite", () => {
         }).toThrow();
     });
 
+    test("it should throw an error when given invalid fun increment node", () => {
+        parser.lexer.inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = j + 1;) {
+            sopé i;
+        }`;
+
+        expect(() => {
+            kwNodeFun.getNode.call(parser);
+        }).toThrow();
+    });
+
 });

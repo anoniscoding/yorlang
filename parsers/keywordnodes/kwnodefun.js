@@ -62,7 +62,7 @@ class KwNodeFun extends BaseNode {
             //e.g fun (tí i =0; i < 10; tí i = i + 1;)
             //make sure there is variable 'i' in atleast one child of the incrementNode 
             //i.e ti i = i + 1 or ti i = 1 + i or ti i = i + i
-            if ([incrementNode.left.name, incrementNode.right.name].indexOf(funNode.init.left.name) >= 0) {
+            if ([incrementNode.left.name, incrementNode.right.name].indexOf(funNode.init.left) >= 0) {
                 return false;
             }
         }
