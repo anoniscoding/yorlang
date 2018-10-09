@@ -12,21 +12,19 @@ describe("KwNodeYi test suite", () => {
     });
 
     test("it should return a valid yi node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.YI} (name) {
+        parser.lexer.inputStream.code = `${constants.KW.YI} (firstname) {
             ${constants.KW.EJO} "anu":
                 ${constants.KW.SOPE} "it is anu";
-                ${constants.KW.KURO};
             ${constants.KW.EJO} "femi": 
                 ${constants.KW.SOPE} "it femi";
-                ${constants.KW.KURO};
             ${constants.KW.PADASI}: 
                 ${constants.KW.SOPE} "mi o mo";      
         }`;
 
         const expectedNode = {
-            body: [
+            yibody: [
                 {
-                    body: [
+                    ejobody: [
                         {
                             body: {
                                 left: null, 
@@ -35,9 +33,6 @@ describe("KwNodeYi test suite", () => {
                                 value: "it is anu"
                             }, 
                             operation: constants.KW.SOPE
-                        }, 
-                        {
-                            operation: constants.KW.KURO
                         }
                     ], 
                     ejovalue: {
@@ -49,7 +44,7 @@ describe("KwNodeYi test suite", () => {
                     operation: constants.KW.EJO
                 }, 
                 {
-                    body: [
+                    ejobody: [
                         {
                             body: {
                                 left: null, 
@@ -58,9 +53,6 @@ describe("KwNodeYi test suite", () => {
                                 value: "it femi"
                             }, 
                             operation: constants.KW.SOPE
-                        }, 
-                        {
-                            operation: constants.KW.KURO
                         }
                     ], 
                     ejovalue: {
@@ -85,7 +77,7 @@ describe("KwNodeYi test suite", () => {
                 }
             ], 
             yivalue: {
-                name: "name", 
+                name: "firstname", 
                 operation: constants.GET_TI
             }
         };

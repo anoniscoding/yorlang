@@ -5,7 +5,6 @@ class KwNodeKuro extends BaseNode {
 
     getNode() {
         const isExpectedKuroStatement = this.getBlockTypeStack().indexOf(constants.KW.FUN) >= 0 ||
-            this.getBlockTypeStack().indexOf(constants.KW.YI) >= 0 ||
             this.getBlockTypeStack().indexOf(constants.KW.NIGBATI) >= 0
 
         if (isExpectedKuroStatement) {

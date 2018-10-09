@@ -16,7 +16,7 @@ class KwNodeYi extends BaseNode {
         let node = {
             operation: constants.KW.YI,
             yivalue: null,
-            body: [],
+            yibody: [],
             padasi: []
         };
 
@@ -26,7 +26,7 @@ class KwNodeYi extends BaseNode {
         this.skipPunctuation(constants.SYM.L_PAREN);
 
         while (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.EJO) {
-            node.body.push(kwNodeEjo.getNode.call(this));
+            node.yibody.push(kwNodeEjo.getNode.call(this));
         }
 
         node = this.getYiNodeWithPadasi(node);
@@ -41,7 +41,7 @@ class KwNodeYi extends BaseNode {
             this.skipKeyword(constants.KW.PADASI);
             this.skipPunctuation(constants.SYM.COLON);
 
-            while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
+            while (this.lexer.isNotEndOfFile() && this.lexer.peek().value !== constants.SYM.R_PAREN) {
                 node.padasi.push(this.parseAst());
             }
         }
@@ -56,7 +56,7 @@ class KwNodeEjo extends BaseNode {
         const node = {
             operation: constants.KW.EJO,
             ejovalue: null,
-            body: []
+            ejobody: []
         }
 
         this.skipKeyword(constants.KW.EJO);
@@ -64,12 +64,13 @@ class KwNodeEjo extends BaseNode {
         this.skipPunctuation(constants.SYM.COLON);
 
         const canParseEjoStatements = () =>  this.lexer.isNotEndOfFile() 
-                                        && this.lexer.peek().value != constants.KW.EJO 
-                                        && this.lexer.peek().value != constants.KW.PADASI;
+                                        && this.lexer.peek().value !== constants.KW.EJO 
+                                        && this.lexer.peek().value !== constants.KW.PADASI  
+                                        && this.lexer.peek().value !== constants.SYM.R_PAREN;    
         
 
         while (canParseEjoStatements()) {
-            node.body.push(this.parseAst());
+            node.ejobody.push(this.parseAst());
         }
 
         return node;

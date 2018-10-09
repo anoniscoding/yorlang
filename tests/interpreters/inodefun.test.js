@@ -16,7 +16,7 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete fun node", () => {
         parser.lexer.inputStream.code = `
-            ${constants.KW.FUN} (tí i = 0; i < 10; tí i = i + 1;) {
+            ${constants.KW.FUN} (${constants.KW.TI} i = 0; i < 10; ${constants.KW.TI} i = i + 1;) {
                 ${constants.KW.SOPE} i;
             }
         `;
@@ -29,9 +29,9 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete nested fun node", () => {
         parser.lexer.inputStream.code = `
-            ${constants.KW.FUN} (tí i = 1; i < 3; tí i = i + 1;) {
+            ${constants.KW.FUN} (${constants.KW.TI} i = 1; i < 3; ${constants.KW.TI} i = i + 1;) {
                 ${constants.KW.SOPE} i;
-                ${constants.KW.FUN} (tí j = 0; j < 2; tí j = i + j;) {
+                ${constants.KW.FUN} (${constants.KW.TI} j = 0; j < 2; ${constants.KW.TI} j = i + j;) {
                     ${constants.KW.SOPE} j;
                 }
             }
@@ -45,7 +45,7 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete fun node with kuro keyword", () => {
         parser.lexer.inputStream.code = `
-            ${constants.KW.FUN} (tí i = 0; i < 10; tí i = i + 1;) {
+            ${constants.KW.FUN} (${constants.KW.TI} i = 0; i < 10; ${constants.KW.TI} i = i + 1;) {
                 ${constants.KW.SOPE} i;
                 ${constants.KW.SE} (i == 5) {
                     ${constants.KW.KURO};
