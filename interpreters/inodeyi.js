@@ -4,11 +4,11 @@ class INodeYi extends IBase {
 
     interpreteNode(node) {
         const yivalue = this.evaluateNode(node.yivalue);
-        
-        for (let ejoIndex = 0; ejoIndex < node.yibody.length; ejoIndex++) {
-            const doesEjoValueMatchYiValue = node.yibody[ejoIndex].ejovalue.value === yivalue;
 
-            if (doesEjoValueMatchYiValue) {
+        for (let ejoIndex = 0; ejoIndex < node.yibody.length; ejoIndex++) {
+            const isEjoValueMatchYiValue = node.yibody[ejoIndex].ejovalue.value === yivalue;
+
+            if (isEjoValueMatchYiValue) {
                 for (let i = 0; i < node.yibody[ejoIndex].ejobody.length; i++) {
                     this.evaluateNode(node.yibody[ejoIndex].ejobody[i]);
                 }
