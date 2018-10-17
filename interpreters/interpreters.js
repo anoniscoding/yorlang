@@ -23,5 +23,6 @@ interpreters[constants.KW.NIGBATI] = require("./inodenigbati.js");
 interpreters[constants.KW.KURO] = require("./inodekuro.js");
 interpreters[constants.KW.FUN] = require("./inodefun.js");
 interpreters[constants.KW.YI] = require("./inodeyi.js");
+interpreters[constants.KW.ISE] = require("./inodeise.js");
 
 module.exports = interpreters;
