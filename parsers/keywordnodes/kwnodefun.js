@@ -36,8 +36,8 @@ class KwNodeFun extends BaseNode {
         };
 
         //This is not using parseBracketExpression because 
-        //parseBracketExpression expects L_PAREN
-        //L_PAREN in fun is optional
+        //parseBracketExpression expects L_BRACKET
+        //L_BRACKET in fun is optional
         this.setIsArithmeticExpression(false);
         node.condition = this.parseExpression();
         this.setIsArithmeticExpression(true); //set back to default
