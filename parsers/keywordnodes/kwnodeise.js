@@ -4,7 +4,10 @@ const BaseNode = require("../basenode.js");
 class KwNodeIse extends BaseNode {
 
     getNode() {
-        if (this.getBlockTypeStack().length > 0 && this.peekBlockTypeStack() !== constants.KW.ISE)
+        const isValidIseDeclaration = 
+            this.peekBlockTypeStack() === constants.PROGRAM || this.peekBlockTypeStack() === constants.KW.ISE;
+
+        if (!isValidIseDeclaration)
             this.lexer.throwError("Cannot create a yorlang function within a non function block");
         
         this.skipKeyword(constants.KW.ISE);
