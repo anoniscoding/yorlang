@@ -4,7 +4,7 @@ const BaseNode = require("../basenode.js");
 class KwNodeIse extends BaseNode {
 
     getNode() {
-        const isValidIseDeclaration = 
+        const isValidIseDeclaration = this.getBlockTypeStack().length == 0 ||
             this.peekBlockTypeStack() === constants.PROGRAM || this.peekBlockTypeStack() === constants.KW.ISE;
 
         if (!isValidIseDeclaration)
