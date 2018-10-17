@@ -6,7 +6,13 @@ class MainInterpreter {
     constructor(environment, astList) {
         this.environment = () => environment;
         this.astList = astList;
-        this.scopeStack = ["global"];
+        this.initScopeStack();
+    }
+
+    initScopeStack() {
+        const _scopeStack = ["global"];
+        this.getCurrentScope = () => _scopeStack[_scopeStack.length - 1];
+        this.scopeStack = () => [..._scopeStack]
     }
 
     getLeafValue(leaf) {
@@ -32,10 +38,6 @@ class MainInterpreter {
         for (let i = 0; i < this.astList.length; i++) {
             this.evaluateNode(this.astList[i]);
         }
-    }
-
-    getCurrentScope() {
-        return this.scopeStack[this.scopeStack.length - 1];
     }
 }
 
