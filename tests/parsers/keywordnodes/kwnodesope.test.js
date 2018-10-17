@@ -95,6 +95,12 @@ describe("KwNodeSope test suite", () => {
         expect(kwNodeSope.getNode.call(parser)).toBeTruthy();
     });
 
+    test("it should return node with operation sope with body of an expression", () => {
+        parser.lexer.inputStream.code = `${constants.KW.SOPE} 2 + 2;`;
+
+        expect(kwNodeSope.getNode.call(parser)).toBeTruthy();
+    });
+
     test("It should throw an error when given invalid input", () => {
         parser.lexer.inputStream.code = `${constants.KW.SOPE} (2,3);`;
 

@@ -11,8 +11,8 @@ class INodeSope extends IBase {
                 console.log(arrayLiteral[node.body.index]); break;
             case constants.GET_TI :
                 console.log(iNodeGetTi.interpreteNode.call(this, node.body)); break;
-            default : // node is a string/num/float
-                console.log(node.body.value);
+            default : // node is an expression
+                console.log(this.evaluateNode(node.body));
         }
     }
 }

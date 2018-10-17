@@ -7,7 +7,7 @@ class KwNodeSope extends BaseNode {
         this.skipKeyword(constants.KW.SOPE);
         const node = {
             operation: constants.KW.SOPE,
-            body: this.parseNodeLiteral()
+            body: this.parseExpression()
         }
         this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 

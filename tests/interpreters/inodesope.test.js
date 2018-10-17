@@ -42,6 +42,17 @@ describe("INodeSope test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 
+    test("it should print the value of an expression to the console", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.SOPE} "a" + 5;
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+        expect(global.console.log).toHaveBeenCalledWith("a5");
+    });
+
     test("it should print the value of variable to the console", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = [1,5];
