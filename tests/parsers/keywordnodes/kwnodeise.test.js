@@ -51,6 +51,24 @@ describe("KwNodeIse test suite", () => {
         expect(kwNodeIse.getNode.call(parser)).toBeTruthy();
     });
 
+    test("it should fail to create an ise node within an invalid block", () => {
+        parser.lexer.inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
+            tí oruko = orukoMi;
+            
+            ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
+                sopé i;
+
+                ${constants.KW.ISE} teAkori() {
+                    sopé "adupe";
+                }
+            }
+        
+            ${constants.KW.PADA} teAkori();
+        }`;
+
+        expect(() => kwNodeIse.getNode.call(parser)).toThrow();
+    });
+
     test("it should throw an error when given invalid ise", () => {
         parser.lexer.inputStream.code = `${constants.KW.ISE} (teOruko(a,b) {}`;
 
