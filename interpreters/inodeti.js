@@ -1,12 +1,12 @@
 const IBase = require("./ibase.js");
-const iNodeGetTi = require("./inodegetti.js");
 const constants = require("../constants.js");
 
 class INodeTi extends IBase {
 
     interpreteNode(node) {
-        if (node.left.operation == constants.ARRAY_ELEM) {
-            let arrayLiteral = iNodeGetTi.interpreteNode.call(this, node.left);
+        if (node.left.operation === constants.ARRAY_ELEM) {
+            const tiNode = { name: node.left.name, operation: constants.GET_TI };
+            let arrayLiteral = this.evaluateNode(tiNode);
             arrayLiteral[node.left.index] = this.evaluateNode(node.right);
             return;
         }
