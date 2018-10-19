@@ -24,5 +24,6 @@ interpreters[constants.KW.KURO] = require("./inodekuro.js");
 interpreters[constants.KW.FUN] = require("./inodefun.js");
 interpreters[constants.KW.YI] = require("./inodeyi.js");
 interpreters[constants.KW.ISE] = require("./inodeise.js");
+interpreters[constants.CALL_ISE] = require("./inodecallise.js");
 
 module.exports = interpreters;

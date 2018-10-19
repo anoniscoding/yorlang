@@ -1,0 +1,30 @@
+const IBase = require("./ibase.js");
+
+class INodeCallIse extends IBase {
+
+    interpreteNode(node) {
+        let iseNode = null;
+
+        for (let index = this.scopeStack().length - 1; index >= 0; index--) {
+            if (this.environment().getIse(this.scopeStack()[index], node.name) != undefined) {
+                iseNode = this.environment().getIse(this.scopeStack()[index], node.name);
+            }
+        } 
+
+        if (iseNode == null) throw new Error(`Ise ${node.name} is undefined`);
+
+        this.pushToScopeStack(iseNode.name);
+
+        for (let i = 0; i < iseNode.vars.length; i++) {
+            this.environment().setTi(this.getCurrentScope(), iseNode.vars[i].value, this.evaluateNode(node.args[i]));
+        }
+
+        for (let i = 0; i < iseNode.body.length; i++) {
+            this.evaluateNode(iseNode.body[i])
+        }
+
+        this.popFromScopeStack();
+    }
+}
+
+module.exports = new INodeCallIse();

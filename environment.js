@@ -18,17 +18,17 @@ class Environment {
             return this.vars[scope][name];
     }
 
-    setIse(scope, childIse, node) {
+    setIse(scope, iseName, iseNode) {
         if (this.iseDeclarations[scope] == undefined) {
             this.iseDeclarations[scope] = {};
         }
 
-        this.iseDeclarations[scope][childIse] = node;
+        this.iseDeclarations[scope][iseName] = iseNode;
     }
 
-    getIse(scope, childIse) {
+    getIse(scope, iseName) {
         if (this.iseDeclarations[scope] != undefined) {
-            return this.iseDeclarations[scope][childIse];
+            return this.iseDeclarations[scope][iseName];
         }
     }
 

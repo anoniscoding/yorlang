@@ -9,7 +9,7 @@ class INodeGetTi extends IBase {
             }
         }    
 
-        throw new Error(`Variable ${node.name} is not defined`);
+        throw new Error(`Variable ${node.name} is undefined`);
     }
 }
 

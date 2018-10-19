@@ -132,11 +132,7 @@ class Parser {
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
-        this.lexer.throwError(this.getGenericErrorMsg(token.type));
-    }
-
-    isNumStringVariable(token) {
-        return token.type == constants.NUMBER || token.type == constants.STRING || token.type == constants.VARIABLE;
+        this.lexer.throwError(this.getGenericErrorMsg(token.value));
     }
 
     parseBlock(currentBlock) {
@@ -193,10 +189,13 @@ class Parser {
             else throw new Error(`${kwNode} must be of type BaseNode`);
         }
 
-        if (token.type == constants.VARIABLE) { //then a function call is expected
+        if (token.type === constants.VARIABLE) { //then a function call is expected
             let nodeliteral = nodeLiterals[constants.CALL_ISE];
             if (nodeliteral instanceof BaseNode) {
                 nodeliteral = nodeliteral.getNode.call(this, this.lexer.next());
+
+                //Find a way to add this line to the callisenl class
+                //There other keywords that can require function call to get the value they to perform their operation
                 this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
                 return nodeliteral;
             } 
