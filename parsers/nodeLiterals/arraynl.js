@@ -10,7 +10,7 @@ class ArrayNl extends BaseNode {
             node.operation = constants.ARRAY;
             node.body = this.parseDelimited( 
                 constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
-                this.parseNodeLiteral.bind(this), null
+                this.parseExpression.bind(this), null
             );
         } else { //it is an array element a[0]
             node.operation = constants.ARRAY_ELEM;

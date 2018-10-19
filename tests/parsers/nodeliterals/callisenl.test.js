@@ -11,8 +11,7 @@ describe("CallIseLiteral test suite", () => {
         parser = new Parser(new Lexer(new InputStream()));
     });
 
-    //TODO remove isNumStringVariable and use parseNodeliteral so that arrays and array elements can be passed as params
-
+    //TODO should require semi colon at the end of function call
     
     test("it should parse valid callIse syntax with parameters", () => {
         parser.lexer.inputStream.code = `eeyan(1,"anu")`;
@@ -20,14 +19,8 @@ describe("CallIseLiteral test suite", () => {
 
         const expectedNode = {
             args: [
-                {
-                    type: constants.NUMBER, 
-                    value: 1
-                }, 
-                {
-                    type: constants.STRING, 
-                    value: "anu"
-                }
+                {left: null, operation: null, right: null, value: 1}, 
+                {left: null, operation: null, right: null, value: "anu"}
             ], 
             name: "eeyan", 
             operation: constants.CALL_ISE

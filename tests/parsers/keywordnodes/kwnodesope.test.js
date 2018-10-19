@@ -61,7 +61,7 @@ describe("KwNodeSope test suite", () => {
             body: {
                 operation: constants.CALL_ISE,
                 name: "sum",
-                args: [{type: constants.NUMBER, value: 1}, {type: constants.NUMBER, value: 2}]
+                args: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}]
             }
         }
 

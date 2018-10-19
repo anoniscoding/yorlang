@@ -9,7 +9,7 @@ class CallIseNl extends BaseNode {
             name: token.value,
             args: this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
-                this.getTokenThatSatisfiesPredicate.bind(this), this.isNumStringVariable.bind(this)
+                this.parseExpression.bind(this), null
             )
         };
     }

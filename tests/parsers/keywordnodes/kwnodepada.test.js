@@ -61,7 +61,10 @@ describe("KwNodePada test suite", () => {
             body: {
                 operation: constants.CALL_ISE,
                 name: "sum",
-                args: [{type: constants.NUMBER, value: 1}, {type: constants.VARIABLE, value: "a"}]
+                args: [
+                    {left: null, operation: null, right: null, value: 1}, 
+                    {name: "a", operation: constants.GET_TI}
+                ]
             }
         };
 
