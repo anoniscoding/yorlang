@@ -1,6 +1,5 @@
 const IBase = require("./ibase.js");
 const contansts = require("../constants.js");
-const iNodeGetTi = require("./inodegetti.js");
 
 class INodeArrayElement extends IBase {
 
