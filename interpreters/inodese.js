@@ -4,7 +4,7 @@ const constants = require("../constants.js");
 class INodeSe extends IBase {
 
     interpreteNode(node) {
-        if (this.evaluateNode(node.condition) !== constants.KW.IRO) {
+        if (this.evaluateNode(node.condition) === constants.KW.OOTO) {
             for (let i = 0; i < node.then.length; i++) {
                 const returnedValue = this.evaluateNode(node.then[i]);
                 if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
