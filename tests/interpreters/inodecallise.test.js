@@ -72,7 +72,6 @@ describe("INodeCallIse test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        ;
 
         expect(() => mainInterpreter.evaluateAst()).toThrow();
     });
@@ -125,5 +124,29 @@ describe("INodeCallIse test suite", () => {
 
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("0812035532");
+    });
+
+    test("it should return a value from an ise function call", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.ISE} gbaOruko(fname) {
+                ${constants.KW.TI} b = [1,2,3];
+                ${constants.KW.TI} c = 4;
+
+                ${constants.KW.SE} (c > b[0]) {
+                    ${constants.KW.PADA} b[0] +" "+ fname;
+                } ${constants.KW.TABI} {
+                    ${constants.KW.PADA} "a o ni fun e loruko";
+                }
+            }
+
+            ${constants.KW.TI} a = gbaOruko("femi");
+            ${constants.KW.SOPE} a;
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+
+        expect(global.console.log).toHaveBeenCalledWith("1 femi");
     });
 });

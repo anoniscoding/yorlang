@@ -20,7 +20,8 @@ class INodeCallIse extends IBase {
         }
 
         for (let i = 0; i < iseNode.body.length; i++) {
-            this.evaluateNode(iseNode.body[i]);
+            const returnedValue = this.evaluateNode(iseNode.body[i]);
+            if (returnedValue != undefined) return returnedValue;
         }
 
         this.popFromScopeStack();
