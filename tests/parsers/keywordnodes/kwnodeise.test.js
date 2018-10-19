@@ -18,7 +18,7 @@ describe("KwNodeIse test suite", () => {
             body: [], 
             name: "teOruko", 
             operation: constants.KW.ISE, 
-            vars: [
+            varTokens: [
                 {
                     type: constants.VARIABLE, 
                     value: "a"

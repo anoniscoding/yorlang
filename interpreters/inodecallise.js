@@ -15,12 +15,12 @@ class INodeCallIse extends IBase {
 
         this.pushToScopeStack(iseNode.name);
 
-        for (let i = 0; i < iseNode.vars.length; i++) {
-            this.environment().setTi(this.getCurrentScope(), iseNode.vars[i].value, this.evaluateNode(node.args[i]));
+        for (let i = 0; i < iseNode.varTokens.length; i++) {
+            this.environment().setTi(this.getCurrentScope(), iseNode.varTokens[i].value, this.evaluateNode(node.args[i]));
         }
 
         for (let i = 0; i < iseNode.body.length; i++) {
-            this.evaluateNode(iseNode.body[i])
+            this.evaluateNode(iseNode.body[i]);
         }
 
         this.popFromScopeStack();

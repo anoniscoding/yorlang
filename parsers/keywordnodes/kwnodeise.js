@@ -15,7 +15,7 @@ class KwNodeIse extends BaseNode {
         return {
             operation: constants.KW.ISE,
             name: this.parseVarname(),
-            vars: this.parseDelimited( 
+            varTokens: this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA,
                 this.getTokenThatSatisfiesPredicate.bind(this), (token) => token.type === constants.VARIABLE
             ),

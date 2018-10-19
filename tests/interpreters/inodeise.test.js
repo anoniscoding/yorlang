@@ -31,7 +31,7 @@ describe("INodeIse test suite", () => {
             }], 
             name: "teOruko", 
             operation: constants.KW.ISE, 
-            vars: [
+            varTokens: [
                 {
                     type: constants.VARIABLE, 
                     value: "fname"
