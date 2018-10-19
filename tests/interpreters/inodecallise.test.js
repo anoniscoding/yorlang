@@ -101,4 +101,29 @@ describe("INodeCallIse test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi 0812035532");
 
     });
+
+    test("it should call an ise function in a parent scope", () => {
+        parser.lexer.inputStream.code = `
+        ${constants.KW.TI} sname = "karounwi";
+
+            ${constants.KW.ISE} tePhoneNoPeluOruko(no) {
+                ${constants.KW.SOPE} no;
+            }
+
+            ${constants.KW.ISE} teOruko(fname) {
+                ${constants.KW.SOPE} sname +" "+ fname;
+
+                tePhoneNoPeluOruko("0812035532");
+            }
+
+            teOruko("femi");
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+
+        expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
+        expect(global.console.log).toHaveBeenCalledWith("0812035532");
+    });
 });
