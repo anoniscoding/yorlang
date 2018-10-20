@@ -6,21 +6,34 @@ class INodeYi extends IBase {
         const yivalue = this.evaluateNode(node.yivalue);
 
         for (let ejoIndex = 0; ejoIndex < node.yibody.length; ejoIndex++) {
-            const isEjoValueMatchYiValue = node.yibody[ejoIndex].ejovalue.value === yivalue;
-
-            if (isEjoValueMatchYiValue) {
-                for (let i = 0; i < node.yibody[ejoIndex].ejobody.length; i++) {
-                    this.evaluateNode(node.yibody[ejoIndex].ejobody[i]);
-                }
+            if (INodeYi.isEjoValueMatchYiValue(this, node.yibody[ejoIndex], yivalue)) {
+                INodeYi.runMatchedEjoBody(this, node.yibody[ejoIndex].ejobody);
                 break;
             }
 
-            const canRunPadasi = (ejoIndex === node.yibody.length - 1) && (node.padasi != undefined);
-            if (canRunPadasi) {
-                for (let padasiIndex = 0; padasiIndex < node.padasi.length; padasiIndex++) {
-                    this.evaluateNode(node.padasi[padasiIndex]);
-                }
+            if (INodeYi.canRunPadasi(ejoIndex, node)) {
+                INodeYi.runPadasiCase(this, node.padasi);
             }
+        }
+    }
+
+    static isEjoValueMatchYiValue(context, ejoCase, yivalue) {
+        return context.evaluateNode(ejoCase.ejovalue) === yivalue;
+    }
+
+    static runMatchedEjoBody(context, ejoBody) {
+        for (let i = 0; i < ejoBody.length; i++) {
+            context.evaluateNode(ejoBody[i]);
+        }
+    }
+
+    static canRunPadasi(ejoIndex, node) {
+        return (ejoIndex === node.yibody.length - 1) && (node.padasi != undefined);
+    }
+
+    static runPadasiCase(context, padasiBody) {
+        for (let padasiIndex = 0; padasiIndex < padasiBody.length; padasiIndex++) {
+            context.evaluateNode(padasiBody[padasiIndex]);
         }
     }
 }

@@ -4,20 +4,22 @@ const constants = require("../constants.js");
 class INodeFun extends IBase {
 
     interpreteNode(node) {
-        let isBreakFunLoop = false;
         this.evaluateNode(node.init);
 
         while (this.evaluateNode(node.condition) !== constants.KW.IRO) {
-            for (let i = 0; i < node.body.length; i++) {
-                if (this.evaluateNode(node.body[i]) === constants.KW.KURO) {
-                    isBreakFunLoop = true;
-                    break;
-                }
-            }
-
-            if (isBreakFunLoop) break;
+            if (INodeFun.hasFinishedRunningFunBody(this, node.body)) break;
             this.evaluateNode(node.increment);
         }
+    }
+
+    static hasFinishedRunningFunBody(context, funBody) {
+        for (let i = 0; i < funBody.length; i++) {
+            if (context.evaluateNode(funBody[i]) === constants.KW.KURO) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

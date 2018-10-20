@@ -3,28 +3,38 @@ const IBase = require("./ibase.js");
 class INodeCallIse extends IBase {
 
     interpreteNode(node) {
-        let iseNode = null;
-
-        for (let index = this.scopeStack().length - 1; index >= 0; index--) {
-            if (this.environment().getIse(this.scopeStack()[index], node.name) != undefined) {
-                iseNode = this.environment().getIse(this.scopeStack()[index], node.name);
-            }
-        } 
+        let iseNode = INodeCallIse.getIseNode(this, node.name);
 
         if (iseNode == null) throw new Error(`Ise ${node.name} is undefined`);
 
         this.pushToScopeStack(iseNode.name);
+        INodeCallIse.setIseNodeParam(this, iseNode.varTokens, node.args);
+        const returnedValue = INodeCallIse.runIseNodeBody(this, iseNode.body); 
+        this.popFromScopeStack();
 
-        for (let i = 0; i < iseNode.varTokens.length; i++) {
-            this.environment().setTi(this.getCurrentScope(), iseNode.varTokens[i].value, this.evaluateNode(node.args[i]));
+        return returnedValue; //return the value that is returned by an encountered pada statement within ise body
+    }
+
+    static getIseNode(context, iseName) {
+        for (let index = context.scopeStack().length - 1; index >= 0; index--) {
+            if (context.environment().getIse(context.scopeStack()[index], iseName) != undefined) {
+                return context.environment().getIse(context.scopeStack()[index], iseName);
+            }
         }
+        return null
+    }
 
-        for (let i = 0; i < iseNode.body.length; i++) {
-            const returnedValue = this.evaluateNode(iseNode.body[i]);
+    static setIseNodeParam(context, iseNodeVarTokens, iseNodeArgValues) {
+        for (let i = 0; i < iseNodeVarTokens.length; i++) {
+            context.environment().setTi(context.getCurrentScope(), iseNodeVarTokens[i].value, context.evaluateNode(iseNodeArgValues[i]));
+        }
+    }
+
+    static runIseNodeBody(context, iseNodeBody) {
+        for (let i = 0; i < iseNodeBody.length; i++) {
+            const returnedValue = context.evaluateNode(iseNodeBody[i]);
             if (returnedValue != undefined) return returnedValue;
         }
-
-        this.popFromScopeStack();
     }
 }
 

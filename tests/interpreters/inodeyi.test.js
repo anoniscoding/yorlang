@@ -37,8 +37,8 @@ describe("INodeFun test suite", () => {
 
         ${constants.KW.YI} (oruko) {
             ${constants.KW.EJO} 1:
-                ${constants.KW.YI} (1+2) {
-                    ${constants.KW.EJO} 1:
+                ${constants.KW.YI} (1+5) {
+                    ${constants.KW.EJO} 3+3:
                         ${constants.KW.SOPE} "it is anu";
                     ${constants.KW.EJO} 3:
                         ${constants.KW.SOPE} "it is three";
@@ -50,7 +50,7 @@ describe("INodeFun test suite", () => {
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
         mainInterpreter.evaluateAst();
-        expect(global.console.log).toHaveBeenCalledWith("it is three");
+        expect(global.console.log).toHaveBeenCalledWith("it is anu");
     });
 
     test("it should interprete yi node with padasi", () => {

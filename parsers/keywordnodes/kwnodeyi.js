@@ -29,20 +29,20 @@ class KwNodeYi extends BaseNode {
             node.yibody.push(kwNodeEjo.getNode.call(this));
         }
 
-        node = this.getYiNodeWithPadasi(node);
+        node = KwNodeYi.getYiNodeWithPadasi(this, node);
         this.skipPunctuation(constants.SYM.R_PAREN);
         this.popBlockTypeStack();
 
         return node;
     }
 
-    getYiNodeWithPadasi(node) {
-        if (this.isKeyword(constants.KW.PADASI)) {
-            this.skipKeyword(constants.KW.PADASI);
-            this.skipPunctuation(constants.SYM.COLON);
+    static getYiNodeWithPadasi(context, node) {
+        if (context.isKeyword(constants.KW.PADASI)) {
+            context.skipKeyword(constants.KW.PADASI);
+            context.skipPunctuation(constants.SYM.COLON);
 
-            while (this.lexer.isNotEndOfFile() && this.lexer.peek().value !== constants.SYM.R_PAREN) {
-                node.padasi.push(this.parseAst());
+            while (context.lexer.isNotEndOfFile() && context.lexer.peek().value !== constants.SYM.R_PAREN) {
+                node.padasi.push(context.parseAst());
             }
         }
 
@@ -61,19 +61,20 @@ class KwNodeEjo extends BaseNode {
 
         this.skipKeyword(constants.KW.EJO);
         node.ejovalue = this.parseExpression();
-        this.skipPunctuation(constants.SYM.COLON);
+        this.skipPunctuation(constants.SYM.COLON);  
 
-        const canParseEjoStatements = () =>  this.lexer.isNotEndOfFile() 
-                                        && this.lexer.peek().value !== constants.KW.EJO 
-                                        && this.lexer.peek().value !== constants.KW.PADASI  
-                                        && this.lexer.peek().value !== constants.SYM.R_PAREN;    
-        
-
-        while (canParseEjoStatements()) {
+        while (KwNodeEjo.canParseEjoStatements(this)) {
             node.ejobody.push(this.parseAst());
         }
 
         return node;
+    }
+
+    static canParseEjoStatements(context) {
+        return context.lexer.isNotEndOfFile() 
+                        && context.lexer.peek().value !== constants.KW.EJO 
+                        && context.lexer.peek().value !== constants.KW.PADASI  
+                        && context.lexer.peek().value !== constants.SYM.R_PAREN;
     }
 }
 

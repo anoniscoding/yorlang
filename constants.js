@@ -78,19 +78,11 @@ const REGEX = {
     IDENTIFIER: /[a-z]|í|é|ò|ó|à|ú/i,
 };
 
-const PARSERS_HELPERS = {
-    GET_YI_NODE_WITH_PADASI: "getYiNodeWithPadasi",
-    PARSE_FUN_NODE: "parseFunNode",
-    IS_VALID_FUN_INIT_STATEMENT: "isValidFunInitStatement",
-    IS_INVALID_FUN_INCREMENT_STATEMENT: "isInValidFunIncrementStatement"
-};
-
 const constants = {
     KW: KEYWORDS,
     SYM: SYMBOLS,
     LIST: LIST,
     REGEX: REGEX,
-    PH: PARSERS_HELPERS,
     KEYWORD: "keyword",
     VARIABLE: "variable",
     STRING: "string",

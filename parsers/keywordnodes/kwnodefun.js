@@ -17,19 +17,19 @@ class KwNodeFun extends BaseNode {
 
         const init = kwNodeTi.getNode.call(this);
 
-        if (this.isValidFunInitStatement(init)) {
-            return this.parseFunNode(init);
+        if (KwNodeFun.isValidFunInitStatement(init)) {
+            return KwNodeFun.parseFunNode(this, init);
         }
 
         this.lexer.throwError(`Invalid ${constants.KW.FUN} initialization block`);
     }
 
-    isValidFunInitStatement(initNode) {
+    static isValidFunInitStatement(initNode) {
         //i.e the init statement must be initialized with number and not a string or variable
         return /[0-9]+/i.test(initNode.right.value);
     }
 
-    parseFunNode(init) {
+    static parseFunNode(context, init) {
         const node = {
             operation : constants.KW.FUN,
             init : init
@@ -38,24 +38,24 @@ class KwNodeFun extends BaseNode {
         //This is not using parseBracketExpression because 
         //parseBracketExpression expects L_BRACKET
         //L_BRACKET in fun is optional
-        this.setIsArithmeticExpression(false);
-        node.condition = this.parseExpression();
-        this.setIsArithmeticExpression(true); //set back to default
+        context.setIsArithmeticExpression(false);
+        node.condition = context.parseExpression();
+        context.setIsArithmeticExpression(true); //set back to default
         
-        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        context.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
-        node.increment = kwNodeTi.getNode.call(this);
+        node.increment = kwNodeTi.getNode.call(context);
 
-        if (this.isInValidFunIncrementStatement(node))
-            this.lexer.throwError("Invalid yorlang decrement or increment operation");
+        if (KwNodeFun.isInValidFunIncrementStatement(node))
+            context.lexer.throwError("Invalid yorlang decrement or increment operation");
 
-        this.skipPunctuation(constants.SYM.R_BRACKET);
-        node.body = this.parseBlock(constants.KW.FUN);
+        context.skipPunctuation(constants.SYM.R_BRACKET);
+        node.body = context.parseBlock(constants.KW.FUN);
 
         return node;
     }
 
-    isInValidFunIncrementStatement(funNode) {
+    static isInValidFunIncrementStatement(funNode) {
         const incrementNode = funNode.increment.right;
 
         if ([constants.SYM.PLUS, constants.SYM.MINUS].indexOf(incrementNode.operation) >= 0) {

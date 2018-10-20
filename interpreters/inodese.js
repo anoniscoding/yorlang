@@ -5,19 +5,20 @@ class INodeSe extends IBase {
 
     interpreteNode(node) {
         if (this.evaluateNode(node.condition) === constants.KW.OOTO) {
-            for (let i = 0; i < node.then.length; i++) {
-                const returnedValue = this.evaluateNode(node.then[i]);
-                if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
-                else if (returnedValue != undefined) return returnedValue; //it's an ise return (or pada) value
-            }
+            return INodeSe.runSeBody(this, node.then);
         } else {
             if (node.else != undefined) {
-                for (let i = 0; i < node.else.length; i++) {
-                    const returnedValue = this.evaluateNode(node.else[i]);
-                    if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
-                    else if (returnedValue != undefined) return returnedValue;
-                }
+                return INodeSe.runSeBody(this, node.else);
             }
+        }
+    }
+
+    static runSeBody(context, seBody) {
+        for (let i = 0; i < seBody.length; i++) {
+            const returnedValue = context.evaluateNode(seBody[i]);
+
+            if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
+            else if (returnedValue != undefined) return returnedValue; //it's an ise return (or pada) value
         }
     }
 }

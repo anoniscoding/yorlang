@@ -1,7 +1,6 @@
 const constants = require("../constants.js");
 const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
-const helpers = require("./parser_helper_function.js");
 const BaseNode = require("./basenode.js");
 
 class Parser {
@@ -218,10 +217,5 @@ class Parser {
         return {type: constants.PROGRAM, astList: astList};
     }
 }
-
-const helpersList = Object.keys(helpers);
-helpersList.forEach((helperName,index,array) => {
-    Parser.prototype[helperName] = helpers[helperName];
-});
 
 module.exports = Parser;
