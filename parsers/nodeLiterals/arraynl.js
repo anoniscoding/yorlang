@@ -4,7 +4,7 @@ const constants = require("../../constants.js");
 class ArrayNl extends BaseNode {
 
     getNode(arrayNameToken) {
-        let node = {};
+        const node = {};
 
         if (arrayNameToken == undefined) { //it is an array literal e.g [1,2,3]
             node.operation = constants.ARRAY;
