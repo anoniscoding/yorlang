@@ -1,5 +1,4 @@
 const IBase = require("./ibase.js");
-const constants = require("../constants.js");
 
 class INodeSope extends IBase {
 
