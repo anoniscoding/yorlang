@@ -10,7 +10,6 @@ class KwNodeTi extends BaseNode {
         const node =  {
             operation: constants.SYM.ASSIGN,
         };
-
         node.left = this.parseVarname();
 
         const nextTokenValue = this.lexer.peek().value;

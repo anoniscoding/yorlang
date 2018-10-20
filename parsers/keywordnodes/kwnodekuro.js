@@ -4,10 +4,7 @@ const BaseNode = require("../basenode.js");
 class KwNodeKuro extends BaseNode {
 
     getNode() {
-        const isExpectedKuroStatement = this.getBlockTypeStack().indexOf(constants.KW.FUN) >= 0 ||
-            this.getBlockTypeStack().indexOf(constants.KW.NIGBATI) >= 0;
-
-        if (isExpectedKuroStatement) {
+        if (KwNodeKuro.isExpectedKuroStatement(this)) {
             const node = {
                 operation: this.lexer.next().value,
             };
@@ -17,6 +14,11 @@ class KwNodeKuro extends BaseNode {
         }
 
         throw new Error("Yorlang Kuro keyword not expected");
+    }
+
+    static isExpectedKuroStatement(context) {
+        return context.getBlockTypeStack().indexOf(constants.KW.FUN) >= 0 ||
+                                            context.getBlockTypeStack().indexOf(constants.KW.NIGBATI) >= 0;
     }
 }
 

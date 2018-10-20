@@ -3,10 +3,8 @@ const BaseNode = require("../basenode.js");
 
 class KwNodePada extends BaseNode {
 
-    getNode() {
-        const isExpectedPadaStatement = this.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0;
-        
-        if (isExpectedPadaStatement) {
+    getNode() {        
+        if (KwNodePada.isExpectedPadaStatement(this)) {
             this.skipKeyword(constants.KW.PADA);
             const node = {
                 operation: constants.KW.PADA,
@@ -18,6 +16,10 @@ class KwNodePada extends BaseNode {
         }
         
         throw new Error("Yorlang pada keyword not expected in a non function block");
+    }
+
+    static isExpectedPadaStatement(context) {
+        return context.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0
     }
 }
 

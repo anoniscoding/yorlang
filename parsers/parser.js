@@ -192,9 +192,6 @@ class Parser {
             let nodeliteral = nodeLiterals[constants.CALL_ISE];
             if (nodeliteral instanceof BaseNode) {
                 nodeliteral = nodeliteral.getNode.call(this, this.lexer.next());
-
-                //Find a way to add this line to the callisenl class
-                //There other keywords that can require function call to get the value they to perform their operation
                 this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
                 return nodeliteral;
             } 
