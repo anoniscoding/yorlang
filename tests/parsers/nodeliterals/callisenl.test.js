@@ -18,7 +18,7 @@ describe("CallIseLiteral test suite", () => {
         isename = parser.lexer.next();
 
         const expectedNode = {
-            args: [
+            paramValues: [
                 {left: null, operation: null, right: null, value: 1}, 
                 {left: null, operation: null, right: null, value: "anu"}
             ], 
@@ -34,7 +34,7 @@ describe("CallIseLiteral test suite", () => {
         isename = parser.lexer.next();
 
         const expectedNode = {
-            args: [], 
+            paramValues: [], 
             name: "eeyan", 
             operation: constants.CALL_ISE
         };

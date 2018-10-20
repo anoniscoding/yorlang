@@ -7,7 +7,7 @@ class CallIseNl extends BaseNode {
         return {
             operation: constants.CALL_ISE,
             name: token.value,
-            args: this.parseDelimited( 
+            paramValues: this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
                 this.parseExpression.bind(this), null
             )

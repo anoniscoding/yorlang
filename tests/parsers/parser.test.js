@@ -125,7 +125,7 @@ describe("Parser test suite", () => {
         parser.lexer.inputStream.code = `koOruko();`;
 
         const expectedNode = {
-            args: [], 
+            paramValues: [], 
             name: "koOruko", 
             operation: constants.CALL_ISE
         };

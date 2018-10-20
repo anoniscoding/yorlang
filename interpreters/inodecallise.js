@@ -3,12 +3,12 @@ const IBase = require("./ibase.js");
 class INodeCallIse extends IBase {
 
     interpreteNode(node) {
-        let iseNode = INodeCallIse.getIseNode(this, node.name);
+        const iseNode = INodeCallIse.getIseNode(this, node.name);
 
         if (iseNode == null) throw new Error(`Ise ${node.name} is undefined`);
 
         this.pushToScopeStack(iseNode.name);
-        INodeCallIse.setIseNodeParam(this, iseNode.varTokens, node.args);
+        INodeCallIse.setIseNodeParam(this, iseNode.paramTokens, node.paramValues);
         const returnedValue = INodeCallIse.runIseNodeBody(this, iseNode.body); 
         this.popFromScopeStack();
 
@@ -24,9 +24,9 @@ class INodeCallIse extends IBase {
         return null
     }
 
-    static setIseNodeParam(context, iseNodeVarTokens, iseNodeArgValues) {
-        for (let i = 0; i < iseNodeVarTokens.length; i++) {
-            context.environment().setTi(context.getCurrentScope(), iseNodeVarTokens[i].value, context.evaluateNode(iseNodeArgValues[i]));
+    static setIseNodeParam(context, iseNodeParamTokens, iseNodeParamValues) {
+        for (let i = 0; i < iseNodeParamTokens.length; i++) {
+            context.environment().setTi(context.getCurrentScope(), iseNodeParamTokens[i].value, context.evaluateNode(iseNodeParamValues[i]));
         }
     }
 
