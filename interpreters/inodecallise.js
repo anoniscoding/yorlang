@@ -12,7 +12,7 @@ class INodeCallIse extends IBase {
         const returnedValue = INodeCallIse.runIseNodeBody(this, iseNode.body); 
         this.popFromScopeStack();
 
-        return returnedValue; //return the value that is returned by an encountered pada statement within ise body
+        return returnedValue; //return the value that is returned by an encountered pada statement within an ise body
     }
 
     static getIseNode(context, iseName) {

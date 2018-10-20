@@ -126,7 +126,7 @@ describe("INodeCallIse test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith("0812035532");
     });
 
-    test("it should return a value from an ise function call", () => {
+    test("it should return a value from an se block within an ise function", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.ISE} gbaOruko(fname) {
                 ${constants.KW.TI} b = [1,2,3];
@@ -148,5 +148,49 @@ describe("INodeCallIse test suite", () => {
         mainInterpreter.evaluateAst();
 
         expect(global.console.log).toHaveBeenCalledWith("1 femi");
+    });
+
+    test("it should return a value from a nigbati block within an ise function", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.ISE} gbaOnka() {
+                ${constants.KW.TI} b = [1,2,3];
+                ${constants.KW.TI} c = 4;
+
+                ${constants.KW.NIGBATI} (c < 6) {
+                    ${constants.KW.PADA} c;
+                }
+            }
+
+            ${constants.KW.TI} a = gbaOnka();
+            ${constants.KW.SOPE} a;
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+
+        expect(global.console.log).toHaveBeenCalledWith(4);
+    });
+
+    test("it should return a value from a fun block within an ise function", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.ISE} gbaOnka() {
+                ${constants.KW.TI} b = [1,2,3];
+                ${constants.KW.TI} c = 4;
+
+                ${constants.KW.FUN} (${constants.KW.TI} i = 0; i < 10; ${constants.KW.TI} i = i + 1;) {
+                    ${constants.KW.PADA} i;
+                }
+            }
+
+            ${constants.KW.TI} a = gbaOnka();
+            ${constants.KW.SOPE} a;
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.astList = program.astList;
+        mainInterpreter.evaluateAst();
+
+        expect(global.console.log).toHaveBeenCalledWith(0);
     });
 });

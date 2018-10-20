@@ -5,18 +5,12 @@ class INodeNigbati extends IBase {
 
     interpreteNode(node) {
         while (this.evaluateNode(node.condition) !== constants.KW.IRO) {
-            if (INodeNigbati.hasFinisihedRunningNigbatiBody(this, node.body)) break;
+            for (let i = 0; i < node.body.length; i++) {
+                const returnedValue = this.evaluateNode(node.body[i]);
+                if (returnedValue === constants.KW.KURO) return;
+                if (returnedValue != undefined) return returnedValue;
+            }        
         }
-    }
-
-    static hasFinisihedRunningNigbatiBody(context, nigbatiBody) {
-        for (let i = 0; i < nigbatiBody.length; i++) {
-            if (context.evaluateNode(nigbatiBody[i]) === constants.KW.KURO) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
 

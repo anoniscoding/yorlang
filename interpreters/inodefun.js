@@ -7,19 +7,14 @@ class INodeFun extends IBase {
         this.evaluateNode(node.init);
 
         while (this.evaluateNode(node.condition) !== constants.KW.IRO) {
-            if (INodeFun.hasFinishedRunningFunBody(this, node.body)) break;
+            for (let i = 0; i < node.body.length; i++) {
+                const returnedValue = this.evaluateNode(node.body[i]);
+                if (returnedValue === constants.KW.KURO) return;
+                if (returnedValue != undefined) return returnedValue;
+            }            
+            
             this.evaluateNode(node.increment);
         }
-    }
-
-    static hasFinishedRunningFunBody(context, funBody) {
-        for (let i = 0; i < funBody.length; i++) {
-            if (context.evaluateNode(funBody[i]) === constants.KW.KURO) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
 
