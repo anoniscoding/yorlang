@@ -30,10 +30,9 @@ class KwNodeFun extends BaseNode {
     }
 
     static parseFunNode(context, init) {
-        const node = {
-            operation : constants.KW.FUN,
-            init : init
-        };
+        const node = {};
+        node.operation = constants.KW.FUN;
+        node.init = init;
 
         //This is not using bracketExpressionNl because bracketExpressionNl expects L_BRACKET
         //L_BRACKET in fun is optional

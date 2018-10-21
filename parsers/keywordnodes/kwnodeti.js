@@ -6,7 +6,7 @@ class KwNodeTi extends BaseNode {
 
     getNode() {
         this.skipKeyword(constants.KW.TI);
-        
+               
         const varName = this.parseVarname();
 
         const node =  {};
