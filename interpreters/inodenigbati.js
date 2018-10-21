@@ -1,6 +1,5 @@
 const IBase = require("./ibase.js");
 const constants = require("../constants.js");
-const loopHelper = require("./loophelper.js");
 
 class INodeNigbati extends IBase {
 
