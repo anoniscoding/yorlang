@@ -6,12 +6,11 @@ class KwNodeTi extends BaseNode {
 
     getNode() {
         this.skipKeyword(constants.KW.TI);
-
-        const node =  {
-            operation: constants.SYM.ASSIGN,
-        };
+        
         const varName = this.parseVarname();
 
+        const node =  {};
+        node.operation = constants.SYM.ASSIGN;
         node.left = KwNodeTi.getLeftNode(this, varName) || varName;
 
         this.skipOperator(constants.SYM.ASSIGN);
