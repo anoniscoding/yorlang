@@ -6,10 +6,9 @@ class KwNodePada extends BaseNode {
     getNode() {        
         if (KwNodePada.isExpectedPadaStatement(this)) {
             this.skipKeyword(constants.KW.PADA);
-            const node = {
-                operation: constants.KW.PADA,
-                body: this.parseExpression()
-            };
+            const node = {};
+            node.operation = constants.KW.PADA;
+            node.body = this.parseExpression();
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
     
             return node;
