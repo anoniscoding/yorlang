@@ -10,8 +10,6 @@ describe("CallIseLiteral test suite", () => {
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
     });
-
-    //TODO should require semi colon at the end of function call
     
     test("it should parse valid callIse syntax with parameters", () => {
         parser.lexer.inputStream.code = `eeyan(1,"anu");`;
