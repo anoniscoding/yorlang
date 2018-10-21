@@ -111,7 +111,7 @@ class Lexer {
 
     //The next function dosent always call readNext()
     //because it might have been peeked before 
-    //(in which case readNext() was already called and the stream advanced)
+    //(in which case readNext() was already called and the inputstream has advanced)
     next() {
         const token = this.current;
         this.current = null;
