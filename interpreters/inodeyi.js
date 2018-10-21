@@ -31,9 +31,9 @@ class INodeYi extends IBase {
         return (ejoIndex === node.yibody.length - 1) && (node.padasi != undefined);
     }
 
-    static runPadasi(context, padasiBody) {
-        for (let padasiIndex = 0; padasiIndex < padasiBody.length; padasiIndex++) {
-            context.evaluateNode(padasiBody[padasiIndex]);
+    static runPadasi(context, padasi) {
+        for (let padasiIndex = 0; padasiIndex < padasi.length; padasiIndex++) {
+            context.evaluateNode(padasi[padasiIndex]);
         }
     }
 }
