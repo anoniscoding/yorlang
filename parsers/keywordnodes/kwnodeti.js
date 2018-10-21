@@ -12,7 +12,6 @@ class KwNodeTi extends BaseNode {
         const node =  {};
         node.operation = constants.SYM.ASSIGN;
         node.left = KwNodeTi.getLeftNode(this, varName) || varName;
-
         this.skipOperator(constants.SYM.ASSIGN);
         node.right  = this.parseExpression();
         this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);

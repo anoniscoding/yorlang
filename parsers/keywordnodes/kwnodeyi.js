@@ -14,17 +14,13 @@ class KwNodeYi extends BaseNode {
     getNode() {
         const node = {};
         node.operation = constants.KW.YI;
-
         this.pushToBlockTypeStack(constants.KW.YI);
-        
         this.skipKeyword(constants.KW.YI);
         node.yivalue = bracketExpressionNl.getNode.call(this);
-
         this.skipPunctuation(constants.SYM.L_PAREN);
         node.yibody = KwNodeYi.getYiBody(this);        
         node.padasi = KwNodeYi.getPadasi(this);
         this.skipPunctuation(constants.SYM.R_PAREN);
-
         this.popBlockTypeStack();
 
         return node;
@@ -61,18 +57,22 @@ class KwNodeEjo extends BaseNode {
     getNode() {
         const node = {};
         node.operation = constants.KW.EJO;
-        node.ejovalue = null;
-        node.ejobody = [];
-
         this.skipKeyword(constants.KW.EJO);
         node.ejovalue = this.parseExpression();
         this.skipPunctuation(constants.SYM.COLON);  
-
-        while (KwNodeEjo.canParseEjoStatements(this)) {
-            node.ejobody.push(this.parseAst());
-        }
+        node.ejobody = KwNodeEjo.getEjoBody(this);
 
         return node;
+    }
+
+    static getEjoBody(context) {
+        const ejoBody = [];
+
+        while (KwNodeEjo.canParseEjoStatements(context)) {
+            ejoBody.push(context.parseAst());
+        }
+        
+        return ejoBody;
     }
 
     static canParseEjoStatements(context) {
