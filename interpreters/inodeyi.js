@@ -12,7 +12,7 @@ class INodeYi extends IBase {
             }
 
             if (INodeYi.canRunPadasi(ejoIndex, node)) {
-                INodeYi.runPadasiCase(this, node.padasi);
+                INodeYi.runPadasi(this, node.padasi);
             }
         }
     }
@@ -31,7 +31,7 @@ class INodeYi extends IBase {
         return (ejoIndex === node.yibody.length - 1) && (node.padasi != undefined);
     }
 
-    static runPadasiCase(context, padasiBody) {
+    static runPadasi(context, padasiBody) {
         for (let padasiIndex = 0; padasiIndex < padasiBody.length; padasiIndex++) {
             context.evaluateNode(padasiBody[padasiIndex]);
         }
