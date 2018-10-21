@@ -32,7 +32,7 @@ describe("INodeNigbati test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
@@ -47,7 +47,7 @@ describe("INodeNigbati test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
@@ -67,7 +67,7 @@ describe("INodeNigbati test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(4);
     });
 });

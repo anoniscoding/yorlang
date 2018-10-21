@@ -41,7 +41,7 @@ describe("INodeIse test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teOruko")).toEqual(expectedNode);
     });
 
@@ -58,7 +58,7 @@ describe("INodeIse test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        expect(() => mainInterpreter.evaluateAst()).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 
     test("It should save nested ise node", () => {
@@ -73,7 +73,7 @@ describe("INodeIse test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teName")).toBeTruthy();
     });
 

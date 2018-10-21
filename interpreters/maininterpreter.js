@@ -36,7 +36,7 @@ class MainInterpreter {
         return leafValue;
     }
 
-    evaluateAst() {
+    interpreteProgram() {
         for (let i = 0; i < this.astList.length; i++) {
             this.evaluateNode(this.astList[i]);
         }

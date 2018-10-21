@@ -27,7 +27,7 @@ describe("INodeFun test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("it is femi");
     });
 
@@ -49,7 +49,7 @@ describe("INodeFun test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("it is anu");
     });
 
@@ -69,7 +69,7 @@ describe("INodeFun test suite", () => {
 
         const program = parser.parseProgram();
         mainInterpreter.astList = program.astList;
-        mainInterpreter.evaluateAst();
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("i don't know");
         expect(global.console.log).toHaveBeenCalledWith("Yoruba - mi o mo");
     });
