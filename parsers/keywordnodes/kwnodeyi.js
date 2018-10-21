@@ -12,52 +12,57 @@ class KwNodeYi extends BaseNode {
     }
 
     getNode() {
-        const kwNodeEjo = new KwNodeEjo();
-        let node = {
-            operation: constants.KW.YI,
-            yivalue: null,
-            yibody: [],
-            padasi: []
-        };
+        const node = {};
+        node.operation = constants.KW.YI;
 
         this.pushToBlockTypeStack(constants.KW.YI);
+        
         this.skipKeyword(constants.KW.YI);
         node.yivalue = bracketExpressionNl.getNode.call(this);
+
         this.skipPunctuation(constants.SYM.L_PAREN);
-
-        while (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.EJO) {
-            node.yibody.push(kwNodeEjo.getNode.call(this));
-        }
-
-        node = KwNodeYi.getYiNodeWithPadasi(this, node);
+        node.yibody = KwNodeYi.getYiBody(this);        
+        node.padasi = KwNodeYi.getPadasi(this);
         this.skipPunctuation(constants.SYM.R_PAREN);
+
         this.popBlockTypeStack();
 
         return node;
     }
 
-    static getYiNodeWithPadasi(context, node) {
+    static getYiBody(context) {
+        const yiBody = [], kwNodeEjo = new KwNodeEjo();
+
+        while (context.lexer.isNotEndOfFile() && context.lexer.peek().value == constants.KW.EJO) {
+            yiBody.push(kwNodeEjo.getNode.call(context));
+        }
+
+        return yiBody;
+    }
+
+    static getPadasi(context) {
+        const padasi = [];
+
         if (context.isKeyword(constants.KW.PADASI)) {
             context.skipKeyword(constants.KW.PADASI);
             context.skipPunctuation(constants.SYM.COLON);
 
             while (context.lexer.isNotEndOfFile() && context.lexer.peek().value !== constants.SYM.R_PAREN) {
-                node.padasi.push(context.parseAst());
+                padasi.push(context.parseAst());
             }
         }
 
-        return node;
+        return padasi;
     }
 }
 
 class KwNodeEjo extends BaseNode {
 
     getNode() {
-        const node = {
-            operation: constants.KW.EJO,
-            ejovalue: null,
-            ejobody: []
-        }
+        const node = {};
+        node.operation = constants.KW.EJO;
+        node.ejovalue = null;
+        node.ejobody = [];
 
         this.skipKeyword(constants.KW.EJO);
         node.ejovalue = this.parseExpression();
