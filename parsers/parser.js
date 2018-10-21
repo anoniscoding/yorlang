@@ -189,14 +189,9 @@ class Parser {
         }
 
         if (token.type === constants.VARIABLE) { //then a function call is expected
-            let nodeliteral = nodeLiterals[constants.CALL_ISE];
-            if (nodeliteral instanceof BaseNode) {
-                nodeliteral = nodeliteral.getNode.call(this, this.lexer.next());
-                this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
-                return nodeliteral;
-            } 
-            
-            throw new Error(`${nodeliteral} must be of type BaseNode`);
+            const callIseNodeLiteral = nodeLiterals[constants.CALL_ISE];
+            if (callIseNodeLiteral instanceof BaseNode) return callIseNodeLiteral.getNode.call(this);
+            else throw new Error(`${callIseNodeLiteral} must be of type BaseNode`);
         }
 
         this.lexer.throwError(this.getGenericErrorMsg(token.value));
