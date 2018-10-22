@@ -5,9 +5,8 @@ class KwNodeKuro extends BaseNode {
 
     getNode() {
         if (KwNodeKuro.isExpectedKuroStatement(this)) {
-            const node = {
-                operation: this.lexer.next().value,
-            };
+            const node = {};
+            node.operation = this.lexer.next().value;
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             
             return node;

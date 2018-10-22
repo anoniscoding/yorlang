@@ -14,11 +14,10 @@ class KwNodeSe extends BaseNode {
     getNode() {
         this.skipKeyword(constants.KW.SE);
 
-        const node =  {
-            operation: constants.KW.SE,
-            condition: bracketExpressionNl.getNode.call(this, false),
-            then: this.parseBlock(constants.KW.SE),
-        };
+        const node =  {};
+        node.operation = constants.KW.SE;
+        node.condition = bracketExpressionNl.getNode.call(this, false);
+        node.then = this.parseBlock(constants.KW.SE);
 
         if (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.TABI) {
             this.skipKeyword(constants.KW.TABI);

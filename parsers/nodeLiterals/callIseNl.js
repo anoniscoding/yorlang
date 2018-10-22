@@ -13,14 +13,13 @@ class CallIseNl extends BaseNode {
     getNode(iseNameToken) {
         iseNameToken = iseNameToken || {};
 
-        const node = {
-            operation: constants.CALL_ISE,
-            name: iseNameToken.value || this.lexer.next().value,
-            paramValues: this.parseDelimited( 
+        const node = {};
+        node.operation = constants.CALL_ISE;
+        node.name = iseNameToken.value || this.lexer.next().value;
+        node.paramValues = this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
                 this.parseExpression.bind(this), null
-            )
-        };
+        );
 
         if (iseNameToken.value == undefined) this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
         
