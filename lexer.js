@@ -4,7 +4,6 @@ class Lexer {
 
     constructor(inputStream) {
         this.inputStream = inputStream;
-        this.keywords = constants.LIST.KEYWORDS;
         this.currentToken = null;
     }
 
@@ -25,7 +24,7 @@ class Lexer {
     }
 
     isKeyword(kw) {
-        return this.keywords.indexOf(kw) >= 0;
+        return constants.LIST.KEYWORDS.indexOf(kw) >= 0;
     }
 
     isDigit(dig) {
