@@ -5,7 +5,7 @@ const kwNodeTi =  require("./kwnodeti.js");
 class KwNodeFun extends BaseNode {
 
     constructor() {
-        super()
+        super();
         if (!(kwNodeTi instanceof BaseNode)) {
             throw new Error("Dependency kwNodeTi must be of type BaseNode");
         } 
@@ -17,16 +17,7 @@ class KwNodeFun extends BaseNode {
 
         const init = kwNodeTi.getNode.call(this);
 
-        if (KwNodeFun.isValidFunInitStatement(init)) {
-            return KwNodeFun.parseFunNode(this, init);
-        }
-
-        this.lexer.throwError(`Invalid ${constants.KW.FUN} initialization block`);
-    }
-
-    static isValidFunInitStatement(initNode) {
-        //i.e the init statement must be initialized with number and not a string or variable
-        return /[0-9]+/i.test(initNode.right.value);
+        return KwNodeFun.parseFunNode(this, init);
     }
 
     static parseFunNode(context, init) {
