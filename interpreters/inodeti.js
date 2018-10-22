@@ -6,7 +6,7 @@ class INodeTi extends IBase {
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
             const tiNode = { name: node.left.name, operation: constants.GET_TI };
-            let arrayLiteral = this.evaluateNode(tiNode);
+            const arrayLiteral = this.evaluateNode(tiNode);
             arrayLiteral[node.left.index] = this.evaluateNode(node.right);
             return;
         }
