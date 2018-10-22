@@ -101,7 +101,7 @@ class Lexer {
         if (this.isPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.inputStream.next() }
         if (this.isOperator(ch)) return { type: constants.OPERATOR, value: this.readWhile(this.isOperator) }
 
-        this.inputStream.throwError(`Cant handle character  '${ch}'`);
+        this.throwError(`Cant handle character  '${ch}'`);
     }
 
     peek() {
