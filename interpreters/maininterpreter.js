@@ -3,9 +3,8 @@ const IBase = require("./ibase.js");
 
 class MainInterpreter {
 
-    constructor(environment, astList) {
+    constructor(environment) {
         this.environment = () => environment;
-        this.astList = astList;
         this.initScopeStack();
     }
 
@@ -36,9 +35,9 @@ class MainInterpreter {
         return leafValue;
     }
 
-    interpreteProgram() {
-        for (let i = 0; i < this.astList.length; i++) {
-            this.evaluateNode(this.astList[i]);
+    interpreteProgram(astList) {
+        for (let i = 0; i < astList.length; i++) {
+            this.evaluateNode(astList[i]);
         }
     }
 }

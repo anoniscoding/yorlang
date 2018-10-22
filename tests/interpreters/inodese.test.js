@@ -27,8 +27,7 @@ describe("INodeSe test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledWith(18);
     });
 
@@ -45,8 +44,7 @@ describe("INodeSe test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledWith(12);
     });
 
@@ -68,8 +66,7 @@ describe("INodeSe test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledWith(18);
         expect(global.console.log).toHaveBeenCalledWith(30);
     });

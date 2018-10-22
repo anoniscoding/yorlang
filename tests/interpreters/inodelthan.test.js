@@ -34,8 +34,7 @@ describe("INodeLessThan test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
     });
 });

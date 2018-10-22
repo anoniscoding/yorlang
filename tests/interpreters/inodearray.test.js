@@ -34,8 +34,7 @@ describe("INodeArray test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,5]);
     });
 
@@ -46,8 +45,7 @@ describe("INodeArray test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,3]);
     });
 
@@ -58,8 +56,7 @@ describe("INodeArray test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([[1,2],[3,4]]);
     });
 });

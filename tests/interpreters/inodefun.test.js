@@ -22,8 +22,7 @@ describe("INodeFun test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledTimes(10);
     });
 
@@ -38,8 +37,7 @@ describe("INodeFun test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledTimes(5);
     });
 
@@ -54,8 +52,7 @@ describe("INodeFun test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledTimes(6);
     });
 

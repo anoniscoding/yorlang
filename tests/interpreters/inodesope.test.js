@@ -37,8 +37,7 @@ describe("INodeSope test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 
@@ -48,8 +47,7 @@ describe("INodeSope test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledWith("a5");
     });
 
@@ -60,8 +58,7 @@ describe("INodeSope test suite", () => {
         `;
 
         const program = parser.parseProgram();
-        mainInterpreter.astList = program.astList;
-        mainInterpreter.interpreteProgram();
+        mainInterpreter.interpreteProgram(program.astList);
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 });
