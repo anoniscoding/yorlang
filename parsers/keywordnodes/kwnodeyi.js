@@ -21,7 +21,7 @@ class KwNodeYi extends BaseNode {
         node.yibody = KwNodeYi.getYiBody(this);        
         node.padasi = KwNodeYi.getPadasi(this);
         this.skipPunctuation(constants.SYM.R_PAREN);
-        this.popBlockTypeStack(); //a
+        this.popBlockTypeStack();
 
         return node;
     }
