@@ -26,7 +26,7 @@ class KwNodeFun extends BaseNode {
         node.init = init;
 
         //This is not using bracketExpressionNl because bracketExpressionNl expects L_BRACKET
-        //L_BRACKET in fun is optional
+        //L_BRACKET in fun condition is optional
         context.setIsArithmeticExpression(false);
         node.condition = context.parseExpression();
         context.setIsArithmeticExpression(true); //set back to default
