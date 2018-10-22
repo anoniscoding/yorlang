@@ -19,7 +19,7 @@ class KwNodeSe extends BaseNode {
         node.condition = bracketExpressionNl.getNode.call(this, false);
         node.then = this.parseBlock(constants.KW.SE);
 
-        if (this.lexer.isNotEndOfFile() && this.lexer.peek().value == constants.KW.TABI) {
+        if (this.isKeyword(constants.KW.TABI)) {
             this.skipKeyword(constants.KW.TABI);
             node.else = this.parseBlock(constants.KW.TABI);
         }
