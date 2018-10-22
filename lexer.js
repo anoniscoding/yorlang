@@ -51,7 +51,7 @@ class Lexer {
         if (this.inputStream.peek() == stringEnd)
             this.inputStream.next(); //needed to skip the closing quote symbol '"'
         else 
-            this.inputStream.throwError(`Expecting '${stringEnd}' but found unexpected char`);
+            this.throwError(`Expecting '${stringEnd}' but found unexpected char`);
 
         return { type: constants.STRING, value: str };
     }
