@@ -38,11 +38,11 @@ describe("KwNodeIse test suite", () => {
             tí oruko = orukoMi;
             
             ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
-                sopé i;
+                ${constants.KW.SOPE} i;
             }
         
             ${constants.KW.ISE} teAkori() {
-                sopé "adupe";
+                ${constants.KW.SOPE} "adupe";
             }
         
             ${constants.KW.PADA} teAkori();
