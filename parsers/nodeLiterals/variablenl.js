@@ -1,6 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
-const variableTypes = require("./variabletypes");
+const variableNlTypes = require("./variablenltypes");
 
 class VariableNl extends BaseNode {
 
@@ -8,10 +8,10 @@ class VariableNl extends BaseNode {
         const currentToken = this.lexer.next();
 
         const nextTokenValue = this.lexer.peek().value;
-        if (variableTypes[nextTokenValue] != undefined) {
-            const variableType = variableTypes[nextTokenValue];
-            if (variableType instanceof BaseNode) return variableType.getNode.call(this, currentToken);
-            else throw new Error(`Dependency ${variableType} must be of type BaseNode`);
+        if (variableNlTypes[nextTokenValue] != undefined) {
+            const variableNlType = variableNlTypes[nextTokenValue];
+            if (variableNlType instanceof BaseNode) return variableNlType.getNode.call(this, currentToken);
+            else throw new Error(`Dependency ${variableNlType} must be of type BaseNode`);
         }
 
         return {

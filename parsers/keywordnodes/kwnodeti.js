@@ -1,6 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
-const variableTypes = require("../nodeLiterals/variabletypes.js");
+const variableNlTypes = require("../nodeLiterals/variablenltypes.js");
 
 class KwNodeTi extends BaseNode {
 
@@ -24,10 +24,10 @@ class KwNodeTi extends BaseNode {
 
         //if current variable initialization is not a function call
         if (nextTokenValue != constants.SYM.L_BRACKET) {
-            if (variableTypes[nextTokenValue] != undefined) { //current variable could be an array element or object property etc
-                const variableType = variableTypes[nextTokenValue];
-                if (variableType instanceof BaseNode) return variableType.getNode.call(context, {value: varName});
-                else throw new Error(`Dependency ${variableType} must be of type BaseNode`);
+            if (variableNlTypes[nextTokenValue] != undefined) { //current variable could be an array element or object property etc
+                const variableNlType = variableNlTypes[nextTokenValue];
+                if (variableNlType instanceof BaseNode) return variableNlType.getNode.call(context, {value: varName});
+                else throw new Error(`Dependency ${variableNlType} must be of type BaseNode`);
             }
         }
     }
