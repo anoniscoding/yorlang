@@ -6,7 +6,7 @@ class INodeYi extends IBase {
         const yivalue = this.evaluateNode(node.yivalue);
 
         for (let ejoIndex = 0; ejoIndex < node.yibody.length; ejoIndex++) {
-            if (INodeYi.isEjoValueMatchYiValue(this, node.yibody[ejoIndex], yivalue)) {
+            if (INodeYi.isEjoValueMatchYiValue(this, node.yibody[ejoIndex].ejovalue, yivalue)) {
                 INodeYi.runMatchedEjoBody(this, node.yibody[ejoIndex].ejobody);
                 break;
             }
@@ -17,8 +17,8 @@ class INodeYi extends IBase {
         }
     }
 
-    static isEjoValueMatchYiValue(context, ejoCase, yivalue) {
-        return context.evaluateNode(ejoCase.ejovalue) === yivalue;
+    static isEjoValueMatchYiValue(context, ejovalueNode, yivalue) {
+        return context.evaluateNode(ejovalueNode) === yivalue;
     }
 
     static runMatchedEjoBody(context, ejoBody) {
