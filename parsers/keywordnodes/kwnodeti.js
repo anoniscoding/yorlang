@@ -26,10 +26,8 @@ class KwNodeTi extends BaseNode {
         if (nextTokenValue != constants.SYM.L_BRACKET) {
             if (variableTypes[nextTokenValue] != undefined) { //current variable could be an array element or object property etc
                 const variableType = variableTypes[nextTokenValue];
-                if (variableType instanceof BaseNode)
-                    return variableType.getNode.call(context, {value: varName});
-                else 
-                    throw new Error(`Dependency ${variableType} must be of type BaseNode`);
+                if (variableType instanceof BaseNode) return variableType.getNode.call(context, {value: varName});
+                else throw new Error(`Dependency ${variableType} must be of type BaseNode`);
             }
         }
     }
