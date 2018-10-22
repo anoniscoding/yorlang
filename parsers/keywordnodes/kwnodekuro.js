@@ -12,7 +12,7 @@ class KwNodeKuro extends BaseNode {
             return node;
         }
 
-        throw new Error("Yorlang Kuro keyword not expected");
+        this.lexer.throwError("Yorlang Kuro keyword not expected");
     }
 
     static isExpectedKuroStatement(context) {

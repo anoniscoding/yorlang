@@ -10,7 +10,7 @@ class KwNodeTi extends BaseNode {
         const node =  {};
         node.operation = constants.SYM.ASSIGN;
         const varNode = variableNl.getNode.call(this);
-        if (varNode.operation === constants.CALL_ISE) throw new Error("Cannot assign value to yorlang ise call");
+        if (varNode.operation === constants.CALL_ISE) this.lexer.throwError("Cannot assign value to yorlang ise call");
         node.left = (varNode.operation === constants.GET_TI) ? varNode.name : varNode;
         this.skipOperator(constants.SYM.ASSIGN);
         node.right  = this.parseExpression();

@@ -14,7 +14,7 @@ class KwNodePada extends BaseNode {
             return node;
         }
         
-        throw new Error("Yorlang pada keyword not expected in a non function block");
+        this.lexer.throwError("Yorlang pada keyword not expected in a non function block");
     }
 
     static isExpectedPadaStatement(context) {
