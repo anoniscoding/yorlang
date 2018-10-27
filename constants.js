@@ -75,7 +75,7 @@ const LIST = {
 
 const REGEX = {
     DIGIT: /[0-9]/i,
-    IDENTIFIER: /[a-z]|í|é|ì|ò|è|ọ|ṣ|ẹ|ó|à|á|ú/i,
+    IDENTIFIER: /[a-zA-Z]|í|é|ì|ò|è|ọ|ṣ|ẹ|ó|à|á|ú/i,
 };
 
 const constants = {
