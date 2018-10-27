@@ -3,7 +3,10 @@ const IBase = require("./ibase.js");
 class INodeDivide extends IBase {
 
     interpreteNode(node) {
-        return this.evaluateNode(node.left) / this.evaluateNode(node.right);
+        const leftNodeValue =  this.evaluateNode(node.left)
+        const rightNodeValue =  this.evaluateNode(node.right);
+        if (rightNodeValue === 0) throw new Error("YorlangArithmeticException - cannot divide by zero");
+        else return leftNodeValue / rightNodeValue;
     }
 }
 

@@ -14,4 +14,11 @@ describe("IDivide test suite", () => {
         const node = kwNodeTi.getNode.call(parser);
         expect(iDivide.interpreteNode.call(new MainInterpreter(), node.right)).toBe(3);
     });
+
+    test("it should fail to divide when being divided by zero", () => {
+        let parser = new Parser(new Lexer(new InputStream()));
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = 15 / 0;`;
+        const node = kwNodeTi.getNode.call(parser);
+        expect(() => iDivide.interpreteNode.call(new MainInterpreter(), node.right)).toThrow();
+    });
 });
