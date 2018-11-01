@@ -1,6 +1,15 @@
 {
-    "scripts": {
-      "test": "jest",
-      "coverage": "node_modules/.bin/jest --coverage"
-    }
+  "name": "yorlang",
+  "version": "1.0.0",
+  "description": "A programming language with yoruba language construct",
+  "author": {
+    "name": "Anoniscoding"
+  },
+  "bin": {
+    "yorl": "./cli.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "coverage": "node_modules/.bin/jest --coverage"
   }
+}
