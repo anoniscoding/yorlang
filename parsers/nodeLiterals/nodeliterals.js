@@ -10,5 +10,6 @@ nodeLiterals[constants.KEYWORD] = require("./keywordnl");
 nodeLiterals[constants.CALL_ISE] = require("./callIseNl.js");
 nodeLiterals[constants.EXP_PUNC][constants.SYM.L_SQ_BRACKET] = require("./arraynl.js");
 nodeLiterals[constants.EXP_PUNC][constants.SYM.L_BRACKET] = require("./bracketexpressionnl.js");
+nodeLiterals[constants.EXP_PUNC][constants.SYM.EXCLAMATION_POINT] = require("./notoperatornl.js");
 
 module.exports = nodeLiterals;

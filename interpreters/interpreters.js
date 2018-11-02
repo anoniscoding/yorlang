@@ -15,6 +15,7 @@ interpreters[constants.SYM.L_THAN] = require("./inodelthan.js");
 interpreters[constants.SYM.G_THAN_OR_EQ] = require("./inodegthanoreq.js");
 interpreters[constants.SYM.L_THAN_OR_EQ] = require("./inodelthanoreq.js");
 interpreters[constants.SYM.NOT_EQ] = require("./inodenoteq.js");
+interpreters[constants.SYM.EXCLAMATION_POINT] = require("./inodenotoperator.js");
 
 interpreters[constants.KW.SOPE] = require("./inodesope.js");
 interpreters[constants.KW.SE] = require("./inodese.js");

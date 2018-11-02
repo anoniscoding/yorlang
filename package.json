@@ -5,11 +5,11 @@
   "author": {
     "name": "Anoniscoding"
   },
-  "bin": {
-    "yorl": "./cli.js"
-  },
   "scripts": {
     "test": "jest",
     "coverage": "node_modules/.bin/jest --coverage"
+  },
+  "bin": {
+    "yorl": "./cli.js"
   }
 }
