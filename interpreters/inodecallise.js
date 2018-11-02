@@ -1,11 +1,18 @@
 const IBase = require("./ibase.js");
+const constants = require("../constants.js");
 
 class INodeCallIse extends IBase {
 
     interpreteNode(node) {
         const iseNode = INodeCallIse.getIseNode(this, node.name);
 
-        if (iseNode == null) throw new Error(`Ise ${node.name} is undefined`);
+        if (iseNode == null) {
+            //try running isename from yorlang helper functions list
+            const returnedValue = this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));
+            if (returnedValue === constants.KW.IRO) throw new Error(`Ise ${node.name} is undefined`);
+            
+            return returnedValue
+        }
 
         this.pushToScopeStack(iseNode.name);
         INodeCallIse.setIseNodeParam(this, iseNode.paramTokens, node.paramValues);
@@ -22,6 +29,14 @@ class INodeCallIse extends IBase {
             }
         }
         return null
+    }
+
+    static getIseHelperParams(context, params) {
+        const _params = [];
+        params.forEach(param => {
+            _params.push(context.evaluateNode(param))
+        });
+        return _params;
     }
 
     static setIseNodeParam(context, iseNodeParamTokens, iseNodeParamValues) {

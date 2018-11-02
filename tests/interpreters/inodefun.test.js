@@ -26,6 +26,20 @@ describe("INodeFun test suite", () => {
         expect(global.console.log).toHaveBeenCalledTimes(10);
     });
 
+    test("it should interprete fun node while using helper function to get length of the array", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} num = [1,2,3,4,5,6,7,8,9,10];
+
+            ${constants.KW.FUN} (${constants.KW.TI} i = 0; i < ka(num); ${constants.KW.TI} i = i + 1;) {
+                ${constants.KW.SOPE} num[i];
+            }
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(global.console.log).toHaveBeenCalledTimes(10);
+    });
+
     test("it should interprete nested fun node", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.FUN} (${constants.KW.TI} i = 1; i < 3; ${constants.KW.TI} i = i + 1;) {

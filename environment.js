@@ -1,3 +1,6 @@
+const helperIseDeclarations = require("./helperise/registeredHelperIse.js");
+const constants = require("./constants.js");
+
 class Environment {
 
     constructor() {
@@ -30,6 +33,14 @@ class Environment {
         if (this.iseDeclarations[scope] != undefined) {
             return this.iseDeclarations[scope][iseName];
         }
+    }
+
+    runHelperIse(iseName, iseArgs) {
+        if (helperIseDeclarations[iseName] != undefined) {
+            return helperIseDeclarations[iseName](iseArgs);
+        }
+
+        return constants.KW.IRO;
     }
 
     sope(value) {
