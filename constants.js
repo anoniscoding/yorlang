@@ -95,6 +95,7 @@ const constants = {
     GET_TI: "getTi",
     CALL_ISE: "callIse",
     EXP_PUNC: "expression_punctuations",
+    YL_EXT: ".yl"
 };
 
 module.exports = constants;
