@@ -26,4 +26,4 @@ fs.readFile(filename, 'utf8', (err, programFile) => {
 
     const interpreter = new MainInterpreter(new Environment());
     interpreter.interpreteProgram(program.astList);
-})
+});

@@ -5,17 +5,17 @@ const variableNlTypes = require("./variablenltypes");
 class VariableNl extends BaseNode {
 
     getNode() { 
-        const currentToken = this.lexer.next();
+        const currentVarNameToken = this.lexer.next();
 
         const nextTokenValue = this.lexer.peek().value;
         if (variableNlTypes[nextTokenValue] != undefined) {
             const variableNlType = variableNlTypes[nextTokenValue];
-            if (variableNlType instanceof BaseNode) return variableNlType.getNode.call(this, currentToken);
+            if (variableNlType instanceof BaseNode) return variableNlType.getNode.call(this, currentVarNameToken);
             else throw new Error(`Dependency ${variableNlType} must be of type BaseNode`);
         }
 
         return {
-            name: currentToken.value,
+            name: currentVarNameToken.value,
             operation: constants.GET_TI
         };
     }
