@@ -40,7 +40,7 @@ class Environment {
             return helperIseDeclarations[iseName](iseArgs);
         }
 
-        return constants.KW.IRO;
+        throw new Error(`Ise ${node.name} is undefined`);
     }
 
     sope(value) {
