@@ -18,7 +18,7 @@ const filename = process.argv[2];
 
 fs.readFile(filename, 'utf8', (err, programFile) => {
     if (err) throw err; 
-    if (path.extname(filename) != constants.YL_EXT) throw "Invalid yorlang file. Expecte file with .yl extension";
+    if (path.extname(filename) != constants.YL_EXT) throw "Invalid yorlang file. Expected file with .yl extension";
 
     const parser = new Parser(new Lexer(new InputStream()));
     parser.lexer.inputStream.code = `${programFile}`;
