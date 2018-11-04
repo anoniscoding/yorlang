@@ -1,0 +1,119 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+body {
+  overflow-x: hidden;
+}
+
+#wrapper {
+  padding-left: 0;
+  margin-top: 80px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 0px;
+}
+
+#sidebar-wrapper {
+  position: fixed;
+  width: 250px !important;
+  height: 100%;
+  background: linear-gradient(-35deg, #32903f15, #31588515, #32903f15, #31588515, #32903f15, #31588515, #32903f15, #31588515);
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 0px;
+}
+
+#page-content-wrapper {
+  margin-left: 250px;
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: 0px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin-top: 80px;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  margin: 20px;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #32903F;
+  background: linear-gradient(-35deg, #32903f15, #31588515, #32903f15, #31588515, #32903f15, #31588515, #32903f15, #31588515);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+#wrapper.toggled {
+  padding-left: 0px;
+}
+#sidebar-wrapper {
+  width: 0;
+}
+#wrapper.toggled #sidebar-wrapper {
+  display: none;
+}
+#page-content-wrapper {
+  padding: 20px;
+  position: relative;
+}
+#wrapper.toggled #page-content-wrapper {
+  position: relative;
+  margin-left: 0;
+}
+
+#menu-toggle-on, #menu-toggle-off {
+  color: #32903F;
+  background: transparent;
+}
+
+#menu-toggle-off {
+  display: none;
+}
+
+#footer7-7 {
+   position: fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+}
+
+.cid-qTkzRZLJNu .navbar{
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.10);
+  border-bottom: 1px solid #cfcccc;
+}

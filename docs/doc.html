@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.8.6, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/yorlang-122x121.png" type="image/x-icon">
+    <meta name="description" content="Site Builder Description">
+    <title>blog</title>
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="assets/tether/tether.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-3">
+        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="menu-logo">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <a href="#">
+                                <img src="assets/images/yorlang-122x121.png" alt="Mobirise" title="" style="height: 3.8rem;">
+                        </a>
+                    </span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-5" href="#">YorLang</a></span>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
+                        <a class="nav-link link text-success display-4" href="#">
+                            Contribue&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                    </li><li class="nav-item"><a class="nav-link link text-success display-4" href="#">
+                            Docs&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a></li></ul>
+                
+            </div>
+        </nav>
+    </section>
+
+    <div id="wrapper">
+        <a href="#menu-toggle-off" class="btn" id="menu-toggle-off"><i class="fa fa-3x fa-toggle-off"></i></a>
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <a href="#menu-toggle-on" class="btn" id="menu-toggle-on"><i class="fa fa-3x fa-toggle-on"></i></a>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#">Installation</a>
+                </li>
+                <li>
+                    <a href="#">Variable Declaration</a>
+                </li>
+                <li>
+                    <a href="#">Conditionals</a>
+                </li>
+                <li>
+                    <a href="#">Loops</a>
+                </li>
+                <li>
+                    <a href="#">Functions</a>
+                </li>
+                <li>
+                    <a href="#">Arrays</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Simple Sidebar</h1>
+                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <section once="" class="cid-r8mNHGgxqE mbr-reveal" id="footer7-7">
+        <div class="container">
+            <div class="media-container-row align-center mbr-white">
+                
+                
+                <div class="row row-copirayt">
+                    <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                        © Copyright 2018 anoniscoding - All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle-on").click(function(e) {
+        e.preventDefault();
+        
+        $('#menu-toggle-off').show();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    $("#menu-toggle-off").click(function(e) {
+        e.preventDefault();
+        
+        $('#menu-toggle-off').hide();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
