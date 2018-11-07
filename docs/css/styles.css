@@ -1,0 +1,112 @@
+/* index and docs  page custom styles */
+:root{
+    --conditional-color: #3a55cc;
+    --print-color: yellow;  /* used for objects */
+    --function-color: #;
+    --output-color: #;
+    --method-color: green;
+    --variable-color:#15a194;
+    --syntax-weight: 400;
+}
+html{
+    scroll-behavior: smooth;
+}
+.title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300 !important;
+    letter-spacing: 1px;
+}
+
+p{
+    width: 70%;
+}
+
+/* example styles */
+
+
+/* color and font style for objects, functions, variables, conditions, loops, arrays etc. */
+#print{
+    color: var(--print-color);
+    font-weight: var(--syntax-weight);
+}
+#condition{
+    color: var(--conditional-color);
+    font-weight: var(--syntax-weight);
+}
+#varName{
+    color: var(--variable-color);
+    font-weight: var(--syntax-weight);
+}
+
+.container-fluid{
+    padding-bottom: 30px;
+}
+
+#intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays{
+    font-size: 22px;
+    font-family: 'poppins';
+    font-weight: 600;
+    color: #15a194;
+    letter-spacing: 1px;
+}
+#black-background{
+    color: #fff;
+    background-color: #000;
+    padding: 5px 5px 5px 5px;
+    width: 20%;
+}
+.example {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 1);
+    font-family: 'Poppins', sans-serif;
+    width: 60%;
+    margin: 15px 0 15px 00;
+    border-left: 3px solid #32903f;
+}
+
+.example-lang {
+    font-size: 12px;
+    color: #32903F;
+    line-height: 0.5px;
+    letter-spacing: 1px;
+    padding: 10px 10px 10px 10px;
+    align-self: flex-end;
+}
+
+.example-one {
+    font-size: 13px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.example-output {
+    border: 1px solid #ccc;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-output-name {
+    font-size: 12px;
+    line-height: 0.5px;
+    letter-spacing: 1px;
+    padding: 10px 10px 10px 10px;
+    align-self: flex-end;
+}
+
+.example-output-value {
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+@media (max-width:600px){
+    .example, .example-output{
+        width: 90%;
+    }
+    #black-background{
+        width: 50%;
+    }
+}
