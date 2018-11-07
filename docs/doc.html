@@ -28,9 +28,10 @@
     <link rel="stylesheet" href="assets/socicon/css/styles.css">
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">  
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" rel="stylesheet">
 
 </head>
 
@@ -58,7 +59,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
                         <a class="nav-link link text-success display-4" href="#">
-                            Contribue&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                            Contribute&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
                     </li><li class="nav-item"><a class="nav-link link text-success display-4" href="#">
                             Docs&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a></li></ul>
                 
@@ -76,6 +77,9 @@
             <ul class="sidebar-nav">
                 <li>
                     <a href="#intro">Getting Started</a>
+                </li>
+                <li>
+                    <a href="#dataTypes"> Data Types </a>
                 </li>
                 <li>
                     <a href="#variables">Variable Declaration</a>
@@ -99,18 +103,81 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="intro">Gettig Started</h1>
-                <p>npm install -g yorlang</p>
-                <p>Create test.yl file</code>.</p>
-                <p>Write 'sọpé "báwo ni ayé" '>
-                <p>Run yorl test.yl in your cli</p>
+                <h1 id="intro">Getting Started</h1>
+                <hr>
+                <p> Follow the following steps to get started with yorlang </p>
+                <p style="color:tomato"> Steps: </p>
+                <p id="black-background"> npm install -g yorlang</p>
+                <p id="black-background">Create test.yl file</code>.</p>
+                <p id="black-background">Write 'sọpé "báwo ni ayé" '>
+                <p id="black-background">Run yorl test.yl in your cli</p>
+            </div>
+            <!--<div class="container-fluid">
+                <h1 id="dataTypes"> Data Types </h1>
+                <hr>
+                <p> </p>
+                <p>Yorlang: <strong>  tí </strong></p>
+                <p> variables in yorlang must be declared immediately. 
+                    strings in variables must be written using <strong> double quotes</strong>. yorlang also allows integers, float numbers and boolean</p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong style="color:blue;"> t&iacute;  </strong> name = <strong style="color: #818181; font-weight: 400;">"dammy";</strong></p>
+                    <p class="example-one"> sope dammy + "is nice"</p>
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> dammy is nice</p>
+                </div>
+            </div> -->
+            <div class="container-fluid">
+                <h1 id="variables"> Variable Declaration</h1>
+                <hr>
+                <p>variables can be declared in yorlang using</p>
+                <p>Yorlang: <strong>  tí </strong></p>
+                <p> variables in yorlang cannot be initialized instead must be declared immediately. Variables in yorlang 
+                    can also be reassigned another value even if it had been declared before.
+                    strings in variables must be written using <strong> double quotes</strong>. yorlang variables can hold many
+                     <strong>data types</strong> such as strings, integers, booleans and objects</p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="condition"> t&iacute;  </strong> name = <strong style="color: #818181; font-weight: 400;">"dammy";</strong></p>
+                    <p class="example-one"> <strong id="condition"> t&iacute; </strong> age = <strong style="color: #818181; font-weight: 400;">5;</strong></p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong> dammy + "is" + age + "years old"</p>
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> dammy is 5 years old</p>
+                </div>
             </div>
             <div class="container-fluid">
-                <h1 id="variables">Gettig Started</h1>
-                <p>npm install -g yorlang</p>
-                <p>Create test.yl file</code>.</p>
-                <p>Write 'sọpé "báwo ni ayé" '>
-                <p>Run yorl test.yl in your cli</p>
+                <h1 id="conditionals">  Conditionals </h1>
+                <hr>
+                <p>conditionals such as if, else and switch statements  can also be used in yorlang</p>
+                <p>if: <strong> ṣé &nbsp; </strong> else: <strong> tàbí</strong></p>
+                <p> use the if statement (ṣé) to specify a block of yorlang code to be executed if a condition is true</p>
+                <p> use the else statement (tàbí) to specify a block of yorlang code to be executed if a condition is false</p>
+                <p> use the else if statement (tàbí ṣé) to specify a block of yorlang code to be executed if a condition is false</p>
+                
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="condition"> t&iacute;  </strong><strong id="varName"> time </strong>  = <strong style="color: #818181; font-weight: 400;">15;</strong></p>
+                    <p class="example-one"> <strong id= "condition"> ṣé</strong> 
+                        ( <strong id="varName"> time </strong>< 12) &nbsp;{ <br> &nbsp; &nbsp; <strong id="varName"> greeting </strong>  = "good morning"; <br> <br>
+                      } &nbsp; &nbsp;  <strong id= "condition"> tàbí ṣé</strong> ( <strong id="varName"> time </strong> > 12 && 
+                        <strong id="varName"> time </strong> < 16 )   { <br>
+                         &nbsp; &nbsp;  <strong id="varName"> greeting </strong>  = "good afternoon"; <br> <br>
+                      } &nbsp; &nbsp;  <strong id= "condition"> tàbí ṣé</strong> ( <strong id="varName"> time </strong> > 16 && 
+                        <strong id="varName"> time </strong> < 20 )   { <br> 
+                         &nbsp; &nbsp; <strong id="varName"> greeting </strong>  = "good evening";  <br> <br>  
+                        } &nbsp; &nbsp;  <strong id= "condition"> tàbí </strong> ( <strong id="varName"> time </strong> > 20 && 
+                         <strong id="varName"> time </strong> < 24 )   { <br> 
+                         &nbsp; &nbsp; <strong id="varName"> greeting </strong>  = "good night"; } <br> <br></p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong>  <strong id="varName"> greeting </strong> + "world";  </p>
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> good afternoon world </p>
+                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
