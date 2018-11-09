@@ -61,7 +61,10 @@ p{
     width: 20%;
 }
 /* example styles */
-
+#fixedWidthParagraph{
+    width:60%;
+    text-align: justify;
+}
 .example {
     display: flex;
     flex-direction: column;
@@ -120,6 +123,10 @@ p{
 }
 
 @media (max-width:600px){
+
+    #fixedWidthParagraph{
+        width:90%;
+    }
     .example, .example-output{
         width: 90%;
     }
