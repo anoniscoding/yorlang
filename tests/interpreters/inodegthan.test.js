@@ -27,6 +27,12 @@ describe("INodeGreaterThan test suite", () => {
         expect(iNodeGthan.interpreteNode.call(mainInterpreter, node.right)).toBe(constants.KW.IRO);
     });
 
+    test("it should return iro for a greater than false condition involving a string", () => {
+        parser.lexer.inputStream.code = `${constants.KW.TI} a = "anu" > 5;`;
+        const node = kwNodeTi.getNode.call(parser);
+        expect(iNodeGthan.interpreteNode.call(mainInterpreter, node.right)).toBe(constants.KW.IRO);
+    });
+
     test("it should get the value of a variable and test it in a greater than condition", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = 6;
