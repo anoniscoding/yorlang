@@ -1,5 +1,4 @@
 const helperIseDeclarations = require("./helperise/registeredHelperIse.js");
-const constants = require("./constants.js");
 
 class Environment {
 
