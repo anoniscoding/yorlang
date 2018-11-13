@@ -28,7 +28,10 @@
     <link rel="stylesheet" href="assets/socicon/css/styles.css">
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">  
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
+ 
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css" rel="stylesheet">
@@ -78,9 +81,7 @@
                 <li>
                     <a href="#intro">Getting Started</a>
                 </li>
-                <li>
-                    <a href="#dataTypes"> Data Types </a>
-                </li>
+               
                 <li>
                     <a href="#variables">Variable Declaration</a>
                 </li>
@@ -112,37 +113,23 @@
                 <p id="black-background">Write 'sọpé "báwo ni ayé" '>
                 <p id="black-background">Run yorl test.yl in your cli</p>
             </div>
-            <!--<div class="container-fluid">
-                <h1 id="dataTypes"> Data Types </h1>
-                <hr>
-                <p> </p>
-                <p>Yorlang: <strong>  tí </strong></p>
-                <p> variables in yorlang must be declared immediately. 
-                    strings in variables must be written using <strong> double quotes</strong>. yorlang also allows integers, float numbers and boolean</p>
-                <div class="example">
-                    <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong style="color:blue;"> t&iacute;  </strong> name = <strong style="color: #818181; font-weight: 400;">"dammy";</strong></p>
-                    <p class="example-one"> sope dammy + "is nice"</p>
-                </div>
-                <div class="example-output">
-                    <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> dammy is nice</p>
-                </div>
-            </div> -->
+           
             <div class="container-fluid">
                 <h1 id="variables"> Variable Declaration</h1>
                 <hr>
-                <p>Variables can be declared in yorlang using</p>
-                <p>Yorlang: <strong>  tí </strong></p>
-                <p> Variables in yorlang must be initialized and declared immediately. Variables in yorlang 
-                    can also be reassigned another value even if it had been declared before.
-                    strings in variables must be written using <strong> double quotes</strong>. yorlang variables can hold many
+                <p id="fixedWidthParagraph">Variables can be declared in yorlang using</p>
+                <p id="fixedWidthParagraph">Yorlang: <strong>  tí </strong></p>
+                <p  id="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> and <strong> declared </strong> immediately. Variables in yorlang 
+                    can also be reassigned another value even if it had been declared before with the condition that the <strong>  keyword (tí)</strong> is also used.
+                   <strong> strings </strong>in yorlang must be written using <strong> double quotes</strong>. yorlang variables can hold many
                      <strong>data types</strong> such as strings, integers and booleans</p>
                 <div class="note">
-                    <p> Note: comments can be made in yorlang using <strong> #</strong>. There's no multiline comments like /** */</p>
+                    <p> Note: <br>comments can be made in yorlang using <strong> #</strong>. There's no multiline comments like /** */<br>
+                                  A semi colon must be used at the end of every statement in yorlang
+                    </p>
                 </div>
                 <div class="example">
-                    <p class="example-lang"> yorlang </p>
+                    <p class="example-lang" > yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> name </strong> = <strong id= "stringInt"> "dammy</strong>;</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> age </strong> =  <strong id= "stringInt">5 </strong>; </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> <strong id="varName"> name </strong>  +
@@ -152,25 +139,37 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> dammy is 5 years old</p>
                 </div>
+                <p id="fixedWidthParagraph"> Another example:</p>
+                 <div class="example">
+                    <p class="example-lang" > yorlang </p>
+                    <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> oruko </strong> = <strong id= "stringInt"> "dammy</strong>;</p>
+                    <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> oruko </strong> =  <strong id= "stringInt"> "michelle" </strong>; 
+                        <i style="color: #908f8f; font-size: 12px;"> # variables can be reassigned as   long as the keyword (t&iacute; ) is used </i></p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id= "stringInt">"oruko mi ni" </strong> +<strong id="varName"> name </strong>;</p>
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> oruko mi ni  michelle </p>
+                </div>
             </div>
 
             <div class="container-fluid">
                 <h1 id="conditionals">  Conditionals </h1>
                 <hr>
-                <p>Conditionals such as if, else and switch statements  can also be used in yorlang</p>
-                <p>if: <strong> ṣé &nbsp; </strong> else: <strong> tàbí</strong></p>
-                <p> Use the if statement (ṣé) to specify a block of yorlang code to be executed if a condition is true</p>
-                <p> Use the else statement (tàbí) to specify a block of yorlang code to be executed if a condition is false</p>
+                <p id="fixedWidthParagraph">Conditionals such as if, else, else if and switch statements  can also be used in yorlang</p>
+                <p  id="fixedWidthParagraph">if: <strong> ṣé &nbsp; &nbsp; </strong> else: <strong> tàbí</strong> &nbsp; &nbsp;  else if: <strong> tàbí ṣé</strong></p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> time </strong> = <strong id="stringInt">15;</strong></p>
                     <p class="example-one"> <strong id= "condition"> ṣé</strong> 
                         ( <strong id="varName"> time </strong><  <strong id= "stringInt"> 12 </strong>) &nbsp;{ <br> &nbsp; &nbsp; <strong id="varName">
-                             greeting </strong>  =  <strong id= "stringInt">"good morning" </strong>; <br> <br> 
-                        } &nbsp; &nbsp;  <strong id= "condition"> tàbí </strong> ( <strong id="varName"> time </strong> >  <strong id= "stringInt"> 12 </strong> && 
-                         <strong id="varName"> time </strong> <  <strong id= "stringInt"> 24 </strong> )   { <br> 
-                         &nbsp; &nbsp; <strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good day"</strong> ; } <br> <br></p>
+                             greeting </strong>  =  <strong id= "stringInt">"good morning" </strong>;<br> <br> 
+                        } &nbsp;   <strong id= "condition"> tàbí ṣé </strong>   ( <strong id="varName"> time </strong>>  <strong id= "stringInt"> 12 </strong>
+                        && <strong id="varName"> time </strong><  <strong id= "stringInt"> 17 </strong> ) &nbsp;{ <br> 
+                         &nbsp; &nbsp; <strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good day"</strong> ; } <br> <br> 
+                        } &nbsp;   <strong id= "condition"> tàbí </strong>   { <br> 
+                         &nbsp; &nbsp; <strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good evening"</strong> ; } <br> <br></p>
                     <p class="example-one"> <strong id="print"> sọpé </strong>  <strong id="varName"> greeting </strong> +  <strong id= "stringInt"> "world" </strong>;  </p>
                 </div>
                 <div class="example-output">
@@ -178,11 +177,13 @@
                     <p class="example-output-value"> good day world </p>
                 </div>
                 <br>
-                <p> Like in many primitive programming languages, the switch statement is used to perform <br>
-                    different actions based on different conditions. In Yorlang it is no different;</p>
-                <p> This is how it works: <br> &nbsp;&nbsp;The switch expression is evaluated once. <br> &nbsp;&nbsp;
-                                                           The value of the expression is compared with the values of each case. <br>&nbsp;&nbsp;
-                                                           If there is a match, the associated block of code is executed.</p>
+                <p  id="fixedWidthParagraph"> The Switch Condition:</p>
+                <p  id="fixedWidthParagraph"> This is how it works: <br> &nbsp;The switch expression is evaluated once. <br> &nbsp;
+                                                           The value of the expression is compared with the values of each case. <br>&nbsp;
+                                                           If there is a match, the associated block of code is executed and then it escapes the switch<br>  &nbsp; block
+                                                           without the need for a break (kúrò) expression.  <br>&nbsp;
+                                                           The use of the break expression(kúrò) in yorlang yí(switch) condition results in an error.
+                </p>
                 <p>  Switch: <strong> yí</strong><br>
                      Case: <strong> ẹjó</strong>  <br>
                      Default: <strong> padàsí</strong>  <br>
@@ -191,24 +192,73 @@
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> age </strong> = <strong id="stringInt">10 + 4 </strong>;</p>
-                    <p class="example-one"> <strong id= "condition"> yi</strong> 
+                    <p class="example-one"> <strong id= "condition"> yí</strong> 
                         ( <strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
-                        <strong id="condition"> ẹjó </strong> <=   <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id= "condition"> kúrò;</strong>  <br> &nbsp; &nbsp; 
-                        <strong id="condition"> ẹjó </strong> >=   <strong id="stringInt"> 12 </strong> && <=  <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a teenager" </strong>;<br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id= "condition"> kúrò;</strong> <br> &nbsp; &nbsp; 
-                        <strong id="condition"> ẹjó </strong> >  <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are an adult" </strong>;<br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id= "condition"> kúrò</strong> ; <br> &nbsp; &nbsp; 
-                        <strong id= "condition"> padàsí</strong>; <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="condition"> ẹjó </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
+                        <strong id="condition"> ẹjó </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a teenager" </strong>;<br> &nbsp; &nbsp;
+                        <strong id="condition"> ẹjó </strong> <strong id="stringInt"> 22 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are an adult" </strong>;<br> &nbsp; &nbsp; 
+                        <strong id= "condition"> padàsí</strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are too old" </strong>;<br> }
                     </p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> you are a teenager </p>
+                </div>
+            </div>
+
+             <div class="container-fluid">
+                <h1 id="loops">  Loops </h1>
+                <hr>
+                <p id="fixedWidthParagraph">Loops such as <strong> for </strong> and <strong> while </strong> are also supported in Yorlang </p>
+                <p  id="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí</strong></p>
+                
+                <div class="note">
+                    <p> Note: <br>
+                        increments such as <strong>  i++</strong> in yorlang is invalid instead use<strong>  tí i = i + 1</strong> <br>
+                        decrements such as <strong>  i-- </strong>  in yorlang is invalid instead use <strong>  tí i = i - 1</strong>
+                    </p>
+                </div>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="loop"> fún</strong> (<strong id="condition"> t&iacute; </strong><strong id="varName">  i </strong> =
+                         <strong id="stringInt">0 </strong>; </strong><strong id="varName">  i </strong> < <strong id="stringInt">5 </strong>;
+                         <strong id="condition"> t&iacute; </strong> <strong id="varName">  i </strong> = <strong id="varName">  i </strong>+
+                         <strong id="stringInt">1 </strong>) &nbsp; {  <br>
+                    </p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong>   <strong id= "stringInt"> "you can be" +  </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong>   <strong id= "stringInt"> "you can be anything you want to be" </strong>; </p>
+
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> you can be 1</p>
+                    <p class="example-output-value"> you can be 2</p>
+                    <p class="example-output-value"> you can be 3</p>
+                    <p class="example-output-value"> you can be 4</p>
+                    <p class="example-output-value"> you can be 5</p>
+                    <p class="example-output-value"> you can be anything you want to be </p>
+                </div>
+                <br>
+                <p  id="fixedWidthParagraph"> The While(<strong> nígbàtí</strong>) Loop:</p>
+                <p  id="fixedWidthParagraph"> The while ( nígbàtí) loop is executed as long as the condition in parentheses is true </p>
+                
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
+                    <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong> ( <strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
+                        
+                        <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> }
+                       
+                    </p>
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value">o kere si aarun</p>
                 </div>
             </div>
         </div>

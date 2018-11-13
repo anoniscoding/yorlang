@@ -3,7 +3,7 @@
     --conditional-color: #fabf8f;
     --print-color: yellow;  /* used for objects */
     --function-color: #;
-    --output-color: #;
+    --loop-color: #c944c9;
     --method-color: green;
     --variable-color:#15a194;
     --syntax-weight: 400;
@@ -11,10 +11,14 @@
     --string-int-color: #c5cff0;
 }
 html{
+    -webkit-font-smoothing:antialiased;
+    font-smooth: 2em;
     scroll-behavior: smooth;
+    font-family: 'Rubik',sans-serif;
+
 }
 .title{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-weight: 300 !important;
     letter-spacing: 1px;
 }
@@ -34,6 +38,11 @@ p{
     color: var(--conditional-color);
     font-weight: var(--syntax-weight);
 }
+#loop{
+    color: var(--loop-color);
+    font-weight: var(--syntax-weight);
+
+}
 #varName{
     color: var(--variable-color);
     font-weight: var(--syntax-weight);
@@ -49,9 +58,9 @@ p{
 
 #intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays{
     font-size: 22px;
-    font-family: 'poppins';
+    font-family: 'Rubik',sans-serif;
     font-weight: 600;
-    color: #15a194;
+    color: #0B409C;
     letter-spacing: 1px;
 }
 #black-background{
@@ -61,12 +70,15 @@ p{
     width: 20%;
 }
 /* example styles */
-
+#fixedWidthParagraph{
+    width:60%;
+    text-align: justify;
+}
 .example {
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 1);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', sans-serif;
     width: 60%;
     margin: 15px 0 15px 00;
     border-left: 3px solid #32903f;
@@ -75,7 +87,7 @@ p{
     display: flex;
     flex-direction: column;    
     background: #ffffcc;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', sans-serif;
     width: 60%;
     margin: 15px 0 15px 00;
     padding: 15px 15px;
@@ -120,10 +132,21 @@ p{
 }
 
 @media (max-width:600px){
+
+    p{
+        font-size: 13px;
+    }
+
+    #fixedWidthParagraph{
+        width:90%;
+    }
     .example, .example-output{
-        width: 90%;
+        width: 95%;
     }
     #black-background{
         width: 50%;
+    }
+    .note{
+        width: 95%;
     }
 }
