@@ -4,9 +4,7 @@ const constants = require("../constants.js");
 class INodeNotOperator extends IBase {
 
     interpreteNode(node) {
-        if (this.evaluateNode(node.body) === constants.KW.IRO) return constants.KW.OOTO;
-                
-        return constants.KW.IRO;
+        return (this.evaluateNode(node.body) === constants.KW.IRO) ? constants.KW.OOTO : constants.KW.IRO;
     }
 }
 
