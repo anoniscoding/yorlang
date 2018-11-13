@@ -14,11 +14,14 @@ class INodeSe extends IBase {
     }
 
     static runSeBody(context, seBody) {
+        //cater for 'tabi se' block
+        if (!(seBody instanceof Array)) context.evaluateNode(seBody);
+
         for (let i = 0; i < seBody.length; i++) {
             const returnedValue = context.evaluateNode(seBody[i]);
 
             if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
-            else if (returnedValue != undefined) return returnedValue; //it's an ise return (or pada) value
+            else if (returnedValue != undefined) return returnedValue; //it's an ise pada value
         }
     }
 }

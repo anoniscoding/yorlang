@@ -70,4 +70,28 @@ describe("INodeSe test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith(18);
         expect(global.console.log).toHaveBeenCalledWith(30);
     });
+
+    test("it should interprete tabi se (else if) statments ", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = 5;
+
+            ${constants.KW.SE} (a < 5) {
+                ${constants.KW.SOPE} a + 4;
+            } 
+            ${constants.KW.TABI} ${constants.KW.SE} (a > 7) {
+                ${constants.KW.SOPE} a + 3;
+            }
+            ${constants.KW.TABI} ${constants.KW.SE} (a == 5) {
+                ${constants.KW.SOPE} a + 2;
+            }
+            ${constants.KW.TABI} {
+                ${constants.KW.SOPE} a + 1;
+            }
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(global.console.log).toHaveBeenCalledWith(7);
+    });
+    
 });
