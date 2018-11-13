@@ -81,9 +81,7 @@
                 <li>
                     <a href="#intro">Getting Started</a>
                 </li>
-                <li>
-                    <a href="#dataTypes"> Data Types </a>
-                </li>
+               
                 <li>
                     <a href="#variables">Variable Declaration</a>
                 </li>
@@ -115,23 +113,7 @@
                 <p id="black-background">Write 'sọpé "báwo ni ayé" '>
                 <p id="black-background">Run yorl test.yl in your cli</p>
             </div>
-            <!--<div class="container-fluid">
-                <h1 id="dataTypes"> Data Types </h1>
-                <hr>
-                <p> </p>
-                <p>Yorlang: <strong>  tí </strong></p>
-                <p> variables in yorlang must be declared immediately. 
-                    strings in variables must be written using <strong> double quotes</strong>. yorlang also allows integers, float numbers and boolean</p>
-                <div class="example">
-                    <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong style="color:blue;"> t&iacute;  </strong> name = <strong style="color: #818181; font-weight: 400;">"dammy";</strong></p>
-                    <p class="example-one"> sope dammy + "is nice"</p>
-                </div>
-                <div class="example-output">
-                    <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> dammy is nice</p>
-                </div>
-            </div> -->
+           
             <div class="container-fluid">
                 <h1 id="variables"> Variable Declaration</h1>
                 <hr>
@@ -176,9 +158,6 @@
                 <hr>
                 <p id="fixedWidthParagraph">Conditionals such as if, else, else if and switch statements  can also be used in yorlang</p>
                 <p  id="fixedWidthParagraph">if: <strong> ṣé &nbsp; &nbsp; </strong> else: <strong> tàbí</strong> &nbsp; &nbsp;  else if: <strong> tàbí ṣé</strong></p>
-                <p  id="fixedWidthParagraph"> Use the if (ṣé)statement  to specify a block of yorlang code to be executed if a condition is true</p>
-                <p  id="fixedWidthParagraph"> Use the else if (tàbí ṣé) statement  to specify a block of yorlang code to be executed if the first condition is false</p>
-                <p  id="fixedWidthParagraph"> Use the else statement (tàbí) to specify a block of yorlang code to be executed if a condition is false</p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -201,9 +180,9 @@
                 <p  id="fixedWidthParagraph"> The Switch Condition:</p>
                 <p  id="fixedWidthParagraph"> This is how it works: <br> &nbsp;The switch expression is evaluated once. <br> &nbsp;
                                                            The value of the expression is compared with the values of each case. <br>&nbsp;
-                                                           If there is a match, the associated block of code is executed and then it escapes the switch <br> &nbsp; statement
-                                                           witthout the need for a break (kúrò) expression  <br>&nbsp;
-                                                           The use of the break expression(kúrò) in yorlang results in an error.
+                                                           If there is a match, the associated block of code is executed and then it escapes the switch<br>  &nbsp; block
+                                                           without the need for a break (kúrò) expression.  <br>&nbsp;
+                                                           The use of the break expression(kúrò) in yorlang yí(switch) condition results in an error.
                 </p>
                 <p>  Switch: <strong> yí</strong><br>
                      Case: <strong> ẹjó</strong>  <br>
@@ -216,12 +195,12 @@
                     <p class="example-one"> <strong id= "condition"> yí</strong> 
                         ( <strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
                         <strong id="condition"> ẹjó </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> ẹjó </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a teenager" </strong>;<br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a teenager" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> ẹjó </strong> <strong id="stringInt"> 22 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are an adult" </strong>;<br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id= "condition"> padàsí</strong>; <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are an adult" </strong>;<br> &nbsp; &nbsp; 
+                        <strong id= "condition"> padàsí</strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are too old" </strong>;<br> }
                     </p>
                 </div>
@@ -269,20 +248,17 @@
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> oruko </strong> = [<strong id="stringInt">"tyne", "kemi", "wunmi"</strong> ];</p>
+                    <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
-                    <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> oro </strong> = <strong id="stringInt">" ";</strong></p>
-                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong> ( <strong id="varName"> oruko </strong>[<strong id="varName"> i </strong>]) { <br> <br> &nbsp; &nbsp;
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong> ( <strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
                         
-                        <strong id="condition"> t&iacute; </strong><strong id="varName"> oro </strong> += <strong id="varName"> oruko </strong>[<strong id="varName"> i </strong>] + " &nbsp;" ;<br> <br> &nbsp; &nbsp;
-                        <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="varName"> i </strong><strong id="stringInt">+ 1;</strong> <br> <br> &nbsp;
-                        <strong id="print"> sọpé </strong>  </strong><strong id="varName"> oro </strong>; <br> }
+                        <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> }
                        
                     </p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value">tyne kemi wunmi </p>
+                    <p class="example-output-value">o kere si aarun</p>
                 </div>
             </div>
         </div>
