@@ -1,6 +1,7 @@
 const BaseNode = require("../basenode.js");
 const constants = require("../../constants.js");
 
+
 class ArrayNl extends BaseNode {
 
     getNode(arrayNameToken) {
@@ -16,7 +17,7 @@ class ArrayNl extends BaseNode {
             node.operation = constants.ARRAY_ELEM;
             node.name = arrayNameToken.value;
             this.skipPunctuation(constants.SYM.L_SQ_BRACKET);
-            node.index = this.lexer.next().value;
+            node.index = this.parseExpression();
             this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
         }
 

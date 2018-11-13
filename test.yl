@@ -1,3 +1,9 @@
-tí a = [1,2];
-tí a[0] = "funmi";
-sọpé a[0];
+tí onka = [1, 2, 3, 4, 5 ];
+
+tí i = 0;
+#sọpé onka[i];
+nígbàtí (onka[i] < 5) { 
+    sọpé "o kere si aarun"; 
+
+    tí i = i + 1;
+}

@@ -75,7 +75,7 @@ describe("KwNodeSope test suite", () => {
             body: {
                 operation: constants.ARRAY_ELEM,
                 name: "a",
-                index: 1
+                index: {"left": null, "operation": null, "right": null, "value": 1}
             }
         }
 

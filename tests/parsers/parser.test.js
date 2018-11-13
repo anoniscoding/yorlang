@@ -91,7 +91,7 @@ describe("Parser test suite", () => {
         expect(parser.getCurrentTokenValue()).toBeTruthy();
     });
 
-    test("ParseExpression - it should parse expression", () => {
+    test("ParseExpression - it should parse array elemement expression", () => {
         parser.lexer.inputStream.code = `a = b[0] = 1`;
           
         const expectedNode = {
@@ -102,7 +102,7 @@ describe("Parser test suite", () => {
                 }, 
                 operation: constants.SYM.ASSIGN, 
                 right: {
-                    index: 0, 
+                    index: {"left": null, "operation": null, "right": null, "value": 0}, 
                     name: "b", 
                     operation: constants.ARRAY_ELEM
                 }, 

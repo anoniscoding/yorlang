@@ -35,7 +35,6 @@ class KwNodeSe extends BaseNode {
         return context.parseBlock(constants.KW.TABI);
     }
 
-
 }
 
 module.exports = new KwNodeSe();
