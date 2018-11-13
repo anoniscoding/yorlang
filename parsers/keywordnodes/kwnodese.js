@@ -1,7 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
-let count = 0;
 class KwNodeSe extends BaseNode {
 
     constructor() {
