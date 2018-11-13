@@ -5,16 +5,20 @@ class INodeTi extends IBase {
 
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
-            const tiNode = { name: node.left.name, operation: constants.GET_TI };
-            const arrayLiteral = this.evaluateNode(tiNode);
-
-            const index = this.evaluateNode(node.left.index);
-            if (typeof index == "number") {
-                arrayLiteral[index] = this.evaluateNode(node.right);
-            }
+            INodeTi.setArrayElemValue(this, node);
         }
         
         this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
+    }
+
+    static setArrayElemValue(context, node) {
+        const tiNode = { name: node.left.name, operation: constants.GET_TI };
+        const arrayLiteral = context.evaluateNode(tiNode);
+
+        const index = context.evaluateNode(node.left.index);
+        if (typeof index == "number") {
+            arrayLiteral[index] = context.evaluateNode(node.right);
+        }
     }
 }
 
