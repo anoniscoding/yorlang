@@ -19,18 +19,23 @@ class KwNodeSe extends BaseNode {
         node.then = this.parseBlock(constants.KW.SE);
 
         if (this.isKeyword(constants.KW.TABI)) {
-            this.skipKeyword(constants.KW.TABI);
-
-            if (this.isKeyword(constants.KW.SE)) { //cater for 'tabi se' block
-                node.else = new KwNodeSe().getNode.call(this);
-                return node;
-            }
-
-            node.else = this.parseBlock(constants.KW.TABI);
+            node.else = KwNodeSe.getTabiNode(this);
         }
 
         return node;
     }
+
+    static getTabiNode(context) {
+        context.skipKeyword(constants.KW.TABI);
+
+        if (context.isKeyword(constants.KW.SE)) { //cater for 'tabi se' block
+            return new KwNodeSe().getNode.call(context);
+        }
+
+        return context.parseBlock(constants.KW.TABI);
+    }
+
+
 }
 
 module.exports = new KwNodeSe();
