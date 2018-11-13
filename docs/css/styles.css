@@ -11,6 +11,8 @@
     --string-int-color: #c5cff0;
 }
 html{
+    -webkit-font-smoothing:antialiased;
+    font-smooth: 2em;
     scroll-behavior: smooth;
     font-family: 'Rubik',sans-serif;
 
@@ -38,6 +40,8 @@ p{
 }
 #loop{
     color: var(--loop-color);
+    font-weight: var(--syntax-weight);
+
 }
 #varName{
     color: var(--variable-color);
@@ -56,7 +60,7 @@ p{
     font-size: 22px;
     font-family: 'Rubik',sans-serif;
     font-weight: 600;
-    color: #15a194;
+    color: #0B409C;
     letter-spacing: 1px;
 }
 #black-background{
@@ -129,13 +133,20 @@ p{
 
 @media (max-width:600px){
 
+    p{
+        font-size: 13px;
+    }
+
     #fixedWidthParagraph{
         width:90%;
     }
     .example, .example-output{
-        width: 90%;
+        width: 95%;
     }
     #black-background{
         width: 50%;
+    }
+    .note{
+        width: 95%;
     }
 }
