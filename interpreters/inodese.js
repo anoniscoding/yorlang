@@ -17,9 +17,7 @@ class INodeSe extends IBase {
 
         for (let i = 0; i < body.length; i++) {
             const returnedValue = context.evaluateNode(body[i]);
-
-            if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
-            else if (returnedValue != undefined) return returnedValue; //it's an ise pada value
+            if (returnedValue != undefined) return returnedValue; //it's an ise pada value or kuro statement
         }
     }
 }
