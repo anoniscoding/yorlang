@@ -1,4 +1,4 @@
-const ka = require("../../helperise/ka.js");
+const ka = require("../../helperise/array_helpers/ka.js");
 
 //All helper ise get an array as their args
 
