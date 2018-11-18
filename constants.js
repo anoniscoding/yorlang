@@ -3,15 +3,15 @@ const KEYWORDS = {
     NIGBATI: "nígbàtí",
     SOPE: "sọpé",
     TABI: "tàbí",
-    OOTO: "òótó",
-    IRO: "iró",
-    ISE: "iṣé", 
+    OOTO: "òótọ́",
+    IRO: "irọ́",
+    ISE: "iṣé̩",
     FUN: "fún",
     PADA: "padà",
     KURO: "kúrò",
     SE: "ṣé",
     YI: "yí",
-    EJO: "ẹjó",
+    EJO: "ẹjọ́",
     PADASI: "padàsí"
 };
 
@@ -75,7 +75,7 @@ const LIST = {
 
 const REGEX = {
     DIGIT: /[0-9]/i,
-    IDENTIFIER: /[a-zA-Z]|í|é|ì|ò|è|ọ|ṣ|ẹ|ó|à|á|ú/i,
+    IDENTIFIER: /[a-zA-Z]|[ÁÀÉÈẸE̩Ẹ́É̩Ẹ̀È̩ẸĒÍÌÓÒỌO̩Ọ́Ó̩Ọ̀Ò̩ỌÚÙṢS̩áàéèẹe̩ẹ́é̩ẹè̩íìóòọo̩ọ́ó̩ọ̀ò̩úùṣs̩]/i,
 };
 
 const constants = {
