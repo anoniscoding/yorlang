@@ -25,15 +25,15 @@ class INodeCallIse extends IBase {
                 return context.environment().getIse(context.scopeStack()[index], iseName);
             }
         }
-        return null
+        return null;
     }
 
-    static getIseHelperParams(context, params) {
-        const _params = [];
-        params.forEach(param => {
-            _params.push(context.evaluateNode(param))
+    static getIseHelperParams(context, paramNodeList) {
+        const params = [];
+        paramNodeList.forEach(paramNode => {
+            params.push(context.evaluateNode(paramNode));
         });
-        return _params;
+        return params;
     }
 
     static setIseNodeParam(context, iseNodeParamTokens, iseNodeParamValues) {
