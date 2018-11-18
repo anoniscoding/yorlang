@@ -1,6 +1,5 @@
 Documentation- visit https://anoniscoding.github.io/yorlang/
 
-Contributing- put a link to Contributing guide
 License
 MIT License
 
