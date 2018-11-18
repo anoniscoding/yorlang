@@ -31,6 +31,19 @@ describe("INodeSe test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith(18);
     });
 
+    test("it should run the then block when the condition returns a truthy value that is not the keyword OOTO", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = 7;
+            ${constants.KW.SE} (a) {
+                ${constants.KW.SOPE} a;
+            } 
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(global.console.log).toHaveBeenCalledWith(7);
+    });
+
     test("it should interprete the se keyword and run the else block ", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = 6;

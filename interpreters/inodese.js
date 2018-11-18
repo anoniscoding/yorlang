@@ -4,7 +4,7 @@ const constants = require("../constants.js");
 class INodeSe extends IBase {
 
     interpreteNode(node) {
-        if (this.evaluateNode(node.condition) === constants.KW.OOTO) {
+        if (this.evaluateNode(node.condition) !== constants.KW.IRO) {
             return INodeSe.runBody(this, node.then);
         } else if (node.else != undefined) {
             return INodeSe.runBody(this, node.else);

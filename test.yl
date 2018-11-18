@@ -1,9 +1,10 @@
-tí onka = [1, 2, 3, 4, 5 ];
 
-tí i = 0;
-#sọpé onka[i];
-nígbàtí (onka[i] < 5) { 
-    sọpé "o kere si aarun"; 
+iṣé multiplyNumbers ( a, b)   { 
 
-    tí i = i + 1;
+    padà a * b ; 
+
 }
+
+tí X = multiplyNumbers ( 5, 6 ) ;
+
+sọpé X ;
