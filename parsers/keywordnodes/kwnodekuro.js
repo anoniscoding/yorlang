@@ -5,11 +5,7 @@ class KwNodeKuro extends BaseNode {
 
     getNode() {
         if (KwNodeKuro.isExpectedKuroStatement(this)) {
-            const node = {};
-            node.operation = this.lexer.next().value;
-            this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
-            
-            return node;
+            return KwNodeKuro.getParsedKuroNode(this);
         }
 
         this.lexer.throwError("Yorlang Kuro keyword not expected");
@@ -18,6 +14,14 @@ class KwNodeKuro extends BaseNode {
     static isExpectedKuroStatement(context) {
         return context.getBlockTypeStack().indexOf(constants.KW.FUN) >= 0 ||
                                             context.getBlockTypeStack().indexOf(constants.KW.NIGBATI) >= 0;
+    }
+
+    static getParsedKuroNode(context) {
+        const node = {};
+        node.operation = context.lexer.next().value;
+        context.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+
+        return node;
     }
 }
 

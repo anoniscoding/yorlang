@@ -5,13 +5,7 @@ class KwNodePada extends BaseNode {
 
     getNode() {        
         if (KwNodePada.isExpectedPadaStatement(this)) {
-            this.skipKeyword(constants.KW.PADA);
-            const node = {};
-            node.operation = constants.KW.PADA;
-            node.body = this.parseExpression();
-            this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
-    
-            return node;
+            return KwNodePada.getParsePadaNode(this);
         }
         
         this.lexer.throwError("Yorlang pada keyword not expected in a non function block");
@@ -19,6 +13,16 @@ class KwNodePada extends BaseNode {
 
     static isExpectedPadaStatement(context) {
         return context.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0
+    }
+
+    static getParsePadaNode(context) {
+        context.skipKeyword(constants.KW.PADA);
+        const node = {};
+        node.operation = constants.KW.PADA;
+        node.body = context.parseExpression();
+        context.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+
+        return node;
     }
 }
 

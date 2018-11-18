@@ -5,17 +5,7 @@ class KwNodeIse extends BaseNode {
 
     getNode() {
         if (KwNodeIse.isExpectedIseDeclaration(this)) {
-            this.skipKeyword(constants.KW.ISE);
-
-            return {
-                operation: constants.KW.ISE,
-                name: this.parseVarname(),
-                paramTokens: this.parseDelimited( 
-                    constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA,
-                    this.getTokenThatSatisfiesPredicate.bind(this), (token) => token.type === constants.VARIABLE
-                ),
-                body: this.parseBlock(constants.KW.ISE),
-            };
+            return KwNodeIse.getParsedIseNode(this);
         }
         
         this.lexer.throwError("Cannot create a yorlang function within a non function block");   
@@ -24,6 +14,20 @@ class KwNodeIse extends BaseNode {
     static isExpectedIseDeclaration(context) {
         return context.getBlockTypeStack().length == 0 || context.peekBlockTypeStack() === constants.PROGRAM 
                                                     || context.peekBlockTypeStack() === constants.KW.ISE;
+    }
+
+    static getParsedIseNode(context) {
+        context.skipKeyword(constants.KW.ISE);
+
+        return {
+            operation: constants.KW.ISE,
+            name: context.parseVarname(),
+            paramTokens: context.parseDelimited( 
+                constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA,
+                context.getTokenThatSatisfiesPredicate.bind(context), (token) => token.type === constants.VARIABLE
+            ),
+            body: context.parseBlock(constants.KW.ISE),
+        };
     }
 }
 
