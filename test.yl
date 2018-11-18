@@ -1,10 +1,13 @@
+tí age = 10 + 8 ;
 
-iṣé multiplyNumbers ( a, b)   { 
-
-    padà a * b ; 
-
+yí ( age )  { 
+    irú 12 : 
+        sọpé "you are a kid" ;
+    irú 18 : 
+        sọpé "you are a teenager" ;
+    irú 22 : 
+        sọpé "you are an adult" ;
+    padàsí: 
+        sọpé "you are too old" ;
 }
 
-tí X = multiplyNumbers ( 5, 6 ) ;
-
-sọpé X ;

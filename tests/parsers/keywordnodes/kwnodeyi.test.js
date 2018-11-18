@@ -13,9 +13,9 @@ describe("KwNodeYi test suite", () => {
 
     test("it should return a valid yi node", () => {
         parser.lexer.inputStream.code = `${constants.KW.YI} (firstname) {
-            ${constants.KW.EJO} "anu":
+            ${constants.KW.IRU} "anu":
                 ${constants.KW.SOPE} "it is anu";
-            ${constants.KW.EJO} "femi": 
+            ${constants.KW.IRU} "femi": 
                 ${constants.KW.SOPE} "it femi";
             ${constants.KW.PADASI}: 
                 ${constants.KW.SOPE} "mi o mo";      
@@ -24,7 +24,7 @@ describe("KwNodeYi test suite", () => {
         const expectedNode = {
             yibody: [
                 {
-                    ejobody: [
+                    IRUbody: [
                         {
                             body: {
                                 left: null, 
@@ -35,16 +35,16 @@ describe("KwNodeYi test suite", () => {
                             operation: constants.KW.SOPE
                         }
                     ], 
-                    ejovalue: {
+                    IRUvalue: {
                         value: "anu",
                         left: null,
                         right: null,
                         operation: null
                     }, 
-                    operation: constants.KW.EJO
+                    operation: constants.KW.IRU
                 }, 
                 {
-                    ejobody: [
+                    IRUbody: [
                         {
                             body: {
                                 left: null, 
@@ -55,13 +55,13 @@ describe("KwNodeYi test suite", () => {
                             operation: constants.KW.SOPE
                         }
                     ], 
-                    ejovalue: {
+                    IRUvalue: {
                         value: "femi",
                         left: null,
                         right: null,
                         operation: null
                     }, 
-                    operation: constants.KW.EJO
+                    operation: constants.KW.IRU
                 }
             ], 
             operation: constants.KW.YI, 
@@ -87,10 +87,10 @@ describe("KwNodeYi test suite", () => {
 
     test("it should throw an error when an invalid yi node is given", () => {
         parser.lexer.inputStream.code = `${constants.KW.YI} name) {
-            ${constants.KW.EJO} "anu":
+            ${constants.KW.IRU} "anu":
                 ${constants.KW.SOPE} "it is anu";
                 ${constants.KW.KURO};
-            ${constants.KW.EJO} "femi": 
+            ${constants.KW.IRU} "femi": 
                 ${constants.KW.SOPE} "it femi";
                 ${constants.KW.KURO};
             ${constants.KW.PADASI}: 

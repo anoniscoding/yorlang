@@ -11,7 +11,7 @@ const KEYWORDS = {
     KURO: "kúrò",
     SE: "ṣé",
     YI: "yí",
-    EJO: "ẹjọ́",
+    IRU: "irú",
     PADASI: "padàsí"
 };
 
@@ -69,7 +69,7 @@ const LIST = {
         KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
         KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI,
-        KEYWORDS.EJO, KEYWORDS.PADASI
+        KEYWORDS.IRU, KEYWORDS.PADASI
     ]
 };
 
