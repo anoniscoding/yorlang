@@ -7,8 +7,8 @@ class INodeCallIse extends IBase {
         const iseNode = INodeCallIse.getIseNode(this, node.name);
 
         if (iseNode == null) {
-            //try running isename from yorlang helper functions list
-            return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));  
+            if (this.environment().isExistHelperIse(node.name))
+                return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));  
         }
 
         this.pushToScopeStack(iseNode.name);

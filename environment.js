@@ -34,8 +34,12 @@ class Environment {
         }
     }
 
+    isExistHelperIse(iseName) {
+        return helperIseDeclarations[iseName] != undefined;
+    }
+
     runHelperIse(iseName, iseArgs) {
-        if (helperIseDeclarations[iseName] != undefined) {
+        if (this.isExistHelperIse(iseName)) {
             return helperIseDeclarations[iseName](iseArgs);
         }
 
