@@ -5,7 +5,7 @@ const KEYWORDS = {
     TABI: "tàbí",
     OOTO: "òótọ́",
     IRO: "irọ́",
-    ISE: "iṣé̩",
+    ISE: "iṣẹ́",
     FUN: "fún",
     PADA: "padà",
     KURO: "kúrò",
@@ -75,7 +75,7 @@ const LIST = {
 
 const REGEX = {
     DIGIT: /[0-9]/i,
-    IDENTIFIER: /[a-zA-Z]|[ÁÀÉÈẸE̩Ẹ́É̩Ẹ̀È̩ẸĒÍÌÓÒỌO̩Ọ́Ó̩Ọ̀Ò̩ỌÚÙṢS̩áàéèẹe̩ẹ́é̩ẹè̩íìóòọo̩ọ́ó̩ọ̀ò̩úùṣs̩]/i,
+    IDENTIFIER: /[a-zA-Z]|[ÁÀÉÈẸẸ́Ẹ̀ẸĒÍÌÓÒỌỌ́Ọ̀ỌÚÙṢáàéèẹẹ́ẹíìóòọọ́ọ̀úùṣ]/i,
 };
 
 const constants = {
