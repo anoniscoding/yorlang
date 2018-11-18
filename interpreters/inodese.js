@@ -12,7 +12,7 @@ class INodeSe extends IBase {
     }
 
     static runBody(context, body) {
-        //cater for 'tabi se' block
+        //It is expected to be a 'tabi se' block when body is not an instance of an array
         if (!(body instanceof Array)) context.evaluateNode(body);
 
         for (let i = 0; i < body.length; i++) {
