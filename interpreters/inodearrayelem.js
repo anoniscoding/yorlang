@@ -11,6 +11,8 @@ class INodeArrayElement extends IBase {
         if (typeof index == "number") {
             return arrayLiteral[index];
         }
+
+        throw new Error(`Typeof index given for array ${node.name} must be a number`);
     }
 }
 
