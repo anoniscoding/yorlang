@@ -95,4 +95,53 @@ describe("KwNodeSe test suite", () => {
         }).toThrow();
     });
 
+    test("it should parse tabi se (else if) statements", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} 
+            ${constants.KW.TABI} ${constants.KW.SE} (niOruko) {}
+            ${constants.KW.TABI} ${constants.KW.SE} (${constants.KW.OOTO}) {}
+            ${constants.KW.TABI} {}
+        `;
+
+        const expectedNode = {
+            "condition": {
+                "left": {
+                    "name": "aropo",
+                    "operation": constants.GET_TI
+                },
+                "operation": "&&",
+                "right": {
+                    "left": null,
+                    "operation": null,
+                    "right": null,
+                    "value": constants.KW.OOTO
+                },
+                "value": null
+            },
+            "else": {
+                "condition": {
+                    "name": "niOruko",
+                    "operation": constants.GET_TI
+                },
+                "else": {
+                    "condition": {
+                        "left": null,
+                        "operation": null,
+                        "right": null,
+                        "value": constants.KW.OOTO
+                    },
+                    "else": [],
+                    "operation": constants.KW.SE,
+                    "then": []
+                },
+                "operation": constants.KW.SE,
+                "then": []
+            },
+            "operation": constants.KW.SE,
+            "then": []
+        }
+
+        expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
+    });
+
 });

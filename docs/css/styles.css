@@ -1,0 +1,152 @@
+/* index and docs  page custom styles */
+:root{
+    --conditional-color: #fabf8f;
+    --print-color: yellow;  /* used for objects */
+    --function-color: #;
+    --loop-color: #c944c9;
+    --method-color: green;
+    --variable-color:#15a194;
+    --syntax-weight: 400;
+    --paragraph-color: #7f7f7f;
+    --string-int-color: #c5cff0;
+}
+html{
+    -webkit-font-smoothing:antialiased;
+    font-smooth: 2em;
+    scroll-behavior: smooth;
+    font-family: 'Rubik',sans-serif;
+
+}
+.title{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300 !important;
+    letter-spacing: 1px;
+}
+
+p{
+    
+    color: #676767;
+}
+
+
+/* color and font style for objects, functions, variables, conditions, loops, arrays etc. */
+#print{
+    color: var(--print-color);
+    font-weight: var(--syntax-weight);
+}
+#condition{
+    color: var(--conditional-color);
+    font-weight: var(--syntax-weight);
+}
+#loop{
+    color: var(--loop-color);
+    font-weight: var(--syntax-weight);
+
+}
+#varName{
+    color: var(--variable-color);
+    font-weight: var(--syntax-weight);
+}
+#stringInt{
+    color: var(--string-int-color);
+    font-weight: var(--syntax-weight);
+}
+
+.container-fluid{
+    padding-bottom: 30px;
+}
+
+#intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays{
+    font-size: 22px;
+    font-family: 'Rubik',sans-serif;
+    font-weight: 600;
+    color: #0B409C;
+    letter-spacing: 1px;
+}
+#black-background{
+    color: #fff;
+    background-color: #000;
+    padding: 5px 5px 5px 5px;
+    width: 20%;
+}
+/* example styles */
+#fixedWidthParagraph{
+    width:60%;
+    text-align: justify;
+}
+.example {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 1);
+    font-family: 'Rubik', sans-serif;
+    width: 60%;
+    margin: 15px 0 15px 00;
+    border-left: 3px solid #32903f;
+}
+.note {
+    display: flex;
+    flex-direction: column;    
+    background: #ffffcc;
+    font-family: 'Rubik', sans-serif;
+    width: 60%;
+    margin: 15px 0 15px 00;
+    padding: 15px 15px;
+    border-left: 3px solid yellow;
+}
+
+.example-lang {
+    font-size: 12px;
+    color: #32903F;
+    line-height: 0.5px;
+    letter-spacing: 1px;
+    padding: 10px 10px 10px 10px;
+    align-self: flex-end;
+}
+
+.example-one {
+    font-size: 13px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.example-output {
+    border: 1px solid #ccc;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-output-name {
+    font-size: 12px;
+    line-height: 0.5px;
+    letter-spacing: 1px;
+    padding: 10px 10px 10px 10px;
+    align-self: flex-end;
+}
+
+.example-output-value {
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+@media (max-width:600px){
+
+    p{
+        font-size: 13px;
+    }
+
+    #fixedWidthParagraph{
+        width:90%;
+    }
+    .example, .example-output{
+        width: 95%;
+    }
+    #black-background{
+        width: 50%;
+    }
+    .note{
+        width: 95%;
+    }
+}

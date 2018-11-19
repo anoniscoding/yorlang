@@ -1,12 +1,46 @@
+**Yorlang Programming Language**
+- Yorlang was created so we can have fun writing code in one of the native languages (i.e Yoruba) in Nigeria .
+
+**Feature List**
+- Variable Declaration
+- Conditionals & Loops
+- Functions & Arrays
+
 Documentation- visit https://anoniscoding.github.io/yorlang/
-Contributing- put a link to Contributing guide
-License
-MIT License
 
-Copyright (c) 2018 Yorlang
+**Prerequisites For Developerss:**
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+These are what you need installed on your computer to use the application:
+- Git
+- Node.js
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+This project uses ES6+ features and requires Node version >= 7.6.0 and <=8.9.1
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+To confirm that you have Node.js installed, run the following in your terminal:
+- node -v
+- You should get something like v8.9.1.
+
+Local Copy
+- To create a local copy, run the following in your terminal:
+- git clone https://github.com/anoniscoding/yorlang.git
+- Then change into the local directory, run the following in your terminal:
+- cd yorlang
+
+**Install Node.js Modules**
+- To install all dependencies, run the following in your terminal: npm install
+
+**Run Your Tests**
+- To run test in the project, run the following in your terminal: npm test
+
+**Link Bin Commands Locally**
+- To locally install any command listed in the bin field of our package.json, run the following in your terminal: npm run link
+- After linking, you can run sample code by running the following in your terminal: yorl test.yl
+
+**Contributing**
+- Contributions are welcome
+
+**Author**
+- Karounwi Anuoluwapo - @anoniscoding
+
+**License**
+- MIT

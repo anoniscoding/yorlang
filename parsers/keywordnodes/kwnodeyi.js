@@ -27,10 +27,10 @@ class KwNodeYi extends BaseNode {
     }
 
     static getYiBody(context) {
-        const yiBody = [], kwNodeEjo = new KwNodeEjo();
+        const yiBody = [], kwNodeIRU = new KwNodeIRU();
 
-        while (context.lexer.isNotEndOfFile() && context.lexer.peek().value == constants.KW.EJO) {
-            yiBody.push(kwNodeEjo.getNode.call(context));
+        while (context.lexer.isNotEndOfFile() && context.lexer.peek().value == constants.KW.IRU) {
+            yiBody.push(kwNodeIRU.getNode.call(context));
         }
 
         return yiBody;
@@ -39,7 +39,7 @@ class KwNodeYi extends BaseNode {
     static getPadasi(context) {
         const padasi = [];
 
-        if (context.isKeyword(constants.KW.PADASI)) {
+        if (context.isNextTokenKeyword(constants.KW.PADASI)) {
             context.skipKeyword(constants.KW.PADASI);
             context.skipPunctuation(constants.SYM.COLON);
 
@@ -52,32 +52,32 @@ class KwNodeYi extends BaseNode {
     }
 }
 
-class KwNodeEjo extends BaseNode {
+class KwNodeIRU extends BaseNode {
 
     getNode() {
         const node = {};
-        node.operation = constants.KW.EJO;
-        this.skipKeyword(constants.KW.EJO);
-        node.ejovalue = this.parseExpression();
+        node.operation = constants.KW.IRU;
+        this.skipKeyword(constants.KW.IRU);
+        node.IRUvalue = this.parseExpression();
         this.skipPunctuation(constants.SYM.COLON);  
-        node.ejobody = KwNodeEjo.getEjoBody(this);
+        node.IRUbody = KwNodeIRU.getIRUBody(this);
 
         return node;
     }
 
-    static getEjoBody(context) {
-        const ejoBody = [];
+    static getIRUBody(context) {
+        const IRUBody = [];
 
-        while (KwNodeEjo.canParseEjoStatements(context)) {
-            ejoBody.push(context.parseAst());
+        while (KwNodeIRU.canParseIRUStatements(context)) {
+            IRUBody.push(context.parseAst());
         }
         
-        return ejoBody;
+        return IRUBody;
     }
 
-    static canParseEjoStatements(context) {
+    static canParseIRUStatements(context) {
         return context.lexer.isNotEndOfFile() 
-                        && context.lexer.peek().value !== constants.KW.EJO 
+                        && context.lexer.peek().value !== constants.KW.IRU 
                         && context.lexer.peek().value !== constants.KW.PADASI  
                         && context.lexer.peek().value !== constants.SYM.R_PAREN;
     }

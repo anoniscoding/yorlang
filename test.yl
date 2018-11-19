@@ -1,3 +1,9 @@
-tí a = [1,2];
-tí a[0] = "funmi";
-sọpé a[0];
+iṣẹ́ multiplyNumbers ( a, b)   { 
+
+    padà a * b ; 
+
+}
+
+tí X = multiplyNumbers ( 5, 6 ) ;
+
+sọpé X ;

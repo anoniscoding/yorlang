@@ -1,5 +1,4 @@
 const helperIseDeclarations = require("./helperise/registeredHelperIse.js");
-const constants = require("./constants.js");
 
 class Environment {
 
@@ -35,8 +34,12 @@ class Environment {
         }
     }
 
+    isExistHelperIse(iseName) {
+        return helperIseDeclarations[iseName] != undefined;
+    }
+
     runHelperIse(iseName, iseArgs) {
-        if (helperIseDeclarations[iseName] != undefined) {
+        if (this.isExistHelperIse(iseName)) {
             return helperIseDeclarations[iseName](iseArgs);
         }
 
