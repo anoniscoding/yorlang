@@ -1,5 +1,5 @@
 **Yorlang Programming Language**
-- Yorlang was created so we can have fun writing code in one of our native languages.
+- Yorlang was created so we can have fun writing code in one of the native languages (i.e Yoruba) in Nigeria .
 
 **Feature List**
 - Variable Declaration
