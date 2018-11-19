@@ -14,7 +14,6 @@ class ArrayNl extends BaseNode {
 
     static getParsedArrayLiteral(context) {
         const node = {};
-
         node.operation = constants.ARRAY;
         node.body = context.parseDelimited( 
             constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 

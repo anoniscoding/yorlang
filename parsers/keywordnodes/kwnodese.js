@@ -18,7 +18,7 @@ class KwNodeSe extends BaseNode {
         node.condition = bracketExpressionNl.getNode.call(this, false);
         node.then = this.parseBlock(constants.KW.SE);
 
-        if (this.isKeyword(constants.KW.TABI)) {
+        if (this.isNextTokenKeyword(constants.KW.TABI)) {
             node.else = KwNodeSe.getTabiNode(this);
         }
 
@@ -28,7 +28,7 @@ class KwNodeSe extends BaseNode {
     static getTabiNode(context) {
         context.skipKeyword(constants.KW.TABI);
 
-        if (context.isKeyword(constants.KW.SE)) { //cater for 'tabi se' block
+        if (context.isNextTokenKeyword(constants.KW.SE)) { //cater for 'tabi se' block
             return new KwNodeSe().getNode.call(context);
         }
 

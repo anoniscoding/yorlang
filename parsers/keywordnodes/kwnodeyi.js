@@ -39,7 +39,7 @@ class KwNodeYi extends BaseNode {
     static getPadasi(context) {
         const padasi = [];
 
-        if (context.isKeyword(constants.KW.PADASI)) {
+        if (context.isNextTokenKeyword(constants.KW.PADASI)) {
             context.skipKeyword(constants.KW.PADASI);
             context.skipPunctuation(constants.SYM.COLON);
 

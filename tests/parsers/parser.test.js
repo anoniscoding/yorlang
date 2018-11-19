@@ -10,47 +10,47 @@ describe("Parser test suite", () => {
         parser = new Parser(new Lexer(new InputStream()));
     });
 
-    test("IsPunctuation - it should confirm that the given token is a punctuation and it matches the next token in the stream", () => {
+    test("isNextTokenPunctuation - it should confirm that the given token is a punctuation and it matches the next token in the stream", () => {
         parser.lexer.inputStream.code = `${constants.SYM.L_PAREN}`;
 
-        expect(parser.isPunctuation(constants.SYM.L_PAREN)).toBeTruthy();
+        expect(parser.isNextTokenPunctuation(constants.SYM.L_PAREN)).toBeTruthy();
     });
 
-    test("IsPunctuation - it should confirm that the next token in the stream does not match the punctuation given", () => {
+    test("isNextTokenPunctuation - it should confirm that the next token in the stream does not match the punctuation given", () => {
         parser.lexer.inputStream.code = `${constants.SYM.TI}`;
 
-        expect(parser.isPunctuation(constants.SYM.L_PAREN)).toBeFalsy();
+        expect(parser.isNextTokenPunctuation(constants.SYM.L_PAREN)).toBeFalsy();
     });
 
-    test("IsOperator - it should confirm that the given token is an operator and it matches the next token in the stream", () => {
+    test("isNextTokenOperator - it should confirm that the given token is an operator and it matches the next token in the stream", () => {
         parser.lexer.inputStream.code = `${constants.SYM.ASSIGN}`;
 
-        expect(parser.isOperator(constants.SYM.ASSIGN)).toBeTruthy();
+        expect(parser.isNextTokenOperator(constants.SYM.ASSIGN)).toBeTruthy();
     });
 
-    test("IsOperator - it should confirm that the next token in the stream does not match the operator given", () => {
+    test("isNextTokenOperator - it should confirm that the next token in the stream does not match the operator given", () => {
         parser.lexer.inputStream.code = `${constants.SYM.PIPE}`;
 
-        expect(parser.isOperator(constants.SYM.ASSIGN)).toBeFalsy();
+        expect(parser.isNextTokenOperator(constants.SYM.ASSIGN)).toBeFalsy();
     });
 
-    test("IsKeyword - it should confirm that the given token is an operator and it matches the next token in the stream", () => {
+    test("isNextTokenKeyword - it should confirm that the given token is an operator and it matches the next token in the stream", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI}`;
 
-        expect(parser.isKeyword(constants.KW.TI)).toBeTruthy();
+        expect(parser.isNextTokenKeyword(constants.KW.TI)).toBeTruthy();
     });
 
-    test("IsKeyword - it should confirm that the next token in the stream does not match the keyword given", () => {
+    test("isNextTokenKeyword - it should confirm that the next token in the stream does not match the keyword given", () => {
         parser.lexer.inputStream.code = `${constants.SYM.PIPE}`;
 
-        expect(parser.isKeyword(constants.KW.TI)).toBeFalsy();
+        expect(parser.isNextTokenKeyword(constants.KW.TI)).toBeFalsy();
     });
 
     test("SkipPunctuation - it should skip the punctuation token L_PAREN", () => {
         parser.lexer.inputStream.code = `${constants.SYM.L_PAREN};`;
         parser.skipPunctuation(constants.SYM.L_PAREN);
 
-        expect(parser.isPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
+        expect(parser.isNextTokenPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
     });
 
     test("SkipPunctuation - it should fail to skip the punctuation token R_PAREN", () => {
@@ -63,7 +63,7 @@ describe("Parser test suite", () => {
         parser.lexer.inputStream.code = `${constants.SYM.MULTIPLY};`;
         parser.skipOperator(constants.SYM.MULTIPLY);
 
-        expect(parser.isPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
+        expect(parser.isNextTokenPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
     });
 
     test("SkipOperator - it should fail to skip the operator token BINARY_AND", () => {
@@ -76,7 +76,7 @@ describe("Parser test suite", () => {
         parser.lexer.inputStream.code = `${constants.KW.TI};`;
         parser.skipKeyword(constants.KW.TI);
 
-        expect(parser.isPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
+        expect(parser.isNextTokenPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
     });
 
     test("SkipKeyword - it should fail to skip the keyword token TI", () => {
