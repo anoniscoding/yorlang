@@ -9,10 +9,10 @@
     "test": "jest",
     "coverage": "node_modules/.bin/jest --coverage"
   },
-  "bin": {
-    "yorl": "./cli.js"
-  },
   "dependencies": {
     "jest": "^23.6.0"
+  },
+  "bin": {
+    "yorl": "./cli.js"
   }
 }
