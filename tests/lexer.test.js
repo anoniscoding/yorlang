@@ -19,14 +19,14 @@ describe("Lexer Tests", () => {
         expect(lexer.isWhiteSpace("\a")).toBe(false);
     });
 
-    test("isNextTokenPunctuation - it should confirm that they are punctuations", () => {
+    test("isPunctuation - it should confirm that they are punctuations", () => {
         constants.LIST.PUNCTUATIONS.forEach((punc_char,i,a) => {
-            expect(lexer.isNextTokenPunctuation(punc_char)).toBe(true);
+            expect(lexer.isPunctuation(punc_char)).toBe(true);
         });    
     });
 
-    test("isNextTokenPunctuation - it should confirm that it is not a punctuation", () => {
-        expect(lexer.isNextTokenPunctuation("+")).toBe(false);
+    test("isPunctuation - it should confirm that it is not a punctuation", () => {
+        expect(lexer.isPunctuation("+")).toBe(false);
     });
 
     test("IsIdentifier - it should confirm that it is an identifier", () => {
@@ -37,24 +37,24 @@ describe("Lexer Tests", () => {
         expect(lexer.isIdentifier("î")).toBe(false);
     });
 
-    test("isNextTokenOperator - it should confirm that they are operators", () => {
+    test("isOperator - it should confirm that they are operators", () => {
         constants.LIST.OPERATORS.forEach((op_char,i,a) => {
-            expect(lexer.isNextTokenOperator(op_char)).toBe(true);
+            expect(lexer.isOperator(op_char)).toBe(true);
         });    
     });
 
-    test("isNextTokenOperator - it should confirm that it is not an operator", () => {
-        expect(lexer.isNextTokenOperator("2")).toBe(false);
+    test("isOperator - it should confirm that it is not an operator", () => {
+        expect(lexer.isOperator("2")).toBe(false);
     });
 
-    test("isNextTokenKeyword - it should confirm that they are keywords", () => {
+    test("isKeyword - it should confirm that they are keywords", () => {
         constants.LIST.KEYWORDS.forEach((kw_char,i,a) => {
-            expect(lexer.isNextTokenKeyword(kw_char)).toBe(true);
+            expect(lexer.isKeyword(kw_char)).toBe(true);
         });    
     });
 
-    test("isNextTokenKeyword - it should confirm that it is not a keyword", () => {
-        expect(lexer.isNextTokenKeyword("aldkfjdkfjekj")).toBe(false);
+    test("isKeyword - it should confirm that it is not a keyword", () => {
+        expect(lexer.isKeyword("aldkfjdkfjekj")).toBe(false);
     });
 
     test("IsDigit - it should confirm that it is a digit", () => {

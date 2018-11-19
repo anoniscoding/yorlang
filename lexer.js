@@ -11,7 +11,7 @@ class Lexer {
         return constants.LIST.WHITESPACES.indexOf(ws) >= 0;
     }
 
-    isNextTokenPunctuation(punc) {
+    isPunctuation(punc) {
         return constants.LIST.PUNCTUATIONS.indexOf(punc) >= 0;
     }
 
@@ -19,11 +19,11 @@ class Lexer {
         return constants.REGEX.IDENTIFIER.test(id);
     }
 
-    isNextTokenOperator(op) {
+    isOperator(op) {
         return constants.LIST.OPERATORS.indexOf(op) >= 0;
     }
 
-    isNextTokenKeyword(kw) {
+    isKeyword(kw) {
         return constants.LIST.KEYWORDS.indexOf(kw) >= 0;
     }
 
@@ -60,7 +60,7 @@ class Lexer {
         const identifier = this.readWhile(this.isIdentifier);
         
         return {
-            type: this.isNextTokenKeyword(identifier)  ? constants.KEYWORD : constants.VARIABLE,
+            type: this.isKeyword(identifier)  ? constants.KEYWORD : constants.VARIABLE,
             value: identifier
         };
     }
@@ -98,8 +98,8 @@ class Lexer {
         if (ch == constants.SYM.STR_QUOTE) return this.readString();
         if (this.isDigit(ch)) return this.readNumber();
         if (this.isIdentifier(ch)) return this.readIdentifier();
-        if (this.isNextTokenPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.inputStream.next() }
-        if (this.isNextTokenOperator(ch)) return { type: constants.OPERATOR, value: this.readWhile(this.isNextTokenOperator) }
+        if (this.isPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.inputStream.next() }
+        if (this.isOperator(ch)) return { type: constants.OPERATOR, value: this.readWhile(this.isOperator) }
 
         this.throwError(`Cant handle character  '${ch}'`);
     }
