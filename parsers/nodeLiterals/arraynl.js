@@ -5,21 +5,32 @@ const constants = require("../../constants.js");
 class ArrayNl extends BaseNode {
 
     getNode(arrayNameToken) {
+        if (arrayNameToken == undefined) {
+            return ArrayNl.getParsedArrayLiteral(this);
+        } else { 
+            return ArrayNl.getParsedArrayElement(this, arrayNameToken);
+        }
+    }
+
+    static getParsedArrayLiteral(context) {
         const node = {};
 
-        if (arrayNameToken == undefined) { //it is an array literal e.g [1,2,3]
-            node.operation = constants.ARRAY;
-            node.body = this.parseDelimited( 
-                constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
-                this.parseExpression.bind(this), null
-            );
-        } else { //it is an array element a[0]
-            node.operation = constants.ARRAY_ELEM;
-            node.name = arrayNameToken.value;
-            this.skipPunctuation(constants.SYM.L_SQ_BRACKET);
-            node.index = this.parseExpression();
-            this.skipPunctuation(constants.SYM.R_SQ_BRACKET);
-        }
+        node.operation = constants.ARRAY;
+        node.body = context.parseDelimited( 
+            constants.SYM.L_SQ_BRACKET , constants.SYM.R_SQ_BRACKET, constants.SYM.COMMA, 
+            context.parseExpression.bind(context), null
+        );
+
+        return node;
+    }
+
+    static getParsedArrayElement(context, arrayNameToken) {
+        const node = {};
+        node.operation = constants.ARRAY_ELEM;
+        node.name = arrayNameToken.value;
+        context.skipPunctuation(constants.SYM.L_SQ_BRACKET);
+        node.index = context.parseExpression();
+        context.skipPunctuation(constants.SYM.R_SQ_BRACKET);
 
         return node;
     }
