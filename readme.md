@@ -11,7 +11,6 @@ Documentation- visit https://anoniscoding.github.io/yorlang/
 **Prerequisites For Developerss:**
 
 These are what you need installed on your computer to use the application:
-
 - Git
 - Node.js
 
@@ -32,6 +31,10 @@ Local Copy
 
 **Run Your Tests**
 - To run test in the project, run the following in your terminal: npm test
+
+**Link Bin Commands Locally**
+- To locally install any command listed in the bin field of our package.json, run the following in your terminal: npm run link
+- After linking, you can run sample code by running the following in your terminal: yorl test.yl
 
 **Contributing**
 - Contributions are welcome

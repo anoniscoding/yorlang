@@ -7,7 +7,8 @@
   },
   "scripts": {
     "test": "jest",
-    "coverage": "node_modules/.bin/jest --coverage"
+    "coverage": "node_modules/.bin/jest --coverage",
+    "link": "npm link"
   },
   "dependencies": {
     "jest": "^23.6.0"
