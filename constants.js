@@ -12,7 +12,8 @@ const KEYWORDS = {
     SE: "ṣé",
     YI: "yí",
     IRU: "irú",
-    PADASI: "padàsí"
+    PADASI: "padàsí",
+    GBE_WOLE: "gbewọlé"
 };
 
 const SYMBOLS = {
@@ -69,7 +70,7 @@ const LIST = {
         KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
         KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI,
-        KEYWORDS.IRU, KEYWORDS.PADASI
+        KEYWORDS.IRU, KEYWORDS.PADASI, KEYWORDS.GBE_WOLE
     ]
 };
 

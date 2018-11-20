@@ -42,8 +42,6 @@ class Environment {
         if (this.isExistHelperIse(iseName)) {
             return helperIseDeclarations[iseName](iseArgs);
         }
-
-        throw new Error(`Ise ${node.name} is undefined`);
     }
 
     sope(value) {

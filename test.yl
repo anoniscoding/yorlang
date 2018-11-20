@@ -1,9 +1,12 @@
-iṣẹ́ multiplyNumbers ( a, b)   { 
+gbewọlé "/sample/sample.yl";
 
-    padà a * b ; 
-
+iṣẹ́ divideNumbers(a, b) { 
+    padà a / b;
 }
 
-tí X = multiplyNumbers ( 5, 6 ) ;
+tí X = divideNumbers ( 15, 5 ) ;
+tí y = isiro ( 5, 7 ) ;
+
 
 sọpé X ;
+sọpé y ;
