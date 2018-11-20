@@ -15,6 +15,7 @@ html{
     font-smooth: 2em;
     scroll-behavior: smooth;
     font-family: 'Rubik',sans-serif;
+    letter-spacing: 1.1px;
 
 }
 .title{
@@ -56,7 +57,7 @@ p{
     padding-bottom: 30px;
 }
 
-#intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays{
+#intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays, #helperFunctions{
     font-size: 22px;
     font-family: 'Rubik',sans-serif;
     font-weight: 600;
@@ -73,6 +74,7 @@ p{
 #fixedWidthParagraph{
     width:60%;
     text-align: justify;
+    font-size: 14px;
 }
 .example {
     display: flex;
