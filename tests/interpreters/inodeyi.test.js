@@ -19,9 +19,9 @@ describe("INodeFun test suite", () => {
         ${constants.KW.TI} oruko = "femi";
 
         ${constants.KW.YI} (oruko) {
-            ${constants.KW.EJO} "anu":
+            ${constants.KW.IRU} "anu":
                 ${constants.KW.SOPE} "it is anu";
-            ${constants.KW.EJO} "femi":
+            ${constants.KW.IRU} "femi":
                 ${constants.KW.SOPE} "it is femi";
         }`;
 
@@ -35,14 +35,14 @@ describe("INodeFun test suite", () => {
         ${constants.KW.TI} oruko = 1;
 
         ${constants.KW.YI} (oruko) {
-            ${constants.KW.EJO} 1:
+            ${constants.KW.IRU} 1:
                 ${constants.KW.YI} (1+5) {
-                    ${constants.KW.EJO} 3+3:
+                    ${constants.KW.IRU} 3+3:
                         ${constants.KW.SOPE} "it is anu";
-                    ${constants.KW.EJO} 3:
+                    ${constants.KW.IRU} 3:
                         ${constants.KW.SOPE} "it is three";
                 }            
-            ${constants.KW.EJO} 2:
+            ${constants.KW.IRU} 2:
                 ${constants.KW.SOPE} "it is femi";
         }`;
 
@@ -56,9 +56,9 @@ describe("INodeFun test suite", () => {
         ${constants.KW.TI} oruko = "funmi";
 
         ${constants.KW.YI} (oruko) {
-            ${constants.KW.EJO} "anu":
+            ${constants.KW.IRU} "anu":
                 ${constants.KW.SOPE} "it is anu";
-            ${constants.KW.EJO} "femi":
+            ${constants.KW.IRU} "femi":
                 ${constants.KW.SOPE} "it is femi";
             ${constants.KW.PADASI}: 
                 ${constants.KW.SOPE} "i don't know";

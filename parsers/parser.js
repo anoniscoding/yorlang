@@ -30,33 +30,33 @@ class Parser {
         this.isArithmeticExpression = () => _isArithmeticExpression;
     }
 
-    isPunctuation(punc) {
+    isNextTokenPunctuation(punc) {
         const token = this.lexer.peek();
         return token && token.type == constants.PUNCTUATION && (token.value == punc);
     }
 
-    isOperator(op) {
+    isNextTokenOperator(op) {
         const token = this.lexer.peek();
         return token && token.type == constants.OPERATOR && (token.value == op);
     }
 
-    isKeyword(kw) {
+    isNextTokenKeyword(kw) {
         const token = this.lexer.peek();
         return token && token.type == constants.KEYWORD && (token.value == kw);
     }
 
     skipPunctuation(punc) {
-        if (this.isPunctuation(punc)) this.lexer.next();
+        if (this.isNextTokenPunctuation(punc)) this.lexer.next();
         else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipOperator(op) {
-        if (this.isOperator(op)) this.lexer.next();
+        if (this.isNextTokenOperator(op)) this.lexer.next();
         else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipKeyword(kw) {
-        if (this.isKeyword(kw)) this.lexer.next();
+        if (this.isNextTokenKeyword(kw)) this.lexer.next();
         else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
@@ -158,9 +158,9 @@ class Parser {
 
         this.skipPunctuation(start);
         while(this.lexer.isNotEndOfFile()) {
-            if (this.isPunctuation(stop)) break;
+            if (this.isNextTokenPunctuation(stop)) break;
             if (firstVar) firstVar = false; else this.skipPunctuation(separator);
-            if (this.isPunctuation(stop)) break; //this is necessary for an optional last separator
+            if (this.isNextTokenPunctuation(stop)) break; //this is necessary for an optional last separator
             varList.push(parser(predicate));
         }
         this.skipPunctuation(stop);

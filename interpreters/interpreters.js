@@ -25,6 +25,7 @@ interpreters[constants.KW.FUN] = require("./inodefun.js");
 interpreters[constants.KW.YI] = require("./inodeyi.js");
 interpreters[constants.KW.ISE] = require("./inodeise.js");
 interpreters[constants.KW.PADA] = require("./inodepada.js");
+interpreters[constants.KW.GBE_WOLE] = require("./inodegbewole.js");
 
 interpreters[constants.CALL_ISE] = require("./inodecallise.js");
 interpreters[constants.GET_TI] = require("./inodegetti.js");

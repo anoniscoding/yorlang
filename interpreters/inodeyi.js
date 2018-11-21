@@ -5,30 +5,30 @@ class INodeYi extends IBase {
     interpreteNode(node) {
         const yivalue = this.evaluateNode(node.yivalue);
 
-        for (let ejoIndex = 0; ejoIndex < node.yibody.length; ejoIndex++) {
-            if (INodeYi.isEjoValueMatchYiValue(this, node.yibody[ejoIndex].ejovalue, yivalue)) {
-                INodeYi.runMatchedEjoBody(this, node.yibody[ejoIndex].ejobody);
+        for (let IRUIndex = 0; IRUIndex < node.yibody.length; IRUIndex++) {
+            if (INodeYi.isIRUValueMatchYiValue(this, node.yibody[IRUIndex].IRUvalue, yivalue)) {
+                INodeYi.runMatchedIRUBody(this, node.yibody[IRUIndex].IRUbody);
                 break;
             }
 
-            if (INodeYi.canRunPadasi(ejoIndex, node)) {
+            if (INodeYi.canRunPadasi(IRUIndex, node)) {
                 INodeYi.runPadasi(this, node.padasi);
             }
         }
     }
 
-    static isEjoValueMatchYiValue(context, ejovalueNode, yivalue) {
-        return context.evaluateNode(ejovalueNode) === yivalue;
+    static isIRUValueMatchYiValue(context, IRUvalueNode, yivalue) {
+        return context.evaluateNode(IRUvalueNode) === yivalue;
     }
 
-    static runMatchedEjoBody(context, ejoBody) {
-        for (let i = 0; i < ejoBody.length; i++) {
-            context.evaluateNode(ejoBody[i]);
+    static runMatchedIRUBody(context, IRUBody) {
+        for (let i = 0; i < IRUBody.length; i++) {
+            context.evaluateNode(IRUBody[i]);
         }
     }
 
-    static canRunPadasi(ejoIndex, node) {
-        return (ejoIndex === node.yibody.length - 1) && (node.padasi != undefined);
+    static canRunPadasi(IRUIndex, node) {
+        return (IRUIndex === node.yibody.length - 1) && (node.padasi != undefined);
     }
 
     static runPadasi(context, padasi) {

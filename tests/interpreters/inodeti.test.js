@@ -64,4 +64,24 @@ describe("INodeTi test suite", () => {
         mainInterpreter.interpreteProgram(program.astList);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
     });
+
+    test("it should assign transformed (uppercase) string to variablet", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = síLẹ́tàŃlá("funmi");
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("FUNMI");
+    });
+
+    test("it should assign transformed (lowercase) string to variable", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = síLẹ́tàkékeré("FUNMI");
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("funmi");
+    });
 });

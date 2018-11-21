@@ -3,16 +3,17 @@ const KEYWORDS = {
     NIGBATI: "nígbàtí",
     SOPE: "sọpé",
     TABI: "tàbí",
-    OOTO: "òótó",
-    IRO: "iró",
-    ISE: "iṣé", 
+    OOTO: "òótọ́",
+    IRO: "irọ́",
+    ISE: "iṣẹ́",
     FUN: "fún",
     PADA: "padà",
     KURO: "kúrò",
     SE: "ṣé",
     YI: "yí",
-    EJO: "ẹjó",
-    PADASI: "padàsí"
+    IRU: "irú",
+    PADASI: "padàsí",
+    GBE_WOLE: "gbewọlé"
 };
 
 const SYMBOLS = {
@@ -69,13 +70,13 @@ const LIST = {
         KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
         KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI,
-        KEYWORDS.EJO, KEYWORDS.PADASI
+        KEYWORDS.IRU, KEYWORDS.PADASI, KEYWORDS.GBE_WOLE
     ]
 };
 
 const REGEX = {
     DIGIT: /[0-9]/i,
-    IDENTIFIER: /[a-zA-Z]|í|é|ì|ò|è|ọ|ṣ|ẹ|ó|à|á|ú/i,
+    IDENTIFIER: /[a-zA-Z]|[ÁÀÉÈẸẸ́Ẹ̀ẸĒÍÌÓÒỌỌ́Ọ̀ỌÚÙṢáàéèẹẹ́ẹíìóòọọ́ọ̀úùṣŃń]/i,
 };
 
 const constants = {

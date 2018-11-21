@@ -1,6 +1,4 @@
-const ka = require("../../helperise/ka.js");
-
-//All helper ise get an array as their args
+const ka = require("../../../helperise/array_helpers/ka.js");
 
 describe("Ka Test suite", () => {
 
@@ -14,7 +12,7 @@ describe("Ka Test suite", () => {
         expect(() => ka(array)).toThrow();
     });
 
-    test("It should fail because ka expects a multidimensional array", () => {
+    test("It should fail because ka expects an array as argument", () => {
         const array = 2;
         expect(() => ka(array)).toThrow("Yorlang system error");
     });

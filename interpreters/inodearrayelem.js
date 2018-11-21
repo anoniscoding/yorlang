@@ -6,7 +6,13 @@ class INodeArrayElement extends IBase {
     interpreteNode(node) {
         const tiNode = {name: node.name, operation: contansts.GET_TI}
         const arrayLiteral = this.evaluateNode(tiNode);
-        return arrayLiteral[node.index];
+        const index = this.evaluateNode(node.index);
+        
+        if (typeof index == "number") {
+            return arrayLiteral[index];
+        }
+
+        throw new Error(`Typeof index given for array ${node.name} must be a number`);
     }
 }
 

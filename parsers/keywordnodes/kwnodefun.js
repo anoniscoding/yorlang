@@ -17,10 +17,10 @@ class KwNodeFun extends BaseNode {
 
         const init = kwNodeTi.getNode.call(this);
 
-        return KwNodeFun.parseFunNode(this, init);
+        return KwNodeFun.getParsedFunNode(this, init);
     }
 
-    static parseFunNode(context, init) {
+    static getParsedFunNode(context, init) {
         const node = {};
         node.operation = constants.KW.FUN;
         node.init = init;

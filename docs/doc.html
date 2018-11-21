@@ -122,9 +122,9 @@
                 <hr>
                 <p id="fixedWidthParagraph">Variables can be declared in yorlang using</p>
                 <p id="fixedWidthParagraph">Yorlang: <strong>  tí </strong></p>
-                <p  id="fixedWidthParagraph">variables must be initialized at the point of declaration. Variables in yorlang 
+                <p  id="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. Variables in yorlang 
                     can also be reassigned another value even if it had been declared before with the condition that the <strong>  keyword (tí)</strong> is also used.
-                   <strong> strings </strong>in yorlang must be written using <strong> double quotes</strong>. yorlang variables can hold many
+                   <strong> Strings </strong>in yorlang must be written using <strong> double quotes</strong>. Yorlang variables can hold many
                      <strong>data types</strong> such as strings, integers and booleans</p>
                 <div class="note">
                     <p> Note: <br>comments can be made in yorlang using <strong> #</strong>. There's no multiline comments like /** */<br>
@@ -189,10 +189,11 @@
                                                            The value of the expression is compared with the values of each case. <br>&nbsp;
                                                            If there is a match, the associated block of code is executed and then it escapes the switch<br>  &nbsp; block
                                                            without the need for a break (kúrò) expression.  <br>&nbsp;
-                                                           The use of the break expression(kúrò) in yorlang yí(switch) condition results in an error.
+                                                           The use of the break statement(kúrò) in yorlang yí(switch) condition results in an error.
                 </p>
-                <p id="fixedWidthParagraph">  Switch: <strong> yí</strong><br>
-                     Case: <strong> ẹjó</strong>  <br>
+
+                <p>  Switch: <strong> yí</strong><br>
+                     Case: <strong> irú</strong>  <br>
                      Default: <strong> padàsí</strong>  <br>
                      Break: <strong>kúrò</strong>
                 </p>
@@ -201,11 +202,11 @@
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> age </strong> = <strong id="stringInt">10 + 8 </strong>;</p>
                     <p class="example-one"> <strong id= "condition"> yí</strong> 
                         ( <strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
-                        <strong id="condition"> ẹjó </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="condition"> irú </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
-                        <strong id="condition"> ẹjó </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="condition"> irú </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a teenager" </strong>;<br> &nbsp; &nbsp;
-                        <strong id="condition"> ẹjó </strong> <strong id="stringInt"> 22 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <strong id="condition"> irú </strong> <strong id="stringInt"> 22 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are an adult" </strong>;<br> &nbsp; &nbsp; 
                         <strong id= "condition"> padàsí</strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are too old" </strong>;<br> }
@@ -225,8 +226,8 @@
                 
                 <div class="note">
                     <p> Note: <br>
-                        increments such as <strong>  i++</strong> in yorlang is invalid instead use<strong>  tí i = i + 1</strong>; <br>
-                        decrements such as <strong>  i-- </strong>  in yorlang is invalid instead use <strong>  tí i = i - 1</strong>;
+                        increments such as <strong>  i++</strong> in yorlang is invalid instead use<strong>  tí i = i + 1; </strong> <br>
+                        decrements such as <strong>  i-- </strong>  in yorlang is invalid instead use <strong>  tí i = i - 1; </strong>
                     </p>
                 </div>
                 <div class="example">
@@ -277,11 +278,12 @@
                 <h1 id="functions">  Functions  </h1>
                 <hr>
                 <p id="fixedWidthParagraph">Functions are also supported in yorlang using the following keywords  </p>
-                <p  id="fixedWidthParagraph">Function: <strong> iṣé &nbsp; </strong> return: <strong> padà</strong></p>
+                <p  id="fixedWidthParagraph">Function: <strong> iṣẹ́ &nbsp; </strong> return: <strong> padà</strong></p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="loop"> iṣẹ́    </strong> multiplyNumbers (  <strong id="stringInt"> a, b</strong>) 
+
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> multiplyNumbers (  <strong id="stringInt"> a, b</strong>) 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="stringInt"> a * b</strong> ; <br> <br> }
                     </p>

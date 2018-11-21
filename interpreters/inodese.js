@@ -4,21 +4,20 @@ const constants = require("../constants.js");
 class INodeSe extends IBase {
 
     interpreteNode(node) {
-        if (this.evaluateNode(node.condition) === constants.KW.OOTO) {
-            return INodeSe.runSeBody(this, node.then);
-        } else {
-            if (node.else != undefined) {
-                return INodeSe.runSeBody(this, node.else);
-            }
+        if (this.evaluateNode(node.condition) !== constants.KW.IRO) {
+            return INodeSe.runBody(this, node.then);
+        } else if (node.else != undefined) {
+            return INodeSe.runBody(this, node.else);
         }
     }
 
-    static runSeBody(context, seBody) {
-        for (let i = 0; i < seBody.length; i++) {
-            const returnedValue = context.evaluateNode(seBody[i]);
+    static runBody(context, body) {
+        //It is expected to be a 'tabi se' block when body is not an instance of an array
+        if (!(body instanceof Array)) context.evaluateNode(body);
 
-            if (returnedValue === constants.KW.KURO) return constants.KW.KURO;
-            else if (returnedValue != undefined) return returnedValue; //it's an ise return (or pada) value
+        for (let i = 0; i < body.length; i++) {
+            const returnedValue = context.evaluateNode(body[i]);
+            if (returnedValue != undefined) return returnedValue; //it's an ise pada value or kuro statement
         }
     }
 }
