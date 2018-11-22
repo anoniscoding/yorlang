@@ -97,7 +97,10 @@
                 <li>
                     <a href="#arrays">Arrays</a>
                 </li>
-                  <li>
+                <li>
+                    <a href="#importFunction">Import Function</a>
+                </li>
+                <li>
                     <a href="#helperFunctions">Helper Functions</a>
                 </li>
             </ul>
@@ -317,6 +320,7 @@
                 
             </div>
             <br>
+              
             <div class="container-fluid">
                 <h1 id="arrays">  Arrays  </h1>
                 <hr>
@@ -339,10 +343,33 @@
             </div>
             <br>
             <div class="container-fluid">
-                <h1 id="helperFunctions">  Helper Functions  </h1>
+                <h1 id="importFunction">  The Import (gbewọlé) Function   </h1>
                 <hr>
-                <p id="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
-                <p  id="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence it takes an <strong> array</strong>
+                <p id="fixedWidthParagraph">The import (gbewọlé) function is used to include the content of a yorlang file into another 
+                    yorlang file before it is executed by the server  </p>
+                <p  id="fixedWidthParagraph"> The keyword <strong>gbewọlé</strong> is used in carrying out this operation. This is followed
+                    by a <strong>  string ("")</strong>. Inside the string is the path to the yorlang file to be imported. The file paths should
+                    be provided as a suffix to the project's absolute path
+                </p>
+                <p  id="fixedWidthParagraph"> For example, if you have a project called <strong> app </strong> and two sub folders 
+                    called <strong> deploy </strong> & <strong> test </strong>. In the deploy folder is a file called <strong> deploy.yl </strong> and in the
+                    test folder is a file called<strong> test.yl </strong>. You want to import the <strong> test.yl </strong> file into the
+                     <strong> deploy.yl  </strong> file. This is how to import the file;
+                </p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one">
+                        <strong id="loop"> gbewọlé </strong> "/test/test.yl";
+                       
+                    </p>
+                </div>
+                </div>
+                <br>
+                <div class="container-fluid">
+                    <h1 id="helperFunctions">  Helper Functions  </h1>
+                    <hr>
+                    <p id="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
+                    <p  id="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence it takes an <strong> array</strong>
                     as its <strong>parameter</strong>. The returned value of this helper function <strong> (ka)</strong> is the length of that array.<br> 
                     e.g. ka([26,78,75]) returns <strong>3</strong> as the length of the array in question.
                 </p>
@@ -355,6 +382,10 @@
                     For example, síLẹ́tàkékeré ("KaYode"); returns <strong> "kayode"</strong>
                 </p>
                 
+
+                
+            </div> 
+      
 
                 
             </div> 
