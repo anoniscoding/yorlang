@@ -115,6 +115,7 @@ p{
 
 .example-output {
     border: 1px solid #ccc;
+    background-color:  #efefef;
     width: 60%;
     display: flex;
     flex-direction: column;
