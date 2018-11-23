@@ -7,8 +7,10 @@ class INodeCallIse extends IBase {
         const iseNode = INodeCallIse.getIseNode(this, node.name);
 
         if (iseNode == null) {
-            //try running isename from yorlang helper functions list
-            return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));  
+            if (this.environment().isExistHelperIse(node.name))
+                return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));
+            
+            throw new Error(`Ise ${node.name} is undefined`)
         }
 
         this.pushToScopeStack(iseNode.name);
@@ -25,15 +27,15 @@ class INodeCallIse extends IBase {
                 return context.environment().getIse(context.scopeStack()[index], iseName);
             }
         }
-        return null
+        return null;
     }
 
-    static getIseHelperParams(context, params) {
-        const _params = [];
-        params.forEach(param => {
-            _params.push(context.evaluateNode(param))
+    static getIseHelperParams(context, paramNodeList) {
+        const params = [];
+        paramNodeList.forEach(paramNode => {
+            params.push(context.evaluateNode(paramNode));
         });
-        return _params;
+        return params;
     }
 
     static setIseNodeParam(context, iseNodeParamTokens, iseNodeParamValues) {

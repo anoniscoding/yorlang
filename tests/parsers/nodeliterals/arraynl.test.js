@@ -31,7 +31,7 @@ describe("ArrayNodeLiteral test suite", () => {
         const arrayNameToken = {value: parser.parseVarname()};
 
         const expectedNode = {
-            index: 0, 
+            index: {"left": null, "operation": null, "right": null, "value": 0}, 
             name: "a", 
             operation: constants.ARRAY_ELEM
         };
