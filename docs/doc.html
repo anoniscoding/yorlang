@@ -204,7 +204,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> age </strong> = <strong id="stringInt">10 + 8 </strong>;</p>
                     <p class="example-one"> <strong id= "condition"> yí</strong> 
-                        ( <strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
+                        (<strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
                         <strong id="condition"> irú </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> irú </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
@@ -261,7 +261,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
-                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong> ( <strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
                         
                         <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> <br> &nbsp; &nbsp;
                     <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> =<strong id="varName"> i </strong> + <strong id="stringInt">1</strong>; <br> }
@@ -291,7 +291,7 @@
                             <strong id="loop"> padà </strong>  <strong id="stringInt"> a * b</strong> ; <br> <br> }
                     </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> X </strong> = 
-                        multiplyNumbers ( <strong id="stringInt"> 5, 6</strong> ) ;
+                        multiplyNumbers(<strong id="stringInt"> 5, 6</strong>);
                     </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> X </strong>;
 
@@ -303,13 +303,13 @@
                 <p id="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count ( ) 
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count () 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong> = <strong id="stringInt">3;</strong> <br> <br> &nbsp; &nbsp;
-                            <strong id="loop"> iṣé </strong> addCounter ( ) 
+                            <strong id="loop"> iṣẹ́ </strong> addCounter () 
                             <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp; &nbsp;
                             <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="stringInt">1</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
-                             addCounter ( ); <br> <br> &nbsp;
+                             addCounter(); <br> <br> &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="varName"> counter</strong> ; <br> <br> }
                     </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> </strong>count();
@@ -331,7 +331,7 @@
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="condition"> t&iacute;    </strong> <strong id="varName"> cars </strong> = [  [<strong id="stringInt">""corolla, camry"</strong>],
+                    <p class="example-one"> <strong id="condition"> t&iacute;    </strong> <strong id="varName"> cars </strong> = [  [<strong id="stringInt">"corolla", "camry"</strong>],
                         [<strong id="stringInt">"G-Wagon", "S-class" </strong>], [<strong id="stringInt">"Elantra", "sonata"</strong>] ]; 
                     </p>
                     
@@ -345,12 +345,12 @@
             </div>
             <br>
             <div class="container-fluid">
-                <h1 id="importFunction">  The Import (gbewọlé) Function   </h1>
+                <h1 id="importFunction">  The Import (gbewọlé) Keyword   </h1>
                 <hr>
                 <p id="fixedWidthParagraph">The import (gbewọlé) function is used to include the content of a yorlang file into another 
-                    yorlang file before it is executed by the server  </p>
+                    yorlang file.  </p>
                 <p  id="fixedWidthParagraph"> The keyword <strong>gbewọlé</strong> is used in carrying out this operation. This is followed
-                    by a <strong>  string ("")</strong>. Inside the string is the path to the yorlang file to be imported. The file paths should
+                    by a <strong>  string ("")</strong> which contains the path to the yorlang file to be imported. The file paths should
                     be provided as a suffix to the project's absolute path
                 </p>
                 <p  id="fixedWidthParagraph"> For example, if you have a project called <strong> app </strong> and two sub folders 
@@ -370,17 +370,17 @@
                 <div class="container-fluid">
                     <h1 id="helperFunctions">  Helper Functions  </h1>
                     <hr>
-                    <p id="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
-                    <p  id="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence it takes an <strong> array</strong>
-                    as its <strong>parameter</strong>. The returned value of this helper function <strong> (ka)</strong> is the length of that array.<br> 
+                <p id="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
+                <p  id="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence it takes an <strong> array</strong>
+                    as its <strong>parameter</strong>. <br> 
                     e.g. ka([26,78,75]) returns <strong>3</strong> as the length of the array in question.
                 </p>
                 <p  id="fixedWidthParagraph"> <strong> síLẹ́tàŃlá </strong>: <br> This is used in converting <strong> strings</strong> to uppercase. síLẹ́tàŃlá
-                    takes a <strong>typed string </strong> as its parameter. A transformed string i.e an uppercased string is returned when síLẹ́tàŃlá is used. <br>
+                    takes a <strong> string </strong> as its parameter. <br>
                     For example, síLẹ́tàŃlá("KaYode"); returns <strong> "KAYODE"</strong>
                 </p>
                 <p  id="fixedWidthParagraph"> <strong> síLẹ́tàkékeré  </strong>: <br> This is used in converting <strong> strings</strong> to lowercase. síLẹ́tàkékeré 
-                    takes a <strong>typed string </strong> as its parameter. A transformed string i.e a lowercased string is returned when síLẹ́tàkékeré  is used. <br>
+                    takes a <strong> string </strong> as its parameter. <br>
                     For example, síLẹ́tàkékeré ("KaYode"); returns <strong> "kayode"</strong>
                 </p>
                 

@@ -6,13 +6,27 @@ class INodeArrayElement extends IBase {
     interpreteNode(node) {
         const tiNode = {name: node.name, operation: contansts.GET_TI}
         const arrayLiteral = this.evaluateNode(tiNode);
-        const index = this.evaluateNode(node.index);
         
-        if (typeof index == "number") {
-            return arrayLiteral[index];
-        }
+        return INodeArrayElement.getArrayElement(this, node, arrayLiteral);
+    }
 
-        throw new Error(`Typeof index given for array ${node.name} must be a number`);
+    static getArrayElement(context, node, arrayLiteral) {
+        let arrayElement, isOnedimensionalArray = true;
+
+        node.indexNodes.map(indexNode => { //if this callback run more than once, then the array is multi-dimensional
+            const index = context.evaluateNode(indexNode);
+
+            if (typeof index == "number") {
+                arrayElement = (isOnedimensionalArray) ? arrayLiteral[index] : arrayElement[index];
+                isOnedimensionalArray = false;
+            } else {
+                throw new Error(`Typeof index given for array ${node.name} must be a number`);
+            }
+        });
+
+        if (arrayElement == undefined) throw new Error(`Index given for array ${node.name} does not exist`);
+
+        return arrayElement;
     }
 }
 
