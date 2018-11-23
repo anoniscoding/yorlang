@@ -14,7 +14,7 @@ describe("INodeGbeWole test suite", () => {
     });
 
     test("it should import valid file path correctly", () => {
-        //file paths should be provided as a suffix to the root's absolute path
+        //file paths should be provided as a suffix to the project's absolute path
         parser.lexer.inputStream.code = `${constants.KW.GBE_WOLE} "/sample/sample.yl";   
             ${constants.KW.TI} b = isiro(14, 2);     
         `;

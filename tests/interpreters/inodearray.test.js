@@ -13,6 +13,7 @@ describe("INodeArray test suite", () => {
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
         mainInterpreter = new MainInterpreter(new Environment());
+        global.console.log = jest.fn();
     });
 
     test("it should return an array literal", () => {
@@ -58,5 +59,28 @@ describe("INodeArray test suite", () => {
         const program = parser.parseProgram();
         mainInterpreter.interpreteProgram(program.astList);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([[1,2],[3,4]]);
+    });
+
+    test("it should interprete a multidimensional array element", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [3,4];
+            ${constants.KW.TI} b = [[1,2], [3,a[1]]];
+            ${constants.KW.SOPE} b[1][1];
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(global.console.log).toHaveBeenCalledWith(4);
+    });
+
+    test("it should fail when trying to access an invalid multidimensional array element", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [3,4];
+            ${constants.KW.TI} b = [[1,2], [3,a[1]]];
+            ${constants.KW.SOPE} b[1][1][0];
+        `;
+
+        const program = parser.parseProgram();
+        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
     });
 });

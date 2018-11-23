@@ -5,21 +5,46 @@ class INodeTi extends IBase {
 
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
-            INodeTi.setArrayElemValue(this, node);
+            INodeTi.setArrayElementValue(this, node);
         }
-        
+
         this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
     }
 
-    static setArrayElemValue(context, node) {
+    static setArrayElementValue(context, node) {
         const tiNode = { name: node.left.name, operation: constants.GET_TI };
         const arrayLiteral = context.evaluateNode(tiNode);
+        const [array, index] = INodeTi.getArrayWithIndexTuple(context, node, arrayLiteral);
 
-        const index = context.evaluateNode(node.left.index);
-        if (typeof index == "number") {
-            arrayLiteral[index] = context.evaluateNode(node.right);
+        if (array instanceof Array) array[index] = context.evaluateNode(node.right);
+        else throw new Error(`Cannot set invalid array element for array : ${tiNode.name}`);
+    }
+
+    static getArrayWithIndexTuple(context, node, arrayLiteral) {
+        let tuple;
+
+        for (let i = 0; i < node.left.indexNodes.length; i++) {
+            const arrayIndex = context.evaluateNode(node.left.indexNodes[i]);
+
+            if (typeof arrayIndex == "number") {
+                if (i == 0) {
+                    tuple = INodeTi.getTuple(arrayLiteral, arrayIndex) || arrayLiteral[arrayIndex];
+                } else {
+                    tuple = INodeTi.getTuple(tuple, arrayIndex) || tuple[arrayIndex];
+                }
+            } else {
+                throw new Error(`Typeof index given for array ${node.name} must be a number`);
+            }
+        };
+
+        return tuple;
+    }
+
+    static getTuple(arrayLiteral, index) {
+        if (!(arrayLiteral[index] instanceof Array)) {
+            return [arrayLiteral, index];
         }
     }
 }
 
-module.exports = new INodeTi();
+module.exports = new INodeTi(); 

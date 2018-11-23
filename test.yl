@@ -1,12 +1,5 @@
-gbewọlé "/sample/sample.yl";
+#gbewọlé "/sample/sample.yl";
 
-iṣẹ́ divideNumbers(a, b) { 
-    padà a / b;
-}
+tí cars = [["corolla", "camry"], ["G-Wagon", "S-class" ], ["Elantra", "sonata"] ];
 
-tí X = divideNumbers ( 15, 5 ) ;
-tí y = isiro ( 5, 7 ) ;
-
-
-sọpé X ;
-sọpé y ;
+sọpé cars[1][1];

@@ -31,13 +31,26 @@ describe("ArrayNodeLiteral test suite", () => {
         const arrayNameToken = {value: parser.parseVarname()};
 
         const expectedNode = {
-            index: {"left": null, "operation": null, "right": null, "value": 0}, 
+            indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], 
             name: "a", 
             operation: constants.ARRAY_ELEM
         };
 
 
         expect(arrayNl.getNode.call(parser, arrayNameToken)).toEqual(expectedNode);
+    });
+
+    test("It should parse multidimensional array", () => {
+        parser.lexer.inputStream.code = `[["corolla", "camry"], ["G-Wagon", "S-class" ], ["Elantra", "sonata"] ]`;
+
+        expect(arrayNl.getNode.call(parser)).toBeTruthy();
+    });
+
+    test("It should parse multidimensional array element", () => {
+        parser.lexer.inputStream.code = `a[0][1]`;
+        const arrayNameToken = {value: parser.parseVarname()};
+
+        expect(arrayNl.getNode.call(parser, arrayNameToken)).toBeTruthy();
     });
 
     test("It should throw error while parsing invalid array literal", () => {

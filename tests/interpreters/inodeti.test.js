@@ -65,6 +65,27 @@ describe("INodeTi test suite", () => {
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
     });
 
+    test("it should assign value to a multi-dimensional array element", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [[1,2], [[3,4], 5]];
+            ${constants.KW.TI} a[1][0][0] = "funmi";
+        `;
+
+        const program = parser.parseProgram();
+        mainInterpreter.interpreteProgram(program.astList);
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual([ [1,2], [["funmi",4],5] ]);
+    });
+
+    test("it should fail to assign value to an invalid multi-dimensional array element", () => {
+        parser.lexer.inputStream.code = `
+            ${constants.KW.TI} a = [[1,2], [[3,4], 5]];
+            ${constants.KW.TI} a[1][0][0][0] = "funmi";
+        `;
+
+        const program = parser.parseProgram();
+        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+    });
+
     test("it should assign transformed (uppercase) string to variablet", () => {
         parser.lexer.inputStream.code = `
             ${constants.KW.TI} a = síLẹ́tàŃlá("funmi");

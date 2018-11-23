@@ -201,7 +201,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> age </strong> = <strong id="stringInt">10 + 8 </strong>;</p>
                     <p class="example-one"> <strong id= "condition"> yí</strong> 
-                        ( <strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
+                        (<strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
                         <strong id="condition"> irú </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> irú </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
@@ -258,7 +258,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
-                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong> ( <strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
                         
                         <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> <br> &nbsp; &nbsp;
                     <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> =<strong id="varName"> i </strong> + <strong id="stringInt">1</strong>; <br> }
@@ -288,7 +288,7 @@
                             <strong id="loop"> padà </strong>  <strong id="stringInt"> a * b</strong> ; <br> <br> }
                     </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> X </strong> = 
-                        multiplyNumbers ( <strong id="stringInt"> 5, 6</strong> ) ;
+                        multiplyNumbers(<strong id="stringInt"> 5, 6</strong>);
                     </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> X </strong>;
 
@@ -300,13 +300,13 @@
                 <p id="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count ( ) 
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count () 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong> = <strong id="stringInt">3;</strong> <br> <br> &nbsp; &nbsp;
-                            <strong id="loop"> iṣẹ́ </strong> addCounter ( ) 
+                            <strong id="loop"> iṣẹ́ </strong> addCounter () 
                             <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp; &nbsp;
                             <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="stringInt">1</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
-                             addCounter ( ); <br> <br> &nbsp;
+                             addCounter(); <br> <br> &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="varName"> counter</strong> ; <br> <br> }
                     </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> </strong>count();

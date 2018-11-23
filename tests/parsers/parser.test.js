@@ -102,7 +102,7 @@ describe("Parser test suite", () => {
                 }, 
                 operation: constants.SYM.ASSIGN, 
                 right: {
-                    index: {"left": null, "operation": null, "right": null, "value": 0}, 
+                    indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], 
                     name: "b", 
                     operation: constants.ARRAY_ELEM
                 }, 

@@ -66,7 +66,7 @@ describe("KwNodeTi test suite", () => {
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
             left: {
-                index: {"left": null, "operation": null, "right": null, "value": 0}, 
+                indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], 
                 name: "a", 
                 operation: constants.ARRAY_ELEM
             },
@@ -91,7 +91,7 @@ describe("KwNodeTi test suite", () => {
                     {left: null, operation: null, right: null, value: 1}, 
                     {left: null, operation: null, right: null, value: "anu"},
                     {name: "b", operation: constants.GET_TI},
-                    {index: {"left": null, "operation": null, "right": null, "value": 0}, name: "c", operation: constants.ARRAY_ELEM},
+                    {indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], name: "c", operation: constants.ARRAY_ELEM},
                     {body: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}], operation: constants.ARRAY}
                 ], 
             }

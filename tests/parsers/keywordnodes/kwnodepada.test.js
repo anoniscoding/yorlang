@@ -88,7 +88,7 @@ describe("KwNodePada test suite", () => {
             body: {
                 operation: constants.ARRAY_ELEM,
                 name: "sum",
-                index: {"left": null, "operation": null, "right": null, "value": 1}
+                indexNodes: [{"left": null, "operation": null, "right": null, "value": 1}]
             }
         };
 
