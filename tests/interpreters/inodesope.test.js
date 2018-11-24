@@ -36,8 +36,7 @@ describe("INodeSope test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 
@@ -46,8 +45,7 @@ describe("INodeSope test suite", () => {
             ${constants.KW.SOPE} "a" + 5;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("a5");
     });
 
@@ -57,8 +55,7 @@ describe("INodeSope test suite", () => {
             ${constants.KW.SOPE} a[1];
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 });

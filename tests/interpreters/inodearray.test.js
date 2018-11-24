@@ -34,8 +34,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.TI} b = [1,2,a];
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,5]);
     });
 
@@ -45,8 +44,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.TI} b = [1,2,a[0]];
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,3]);
     });
 
@@ -56,8 +54,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.TI} b = [[1,2], [3,a[1]]];
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([[1,2],[3,4]]);
     });
 
@@ -68,8 +65,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.SOPE} b[1][1];
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(4);
     });
 
@@ -80,7 +76,6 @@ describe("INodeArray test suite", () => {
             ${constants.KW.SOPE} b[1][1][0];
         `;
 
-        const program = parser.parseProgram();
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 });

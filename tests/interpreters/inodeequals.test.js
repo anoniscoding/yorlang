@@ -33,8 +33,7 @@ describe("INodeEquals test suite", () => {
             ${constants.KW.TI} b = a == ${constants.KW.OOTO};
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
     });
 });

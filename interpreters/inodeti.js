@@ -17,7 +17,7 @@ class INodeTi extends IBase {
         const [array, index] = INodeTi.getArrayWithIndexTuple(context, node, arrayLiteral);
 
         if (array instanceof Array) array[index] = context.evaluateNode(node.right);
-        else throw new Error(`Cannot set invalid array element for array : ${tiNode.name}`);
+        else context.throwError(`Cannot set invalid array element for array : ${tiNode.name}`);
     }
 
     static getArrayWithIndexTuple(context, node, arrayLiteral) {
@@ -33,7 +33,7 @@ class INodeTi extends IBase {
                     tuple = INodeTi.getTuple(tuple, arrayIndex) || tuple[arrayIndex];
                 }
             } else {
-                throw new Error(`Typeof index given for array ${node.name} must be a number`);
+                context.throwError(`Typeof index given for array ${node.name} must be a number`);
             }
         };
 

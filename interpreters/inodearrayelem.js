@@ -20,11 +20,11 @@ class INodeArrayElement extends IBase {
                 arrayElement = (isOnedimensionalArray) ? arrayLiteral[index] : arrayElement[index];
                 isOnedimensionalArray = false;
             } else {
-                throw new Error(`Typeof index given for array ${node.name} must be a number`);
+                context.throwError(`Typeof index given for array ${node.name} must be a number`);
             }
         });
 
-        if (arrayElement == undefined) throw new Error(`Index given for array ${node.name} does not exist`);
+        if (arrayElement == undefined) context.throwError(`Index given for array ${node.name} does not exist`);
 
         return arrayElement;
     }

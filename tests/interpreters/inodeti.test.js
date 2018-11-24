@@ -49,8 +49,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} b = ((a + 2) * (2 - 4)) / 2;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toBe(-7);
     });
 
@@ -60,8 +59,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[0] = "funmi";
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
     });
 
@@ -71,8 +69,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[1][0][0] = "funmi";
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual([ [1,2], [["funmi",4],5] ]);
     });
 
@@ -82,8 +79,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[1][0][0][0] = "funmi";
         `;
 
-        const program = parser.parseProgram();
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 
     test("it should assign transformed (uppercase) string to variablet", () => {
@@ -91,8 +87,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a = síLẹ́tàŃlá("funmi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("FUNMI");
     });
 
@@ -101,8 +96,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a = síLẹ́tàkékeré("FUNMI");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("funmi");
     });
 });

@@ -33,8 +33,7 @@ describe("INodeAnd test suite", () => {
             ${constants.KW.TI} b = a > 6 && 5 > 7;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.IRO);
     });
 });

@@ -1,4 +1,5 @@
 const registeredInterpreters = require("./interpreters.js");
+const constants = require("../constants.js");
 const IBase = require("./ibase.js");
 
 class MainInterpreter {
@@ -35,10 +36,18 @@ class MainInterpreter {
         return leafValue;
     }
 
-    interpreteProgram(astList) {
-        for (let i = 0; i < astList.length; i++) {
-            this.evaluateNode(astList[i]);
+    throwError(msg) {
+        this.parser().throwError(msg);
+    }
+
+    interpreteProgram(parser) {
+        this.parser = () => parser;
+        
+        parser.pushToBlockTypeStack(constants.PROGRAM);
+        while (parser.isNotEndOfFile()) {
+            this.evaluateNode(parser.parseAst());
         }
+        parser.popBlockTypeStack();
     }
 }
 

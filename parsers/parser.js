@@ -47,17 +47,17 @@ class Parser {
 
     skipPunctuation(punc) {
         if (this.isNextTokenPunctuation(punc)) this.lexer.next();
-        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipOperator(op) {
         if (this.isNextTokenOperator(op)) this.lexer.next();
-        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipKeyword(kw) {
         if (this.isNextTokenKeyword(kw)) this.lexer.next();
-        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     getCurrentTokenValue() {
@@ -172,7 +172,7 @@ class Parser {
         var token = this.lexer.next();
         if (predicate(token)) return token;
 
-        this.lexer.throwError(this.getGenericErrorMsg(token.type));
+        this.throwError(this.getGenericErrorMsg(token.type));
     }
 
     getGenericErrorMsg(value) {
@@ -194,19 +194,15 @@ class Parser {
             else throw new Error(`${callIseNodeLiteral} must be of type BaseNode`);
         }
 
-        this.lexer.throwError(this.getGenericErrorMsg(token.value));
+        this.throwError(this.getGenericErrorMsg(token.value));
     }
 
-    parseProgram() {
-        const astList = [];
+    isNotEndOfFile() {
+        return this.lexer.isNotEndOfFile();
+    }
 
-        this.pushToBlockTypeStack(constants.PROGRAM);
-        while (this.lexer.isNotEndOfFile()) {
-            astList.push(this.parseAst());
-        }
-        this.popBlockTypeStack();
-
-        return {type: constants.PROGRAM, astList: astList};
+    throwError(msg) {
+        this.lexer.throwError(msg);
     }
 }
 

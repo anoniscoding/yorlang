@@ -23,9 +23,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("femi");
     });
 
@@ -39,9 +37,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} fname;
         `;
 
-        const program = parser.parseProgram();
-
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 
     test("it should have access to variables in a parent scope", () => {
@@ -55,9 +51,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
     });
 
@@ -66,9 +60,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 
     test("it should maintain scope within nested ise node", () => {
@@ -87,9 +79,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi 0812035532");
 
@@ -112,9 +102,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("0812035532");
     });
@@ -136,9 +124,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("1 femi");
     });
 
@@ -157,9 +143,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(4);
     });
 
@@ -178,9 +162,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(0);
     });
 });

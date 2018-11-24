@@ -24,10 +24,8 @@ if (arg === "-v") {
         if (err) throw err; 
 
         const parser = new Parser(new Lexer(new InputStream(programFile)));
-        const program = parser.parseProgram();
-
         const interpreter = new MainInterpreter(new Environment());
-        interpreter.interpreteProgram(program.astList);
+        interpreter.interpreteProgram(parser);
     });
 } else {
     throw "Invalid Yorlang command line argument";

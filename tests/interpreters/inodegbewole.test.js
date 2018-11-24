@@ -19,8 +19,7 @@ describe("INodeGbeWole test suite", () => {
             ${constants.KW.TI} b = isiro(14, 2);     
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toBe(28);
     });
 
@@ -28,7 +27,6 @@ describe("INodeGbeWole test suite", () => {
         parser.lexer.inputStream.code = `${constants.KW.GBE_WOLE} "../../asdfk.yl";
         `;
 
-        const program = parser.parseProgram();
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 });

@@ -18,8 +18,7 @@ describe("INodeNotOperator test suite", () => {
         let parser = new Parser(new Lexer(new InputStream()));
         parser.lexer.inputStream.code = `${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO};`;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
     });
 
@@ -27,8 +26,7 @@ describe("INodeNotOperator test suite", () => {
         let parser = new Parser(new Lexer(new InputStream()));
         parser.lexer.inputStream.code = `${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.IRO};`;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.OOTO);
     });
 
@@ -39,8 +37,7 @@ describe("INodeNotOperator test suite", () => {
             ${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
     });
 });

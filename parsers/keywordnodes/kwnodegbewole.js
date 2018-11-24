@@ -14,7 +14,7 @@ class KwNodeGbeWole extends BaseNode {
         if (this.lexer.peek().type == constants.STRING) {
             node.path = leafnl.getNode.call(this);
             if (path.extname(node.path.value) != constants.YL_EXT) 
-                this.lexer.throwError("Invalid yorlang file. Expected file with .yl extension");
+                this.throwError("Invalid yorlang file. Expected file with .yl extension");
 
             this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
             return node;

@@ -5,7 +5,7 @@ class INodeDivide extends IBase {
     interpreteNode(node) {
         const leftNodeValue = this.evaluateNode(node.left)
         const rightNodeValue = this.evaluateNode(node.right);
-        if (rightNodeValue === 0) throw new Error("YorlangArithmeticException - cannot divide by zero");
+        if (rightNodeValue === 0) this.throwError("YorlangArithmeticException - cannot divide by zero");
         else return leftNodeValue / rightNodeValue;
     }
 }

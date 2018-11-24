@@ -8,7 +8,7 @@ class KwNodeKuro extends BaseNode {
             return KwNodeKuro.getParsedKuroNode(this);
         }
 
-        this.lexer.throwError("Yorlang Kuro keyword not expected");
+        this.throwError("Yorlang Kuro keyword not expected");
     }
 
     static isExpectedKuroStatement(context) {
