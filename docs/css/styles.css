@@ -124,7 +124,6 @@ p{
 .example-output {
     border: 1px solid #ccc;
     background-color:  #efefef;
-    color: black;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -140,6 +139,7 @@ p{
 
 .example-output-value {
     font-size: 16px;
+    color: black;
     padding-left: 20px;
 }
 
