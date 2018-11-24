@@ -103,7 +103,7 @@ class Parser {
     parseWhile(operatorList, parseOperatorWithLesserPrecedence) {
         let node = parseOperatorWithLesserPrecedence.bind(this)();
 
-        while (this.lexer.isNotEndOfFile() && operatorList.indexOf(this.lexer.peek().value) >= 0) {
+        while (this.isNotEndOfFile() && operatorList.indexOf(this.lexer.peek().value) >= 0) {
             node = {
                 left : node,
                 operation : this.lexer.next().value,
@@ -138,7 +138,7 @@ class Parser {
         this.pushToBlockTypeStack(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
-        while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
+        while (this.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
             block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
@@ -157,7 +157,7 @@ class Parser {
         const varList = []; let firstVar = true;
 
         this.skipPunctuation(start);
-        while(this.lexer.isNotEndOfFile()) {
+        while(this.isNotEndOfFile()) {
             if (this.isNextTokenPunctuation(stop)) break;
             if (firstVar) firstVar = false; else this.skipPunctuation(separator);
             if (this.isNextTokenPunctuation(stop)) break; //this is necessary for an optional last separator
