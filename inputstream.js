@@ -34,7 +34,7 @@ class InputStream {
     }
 
     throwError(msg) {
-        throw new Error(`There's an error at line ${this.line} near column ${this.column}.\nFile ${this.yorlangFileName()} - ${msg}`);
+        throw new Error(`There's an error at line ${this.line} near column ${this.column} in file ${this.yorlangFileName()} :\n ${msg}`);
     }
 
     isEndOfFile() {
