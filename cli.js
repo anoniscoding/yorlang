@@ -2,6 +2,7 @@
 
 //we are telling *nix systems that the interpreter of our JavaScript file should be /usr/bin/env node which looks up for the locally-installed node executable.
 
+const packageJson = require("./package.json");
 const fs = require("fs");
 const path = require("path");
 const InputStream = require("./inputstream.js");
@@ -14,16 +15,18 @@ const constants = require("./constants.js");
 //process.argv will usually have length two, the zeroth item being the "node" interpreter 
 //and the first being the script that node is currently running, items after that were passed on the command line
 
-const filename = process.argv[2];
+const arg = process.argv[2];
 
-fs.readFile(filename, 'utf8', (err, programFile) => {
-    if (err) throw err; 
-    if (path.extname(filename) != constants.YL_EXT) throw "Invalid yorlang file. Expected file with .yl extension";
+if (arg === "-v") {
+    console.log(packageJson.version);
+} else if (path.extname(arg) === constants.YL_EXT) {
+    fs.readFile(process.cwd() +"/"+ arg, 'utf8', (err, programString) => {
+        if (err) throw err; 
 
-    const parser = new Parser(new Lexer(new InputStream()));
-    parser.lexer.inputStream.code = `${programFile}`;
-    const program = parser.parseProgram();
-
-    const interpreter = new MainInterpreter(new Environment());
-    interpreter.interpreteProgram(program.astList);
-});
+        const parser = new Parser(new Lexer(new InputStream(programString, arg))); //arg is the filename
+        const interpreter = new MainInterpreter(new Environment());
+        interpreter.interpreteProgram(parser);
+    });
+} else {
+    throw "Invalid Yorlang command line argument";
+}

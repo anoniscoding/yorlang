@@ -5,9 +5,9 @@ const variableNlTypes = require("./variablenltypes");
 class VariableNl extends BaseNode {
 
     getNode() { 
-        const currentVarNameToken = this.lexer.next();
+        const currentVarNameToken = this.lexer().next();
 
-        const nextTokenValue = this.lexer.peek().value;
+        const nextTokenValue = this.lexer().peek().value;
         if (variableNlTypes[nextTokenValue] != undefined) {
             const variableNlType = variableNlTypes[nextTokenValue];
             if (variableNlType instanceof BaseNode) return variableNlType.getNode.call(this, currentVarNameToken);

@@ -12,7 +12,7 @@ describe("VariableLiteral test suite", () => {
     });
 
     test("it should parse valid variable name", () => {
-        parser.lexer.inputStream.code = `name;`;
+        parser.lexer().inputStream.code = `name;`;
 
         const expectedNode = {
             name: "name",

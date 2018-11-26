@@ -15,6 +15,7 @@ html{
     font-smooth: 2em;
     scroll-behavior: smooth;
     font-family: 'Rubik',sans-serif;
+    letter-spacing: 1.1px;
 
 }
 .title{
@@ -56,7 +57,15 @@ p{
     padding-bottom: 30px;
 }
 
-#intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays{
+#intro,
+#variables,
+#dataTypes,
+#conditionals,
+#loops,
+#functions,
+#arrays,
+#importFunction,
+#helperFunctions {
     font-size: 22px;
     font-family: 'Rubik',sans-serif;
     font-weight: 600;
@@ -65,14 +74,15 @@ p{
 }
 #black-background{
     color: #fff;
-    background-color: #000;
-    padding: 5px 5px 5px 5px;
-    width: 20%;
+    background-color: rgb(2, 21, 54);
+    padding: 5px 25px 5px 25px;
+    width: 25%;
 }
 /* example styles */
 #fixedWidthParagraph{
     width:60%;
     text-align: justify;
+    font-size: 14px;
 }
 .example {
     display: flex;
@@ -113,6 +123,7 @@ p{
 
 .example-output {
     border: 1px solid #ccc;
+    background-color:  #efefef;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -128,6 +139,7 @@ p{
 
 .example-output-value {
     font-size: 16px;
+    color: black;
     padding-left: 20px;
 }
 

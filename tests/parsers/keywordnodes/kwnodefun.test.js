@@ -1,6 +1,6 @@
 const kwNodeFun = require("../../../parsers/keywordnodes/kwnodefun.js");
 const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
+const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
 
@@ -8,11 +8,11 @@ describe("KwNodeFun test suite", () => {
     let parser;
 
     beforeEach(() => {
-        parser = new Parser(new Lexer(new InputStream()));
+        parser = new Parser(new lexer(new InputStream()));
     });
 
     test("it should return a valid fun node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {}`;
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {}`;
 
         const expectedNode = {
             body: [], 
@@ -65,7 +65,7 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should return a valid fun node for nested blocks", () => {
-        parser.lexer.inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
             ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {}
         }`;
 
@@ -73,7 +73,7 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should throw an error when given invalid fun node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.FUN} tí i =0; i < 10; tí i = i + 1;) {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} tí i =0; i < 10; tí i = i + 1;) {
             sopé i;
         }`;
 
@@ -83,7 +83,7 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should throw an error when given invalid fun increment node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = j + 1;) {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = j + 1;) {
             sopé i;
         }`;
 

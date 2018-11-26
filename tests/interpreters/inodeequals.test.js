@@ -16,25 +16,24 @@ describe("INodeEquals test suite", () => {
     });
 
     test("it should return ooto for an equal true condition", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = 5 == 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.TI} a = 5 == 5;`;
         const node = kwNodeTi.getNode.call(parser);
         expect(iNodeEquals.interpreteNode.call(mainInterpreter, node.right)).toBe(constants.KW.OOTO);
     });
 
     test("it should return iro for an equal false condition", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = 5 == 4;`;
+        parser.lexer().inputStream.code = `${constants.KW.TI} a = 5 == 4;`;
         const node = kwNodeTi.getNode.call(parser);
         expect(iNodeEquals.interpreteNode.call(mainInterpreter, node.right)).toBe(constants.KW.IRO);
     });
 
     test("it should get the value of a variable and test it in an equal condition", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = ${constants.KW.OOTO};
             ${constants.KW.TI} b = a == ${constants.KW.OOTO};
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
     });
 });

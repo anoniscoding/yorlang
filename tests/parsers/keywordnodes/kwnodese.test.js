@@ -1,6 +1,6 @@
 const kwNodeSe = require("../../../parsers/keywordnodes/kwnodese.js");
 const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
+const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
 
@@ -8,11 +8,11 @@ describe("KwNodeSe test suite", () => {
     let parser;
 
     beforeEach(() => {
-        parser = new Parser(new Lexer(new InputStream()));
+        parser = new Parser(new lexer(new InputStream()));
     });
 
     test("it should return a valid se node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SE} (niOruko) {
+        parser.lexer().inputStream.code = `${constants.KW.SE} (niOruko) {
             ${constants.KW.SOPE} "o ni oruko";
         }`;
 
@@ -39,7 +39,7 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should return a valid se node when body is empty", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SE} (niOruko) {}`;
+        parser.lexer().inputStream.code = `${constants.KW.SE} (niOruko) {}`;
 
         const expectedNode = {
             condition: {
@@ -54,7 +54,7 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should return a valid se node for nested blocks", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SE} (niOruko) {
+        parser.lexer().inputStream.code = `${constants.KW.SE} (niOruko) {
             ${constants.KW.SE} (niOruko) {}
         }`;
 
@@ -62,7 +62,7 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should return a valid se and tabi node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} tàbí {}`;
+        parser.lexer().inputStream.code = `${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} tàbí {}`;
 
         const expectedNode = {
             condition: {
@@ -88,7 +88,7 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should throw an error when given an invalid se and tabi node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SE} aropo && ${constants.KW.OOTO}) {} tàbí {}`;
+        parser.lexer().inputStream.code = `${constants.KW.SE} aropo && ${constants.KW.OOTO}) {} tàbí {}`;
 
         expect(() => {
             kwNodeSe.getNode.call(parser);
@@ -96,7 +96,7 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should parse tabi se (else if) statements", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} 
             ${constants.KW.TABI} ${constants.KW.SE} (niOruko) {}
             ${constants.KW.TABI} ${constants.KW.SE} (${constants.KW.OOTO}) {}

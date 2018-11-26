@@ -1,9 +1,6 @@
-iṣẹ́ multiplyNumbers ( a, b)   { 
+gbewọlé "/sample/sample.yl";
 
-    padà a * b ; 
+tí cars = [["corolla", "camry"], ["G-Wagon", "S-class" ], ["Elantra", "sonata"] ];
 
-}
-
-tí X = multiplyNumbers ( 5, 6 ) ;
-
-sọpé X ;
+sọpé isiro(3,5);
+sọpé cars[1][1];

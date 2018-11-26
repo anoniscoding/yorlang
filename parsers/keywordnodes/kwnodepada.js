@@ -8,7 +8,7 @@ class KwNodePada extends BaseNode {
             return KwNodePada.getParsePadaNode(this);
         }
         
-        this.lexer.throwError("Yorlang pada keyword not expected in a non function block");
+        this.throwError("Yorlang pada keyword not expected in a non function block");
     }
 
     static isExpectedPadaStatement(context) {

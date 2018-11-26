@@ -6,7 +6,7 @@ const BaseNode = require("./basenode.js");
 class Parser {
 
     constructor(lexer) {
-        this.lexer = lexer;
+        this.lexer = () => lexer;
         this.initBlockTypeStack();
         this.initIsArithmeticExpression();
     }
@@ -31,37 +31,37 @@ class Parser {
     }
 
     isNextTokenPunctuation(punc) {
-        const token = this.lexer.peek();
+        const token = this.lexer().peek();
         return token && token.type == constants.PUNCTUATION && (token.value == punc);
     }
 
     isNextTokenOperator(op) {
-        const token = this.lexer.peek();
+        const token = this.lexer().peek();
         return token && token.type == constants.OPERATOR && (token.value == op);
     }
 
     isNextTokenKeyword(kw) {
-        const token = this.lexer.peek();
+        const token = this.lexer().peek();
         return token && token.type == constants.KEYWORD && (token.value == kw);
     }
 
     skipPunctuation(punc) {
-        if (this.isNextTokenPunctuation(punc)) this.lexer.next();
-        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        if (this.isNextTokenPunctuation(punc)) this.lexer().next();
+        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipOperator(op) {
-        if (this.isNextTokenOperator(op)) this.lexer.next();
-        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        if (this.isNextTokenOperator(op)) this.lexer().next();
+        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipKeyword(kw) {
-        if (this.isNextTokenKeyword(kw)) this.lexer.next();
-        else this.lexer.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        if (this.isNextTokenKeyword(kw)) this.lexer().next();
+        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     getCurrentTokenValue() {
-        return this.lexer.peek() ? this.lexer.peek().value : null;
+        return this.lexer().peek() ? this.lexer().peek().value : null;
     }
 
     //Recursive descent parsing technique
@@ -103,10 +103,10 @@ class Parser {
     parseWhile(operatorList, parseOperatorWithLesserPrecedence) {
         let node = parseOperatorWithLesserPrecedence.bind(this)();
 
-        while (this.lexer.isNotEndOfFile() && operatorList.indexOf(this.lexer.peek().value) >= 0) {
+        while (this.isNotEndOfFile() && operatorList.indexOf(this.lexer().peek().value) >= 0) {
             node = {
                 left : node,
-                operation : this.lexer.next().value,
+                operation : this.lexer().next().value,
                 right : parseOperatorWithLesserPrecedence.bind(this)(),
                 value : null
             };
@@ -116,7 +116,7 @@ class Parser {
     }
 
     parseNodeLiteral() {
-        const token = this.lexer.peek();
+        const token = this.lexer().peek();
 
         if (nodeLiterals[token.type] != undefined) {
             const nodeliteral = nodeLiterals[token.type];
@@ -131,14 +131,14 @@ class Parser {
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
-        this.lexer.throwError(this.getGenericErrorMsg(token.value));
+        this.lexer().throwError(this.getGenericErrorMsg(token.value));
     }
 
     parseBlock(currentBlock) {
         this.pushToBlockTypeStack(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
-        while (this.lexer.isNotEndOfFile() && this.lexer.peek().value != constants.SYM.R_PAREN) {
+        while (this.isNotEndOfFile() && this.lexer().peek().value != constants.SYM.R_PAREN) {
             block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
@@ -148,16 +148,16 @@ class Parser {
     }
 
     parseVarname() {
-        return  (this.lexer.peek().type == constants.VARIABLE) 
-                ? this.lexer.next().value
-                : this.lexer.throwError(this.getGenericErrorMsg(this.lexer.peek()));
+        return  (this.lexer().peek().type == constants.VARIABLE) 
+                ? this.lexer().next().value
+                : this.lexer().throwError(this.getGenericErrorMsg(this.lexer().peek()));
     }
 
     parseDelimited(start, stop, separator, parser, predicate) {
         const varList = []; let firstVar = true;
 
         this.skipPunctuation(start);
-        while(this.lexer.isNotEndOfFile()) {
+        while(this.isNotEndOfFile()) {
             if (this.isNextTokenPunctuation(stop)) break;
             if (firstVar) firstVar = false; else this.skipPunctuation(separator);
             if (this.isNextTokenPunctuation(stop)) break; //this is necessary for an optional last separator
@@ -169,10 +169,10 @@ class Parser {
     }
 
     getTokenThatSatisfiesPredicate(predicate) {
-        var token = this.lexer.next();
+        var token = this.lexer().next();
         if (predicate(token)) return token;
 
-        this.lexer.throwError(this.getGenericErrorMsg(token.type));
+        this.throwError(this.getGenericErrorMsg(token.type));
     }
 
     getGenericErrorMsg(value) {
@@ -180,7 +180,7 @@ class Parser {
     }
 
     parseAst() {
-        const token = this.lexer.peek();
+        const token = this.lexer().peek();
 
         if (kwnodes[token.value] != undefined) {
             const kwNode = kwnodes[token.value];
@@ -194,19 +194,15 @@ class Parser {
             else throw new Error(`${callIseNodeLiteral} must be of type BaseNode`);
         }
 
-        this.lexer.throwError(this.getGenericErrorMsg(token.value));
+        this.throwError(this.getGenericErrorMsg(token.value));
     }
 
-    parseProgram() {
-        const astList = [];
+    isNotEndOfFile() {
+        return this.lexer().isNotEndOfFile();
+    }
 
-        this.pushToBlockTypeStack(constants.PROGRAM);
-        while (this.lexer.isNotEndOfFile()) {
-            astList.push(this.parseAst());
-        }
-        this.popBlockTypeStack();
-
-        return {type: constants.PROGRAM, astList: astList};
+    throwError(msg) {
+        this.lexer().throwError(msg);
     }
 }
 

@@ -2,7 +2,6 @@ const leafNl = require("../../../parsers/nodeliterals/leafnl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
 
 describe("LeafLiteral test suite", () => {
     let parser;
@@ -12,7 +11,7 @@ describe("LeafLiteral test suite", () => {
     });
 
     test("it should parse valid leaf - string literal", () => {
-        parser.lexer.inputStream.code = `"beautiful";`;
+        parser.lexer().inputStream.code = `"beautiful";`;
 
         const expectedNode = {
            left: null,
@@ -25,7 +24,7 @@ describe("LeafLiteral test suite", () => {
     });
 
     test("it should parse valid leaf- number literal", () => {
-        parser.lexer.inputStream.code = `7.51;`;
+        parser.lexer().inputStream.code = `7.51;`;
 
         const expectedNode = {
             left: null,

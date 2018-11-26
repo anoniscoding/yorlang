@@ -97,6 +97,12 @@
                 <li>
                     <a href="#arrays">Arrays</a>
                 </li>
+                <li>
+                    <a href="#importFunction">Imports</a>
+                </li>
+                <li>
+                    <a href="#helperFunctions">Helper Functions</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -113,18 +119,17 @@
                 <p id="black-background">Write 'sọpé "báwo ni ayé" '>
                 <p id="black-background">Run yorl test.yl in your cli</p>
             </div>
-           
+           <br>
             <div class="container-fluid">
                 <h1 id="variables"> Variable Declaration</h1>
                 <hr>
                 <p id="fixedWidthParagraph">Variables can be declared in yorlang using</p>
                 <p id="fixedWidthParagraph">Yorlang: <strong>  tí </strong></p>
-                <p  id="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. Variables in yorlang 
-                    can also be reassigned another value even if it had been declared before with the condition that the <strong>  keyword (tí)</strong> is also used.
-                   <strong> Strings </strong>in yorlang must be written using <strong> double quotes</strong>. Yorlang variables can hold many
-                     <strong>data types</strong> such as strings, integers and booleans</p>
+                <p  id="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. The <strong>keyword (tí)</strong> must be used when initializing and re-assigning the value of a variable.
+                   <strong> Strings </strong>in yorlang must be enclosed with <strong> double quotes</strong>. Yorlang variables can hold many
+                     <strong>data types</strong> such as strings, integers, arrays and booleans</p>
                 <div class="note">
-                    <p> Note: <br>comments can be made in yorlang using <strong> #</strong>. There's no multiline comments like /** */<br>
+                    <p> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */<br>
                                   A semi colon must be used at the end of every statement in yorlang
                     </p>
                 </div>
@@ -141,20 +146,19 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> dammy is 5 years old</p>
                 </div>
-                <p id="fixedWidthParagraph"> Another example:</p>
+                <p id="fixedWidthParagraph"> Re-assign variable example:</p>
                  <div class="example">
                     <p class="example-lang" > yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> oruko </strong> = <strong id= "stringInt"> "dammy"</strong>;</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> oruko </strong> =  <strong id= "stringInt"> "michelle" </strong>; 
-                        <i style="color: #908f8f; font-size: 12px;"> # variables can be reassigned as   long as the keyword (t&iacute; ) is used </i></p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id= "stringInt">"oruko mi ni" </strong> + " " + <strong id="varName"> name </strong>;</p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id= "stringInt">"oruko mi ni" </strong> + " " + <strong id="varName"> oruko </strong>;</p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> oruko mi ni  michelle </p>
                 </div>
             </div>
-
+            <br>
             <div class="container-fluid">
                 <h1 id="conditionals">  Conditionals </h1>
                 <hr>
@@ -169,7 +173,7 @@
                              greeting </strong>  =  <strong id= "stringInt">"good morning" </strong>;<br> <br> 
                         }    <strong id= "condition"> tàbí ṣé </strong>   ( <strong id="varName"> time </strong>>  <strong id= "stringInt"> 12 </strong>
                         && <strong id="varName"> time </strong><  <strong id= "stringInt"> 17 </strong> ) &nbsp;{ <br> 
-                         &nbsp; &nbsp;  <strong id="condition"> t&iacute; </strong><strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good day"</strong> ; } <br> <br> 
+                         &nbsp; &nbsp;  <strong id="condition"> t&iacute; </strong><strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good day"</strong> ;  <br> <br> 
                         }   <strong id= "condition"> tàbí </strong>   { <br> 
                          &nbsp; &nbsp;  <strong id="condition"> t&iacute; </strong><strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good evening"</strong> ; <br>} <br> <br></p>
                     <p class="example-one"> <strong id="print"> sọpé </strong>  <strong id="varName"> greeting </strong> + " " + <strong id= "stringInt"> "world" </strong>; 
@@ -181,13 +185,14 @@
                     <p class="example-output-value"> good day world </p>
                 </div>
                 <br>
-                <p  id="fixedWidthParagraph"> The Switch Condition:</p>
-                <p  id="fixedWidthParagraph"> This is how it works: <br> &nbsp;The switch expression is evaluated once. <br> &nbsp;
-                                                           The value of the expression is compared with the values of each case. <br>&nbsp;
-                                                           If there is a match, the associated block of code is executed and then it escapes the switch<br>  &nbsp; block
-                                                           without the need for a break (kúrò) expression.  <br>&nbsp;
-                                                           The use of the break statement(kúrò) in yorlang yí(switch) condition results in an error.
-                </p>
+                <p  id="fixedWidthParagraph"><strong>The Switch Condition:</strong> </p>
+                <p  id="fixedWidthParagraph"> The switch expression is evaluated once. </p>
+                <p  id="fixedWidthParagraph"> The value of the expression is compared with the values of each case.</p>
+                <p  id="fixedWidthParagraph"> If there is a match, the associated block of code is executed and then it escapes the switch block
+                                            without the need for a break (kúrò) expression.</p>
+                <p  id="fixedWidthParagraph">The use of the break statement(kúrò) in yorlang yí(switch) condition results in an error.</p>
+                <p  id="fixedWidthParagraph">The default(padàsí) block runs when there's no matched case.</p>
+
                 <p>  Switch: <strong> yí</strong><br>
                      Case: <strong> irú</strong>  <br>
                      Default: <strong> padàsí</strong>  <br>
@@ -197,7 +202,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> age </strong> = <strong id="stringInt">10 + 8 </strong>;</p>
                     <p class="example-one"> <strong id= "condition"> yí</strong> 
-                        ( <strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
+                        (<strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
                         <strong id="condition"> irú </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
                         <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> irú </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
@@ -213,8 +218,8 @@
                     <p class="example-output-value"> you are a teenager </p>
                 </div>
             </div>
-
-             <div class="container-fluid">
+            <br>
+            <div class="container-fluid">
                 <h1 id="loops">  Loops </h1>
                 <hr>
                 <p id="fixedWidthParagraph">Loops such as <strong> for </strong> and <strong> while </strong> are also supported in Yorlang </p>
@@ -254,7 +259,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
-                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong> ( <strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
                         
                         <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> <br> &nbsp; &nbsp;
                     <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> =<strong id="varName"> i </strong> + <strong id="stringInt">1</strong>; <br> }
@@ -269,7 +274,7 @@
                     <p class="example-output-value">o kere si aarun</p>
                 </div>
             </div>
-
+            <br>
             <div class="container-fluid">
                 <h1 id="functions">  Functions  </h1>
                 <hr>
@@ -278,12 +283,13 @@
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
+
                     <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> multiplyNumbers (  <strong id="stringInt"> a, b</strong>) 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="stringInt"> a * b</strong> ; <br> <br> }
                     </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> X </strong> = 
-                        multiplyNumbers ( <strong id="stringInt"> 5, 6</strong> ) ;
+                        multiplyNumbers(<strong id="stringInt"> 5, 6</strong>);
                     </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> X </strong>;
 
@@ -292,8 +298,112 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> 30 </p>
                 </div>
+                <p id="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count () 
+                        <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
+                            <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong> = <strong id="stringInt">3;</strong> <br> <br> &nbsp; &nbsp;
+                            <strong id="loop"> iṣẹ́ </strong> addCounter () 
+                            <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp; &nbsp;
+                            <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="stringInt">1</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
+                             addCounter(); <br> <br> &nbsp;
+                            <strong id="loop"> padà </strong>  <strong id="varName"> counter</strong> ; <br> <br> }
+                    </p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong>count();
+
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> 4 </p>
+                </div>
                 
             </div>
+            <br>
+              
+            <div class="container-fluid">
+                <h1 id="arrays">  Arrays  </h1>
+                <hr>
+                <p  id="fixedWidthParagraph">One-dimensional array example </p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="condition"> t&iacute;    </strong> <strong id="varName"> cars </strong> =
+                        [<strong id="stringInt">"G-Wagon", "S-class" </strong>]; 
+                    </p>
+                    
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> cars </strong>[0];
+
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> G-Wagon </p>
+                </div>
+                
+                <hr>
+                <p  id="fixedWidthParagraph">Multi-dimensional arrays are also supported in Yorlang </p>
+                
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="condition"> t&iacute;    </strong> <strong id="varName"> cars </strong> = [  [<strong id="stringInt">"corolla", "camry"</strong>],
+                        [<strong id="stringInt">"G-Wagon", "S-class" </strong>], [<strong id="stringInt">"Elantra", "sonata"</strong>] ]; 
+                    </p>
+                    
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> cars </strong>[1][1];
+
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> S-class </p>
+                </div>
+            </div>
+            <br>
+            <div class="container-fluid">
+                <h1 id="importFunction">  The Import (gbewọlé) Keyword   </h1>
+                <hr>
+                <p id="fixedWidthParagraph">The import (<strong>gbewọlé</strong>) keyword is used to include the content of a yorlang file into another 
+                    yorlang file.  </p>
+                <p  id="fixedWidthParagraph"> This keyword is followed
+                    by a <strong>  string </strong> which contains the path to the yorlang file to be imported. The file paths should
+                    be provided as a suffix to the project's absolute path
+                </p>
+                <p  id="fixedWidthParagraph"> For example, if you have a project called <strong> app </strong> with two sub folders 
+                    called <strong> deploy </strong> & <strong> test </strong>. In the deploy folder is a file called <strong> deploy.yl </strong> and in the
+                    test folder is a file called<strong> test.yl </strong>. You want to import the <strong> test.yl </strong> file into the
+                     <strong> deploy.yl  </strong> file. This is how to import the file;
+                </p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one">
+                        <strong id="loop"> gbewọlé </strong> "/test/test.yl";
+                       
+                    </p>
+                </div>
+                </div>
+                <br>
+                <div class="container-fluid">
+                    <h1 id="helperFunctions">  Helper Functions  </h1>
+                    <hr>
+                <p id="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
+                <p  id="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence, it takes an <strong> array</strong>
+                    as its <strong>parameter</strong>. <br> 
+                    e.g. ka([26,78,75]) returns <strong>3</strong> as the length of the array in question.
+                </p>
+                <p  id="fixedWidthParagraph"> <strong> síLẹ́tàŃlá </strong>: <br> This is used in converting <strong> strings</strong> to uppercase. síLẹ́tàŃlá
+                    takes a <strong> string </strong> as its parameter. <br>
+                    For example, síLẹ́tàŃlá("KaYode"); returns <strong> "KAYODE"</strong>
+                </p>
+                <p  id="fixedWidthParagraph"> <strong> síLẹ́tàkékeré  </strong>: <br> This is used in converting <strong> strings</strong> to lowercase. síLẹ́tàkékeré 
+                    takes a <strong> string </strong> as its parameter. <br>
+                    For example, síLẹ́tàkékeré ("KaYode"); returns <strong> "kayode"</strong>
+                </p>
+                
+
+                
+            </div> 
+      
+
+                
+            </div> 
         </div>
 
         <!-- /#page-content-wrapper -->

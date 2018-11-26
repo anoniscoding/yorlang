@@ -1,6 +1,6 @@
 const kwNodeIse = require("../../../parsers/keywordnodes/kwnodeise.js");
 const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
+const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
 
@@ -8,11 +8,11 @@ describe("KwNodeIse test suite", () => {
     let parser;
 
     beforeEach(() => {
-        parser = new Parser(new Lexer(new InputStream()));
+        parser = new Parser(new lexer(new InputStream()));
     });
 
     test("it should return valid ise node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.ISE} teOruko(a,b) {}`;
+        parser.lexer().inputStream.code = `${constants.KW.ISE} teOruko(a,b) {}`;
 
         const expectedNode = {
             body: [], 
@@ -34,7 +34,7 @@ describe("KwNodeIse test suite", () => {
     });
 
     test("it should return valid ise node for nested blocks", () => {
-        parser.lexer.inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
+        parser.lexer().inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
             tí oruko = orukoMi;
             
             ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
@@ -52,7 +52,7 @@ describe("KwNodeIse test suite", () => {
     });
 
     test("it should fail to create an ise node within an invalid block", () => {
-        parser.lexer.inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
+        parser.lexer().inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
             tí oruko = orukoMi;
             
             ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
@@ -70,7 +70,7 @@ describe("KwNodeIse test suite", () => {
     });
 
     test("it should throw an error when given invalid ise", () => {
-        parser.lexer.inputStream.code = `${constants.KW.ISE} (teOruko(a,b) {}`;
+        parser.lexer().inputStream.code = `${constants.KW.ISE} (teOruko(a,b) {}`;
 
         expect(() => {
             kwNodeIse.getNode.call(parser)

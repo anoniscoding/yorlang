@@ -15,7 +15,7 @@ class CallIseNl extends BaseNode {
 
         const node = {};
         node.operation = constants.CALL_ISE;
-        node.name = iseNameToken.value || this.lexer.next().value;
+        node.name = iseNameToken.value || this.lexer().next().value;
         node.paramValues = this.parseDelimited( 
                 constants.SYM.L_BRACKET , constants.SYM.R_BRACKET, constants.SYM.COMMA, 
                 this.parseExpression.bind(this), null
