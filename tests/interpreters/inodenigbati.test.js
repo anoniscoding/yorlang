@@ -15,7 +15,7 @@ describe("INodeNigbati test suite", () => {
     });
 
     test("it should interprete the nigbati keyword with kuro keyword", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
@@ -30,13 +30,12 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
     test("it should interprete the nigbati keyword", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
@@ -44,13 +43,12 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
     test("it should interprete nested nigbati keyword", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
@@ -63,8 +61,7 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledTimes(4);
     });
 });

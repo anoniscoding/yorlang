@@ -1,6 +1,6 @@
 const KwNodeGbeWole = require("../../../parsers/keywordnodes/kwnodegbewole.js");
 const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
+const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
 
@@ -9,7 +9,7 @@ describe("KwNodeGbeWole test suite", () => {
 
     beforeEach(() => {
         const code = `${constants.KW.GBE_WOLE} "./test.yl";`;
-        parser = new Parser(new Lexer(new InputStream(code)));
+        parser = new Parser(new lexer(new InputStream(code)));
     });
 
     test("It should return valid gbewole node", () => {
@@ -28,7 +28,7 @@ describe("KwNodeGbeWole test suite", () => {
     });
 
     test("It should fail when gbewole is given invalid parameter", () => { 
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.GBE_WOLE} "./test.yal";
         `;
         expect(() => KwNodeGbeWole.getNode.call(parser)).toThrow();

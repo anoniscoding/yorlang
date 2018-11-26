@@ -11,24 +11,24 @@ describe("INodeGbeWole test suite", () => {
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
         mainInterpreter = new MainInterpreter(new Environment());
+        global.console.log = jest.fn();
     });
 
     test("it should import valid file path correctly", () => {
         //file paths should be provided as a suffix to the project's absolute path
-        parser.lexer.inputStream.code = `${constants.KW.GBE_WOLE} "/sample/sample.yl";   
-            ${constants.KW.TI} b = isiro(14, 2);     
+        parser.lexer().inputStream.code = `${constants.KW.GBE_WOLE} "/sample/sample.yl";   
+            ${constants.KW.TI} b = isiro(14, 2);
+            ${constants.KW.SOPE} b;         
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toBe(28);
+        mainInterpreter.interpreteProgram(parser);
+        expect(global.console.log).toHaveBeenCalledWith(28);
     });
 
     test("it should fail to import invalid file path", () => {
-        parser.lexer.inputStream.code = `${constants.KW.GBE_WOLE} "../../asdfk.yl";
+        parser.lexer().inputStream.code = `${constants.KW.GBE_WOLE} "../../asdfk.yl";
         `;
 
-        const program = parser.parseProgram();
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 });

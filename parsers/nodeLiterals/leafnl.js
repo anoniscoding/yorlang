@@ -4,7 +4,7 @@ class LeafNl extends BaseNode{
 
     getNode() {
         return {
-            value: this.lexer.next().value,
+            value: this.lexer().next().value,
             left: null,
             right: null,
             operation: null

@@ -12,7 +12,7 @@ describe("KeywordNodeLiteral test suite", () => {
     });
 
     test("it should parse keyword literal", () => {
-        parser.lexer.inputStream.code = `${constants.KW.OOTO}`;
+        parser.lexer().inputStream.code = `${constants.KW.OOTO}`;
 
         const expectedNode = {
             left: null, 
@@ -25,7 +25,7 @@ describe("KeywordNodeLiteral test suite", () => {
     });
 
     test("it should fail to parse invalid keyword literal", () => {
-        parser.lexer.inputStream.code = `${constants.KW.ISE}`;
+        parser.lexer().inputStream.code = `${constants.KW.ISE}`;
 
         expect(() => keywordNl.getNode.call(parser)).toThrow();
     });

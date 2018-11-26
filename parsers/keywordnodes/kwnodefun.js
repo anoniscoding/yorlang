@@ -36,7 +36,7 @@ class KwNodeFun extends BaseNode {
         node.increment = kwNodeTi.getNode.call(context);
 
         if (KwNodeFun.isInValidFunIncrementStatement(node))
-            context.lexer.throwError("Invalid yorlang decrement or increment operation");
+            context.throwError("Invalid yorlang decrement or increment operation");
 
         context.skipPunctuation(constants.SYM.R_BRACKET);
         node.body = context.parseBlock(constants.KW.FUN);

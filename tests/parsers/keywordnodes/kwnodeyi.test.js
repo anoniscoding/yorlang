@@ -12,7 +12,7 @@ describe("KwNodeYi test suite", () => {
     });
 
     test("it should return a valid yi node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.YI} (firstname) {
+        parser.lexer().inputStream.code = `${constants.KW.YI} (firstname) {
             ${constants.KW.IRU} "anu":
                 ${constants.KW.SOPE} "it is anu";
             ${constants.KW.IRU} "femi": 
@@ -86,7 +86,7 @@ describe("KwNodeYi test suite", () => {
     });
 
     test("it should throw an error when an invalid yi node is given", () => {
-        parser.lexer.inputStream.code = `${constants.KW.YI} name) {
+        parser.lexer().inputStream.code = `${constants.KW.YI} name) {
             ${constants.KW.IRU} "anu":
                 ${constants.KW.SOPE} "it is anu";
                 ${constants.KW.KURO};

@@ -8,7 +8,7 @@ class KwNodeIse extends BaseNode {
             return KwNodeIse.getParsedIseNode(this);
         }
         
-        this.lexer.throwError("Cannot create a yorlang function within a non function block");   
+        this.throwError("Cannot create a yorlang function within a non function block");   
     }
 
     static isExpectedIseDeclaration(context) {

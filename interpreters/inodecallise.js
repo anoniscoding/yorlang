@@ -10,7 +10,7 @@ class INodeCallIse extends IBase {
             if (this.environment().isExistHelperIse(node.name))
                 return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));
             
-            throw new Error(`Ise ${node.name} is undefined`)
+            this.throwError(`Ise ${node.name} is undefined`)
         }
 
         this.pushToScopeStack(iseNode.name);

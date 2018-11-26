@@ -10,7 +10,7 @@ describe("IPlus test suite", () => {
 
     test("it should interprete a plus operation", () => {
         let parser = new Parser(new Lexer(new InputStream()));
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = 3 + 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.TI} a = 3 + 5;`;
         const node = kwNodeTi.getNode.call(parser);
         expect(iPlus.interpreteNode.call(new MainInterpreter(), node.right)).toBe(8);
     });

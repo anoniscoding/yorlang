@@ -88,7 +88,7 @@ describe("Lexer Tests", () => {
 
         expect(() => {
             lexer.readString();
-        }).toThrow(`There's an error at line 1 near column 4.\nExpecting '"' but found unexpected char`);
+        }).toThrow();
     });
 
     test("ReadIdentifier - it should return an variable token", () => {
@@ -163,14 +163,5 @@ describe("Lexer Tests", () => {
         lexer.inputStream.code = "";
 
         expect(lexer.isEndOfFile()).toBe(true);
-    });
-
-    test("ThrowError - It should throw an error message while specifying the location of the error accurately", () => {
-        lexer.inputStream.code = "";
-
-        const errorMsg = "Testing error msg";
-        expect(() => {
-            lexer.throwError(errorMsg);
-        }).toThrow(`There's an error at line 1 near column 0.\n${errorMsg}`);
     });
 });

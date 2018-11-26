@@ -29,7 +29,7 @@ class KwNodeYi extends BaseNode {
     static getYiBody(context) {
         const yiBody = [], kwNodeIRU = new KwNodeIRU();
 
-        while (context.lexer.isNotEndOfFile() && context.lexer.peek().value == constants.KW.IRU) {
+        while (context.isNotEndOfFile() && context.lexer().peek().value == constants.KW.IRU) {
             yiBody.push(kwNodeIRU.getNode.call(context));
         }
 
@@ -43,7 +43,7 @@ class KwNodeYi extends BaseNode {
             context.skipKeyword(constants.KW.PADASI);
             context.skipPunctuation(constants.SYM.COLON);
 
-            while (context.lexer.isNotEndOfFile() && context.lexer.peek().value !== constants.SYM.R_PAREN) {
+            while (context.isNotEndOfFile() && context.lexer().peek().value !== constants.SYM.R_PAREN) {
                 padasi.push(context.parseAst());
             }
         }
@@ -76,10 +76,10 @@ class KwNodeIRU extends BaseNode {
     }
 
     static canParseIRUStatements(context) {
-        return context.lexer.isNotEndOfFile() 
-                        && context.lexer.peek().value !== constants.KW.IRU 
-                        && context.lexer.peek().value !== constants.KW.PADASI  
-                        && context.lexer.peek().value !== constants.SYM.R_PAREN;
+        return context.isNotEndOfFile() 
+                        && context.lexer().peek().value !== constants.KW.IRU 
+                        && context.lexer().peek().value !== constants.KW.PADASI  
+                        && context.lexer().peek().value !== constants.SYM.R_PAREN;
     }
 }
 

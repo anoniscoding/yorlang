@@ -1,7 +1,7 @@
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const Environment = require("../../environment.js");
 const Parser = require("../../parsers/parser.js");
-const Lexer = require("../../lexer.js");
+const lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
@@ -9,13 +9,13 @@ describe("INodeCallIse test suite", () => {
     let mainInterpreter, parser;
 
     beforeEach(() => {
-        parser = new Parser(new Lexer(new InputStream()));
+        parser = new Parser(new lexer(new InputStream()));
         mainInterpreter = new MainInterpreter(new Environment());
         global.console.log = jest.fn();
     });
 
     test("it should call an already declared ise function", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teOruko(fname) {
                 ${constants.KW.SOPE} fname;
             }
@@ -23,14 +23,12 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("femi");
     });
 
     test("it should fail to print a variable that is out of scope", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teOruko(fname) {
                 ${constants.KW.SOPE} fname;
             }
@@ -39,13 +37,11 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} fname;
         `;
 
-        const program = parser.parseProgram();
-
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 
     test("it should have access to variables in a parent scope", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} sname = "karounwi";
 
             ${constants.KW.ISE} teOruko(fname) {
@@ -55,24 +51,20 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
     });
 
     test("it should fail to call an ise function that hasn't been declared", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 
     test("it should maintain scope within nested ise node", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} sname = "karounwi";
 
             ${constants.KW.ISE} teOruko(fname) {
@@ -87,16 +79,14 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi 0812035532");
 
     });
 
     test("it should call an ise function in a parent scope", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
         ${constants.KW.TI} sname = "karounwi";
 
             ${constants.KW.ISE} tePhoneNoPeluOruko(no) {
@@ -112,15 +102,13 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("0812035532");
     });
 
     test("it should return a value from an se block within an ise function", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} gbaOruko(fname) {
                 ${constants.KW.TI} b = [1,2,3];
                 ${constants.KW.TI} c = 4;
@@ -136,14 +124,12 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith("1 femi");
     });
 
     test("it should return a value from a nigbati block within an ise function", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} gbaOnka() {
                 ${constants.KW.TI} b = [1,2,3];
                 ${constants.KW.TI} c = 4;
@@ -157,14 +143,12 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(4);
     });
 
     test("it should return a value from a fun block within an ise function", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} gbaOnka() {
                 ${constants.KW.TI} b = [1,2,3];
                 ${constants.KW.TI} c = 4;
@@ -178,9 +162,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
-
+        mainInterpreter.interpreteProgram(parser);
         expect(global.console.log).toHaveBeenCalledWith(0);
     });
 });

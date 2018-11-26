@@ -16,11 +16,11 @@ class KeywordNl extends BaseNode {
             return leafNl.getNode.call(this);
         }
             
-        this.lexer.throwError(`Expecting yorlang boolean(iró|òótó) but found ${token.value}`);
+        this.throwError(`Expecting yorlang boolean(iró|òótó) but found ${token.value}`);
     }
 
     static isBooleanKeywordNl(context) {
-        return [constants.KW.OOTO, constants.KW.IRO].indexOf(context.lexer.peek().value) >= 0
+        return [constants.KW.OOTO, constants.KW.IRO].indexOf(context.lexer().peek().value) >= 0
     }
 }
 

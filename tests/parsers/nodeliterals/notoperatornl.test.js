@@ -12,7 +12,7 @@ describe("NotOperatorNl test suite", () => {
     });
 
     test("It should parse valid not operator with boolean body", () => {
-        parser.lexer.inputStream.code = `${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO}`;
+        parser.lexer().inputStream.code = `${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO}`;
 
         const expectedNode = {
             operation: constants.SYM.EXCLAMATION_POINT, 
@@ -28,7 +28,7 @@ describe("NotOperatorNl test suite", () => {
     });
 
     test("It should parse valid not operator with variable body", () => {
-        parser.lexer.inputStream.code = `${constants.SYM.EXCLAMATION_POINT} isGood;`;
+        parser.lexer().inputStream.code = `${constants.SYM.EXCLAMATION_POINT} isGood;`;
 
         const expectedNode = {
             operation: constants.SYM.EXCLAMATION_POINT, 
