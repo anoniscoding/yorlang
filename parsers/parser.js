@@ -5,9 +5,8 @@ const BaseNode = require("./basenode.js");
 
 class Parser {
 
-    constructor(lexer, yorlangFileName) {
+    constructor(lexer) {
         this.lexer = () => lexer;
-        this.yorlangFileName = () => yorlangFileName;
         this.initBlockTypeStack();
         this.initIsArithmeticExpression();
     }
@@ -203,7 +202,7 @@ class Parser {
     }
 
     throwError(msg) {
-        this.lexer().throwError(`File ${this.yorlangFileName()} - ${msg}`);
+        this.lexer().throwError(msg);
     }
 }
 

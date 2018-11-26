@@ -23,7 +23,7 @@ if (arg === "-v") {
     fs.readFile(process.cwd() +"/"+ arg, 'utf8', (err, programFile) => {
         if (err) throw err; 
 
-        const parser = new Parser(new Lexer(new InputStream(programFile)), arg);
+        const parser = new Parser(new Lexer(new InputStream(programFile, arg)));
         const interpreter = new MainInterpreter(new Environment());
         interpreter.interpreteProgram(parser);
     });

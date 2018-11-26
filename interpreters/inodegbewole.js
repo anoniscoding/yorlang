@@ -12,8 +12,8 @@ class INodeGbeWole extends IBase {
         INodeGbeWole.runImportedFile(this, importedFileString, fileName);
     }
 
-    static runImportedFile(context, importedFile, fileName) {
-        const parser = new Parser(new Lexer(new InputStream(importedFile)), fileName);
+    static runImportedFile(context, importedFileString, fileName) {
+        const parser = new Parser(new Lexer(new InputStream(importedFileString, fileName)));
         context.interpreteImportedProgram(parser);
     }
 }
