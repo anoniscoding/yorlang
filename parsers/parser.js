@@ -203,7 +203,7 @@ class Parser {
     }
 
     throwError(msg) {
-        this.lexer().throwError(`File ${this.yorlangFileName()} ${msg}`);
+        this.lexer().throwError(`File ${this.yorlangFileName()} - ${msg}`);
     }
 }
 
