@@ -20,10 +20,10 @@ const arg = process.argv[2];
 if (arg === "-v") {
     console.log(packageJson.version);
 } else if (path.extname(arg) === constants.YL_EXT) {
-    fs.readFile(process.cwd() +"/"+ arg, 'utf8', (err, programFile) => {
+    fs.readFile(process.cwd() +"/"+ arg, 'utf8', (err, programFileString) => {
         if (err) throw err; 
 
-        const parser = new Parser(new Lexer(new InputStream(programFile, arg)));
+        const parser = new Parser(new Lexer(new InputStream(programFileString, arg))); //arg is the filename
         const interpreter = new MainInterpreter(new Environment());
         interpreter.interpreteProgram(parser);
     });
