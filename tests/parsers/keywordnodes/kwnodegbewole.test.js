@@ -1,15 +1,20 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const KwNodeGbeWole = require("../../../parsers/keywordnodes/kwnodegbewole.js");
 const Parser = require("../../../parsers/parser.js");
 const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
+const fs = require("fs");
 
 describe("KwNodeGbeWole test suite", () => {
     let parser;
 
     beforeEach(() => {
-        const code = `${constants.KW.GBE_WOLE} "./test.yl";`;
-        parser = new Parser(new lexer(new InputStream(code)));
+        fs.readFileSync.mockReturnValue(`${constants.KW.GBE_WOLE} "./test.yl";`);
+        parser = new Parser(new lexer(new InputStream()));
     });
 
     test("It should return valid gbewole node", () => {

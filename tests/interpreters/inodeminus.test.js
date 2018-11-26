@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const iMinus = require("../../interpreters/inodeminus.js");
 const kwNodeTi = require("../../parsers/keywordnodes/kwnodeti.js");

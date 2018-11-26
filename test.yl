@@ -1,6 +1,23 @@
 gbewọlé "/sample/sample.yl";
 
-tí cars = [["corolla", "camry"], ["G-Wagon", "S-class" ], ["Elantra", "sonata"] ];
+#tí cars = [["corolla", "camry"], ["G-Wagon", "S-class" ], ["Elantra", "sonata"] ];
 
-sọpé isiro(3,5);
-sọpé cars[1][1];
+#sọpé isiro(3,5);
+#sọpé cars[1][1];
+
+iṣẹ́ count() { 
+
+    tí counter = 3; 
+
+    iṣẹ́ addCounter() { 
+        tí counter = counter + 1; 
+    } 
+
+    addCounter(); 
+
+    padà counter; 
+
+}
+
+sọpé count();
+

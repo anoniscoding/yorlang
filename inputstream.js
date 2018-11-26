@@ -1,13 +1,18 @@
 const constants = require("./constants.js");
+const fs = require("fs");
 
 class InputStream {
 
-    constructor(inputCode, yorlangFileName) {
-        this.code = inputCode;
+    constructor(fileName) {
+        this.code = this.readProgramFile(fileName);
         this.line = 1;
         this.column = 0;
         this.position = 0;
-        this.yorlangFileName = () => yorlangFileName;
+        this.yorlangFileName = () => fileName;
+    }
+
+    readProgramFile(fileName) {
+        return fs.readFileSync(process.cwd() +"/"+ fileName, 'utf8'); 
     }
 
     //return the next value and also discard it from the stream

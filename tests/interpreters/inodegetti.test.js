@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const iNodeGetTi = require("../../interpreters/inodegetti.js");
 const Environment = require("../../environment.js");
