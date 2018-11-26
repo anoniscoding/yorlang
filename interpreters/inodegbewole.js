@@ -8,7 +8,7 @@ class INodeGbeWole extends IBase {
 
     interpreteNode(node) {
         const fileName = this.evaluateNode(node.path);
-        const importedFileString = fs.readFileSync(process.cwd() + fileName, 'utf8'); 
+        const importedFileString = fs.readFileSync(process.cwd() +"/"+ fileName, 'utf8'); 
         INodeGbeWole.runImportedFile(this, importedFileString, fileName);
     }
 
