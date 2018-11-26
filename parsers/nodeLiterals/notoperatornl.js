@@ -4,7 +4,7 @@ class NotOperatorNl extends BaseNode {
 
     getNode() {
         return {
-            operation: this.lexer.next().value,
+            operation: this.lexer().next().value,
             body: this.parseExpression(),
         }    
     }

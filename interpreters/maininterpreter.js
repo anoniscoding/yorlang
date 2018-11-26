@@ -43,13 +43,15 @@ class MainInterpreter {
     interpreteProgram(parser) {
         this.parser = () => parser;
 
-        //figure out why using this.parser() below this line is not working for imports
-
-        parser.pushToBlockTypeStack(constants.PROGRAM);
-        while (parser.isNotEndOfFile()) {
-            this.evaluateNode(parser.parseAst());
+        this.parser().pushToBlockTypeStack(constants.PROGRAM);
+        while (this.parser().isNotEndOfFile()) {
+            this.evaluateNode(this.parser().parseAst());
         }
-        parser.popBlockTypeStack();
+        this.parser().popBlockTypeStack();
+    }
+
+    interpreteImportedProgram(parser) {
+        new MainInterpreter(this.environment()).interpreteProgram(parser);
     }
 }
 

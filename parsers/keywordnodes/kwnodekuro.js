@@ -18,7 +18,7 @@ class KwNodeKuro extends BaseNode {
 
     static getParsedKuroNode(context) {
         const node = {};
-        node.operation = context.lexer.next().value;
+        node.operation = context.lexer().next().value;
         context.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;

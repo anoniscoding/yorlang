@@ -12,7 +12,7 @@ describe("KwNodeNigbati test suite", () => {
     });
 
     test("it should return a nigbati node", () => {
-        parser.lexer.inputStream.code = `${constants.KW.NIGBATI} ((ikeji < aropo) && (ikeji > 0)) {
+        parser.lexer().inputStream.code = `${constants.KW.NIGBATI} ((ikeji < aropo) && (ikeji > 0)) {
             ${constants.KW.SOPE} "a jura wa lo tijakadi ko";
             ${constants.KW.TI} ikeji = ikeji + 1;
         }`;
@@ -84,7 +84,7 @@ describe("KwNodeNigbati test suite", () => {
     });
 
     test("it should return valid nigbati node for nested blocks", () => {
-        parser.lexer.inputStream.code = `${constants.KW.NIGBATI} ((ikeji < aropo) && (ikeji > 0)) {
+        parser.lexer().inputStream.code = `${constants.KW.NIGBATI} ((ikeji < aropo) && (ikeji > 0)) {
             ${constants.KW.SOPE} "a jura wa lo tijakadi ko";
             ${constants.KW.TI} ikeji = ikeji + 1;
             ${constants.KW.NIGBATI} ((ikeji < aropo) && (ikeji > 0)) {
@@ -97,7 +97,7 @@ describe("KwNodeNigbati test suite", () => {
     });
 
     test("it should throw an error when given invalid construct", () => {
-        parser.lexer.inputStream.code = `${constants.KW.NIGBATI} ikeji < aropo) && (ikeji > 0)) {
+        parser.lexer().inputStream.code = `${constants.KW.NIGBATI} ikeji < aropo) && (ikeji > 0)) {
             ${constants.KW.SOPE} "a jura wa lo tijakadi ko";
             ${constants.KW.TI} ikeji = ikeji + 1;
         }`;

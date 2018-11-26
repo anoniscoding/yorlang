@@ -7,14 +7,14 @@ const InputStream = require("../inputstream.js");
 class INodeGbeWole extends IBase {
 
     interpreteNode(node) {
-        const filePath = this.evaluateNode(node.path);
-        const importedFile = fs.readFileSync(process.cwd() + filePath, 'utf8'); 
-        INodeGbeWole.runImportedFile(this, importedFile);
+        const fileName = this.evaluateNode(node.path);
+        const importedFileString = fs.readFileSync(process.cwd() + fileName, 'utf8'); 
+        INodeGbeWole.runImportedFile(this, importedFileString, fileName);
     }
 
-    static runImportedFile(context, importedFile) {
-        const parser = new Parser(new Lexer(new InputStream(importedFile)));  
-        context.interpreteProgram(parser);
+    static runImportedFile(context, importedFile, fileName) {
+        const parser = new Parser(new Lexer(new InputStream(importedFile)), fileName);
+        context.interpreteImportedProgram(parser);
     }
 }
 

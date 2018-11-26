@@ -12,7 +12,7 @@ describe("CallIseLiteral test suite", () => {
     });
     
     test("it should parse valid callIse syntax with parameters", () => {
-        parser.lexer.inputStream.code = `eeyan(1,"anu");`;
+        parser.lexer().inputStream.code = `eeyan(1,"anu");`;
 
         const expectedNode = {
             paramValues: [
@@ -27,7 +27,7 @@ describe("CallIseLiteral test suite", () => {
     });
 
     test("it should parse valid callIse syntax without parameters", () => {
-        parser.lexer.inputStream.code = `eeyan();`;
+        parser.lexer().inputStream.code = `eeyan();`;
 
         const expectedNode = {
             paramValues: [], 
@@ -39,7 +39,7 @@ describe("CallIseLiteral test suite", () => {
     });
 
     test("it should fail to parse invalid callIse syntax", () => {
-        parser.lexer.inputStream.code = `eeyan(`;
+        parser.lexer().inputStream.code = `eeyan(`;
         expect(() => callIseNl.getNode.call(parser)).toThrow();
     })
 });

@@ -16,7 +16,7 @@ describe("INodeGbeWole test suite", () => {
 
     test("it should import valid file path correctly", () => {
         //file paths should be provided as a suffix to the project's absolute path
-        parser.lexer.inputStream.code = `${constants.KW.GBE_WOLE} "/sample/sample.yl";   
+        parser.lexer().inputStream.code = `${constants.KW.GBE_WOLE} "/sample/sample.yl";   
             ${constants.KW.TI} b = isiro(14, 2);
             ${constants.KW.SOPE} b;         
         `;
@@ -26,7 +26,7 @@ describe("INodeGbeWole test suite", () => {
     });
 
     test("it should fail to import invalid file path", () => {
-        parser.lexer.inputStream.code = `${constants.KW.GBE_WOLE} "../../asdfk.yl";
+        parser.lexer().inputStream.code = `${constants.KW.GBE_WOLE} "../../asdfk.yl";
         `;
 
         expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();

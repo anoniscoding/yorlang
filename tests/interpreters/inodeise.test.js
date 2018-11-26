@@ -15,7 +15,7 @@ describe("INodeIse test suite", () => {
     });
 
     test("It should save an ise node", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teOruko(fname) {
                 ${constants.KW.SOPE} fname;
             }
@@ -44,7 +44,7 @@ describe("INodeIse test suite", () => {
     });
 
     test("It should fail to save ise node if there exist another ise node with the same name in the same scope", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teOruko(fname, lname) {
                 ${constants.KW.SOPE} fname + " "+ lname;
             }
@@ -58,7 +58,7 @@ describe("INodeIse test suite", () => {
     });
 
     test("It should save nested ise node", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teName(fname, lname) {
                 ${constants.KW.SOPE} fname + " "+ lname;
                 ${constants.KW.ISE} teNumber(number) {

@@ -24,7 +24,7 @@ describe("KwNodeKuro test suite", () => {
         parser.pushToBlockTypeStack(constants.KW.NIGBATI);
         kwNodeKuro.getNode.call(parser);
         
-        expect(parser.lexer.peek()).toBe(null);
+        expect(parser.lexer().peek()).toBe(null);
     });
 
     test("It should fail to return a kuro node because the kuro keyword is not within a loop", () => {

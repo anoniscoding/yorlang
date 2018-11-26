@@ -11,7 +11,7 @@ describe("LeafLiteral test suite", () => {
     });
 
     test("it should parse valid leaf - string literal", () => {
-        parser.lexer.inputStream.code = `"beautiful";`;
+        parser.lexer().inputStream.code = `"beautiful";`;
 
         const expectedNode = {
            left: null,
@@ -24,7 +24,7 @@ describe("LeafLiteral test suite", () => {
     });
 
     test("it should parse valid leaf- number literal", () => {
-        parser.lexer.inputStream.code = `7.51;`;
+        parser.lexer().inputStream.code = `7.51;`;
 
         const expectedNode = {
             left: null,
