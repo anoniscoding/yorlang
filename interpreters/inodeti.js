@@ -8,7 +8,26 @@ class INodeTi extends IBase {
             INodeTi.setArrayElement(this, node);
         }
 
+        if (INodeTi.isWokeVariable(this, node.left)) {
+            INodeTi.setWokeVariable(this, node);
+        }
+
         this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
+    }
+
+    static isWokeVariable(context, tiName) {
+        const woke = context.environment().getTi(context.getCurrentScope(), constants.KW.WOKE);
+        return woke != undefined && woke.indexOf(tiName) != -1;
+    }
+
+    static setWokeVariable(context, node) {
+        const topIndex = context.scopeStack().length - 2;
+
+        for (let index = topIndex; index >= 0; index--) {
+            if (context.environment().getTi(context.scopeStack()[index], node.left) != undefined) {
+                return context.environment().setTi(context.scopeStack()[index], node.left, context.evaluateNode(node.right));
+            }
+        }
     }
 
     static setArrayElement(context, node) { //this also caters for setting multi-dimensional array element
@@ -18,11 +37,11 @@ class INodeTi extends IBase {
             const arrayIndex = context.evaluateNode(node.left.indexNodes[i]);
 
             if (typeof arrayIndex == "number") {
-                if (!(arrayLiteral[arrayIndex] instanceof Array) && (i < node.left.indexNodes.length - 1)) {
+                if (!(Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
                     context.throwError(`Cannot set invalid array element for array : ${node.left.name}`);
                 }
 
-                if ((arrayLiteral[arrayIndex] instanceof Array) && (i < node.left.indexNodes.length - 1)) {
+                if ((Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
                     arrayLiteral = arrayLiteral[arrayIndex];
                 }
 
