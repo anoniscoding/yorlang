@@ -87,19 +87,19 @@ p{
 }
 .panel_items{
     width: 25%;
-    border: 1px solid #0b409c;
+    border: 1px solid #32903F;
     display: flex;
     flex-direction:column;
     align-items: center;
     padding: 30px;
     border-radius: 5px;
-    margin: 0 2% 2% 0;
+    margin: 0 2% 2% 0%;
 }
 .panel_items p{
     font-size: 18px;
 }
 .panel_items button{
-    background: #0b409c;
+    background: #32903F;
     border:none;
     outline:none;
     padding: 10px;
