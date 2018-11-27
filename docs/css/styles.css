@@ -78,8 +78,43 @@ p{
     padding: 5px 25px 5px 25px;
     width: 25%;
 }
+.download_column-panel{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.panel_items{
+    width: 25%;
+    border: 1px solid #0b409c;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 0 2% 2% 0;
+}
+.panel_items p{
+    font-size: 18px;
+}
+.panel_items button{
+    background: #0b409c;
+    border:none;
+    outline:none;
+    padding: 10px;
+    border-radius: 5px;
+}
+.panel_items button a{
+
+     color: #fff;
+     text-decoration:none;
+     font-size: 13px;
+
+}
+
 /* example styles */
-#fixedWidthParagraph{
+.fixedWidthParagraph{
     width:60%;
     text-align: justify;
     font-size: 14px;

@@ -112,20 +112,50 @@
             <div class="container-fluid">
                 <h1 id="intro">Getting Started</h1>
                 <hr>
-                <p> Follow the following steps to get started with yorlang </p>
+                <p class="fixedWidthParagraph"> To get started with yorlang, a yorlang runtime has to be dwonloaded </p>
+                <p class="fixedWidthParagraph"> Download and run the runtime installer for your platform </p>
+                <div class="download_column-panel">
+                    <div class="panel_items">
+                        <p> <i class="fa fa-apple"></i> MacOS</p>
+                        <button> <a href="http://">Download the installer</a>  </button>
+                    </div>
+                    <div class="panel_items">
+                        <p> <i class="fa fa-windows"></i> Windows</p>
+                        <button> <a href="http://">Download the installer</a>  </button>
+                    </div>
+                    <div class="panel_items">
+                        <p> <i class="fa fa-linux"></i> Linux</p>
+                        <button> <a href="http://">Download the installer</a>  </button>
+                    </div>
+
+                </div>
+                <p class="fixedWidthParagraph"> Once installed, You can download the node package manager on your terminal or code editor's terminal</p>
+                <div class="example">
+                    <p class="example-lang" > yorlang </p>
+                    <p class="example-one"> npm install -g yorlang</p>
+                </div>
+                 <p> HELLO WORLD</p>
+                 <p class="fixedWidthParagraph"> Create a test.yl file and write your first yorlang statement</p>
+                  <div class="example">
+                    <p class="example-lang" > yorlang </p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong>  "báwo ni ayé"; </p>
+                  </div>
+                  <p class="fixedWidthParagraph"> Run yorl test.yl in your cli</p>
+                <p class="fixedWidthParagraph"> You can also download the vs code extension <a href="#">here</a></p>
+                <!--
                 <p style="color:tomato"> Steps: </p>
                 <p id="black-background"> npm install -g yorlang</p>
                 <p id="black-background">Create test.yl file</code>.</p>
                 <p id="black-background">Write 'sọpé "báwo ni ayé" '>
-                <p id="black-background">Run yorl test.yl in your cli</p>
+                <p id="black-background">Run yorl test.yl in your cli</p>-->
             </div>
            <br>
             <div class="container-fluid">
                 <h1 id="variables"> Variable Declaration</h1>
                 <hr>
-                <p id="fixedWidthParagraph">Variables can be declared in yorlang using</p>
-                <p id="fixedWidthParagraph">Yorlang: <strong>  tí </strong></p>
-                <p  id="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. The <strong>keyword (tí)</strong> must be used when initializing and re-assigning the value of a variable.
+                <p class="fixedWidthParagraph">Variables can be declared in yorlang using</p>
+                <p class="fixedWidthParagraph">Yorlang: <strong>  tí </strong></p>
+                <p  class="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. The <strong>keyword (tí)</strong> must be used when initializing and re-assigning the value of a variable.
                    <strong> Strings </strong>in yorlang must be enclosed with <strong> double quotes</strong>. Yorlang variables can hold many
                      <strong>data types</strong> such as strings, integers, arrays and booleans</p>
                 <div class="note">
@@ -146,7 +176,7 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> dammy is 5 years old</p>
                 </div>
-                <p id="fixedWidthParagraph"> Re-assign variable example:</p>
+                <p class ="fixedWidthParagraph"> Re-assign variable example:</p>
                  <div class="example">
                     <p class="example-lang" > yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong> <strong id="varName"> oruko </strong> = <strong id= "stringInt"> "dammy"</strong>;</p>
@@ -162,8 +192,8 @@
             <div class="container-fluid">
                 <h1 id="conditionals">  Conditionals </h1>
                 <hr>
-                <p id="fixedWidthParagraph">Conditionals such as if, else, else if and switch statements  can also be used in yorlang</p>
-                <p  id="fixedWidthParagraph">if: <strong> ṣé &nbsp; &nbsp; </strong> else: <strong> tàbí</strong> &nbsp; &nbsp;  else if: <strong> tàbí ṣé</strong></p>
+                <p class="fixedWidthParagraph">Conditionals such as if, else, else if and switch statements  can also be used in yorlang</p>
+                <p  class="fixedWidthParagraph">if: <strong> ṣé &nbsp; &nbsp; </strong> else: <strong> tàbí</strong> &nbsp; &nbsp;  else if: <strong> tàbí ṣé</strong></p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -185,13 +215,13 @@
                     <p class="example-output-value"> good day world </p>
                 </div>
                 <br>
-                <p  id="fixedWidthParagraph"><strong>The Switch Condition:</strong> </p>
-                <p  id="fixedWidthParagraph"> The switch expression is evaluated once. </p>
-                <p  id="fixedWidthParagraph"> The value of the expression is compared with the values of each case.</p>
-                <p  id="fixedWidthParagraph"> If there is a match, the associated block of code is executed and then it escapes the switch block
+                <p  class="fixedWidthParagraph"><strong>The Switch Condition:</strong> </p>
+                <p  class="fixedWidthParagraph"> The switch expression is evaluated once. </p>
+                <p  class="fixedWidthParagraph"> The value of the expression is compared with the values of each case.</p>
+                <p  class="fixedWidthParagraph"> If there is a match, the associated block of code is executed and then it escapes the switch block
                                             without the need for a break (kúrò) expression.</p>
-                <p  id="fixedWidthParagraph">The use of the break statement(kúrò) in yorlang yí(switch) condition results in an error.</p>
-                <p  id="fixedWidthParagraph">The default(padàsí) block runs when there's no matched case.</p>
+                <p  class="fixedWidthParagraph">The use of the break statement(kúrò) in yorlang yí(switch) condition results in an error.</p>
+                <p  class="fixedWidthParagraph">The default(padàsí) block runs when there's no matched case.</p>
 
                 <p>  Switch: <strong> yí</strong><br>
                      Case: <strong> irú</strong>  <br>
@@ -222,8 +252,8 @@
             <div class="container-fluid">
                 <h1 id="loops">  Loops </h1>
                 <hr>
-                <p id="fixedWidthParagraph">Loops such as <strong> for </strong> and <strong> while </strong> are also supported in Yorlang </p>
-                <p  id="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí</strong></p>
+                <p class="fixedWidthParagraph">Loops such as <strong> for </strong> and <strong> while </strong> are also supported in Yorlang </p>
+                <p  class="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí</strong></p>
                 
                 <div class="note">
                     <p> Note: <br>
@@ -252,8 +282,8 @@
                     <p class="example-output-value"> you can be anything you want to be </p>
                 </div>
                 <br>
-                <p  id="fixedWidthParagraph"> The While(<strong> nígbàtí</strong>) Loop:</p>
-                <p  id="fixedWidthParagraph"> The while ( nígbàtí) loop is executed as long as the condition in parentheses is true </p>
+                <p  class="fixedWidthParagraph"> The While(<strong> nígbàtí</strong>) Loop:</p>
+                <p  class="fixedWidthParagraph"> The while ( nígbàtí) loop is executed as long as the condition in parentheses is true </p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -278,8 +308,8 @@
             <div class="container-fluid">
                 <h1 id="functions">  Functions  </h1>
                 <hr>
-                <p id="fixedWidthParagraph">Functions are also supported in yorlang using the following keywords  </p>
-                <p  id="fixedWidthParagraph">Function: <strong> iṣẹ́ &nbsp; </strong> return: <strong> padà</strong></p>
+                <p class="fixedWidthParagraph">Functions are also supported in yorlang using the following keywords  </p>
+                <p  class="fixedWidthParagraph">Function: <strong> iṣẹ́ &nbsp; </strong> return: <strong> padà</strong></p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -298,7 +328,7 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> 30 </p>
                 </div>
-                <p id="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
+                <p class="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count () 
@@ -324,7 +354,7 @@
             <div class="container-fluid">
                 <h1 id="arrays">  Arrays  </h1>
                 <hr>
-                <p  id="fixedWidthParagraph">One-dimensional array example </p>
+                <p  class="fixedWidthParagraph">One-dimensional array example </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute;    </strong> <strong id="varName"> cars </strong> =
@@ -340,7 +370,7 @@
                 </div>
                 
                 <hr>
-                <p  id="fixedWidthParagraph">Multi-dimensional arrays are also supported in Yorlang </p>
+                <p  class="fixedWidthParagraph">Multi-dimensional arrays are also supported in Yorlang </p>
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -360,13 +390,13 @@
             <div class="container-fluid">
                 <h1 id="importFunction">  The Import (gbewọlé) Keyword   </h1>
                 <hr>
-                <p id="fixedWidthParagraph">The import (<strong>gbewọlé</strong>) keyword is used to include the content of a yorlang file into another 
+                <p class="fixedWidthParagraph">The import (<strong>gbewọlé</strong>) keyword is used to include the content of a yorlang file into another 
                     yorlang file.  </p>
-                <p  id="fixedWidthParagraph"> This keyword is followed
+                <p  class="fixedWidthParagraph"> This keyword is followed
                     by a <strong>  string </strong> which contains the path to the yorlang file to be imported. The file paths should
                     be provided as a suffix to the project's absolute path
                 </p>
-                <p  id="fixedWidthParagraph"> For example, if you have a project called <strong> app </strong> with two sub folders 
+                <p  class="fixedWidthParagraph"> For example, if you have a project called <strong> app </strong> with two sub folders 
                     called <strong> deploy </strong> & <strong> test </strong>. In the deploy folder is a file called <strong> deploy.yl </strong> and in the
                     test folder is a file called<strong> test.yl </strong>. You want to import the <strong> test.yl </strong> file into the
                      <strong> deploy.yl  </strong> file. This is how to import the file;
@@ -383,16 +413,16 @@
                 <div class="container-fluid">
                     <h1 id="helperFunctions">  Helper Functions  </h1>
                     <hr>
-                <p id="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
-                <p  id="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence, it takes an <strong> array</strong>
+                <p class="fixedWidthParagraph">Here are some helper functions supported in Yorlang and their descriptions  </p>
+                <p  class="fixedWidthParagraph"> <strong> ka </strong>: <br> This is used for counting the length of an array. Hence, it takes an <strong> array</strong>
                     as its <strong>parameter</strong>. <br> 
                     e.g. ka([26,78,75]) returns <strong>3</strong> as the length of the array in question.
                 </p>
-                <p  id="fixedWidthParagraph"> <strong> síLẹ́tàŃlá </strong>: <br> This is used in converting <strong> strings</strong> to uppercase. síLẹ́tàŃlá
+                <p  class="fixedWidthParagraph"> <strong> síLẹ́tàŃlá </strong>: <br> This is used in converting <strong> strings</strong> to uppercase. síLẹ́tàŃlá
                     takes a <strong> string </strong> as its parameter. <br>
                     For example, síLẹ́tàŃlá("KaYode"); returns <strong> "KAYODE"</strong>
                 </p>
-                <p  id="fixedWidthParagraph"> <strong> síLẹ́tàkékeré  </strong>: <br> This is used in converting <strong> strings</strong> to lowercase. síLẹ́tàkékeré 
+                <p  class="fixedWidthParagraph"> <strong> síLẹ́tàkékeré  </strong>: <br> This is used in converting <strong> strings</strong> to lowercase. síLẹ́tàkékeré 
                     takes a <strong> string </strong> as its parameter. <br>
                     For example, síLẹ́tàkékeré ("KaYode"); returns <strong> "kayode"</strong>
                 </p>
