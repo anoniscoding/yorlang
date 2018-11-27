@@ -12,7 +12,11 @@ class InputStream {
     }
 
     readProgramFile(fileName) {
-        return fs.readFileSync(process.cwd() +"/"+ fileName, 'utf8'); 
+        try {
+            return fs.readFileSync(process.cwd() +"/"+ fileName, 'utf8'); 
+        } catch (e) {
+            throw new Error(`Could not read file ${this.yorlangFileName()}`);
+        }
     }
 
     //return the next value and also discard it from the stream
