@@ -86,6 +86,18 @@ describe("INodeTi test suite", () => {
         expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
     });
 
+    test("it should fail to assign undefined to variable", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.ISE} teOruko(fname) {
+                ${constants.KW.SOPE} fname;
+            }
+            
+            ${constants.KW.TI} a = teOruko("name");
+        `;
+
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+    });
+
     test("it should assign value to a multi-dimensional array element", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = [[1,2], [3,4], 5];

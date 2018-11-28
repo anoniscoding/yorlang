@@ -14,8 +14,8 @@ class INodeTi extends IBase {
             INodeTi.setWokeVariable(this, node); 
             return;
         }
-
-        this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
+        
+        this.environment().setTi(this.getCurrentScope(), node.left, INodeTi.getValue(this, node.right));
     }
 
     static setWokeVariable(context, node) {
@@ -23,7 +23,7 @@ class INodeTi extends IBase {
 
         for (let index = topIndex; index >= 0; index--) {
             if (context.environment().getTi(context.scopeStack()[index], node.left) != undefined) {
-                return context.environment().setTi(context.scopeStack()[index], node.left, context.evaluateNode(node.right));
+                return context.environment().setTi(context.scopeStack()[index], node.left, INodeTi.getValue(context, node.right));
             }
         }
     }
@@ -55,6 +55,12 @@ class INodeTi extends IBase {
     static getArrayLiteral(context, node) {
         const tiNode = { name: node.left.name, operation: constants.GET_TI };
         return context.evaluateNode(tiNode);
+    }
+
+    static getValue(context, node) {
+        const value = context.evaluateNode(node);
+        if (value == undefined) context.throwError(`Cannot set value undefined to variable ${node.left}`);
+        return value;
     }
 }
 
