@@ -177,15 +177,35 @@ p{
     color: black;
     padding-left: 20px;
 }
+@media (max-width:1000px){
+    .download_column-panel {
+        flex-direction: column;
+        width: 90%;
+        align-items: flex-start;
+    }
 
+    .panel_items {
+        width: 45%;
+    }
+}
 @media (max-width:600px){
+
 
     p{
         font-size: 13px;
     }
+    .download_column-panel{
+        flex-direction:column;
+        width: 90%;
+        align-items: flex-start;
+    }
 
+    .panel_items{
+        width: 65%;
+    }
     #fixedWidthParagraph{
         width:90%;
+        text-align: left;
     }
     .example, .example-output{
         width: 95%;
