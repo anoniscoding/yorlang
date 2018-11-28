@@ -227,7 +227,6 @@
                 <p>  Switch: <strong> yí</strong><br>
                      Case: <strong> irú</strong>  <br>
                      Default: <strong> padàsí</strong>  <br>
-                     Break: <strong>kúrò</strong>
                 </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -254,7 +253,7 @@
                 <h1 id="loops">  Loops </h1>
                 <hr>
                 <p class="fixedWidthParagraph">Loops such as <strong> for </strong> and <strong> while </strong> are also supported in Yorlang </p>
-                <p  class="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí</strong></p>
+                <p  class="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí &nbsp;</strong> break: <strong> kúrò</strong></p>
                 
                 <div class="note">
                     <p> Note: <br>
@@ -267,20 +266,20 @@
                     <p class="example-one"> <strong id="loop"> fún</strong> (<strong id="condition"> t&iacute; </strong><strong id="varName">  i </strong> =
                          <strong id="stringInt">0 </strong>; </strong><strong id="varName">  i </strong> < <strong id="stringInt">5 </strong>;
                          <strong id="condition"> t&iacute; </strong> <strong id="varName">  i </strong> = <strong id="varName">  i </strong>+
-                         <strong id="stringInt">1 </strong>;) &nbsp; {  <br>
+                         <strong id="stringInt">1 </strong>;) &nbsp; {
                     </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong>   <strong id= "stringInt"> "you can be" + " " + </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong>   <strong id= "stringInt"> "you can be anything you want to be" </strong>; </p>
+                    <p class="example-one"> <strong id= "condition">&nbsp; &nbsp; ṣé</strong> 
+                        ( <strong id="varName"> i </strong> ==  <strong id= "stringInt"> 3 </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
+                            <strong id="loop">&nbsp; &nbsp; kúrò</strong>; <br> &nbsp; &nbsp;
+                        } </p>
+                    <p class="example-one"> <strong id="print">&nbsp; &nbsp; sọpé </strong>   <strong id= "stringInt"> "you can be" + " " + </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
 
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> you can be 0</p>
                     <p class="example-output-value"> you can be 1</p>
                     <p class="example-output-value"> you can be 2</p>
-                    <p class="example-output-value"> you can be 3</p>
-                    <p class="example-output-value"> you can be 4</p>
-                    <p class="example-output-value"> you can be 5</p>
-                    <p class="example-output-value"> you can be anything you want to be </p>
                 </div>
                 <br>
                 <p  class="fixedWidthParagraph"> The While(<strong> nígbàtí</strong>) Loop:</p>
@@ -290,7 +289,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
-                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 3) { <br> <br> &nbsp; &nbsp;
                         
                         <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> <br> &nbsp; &nbsp;
                     <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> =<strong id="varName"> i </strong> + <strong id="stringInt">1</strong>; <br> }
@@ -301,15 +300,12 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value">o kere si aarun</p>
                     <p class="example-output-value">o kere si aarun</p>
-                    <p class="example-output-value">o kere si aarun</p>
-                    <p class="example-output-value">o kere si aarun</p>
                 </div>
             </div>
             <br>
             <div class="container-fluid">
                 <h1 id="functions">  Functions  </h1>
                 <hr>
-                <p class="fixedWidthParagraph">Functions are also supported in yorlang using the following keywords  </p>
                 <p  class="fixedWidthParagraph">Function: <strong> iṣẹ́ &nbsp; </strong> return: <strong> padà</strong></p>
                 
                 <div class="example">
@@ -329,20 +325,57 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> 30 </p>
                 </div>
-                <p class="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
+                <br>
+                <p class="fixedWidthParagraph"><strong>Variable Scope</strong></p>
+                <p class="fixedWidthParagraph">The scope of a variable is the context within which it is defined. All inner functions(iṣẹ́) have access to variables in their outer functions(iṣẹ́). However, outer functions(iṣẹ́) do not have access to the variables in their inner functions(iṣẹ́). This scope spans imported(gbewọlé) files as well. For example:</p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count () 
+                    <p class="example-one"> 
+                            <strong id="condition">tí</strong> <strong id="varName"> a </strong> = <strong id="stringInt">3;</strong> <br>
+                            <strong id="loop">gbewọlé</strong> <strong id="stringInt">"sample.yl";</strong>
+                    </p>
+                </div>
+
+                <p class="fixedWidthParagraph">Here the <strong>a</strong> variable will be available within the imported sample.yl script. An inner function can only read the value of the outer variable but it can’t change it. An attempt to change it will simply create a local variable within the inner function. For example:</p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one">
+                            <strong id="condition">tí</strong> <strong id="varName"> a </strong> = <strong id="stringInt">3;</strong> <br><br>
+
+                            <strong id="loop"> iṣẹ́ </strong> test () 
+                                <strong id="stringInt"> </strong> &nbsp; {  <br> &nbsp; &nbsp;
+                                <strong id="condition">tí</strong> <strong id="varName"> a </strong> = <strong id="stringInt">4;</strong> <br><br> &nbsp; &nbsp;
+                                <strong id="print"> sọpé </strong> <strong id="varName">a;</strong><br>
+                            } <br> <br>
+                            
+                            test();<br><br>
+
+                            <strong id="print"> sọpé </strong> <strong id="varName">a;</strong>
+                    </p>
+                </div>
+
+                <div class="example-output">
+                        <p class="example-output-name"> OUTPUT </p>
+                        <p class="example-output-value"> 4 </p>
+                        <p class="example-output-value"> 3 </p>
+                </div>
+                <br>
+                
+                <p class="fixedWidthParagraph">To mutate the value of outer variables within an inner function, you must declare those variables with <strong>wòkè</strong>. The script below will output 4. By declaring <strong> counter and i </strong> with <strong>wòkè</strong> within the function <strong> incrementCounter</strong>, all references to the variables will refer to the outer version. There is no limit to the number of global variables that can be manipulated by a function.  </p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> getCounter () 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong> = <strong id="stringInt">3;</strong> <br> <br> &nbsp; &nbsp;
-                            <strong id="loop"> iṣẹ́ </strong> addCounter () 
+                            <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">1;</strong> <br> <br> &nbsp; &nbsp;
+                            <strong id="loop"> iṣẹ́ </strong> incrementCounter () 
                             <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp; &nbsp;
-                            <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="stringInt">1</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
-                             addCounter(); <br> <br> &nbsp;
+                            <strong id="loop"> wòkè </strong> `counter, i`; <br> <br> &nbsp; &nbsp; &nbsp;
+                            <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="varName">i</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
+                            incrementCounter(); <br> <br> &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="varName"> counter</strong> ; <br> <br> }
                     </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong>count();
-
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong>getCounter();</p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>

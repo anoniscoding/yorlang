@@ -4,7 +4,7 @@ const constants = require("../constants.js");
 class INodeOr extends IBase {
 
     interpreteNode(node) {
-        return this.evaluateNode(node.left) !== constants.KW.IRO || this.evaluateNode(node.right) !== constants.KW.IRO
+        return this.evaluateNode(node.left) !== (constants.KW.IRO) || this.evaluateNode(node.right) !== constants.KW.IRO
                     ? constants.KW.OOTO : constants.KW.IRO;
     }
 }

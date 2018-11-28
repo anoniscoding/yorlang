@@ -14,7 +14,7 @@ const KEYWORDS = {
     IRU: "irú",
     PADASI: "padàsí",
     GBE_WOLE: "gbewọlé",
-    WOKE: "wòkè"
+    WOKE: "wòkè",
 };
 
 const SYMBOLS = {
