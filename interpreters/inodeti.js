@@ -16,8 +16,8 @@ class INodeTi extends IBase {
     }
 
     static isWokeVariable(context, tiName, scope) {
-        const woke = context.environment().getTi(scope || context.getCurrentScope(), constants.KW.WOKE);
-        return woke != undefined && woke.indexOf(tiName) != -1;
+        const wokeList = context.environment().getTi(scope || context.getCurrentScope(), constants.KW.WOKE);
+        return wokeList != undefined && wokeList.indexOf(tiName) != -1;
     }
 
     static setWokeVariable(context, node) {
