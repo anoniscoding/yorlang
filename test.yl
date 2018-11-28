@@ -1,22 +1,12 @@
-iṣẹ́ getCounter ()   { 
+tí a = 3; 
 
-    tí counter = 3; 
+iṣẹ́ test ()   { 
+    tí a = a + 1; 
 
-    tí i = 1; 
+    sọpé a;
+} 
 
-    iṣẹ́ incrementCounter ()   { 
+test();
 
-      wòkè `counter, i`; 
-
-      tí counter = counter + i; 
-
-   } 
-
-  incrementCounter(); 
-
-  padà counter ; 
-
-}
-
-sọpé getCounter();
+sọpé a;
 
