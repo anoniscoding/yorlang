@@ -87,19 +87,19 @@ p{
 }
 .panel_items{
     width: 25%;
-    border: 1px solid #0b409c;
+    border: 1px solid #32903F;
     display: flex;
     flex-direction:column;
     align-items: center;
     padding: 30px;
     border-radius: 5px;
-    margin: 0 2% 2% 0;
+    margin: 0 2% 2% 0%;
 }
 .panel_items p{
     font-size: 18px;
 }
 .panel_items button{
-    background: #0b409c;
+    background: #32903F;
     border:none;
     outline:none;
     padding: 10px;
@@ -177,15 +177,35 @@ p{
     color: black;
     padding-left: 20px;
 }
+@media (max-width:1000px){
+    .download_column-panel {
+        flex-direction: column;
+        width: 90%;
+        align-items: flex-start;
+    }
 
+    .panel_items {
+        width: 45%;
+    }
+}
 @media (max-width:600px){
+
 
     p{
         font-size: 13px;
     }
+    .download_column-panel{
+        flex-direction:column;
+        width: 90%;
+        align-items: flex-start;
+    }
 
+    .panel_items{
+        width: 65%;
+    }
     #fixedWidthParagraph{
         width:90%;
+        text-align: left;
     }
     .example, .example-output{
         width: 95%;
