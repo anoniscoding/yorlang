@@ -5,18 +5,18 @@ class INodeTi extends IBase {
 
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
-            INodeTi.setArrayElement(this, node);
+            INodeTi.setArrayElement(this, node); return;
         }
 
         if (INodeTi.isWokeVariable(this, node.left)) {
-            INodeTi.setWokeVariable(this, node);
+            INodeTi.setWokeVariable(this, node); return;
         }
 
         this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
     }
 
-    static isWokeVariable(context, tiName) {
-        const woke = context.environment().getTi(context.getCurrentScope(), constants.KW.WOKE);
+    static isWokeVariable(context, tiName, scope) {
+        const woke = context.environment().getTi(scope || context.getCurrentScope(), constants.KW.WOKE);
         return woke != undefined && woke.indexOf(tiName) != -1;
     }
 
