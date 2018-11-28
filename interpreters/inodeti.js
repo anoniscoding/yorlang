@@ -1,23 +1,21 @@
 const IBase = require("./ibase.js");
 const constants = require("../constants.js");
+const WokeHelper = require("./helpers/woke_helper.js");
 
 class INodeTi extends IBase {
 
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
-            INodeTi.setArrayElement(this, node); return;
+            INodeTi.setArrayElement(this, node); 
+            return;
         }
 
-        if (INodeTi.isWokeVariable(this, node.left)) {
-            INodeTi.setWokeVariable(this, node); return;
+        if (WokeHelper.isWokeVariable(this, node.left)) {
+            INodeTi.setWokeVariable(this, node); 
+            return;
         }
 
         this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
-    }
-
-    static isWokeVariable(context, tiName) {
-        const wokeList = context.environment().getTi(context.getCurrentScope(), constants.KW.WOKE);
-        return wokeList != undefined && wokeList.indexOf(tiName) != -1;
     }
 
     static setWokeVariable(context, node) {

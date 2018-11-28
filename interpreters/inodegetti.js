@@ -1,5 +1,5 @@
 const IBase = require("./ibase.js");
-const constants = require("../constants.js");
+const WokeHelper = require("./helpers/woke_helper.js");
 
 class INodeGetTi extends IBase {
 
@@ -14,13 +14,14 @@ class INodeGetTi extends IBase {
     }
 
     static getTopIndex(context, tiName) {
-        const wokeList = context.environment().getTi(context.getCurrentScope(), constants.KW.WOKE);
-        if (wokeList != undefined && wokeList.indexOf(tiName) != -1) {
+        if (WokeHelper.isWokeVariable(context, tiName)) {
             return context.scopeStack().length - 2;
         } 
 
         return context.scopeStack().length - 1;
     }
+
+    
 }
 
 module.exports = new INodeGetTi();
