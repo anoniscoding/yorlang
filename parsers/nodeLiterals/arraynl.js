@@ -7,9 +7,9 @@ class ArrayNl extends BaseNode {
     getNode(arrayNameToken) {
         if (arrayNameToken == undefined) {
             return ArrayNl.getParsedArrayLiteral(this);
-        } else { 
-            return ArrayNl.getParsedArrayElement(this, arrayNameToken);
-        }
+        }   
+           
+        return ArrayNl.getParsedArrayElement(this, arrayNameToken);
     }
 
     static getParsedArrayLiteral(context) {
