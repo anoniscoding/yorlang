@@ -148,7 +148,7 @@ class Parser {
     }
 
     parseVarname() {
-        return  (this.lexer().peek().type == constants.VARIABLE) 
+        return  ( this.lexer().peek().type == constants.VARIABLE ) 
                 ? this.lexer().next().value
                 : this.lexer().throwError(this.getGenericErrorMsg(this.lexer().peek()));
     }
@@ -184,7 +184,7 @@ class Parser {
 
         if (kwnodes[token.value] != undefined) {
             const kwNode = kwnodes[token.value];
-            if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the class Parser
+            if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); //call the method getNode in kwNode object like an extension function to the Parser class
             else throw new Error(`${kwNode} must be of type BaseNode`);
         }
 

@@ -35,7 +35,7 @@ class ArrayNl extends BaseNode {
     static getArrayElementIndexNodes(context) {
         const indexNodes = [ArrayNl.getArrayElementIndexNode(context)];
 
-        while (context.isNextTokenPunctuation(constants.SYM.L_SQ_BRACKET)) { //handle multi-dimensional array element
+        while (context.isNextTokenPunctuation(constants.SYM.L_SQ_BRACKET)) { //handles multi-dimensional array element
             indexNodes.push(ArrayNl.getArrayElementIndexNode(context));
         }
 
