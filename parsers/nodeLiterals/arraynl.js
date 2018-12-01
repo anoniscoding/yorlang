@@ -5,11 +5,8 @@ const constants = require("../../constants.js");
 class ArrayNl extends BaseNode {
 
     getNode(arrayNameToken) {
-        if (arrayNameToken == undefined) {
-            return ArrayNl.getParsedArrayLiteral(this);
-        }   
-           
-        return ArrayNl.getParsedArrayElement(this, arrayNameToken);
+        return (arrayNameToken == undefined) ? ArrayNl.getParsedArrayLiteral(this)
+                                             : ArrayNl.getParsedArrayElement(this, arrayNameToken);
     }
 
     static getParsedArrayLiteral(context) {
