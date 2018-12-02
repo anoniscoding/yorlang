@@ -10,7 +10,7 @@
     "coverage": "node_modules/.bin/jest --coverage",
     "link": "npm link"
   },
-  "dependencies": {
+  "devDependencies": {
     "jest": "^23.6.0"
   },
   "main": "./cli.js",

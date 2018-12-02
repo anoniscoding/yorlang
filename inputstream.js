@@ -15,7 +15,7 @@ class InputStream {
         try {
             return fs.readFileSync(process.cwd() +"/"+ fileName, 'utf8'); 
         } catch (e) {
-            throw new Error(`Could not read file ${this.yorlangFileName()}`);
+            throw new Error(`Could not read file: ${fileName}`);
         }
     }
 
