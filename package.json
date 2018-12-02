@@ -13,6 +13,7 @@
   "dependencies": {
     "jest": "^23.6.0"
   },
+  "main": "./cli.js",
   "bin": {
     "yorl": "./cli.js"
   }

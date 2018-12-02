@@ -1,6 +1,5 @@
 .DS_Store
 test.txt
-/rough
 /node_modules
 /coverage
 test.yl
