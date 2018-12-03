@@ -12,14 +12,14 @@ class KeywordNl extends BaseNode {
     }
 
     getNode() {
-        if (KeywordNl.isBooleanKeywordNl(this)) {
+        if (KeywordNl.isKeywordNl(this)) {
             return leafNl.getNode.call(this);
         }
             
-        this.throwError(`Expecting yorlang boolean(iró|òótó) but found ${token.value}`);
+        this.throwError(`Expecting yorlang keyword value e.g boolean(iró|òótó) but found ${token.value}`);
     }
 
-    static isBooleanKeywordNl(context) {
+    static isKeywordNl(context) {
         return [constants.KW.OOTO, constants.KW.IRO].indexOf(context.lexer().peek().value) >= 0
     }
 }

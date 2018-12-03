@@ -1,6 +1,12 @@
-gbewọlé "/sample/sample.yl";
+tí a = 3; 
 
-tí cars = [["corolla", "camry"], ["G-Wagon", "S-class" ], ["Elantra", "sonata"] ];
+iṣẹ́ test ()   { 
+    tí a = a + 1; 
 
-sọpé isiro(3,5);
-sọpé cars[1][1];
+    sọpé a;
+} 
+
+test();
+
+sọpé a;
+

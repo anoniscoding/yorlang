@@ -3,7 +3,6 @@
 //we are telling *nix systems that the interpreter of our JavaScript file should be /usr/bin/env node which looks up for the locally-installed node executable.
 
 const packageJson = require("./package.json");
-const fs = require("fs");
 const path = require("path");
 const InputStream = require("./inputstream.js");
 const Lexer = require("./lexer.js");
@@ -19,14 +18,9 @@ const arg = process.argv[2];
 
 if (arg === "-v") {
     console.log(packageJson.version);
-} else if (path.extname(arg) === constants.YL_EXT) {
-    fs.readFile(process.cwd() +"/"+ arg, 'utf8', (err, programString) => {
-        if (err) throw err; 
-
-        const parser = new Parser(new Lexer(new InputStream(programString, arg))); //arg is the filename
-        const interpreter = new MainInterpreter(new Environment());
-        interpreter.interpreteProgram(parser);
-    });
+} else if (path.extname(arg) === constants.YL_EXT) { 
+    const parser = new Parser(new Lexer(new InputStream(arg))); //arg is the filename
+    new MainInterpreter(new Environment()).interpreteProgram(parser);
 } else {
     throw "Invalid Yorlang command line argument";
 }

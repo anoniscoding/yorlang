@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const Environment = require("../../environment.js");
 const iNodeTi = require("../../interpreters/inodeti.js");
@@ -80,6 +84,28 @@ describe("INodeTi test suite", () => {
         `;
 
         expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+    });
+
+    test("it should fail to assign undefined to variable", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.ISE} teOruko(fname) {
+                ${constants.KW.SOPE} fname;
+            }
+            
+            ${constants.KW.TI} a = teOruko("name");
+        `;
+
+        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+    });
+
+    test("it should assign value to a multi-dimensional array element", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.TI} a = [[1,2], [3,4], 5];
+            ${constants.KW.TI} a[1] = "funmi";
+        `;
+
+        mainInterpreter.interpreteProgram(parser);
+        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual([[1,2], "funmi", 5]);
     });
 
     test("it should assign transformed (uppercase) string to variablet", () => {

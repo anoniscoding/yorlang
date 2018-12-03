@@ -113,7 +113,7 @@
                 <h1 id="intro">Getting Started</h1>
                 <hr>
                 <p class="fixedWidthParagraph"> To get started with yorlang, a yorlang runtime has to be downloaded </p>
-                <p class="fixedWidthParagraph"> Download and run the runtime installer for your platform </p>
+                <p class="fixedWidthParagraph"> Download and install the runtime installer for your platform </p>
                 <div class="download_column-panel">
                     <div class="panel_items">
                         <p> <i class="fa fa-apple"></i> MacOS</p>
@@ -134,9 +134,9 @@
                  <p class="fixedWidthParagraph"> Create a test.yl file and write your first yorlang statement</p>
                   <div class="example">
                     <p class="example-lang" > yorlang </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong>  "báwo ni ayé"; </p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong>  <strong id= "stringInt">"báwo ni ayé";</strong> </p>
                   </div>
-                  <p class="fixedWidthParagraph"> Run yorl test.yl in your cli</p>
+                  <p class="fixedWidthParagraph"> Run <strong>yorl test.yl</strong> in your cli</p>
                    <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> bawo ni aye</p>
@@ -160,9 +160,9 @@
                    <strong> Strings </strong>in yorlang must be enclosed with <strong> double quotes</strong>. Yorlang variables can hold many
                      <strong>data types</strong> such as strings, integers, arrays and booleans</p>
                 <div class="note">
-                    <p> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */<br>
-                                  A semi colon must be used at the end of every statement in yorlang
-                    </p>
+                    <p> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */</p>
+                    <p> A semi colon must be used at the end of every statement in yorlang </p>
+                    <p  class="fixedWidthParagraph">Boolean values are - true: <strong> òótọ́ &nbsp; </strong> false: <strong> irọ́</strong></p>
                 </div>
                 <div class="example">
                     <p class="example-lang" > yorlang </p>
@@ -177,6 +177,8 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> dammy is 5 years old</p>
                 </div>
+                <br>
+                
                 <p class ="fixedWidthParagraph"> Re-assign variable example:</p>
                  <div class="example">
                     <p class="example-lang" > yorlang </p>
@@ -227,7 +229,6 @@
                 <p>  Switch: <strong> yí</strong><br>
                      Case: <strong> irú</strong>  <br>
                      Default: <strong> padàsí</strong>  <br>
-                     Break: <strong>kúrò</strong>
                 </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
@@ -254,7 +255,7 @@
                 <h1 id="loops">  Loops </h1>
                 <hr>
                 <p class="fixedWidthParagraph">Loops such as <strong> for </strong> and <strong> while </strong> are also supported in Yorlang </p>
-                <p  class="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí</strong></p>
+                <p  class="fixedWidthParagraph">For: <strong> fún &nbsp; </strong> while: <strong> nígbàtí &nbsp;</strong> break: <strong> kúrò</strong></p>
                 
                 <div class="note">
                     <p> Note: <br>
@@ -267,20 +268,20 @@
                     <p class="example-one"> <strong id="loop"> fún</strong> (<strong id="condition"> t&iacute; </strong><strong id="varName">  i </strong> =
                          <strong id="stringInt">0 </strong>; </strong><strong id="varName">  i </strong> < <strong id="stringInt">5 </strong>;
                          <strong id="condition"> t&iacute; </strong> <strong id="varName">  i </strong> = <strong id="varName">  i </strong>+
-                         <strong id="stringInt">1 </strong>;) &nbsp; {  <br>
+                         <strong id="stringInt">1 </strong>;) &nbsp; {
                     </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong>   <strong id= "stringInt"> "you can be" + " " + </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong>   <strong id= "stringInt"> "you can be anything you want to be" </strong>; </p>
+                    <p class="example-one"> <strong id= "condition">&nbsp; &nbsp; ṣé</strong> 
+                        ( <strong id="varName"> i </strong> ==  <strong id= "stringInt"> 3 </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
+                            <strong id="loop">&nbsp; &nbsp; kúrò</strong>; <br> &nbsp; &nbsp;
+                        } </p>
+                    <p class="example-one"> <strong id="print">&nbsp; &nbsp; sọpé </strong>   <strong id= "stringInt"> "you can be" + " " + </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
 
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> you can be 0</p>
                     <p class="example-output-value"> you can be 1</p>
                     <p class="example-output-value"> you can be 2</p>
-                    <p class="example-output-value"> you can be 3</p>
-                    <p class="example-output-value"> you can be 4</p>
-                    <p class="example-output-value"> you can be 5</p>
-                    <p class="example-output-value"> you can be anything you want to be </p>
                 </div>
                 <br>
                 <p  class="fixedWidthParagraph"> The While(<strong> nígbàtí</strong>) Loop:</p>
@@ -290,7 +291,7 @@
                     <p class="example-lang"> yorlang </p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> onka </strong> = [<strong id="stringInt">1, 2, 3, 4, 5</strong> ];</p>
                     <p class="example-one"> <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">0;</strong></p>
-                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 5) { <br> <br> &nbsp; &nbsp;
+                    <p class="example-one"> <strong id= "loop">  nígbàtí </strong>(<strong id="varName"> onka </strong>[<strong id="varName"> i </strong>] < 3) { <br> <br> &nbsp; &nbsp;
                         
                         <strong id="print"> sọpé </strong>  "o kere si aarun"; <br> <br> &nbsp; &nbsp;
                     <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> =<strong id="varName"> i </strong> + <strong id="stringInt">1</strong>; <br> }
@@ -301,15 +302,12 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value">o kere si aarun</p>
                     <p class="example-output-value">o kere si aarun</p>
-                    <p class="example-output-value">o kere si aarun</p>
-                    <p class="example-output-value">o kere si aarun</p>
                 </div>
             </div>
             <br>
             <div class="container-fluid">
                 <h1 id="functions">  Functions  </h1>
                 <hr>
-                <p class="fixedWidthParagraph">Functions are also supported in yorlang using the following keywords  </p>
                 <p  class="fixedWidthParagraph">Function: <strong> iṣẹ́ &nbsp; </strong> return: <strong> padà</strong></p>
                 
                 <div class="example">
@@ -329,20 +327,57 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> 30 </p>
                 </div>
-                <p class="fixedWidthParagraph"> <br> Nested functions are also supported in Yorlang </p>
+                <br>
+                <p class="fixedWidthParagraph"><strong>Variable Scope</strong></p>
+                <p class="fixedWidthParagraph">The scope of a variable is the context within which it is defined. All inner functions(iṣẹ́) have access to variables in their outer functions(iṣẹ́). However, outer functions(iṣẹ́) do not have access to the variables in their inner functions(iṣẹ́). This scope spans imported(gbewọlé) files as well. For example:</p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> count () 
+                    <p class="example-one"> 
+                            <strong id="condition">tí</strong> <strong id="varName"> a </strong> = <strong id="stringInt">3;</strong> <br>
+                            <strong id="loop">gbewọlé</strong> <strong id="stringInt">"sample.yl";</strong>
+                    </p>
+                </div>
+
+                <p class="fixedWidthParagraph">Here the <strong>a</strong> variable will be available within the imported sample.yl script. An inner function can only read the value of the outer variable but it can’t change it. An attempt to change it will simply create a local variable within the inner function. For example:</p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one">
+                            <strong id="condition">tí</strong> <strong id="varName"> a </strong> = <strong id="stringInt">3;</strong> <br><br>
+
+                            <strong id="loop"> iṣẹ́ </strong> test () 
+                                <strong id="stringInt"> </strong> &nbsp; {  <br> &nbsp; &nbsp;
+                                <strong id="condition">tí</strong> <strong id="varName"> a </strong> = <strong id="varName">a</strong> +<strong id="stringInt"> 1</strong>; <br><br> &nbsp; &nbsp;
+                                <strong id="print"> sọpé </strong> <strong id="varName">a;</strong><br>
+                            } <br> <br>
+                            
+                            test();<br><br>
+
+                            <strong id="print"> sọpé </strong> <strong id="varName">a;</strong>
+                    </p>
+                </div>
+
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> 4 </p>
+                    <p class="example-output-value"> 3 </p>
+                </div>
+                <br>
+                
+                <p class="fixedWidthParagraph">To mutate the value of outer variables within an inner function, you must declare those variables with <strong>wòkè</strong>. The script below will output 4. By declaring <strong> counter and i </strong> with <strong>wòkè</strong> within the function <strong> incrementCounter</strong>, all references to the variables will refer to the outer version. There is no limit to the number of global variables that can be manipulated by a function.  </p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> getCounter () 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong> = <strong id="stringInt">3;</strong> <br> <br> &nbsp; &nbsp;
-                            <strong id="loop"> iṣẹ́ </strong> addCounter () 
+                            <strong id="condition"> t&iacute; </strong><strong id="varName"> i </strong> = <strong id="stringInt">1;</strong> <br> <br> &nbsp; &nbsp;
+                            <strong id="loop"> iṣẹ́ </strong> incrementCounter () 
                             <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp; &nbsp;
-                            <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="stringInt">1</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
-                             addCounter(); <br> <br> &nbsp;
+                            <strong id="loop"> wòkè </strong> `counter, i`; <br> <br> &nbsp; &nbsp; &nbsp;
+                            <strong id="condition"> t&iacute; </strong><strong id="varName"> counter </strong>  =<strong id="varName"> counter </strong> + <strong id="varName">i</strong>; <br> <br> &nbsp; &nbsp;} <br> <br> &nbsp;
+                            incrementCounter(); <br> <br> &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="varName"> counter</strong> ; <br> <br> }
                     </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong>count();
-
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong>getCounter();</p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
@@ -397,10 +432,10 @@
                     by a <strong>  string </strong> which contains the path to the yorlang file to be imported. The file paths should
                     be provided as a suffix to the project's absolute path
                 </p>
-                <p  class="fixedWidthParagraph"> For example, if you have a project called <strong> app </strong> with two sub folders 
-                    called <strong> deploy </strong> & <strong> test </strong>. In the deploy folder is a file called <strong> deploy.yl </strong> and in the
-                    test folder is a file called<strong> test.yl </strong>. You want to import the <strong> test.yl </strong> file into the
-                     <strong> deploy.yl  </strong> file. This is how to import the file;
+                <p  class="fixedWidthParagraph"> For example, suppose you have a project folder <strong> app </strong> with two sub folders 
+                    : <strong> deploy </strong> & <strong> test </strong>. In the deploy folder is a file called <strong> deploy.yl </strong> and in the
+                    test folder is a file called<strong> test.yl </strong>. To import the <strong> test.yl </strong> file into the
+                     <strong> deploy.yl  </strong> file, do the following.
                 </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
