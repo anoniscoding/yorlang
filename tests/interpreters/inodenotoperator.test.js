@@ -14,20 +14,20 @@ describe("INodeNotOperator test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should apply not operation and return iro", () => {
         parser.lexer().inputStream.code = `${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO};`;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
     });
 
     test("it should apply not operation and return ooto", () => {
         parser.lexer().inputStream.code = `${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.IRO};`;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.OOTO);
     });
 
@@ -37,7 +37,7 @@ describe("INodeNotOperator test suite", () => {
             ${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} a;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
     });
 });

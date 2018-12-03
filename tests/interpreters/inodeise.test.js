@@ -14,7 +14,7 @@ describe("INodeIse test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
@@ -43,7 +43,7 @@ describe("INodeIse test suite", () => {
             ]
         }
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teOruko")).toEqual(expectedNode);
     });
 
@@ -58,7 +58,7 @@ describe("INodeIse test suite", () => {
             }
         `;
 
-        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 
     test("It should save nested ise node", () => {
@@ -71,7 +71,7 @@ describe("INodeIse test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teName")).toBeTruthy();
     });
 

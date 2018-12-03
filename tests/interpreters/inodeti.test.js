@@ -16,7 +16,7 @@ describe("INodeTi test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should assign expression to a variable", () => {
@@ -53,7 +53,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} b = ((a + 2) * (2 - 4)) / 2;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toBe(-7);
     });
 
@@ -63,7 +63,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[0] = "funmi";
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
     });
 
@@ -73,7 +73,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[1][0][0] = "funmi";
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual([ [1,2], [["funmi",4],5] ]);
     });
 
@@ -83,7 +83,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[1][0][0][0] = "funmi";
         `;
 
-        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 
     test("it should fail to assign undefined to variable", () => {
@@ -95,7 +95,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a = teOruko("name");
         `;
 
-        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 
     test("it should assign value to a multi-dimensional array element", () => {
@@ -104,7 +104,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a[1] = "funmi";
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toEqual([[1,2], "funmi", 5]);
     });
 
@@ -113,7 +113,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a = síLẹ́tàŃlá("funmi");
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("FUNMI");
     });
 
@@ -122,7 +122,7 @@ describe("INodeTi test suite", () => {
             ${constants.KW.TI} a = síLẹ́tàkékeré("FUNMI");
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe("funmi");
     });
 });

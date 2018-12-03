@@ -14,7 +14,7 @@ describe("INodeCallIse test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
@@ -27,7 +27,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("femi");
     });
 
@@ -41,7 +41,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} fname;
         `;
 
-        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 
     test("it should have access to variables in a parent scope", () => {
@@ -55,7 +55,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
     });
 
@@ -83,7 +83,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi 0812035532");
 
@@ -106,7 +106,7 @@ describe("INodeCallIse test suite", () => {
             teOruko("femi");
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("0812035532");
     });
@@ -128,7 +128,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("1 femi");
     });
 
@@ -147,7 +147,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(4);
     });
 
@@ -166,7 +166,7 @@ describe("INodeCallIse test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(0);
     });
 });

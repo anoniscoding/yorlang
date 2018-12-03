@@ -17,7 +17,7 @@ describe("INodeGetTi test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should get the value of a variable if it exists", () => {

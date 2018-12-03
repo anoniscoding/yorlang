@@ -11,10 +11,8 @@ const constants = require("../../constants.js");
 const fs = require("fs");
 
 describe("INodeGbeWole test suite", () => {
-    let mainInterpreter, parser;
 
     beforeEach(() => {
-        mainInterpreter = new MainInterpreter(new Environment());
         global.console.log = jest.fn();
     });
 
@@ -26,8 +24,9 @@ describe("INodeGbeWole test suite", () => {
                 padà a * b; 
             }`);
             
-        parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter.interpreteProgram(parser);
+        const parser = new Parser(new Lexer(new InputStream()));
+        const mainInterpreter = new MainInterpreter(new Environment(), parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(28);
     });
 
@@ -37,8 +36,9 @@ describe("INodeGbeWole test suite", () => {
                 ${constants.KW.SOPE} b;         
             `);
             
-        parser = new Parser(new Lexer(new InputStream()));
-
-        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+        const parser = new Parser(new Lexer(new InputStream()));
+        const mainInterpreter = new MainInterpreter(new Environment(), parser);
+        
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 });

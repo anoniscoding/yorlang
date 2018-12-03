@@ -16,7 +16,7 @@ describe("INodeGreaterThan test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should return ooto for a greater than true condition", () => {
@@ -43,7 +43,7 @@ describe("INodeGreaterThan test suite", () => {
             ${constants.KW.TI} b = a > 5;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
     });
 });

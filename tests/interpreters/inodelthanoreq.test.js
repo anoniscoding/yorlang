@@ -16,7 +16,7 @@ describe("INodeLessThanOrEqual test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should return ooto for a lesser than or equal true condition", () => {
@@ -37,7 +37,7 @@ describe("INodeLessThanOrEqual test suite", () => {
             ${constants.KW.TI} b = a <= 7;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
     });
 });

@@ -16,7 +16,7 @@ describe("INodeArray test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
@@ -38,7 +38,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.TI} b = [1,2,a];
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,5]);
     });
 
@@ -48,7 +48,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.TI} b = [1,2,a[0]];
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,3]);
     });
 
@@ -58,7 +58,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.TI} b = [[1,2], [3,a[1]]];
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual([[1,2],[3,4]]);
     });
 
@@ -69,7 +69,7 @@ describe("INodeArray test suite", () => {
             ${constants.KW.SOPE} b[1][1];
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(4);
     });
 
@@ -80,6 +80,6 @@ describe("INodeArray test suite", () => {
             ${constants.KW.SOPE} b[1][1][0];
         `;
 
-        expect(() => mainInterpreter.interpreteProgram(parser)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 });

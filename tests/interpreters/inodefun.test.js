@@ -14,7 +14,7 @@ describe("INodeFun test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
@@ -25,7 +25,7 @@ describe("INodeFun test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(10);
     });
 
@@ -38,7 +38,7 @@ describe("INodeFun test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(10);
     });
 
@@ -52,7 +52,7 @@ describe("INodeFun test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(5);
     });
 
@@ -66,7 +66,7 @@ describe("INodeFun test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(6);
     });
 

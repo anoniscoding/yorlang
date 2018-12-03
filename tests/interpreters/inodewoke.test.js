@@ -15,7 +15,7 @@ describe("INodeWoke test suite", () => {
     beforeEach(() => {
         global.console.log = jest.fn()
         parser = new Parser(new lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should set global(woke) variables properly within local context", () => {
@@ -44,7 +44,7 @@ describe("INodeWoke test suite", () => {
             ${constants.KW.SOPE} count();
         `;
 
-        mainInterpreter.interpreteProgram(parser)
+        mainInterpreter.interpreteProgram()
         expect(global.console.log).toHaveBeenCalledWith(16);
         expect(global.console.log).toHaveBeenCalledWith(14);
         expect(global.console.log).toHaveBeenCalledWith(15);
@@ -76,7 +76,7 @@ describe("INodeWoke test suite", () => {
             count();
         `;
 
-        mainInterpreter.interpreteProgram(parser)
+        mainInterpreter.interpreteProgram()
         expect(global.console.log).toHaveBeenCalledWith(18);
     });
 });

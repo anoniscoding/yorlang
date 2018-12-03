@@ -4,8 +4,9 @@ const IBase = require("./ibase.js");
 
 class MainInterpreter {
 
-    constructor(environment) {
+    constructor(environment, parser) {
         this.environment = () => environment;
+        this.parser = () => parser;
         this.initScopeStack();
     }
 
@@ -40,9 +41,7 @@ class MainInterpreter {
         this.parser().throwError(msg);
     }
 
-    interpreteProgram(parser) {
-        this.parser = () => parser;
-
+    interpreteProgram() {
         this.parser().pushToBlockTypeStack(constants.PROGRAM);
         while (this.parser().isNotEndOfFile()) {
             this.evaluateNode(this.parser().parseAst());
@@ -51,7 +50,7 @@ class MainInterpreter {
     }
 
     interpreteImportedProgram(parser) {
-        new MainInterpreter(this.environment()).interpreteProgram(parser);
+        new MainInterpreter(this.environment(), parser).interpreteProgram();
     }
 }
 

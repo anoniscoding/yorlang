@@ -14,7 +14,7 @@ describe("INodeFun test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
@@ -29,7 +29,7 @@ describe("INodeFun test suite", () => {
                 ${constants.KW.SOPE} "it is femi";
         }`;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("it is femi");
     });
 
@@ -49,7 +49,7 @@ describe("INodeFun test suite", () => {
                 ${constants.KW.SOPE} "it is femi";
         }`;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("it is anu");
     });
 
@@ -67,7 +67,7 @@ describe("INodeFun test suite", () => {
                 ${constants.KW.SOPE} "Yoruba - mi o mo";
         }`;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("i don't know");
         expect(global.console.log).toHaveBeenCalledWith("Yoruba - mi o mo");
     });

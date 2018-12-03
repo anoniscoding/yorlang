@@ -14,7 +14,7 @@ describe("INodeNigbati test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
@@ -34,7 +34,7 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
@@ -47,7 +47,7 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
@@ -65,7 +65,7 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(4);
     });
 });

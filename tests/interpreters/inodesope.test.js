@@ -17,7 +17,7 @@ describe("INodeSope test suite", () => {
     beforeEach(() => {
         parser = new Parser(new lexer(new InputStream()));
         global.console.log = jest.fn();
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should print a string to the console", () => {
@@ -40,7 +40,7 @@ describe("INodeSope test suite", () => {
             ${constants.KW.SOPE} a;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 
@@ -49,7 +49,7 @@ describe("INodeSope test suite", () => {
             ${constants.KW.SOPE} "a" + 5;
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("a5");
     });
 
@@ -59,7 +59,7 @@ describe("INodeSope test suite", () => {
             ${constants.KW.SOPE} a[1];
         `;
 
-        mainInterpreter.interpreteProgram(parser);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(5);
     });
 });
