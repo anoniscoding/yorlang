@@ -7,7 +7,6 @@ class KwNodeGbeWole extends BaseNode {
 
     getNode() {
         this.skipKeyword(constants.KW.GBE_WOLE);
-
         const node =  {};
         node.operation = constants.KW.GBE_WOLE;
         

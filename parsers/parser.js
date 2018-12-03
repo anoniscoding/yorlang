@@ -103,7 +103,7 @@ class Parser {
     parseWhile(operatorList, parseOperationWithLesserPrecedence) {
         let node = parseOperationWithLesserPrecedence.bind(this)();
 
-        while (this.isNotEndOfFile() && operatorList.indexOf(this.lexer().peek().value) >= 0) {
+        while (this.isNextTokenInOperatorList(operatorList)) {
             node = {
                 left : node,
                 operation : this.lexer().next().value,
@@ -113,6 +113,10 @@ class Parser {
         }
 
         return node;
+    }
+
+    isNextTokenInOperatorList(operatorList) {
+        return this.isNotEndOfFile() && (operatorList.indexOf(this.lexer().peek().value) >= 0);
     }
 
     parseNodeLiteral() {
@@ -138,7 +142,7 @@ class Parser {
         this.pushToBlockTypeStack(currentBlock);
         this.skipPunctuation(constants.SYM.L_PAREN);
         const block = []; 
-        while (this.isNotEndOfFile() && this.lexer().peek().value != constants.SYM.R_PAREN) {
+        while (this.isNotEndOfBlock()) {
             block.push(this.parseAst());
         }
         this.skipPunctuation(constants.SYM.R_PAREN);
@@ -147,10 +151,14 @@ class Parser {
         return block;
     }
 
+    isNotEndOfBlock() {
+        return this.isNotEndOfFile() && (this.lexer().peek().value != constants.SYM.R_PAREN);
+    }
+
     parseVarname() {
         return  ( this.lexer().peek().type == constants.VARIABLE ) 
                 ? this.lexer().next().value
-                : this.lexer().throwError(this.getGenericErrorMsg(this.lexer().peek()));
+                : this.lexer().throwError(this.getGenericErrorMsg(this.lexer().peek().value));
     }
 
     parseDelimited(start, stop, separator, parser, predicate) {

@@ -19,15 +19,20 @@ class KwNodeWoke extends BaseNode {
         context.skipKeyword(constants.KW.WOKE);
         const node = {};
         node.operation = constants.KW.WOKE;
-        const varTokens = context.parseDelimited("`", "`", ",", context.getTokenThatSatisfiesPredicate.bind(context), (token) => token.type === constants.VARIABLE);
-        node.varNames = [];
-        varTokens.map(varToken => {
-            node.varNames.push(varToken.value);
-        });
-
+        node.varNames = KwNodeWoke.getWokeVarNames(context);
         context.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
+    }
+
+    static getWokeVarNames(context) {
+        const varTokens = context.parseDelimited("`", "`", ",", context.getTokenThatSatisfiesPredicate.bind(context), (token) => token.type === constants.VARIABLE);
+        const varNames = [];
+        varTokens.map(varToken => {
+            varNames.push(varToken.value);
+        });
+
+        return varNames;
     }
 }
 

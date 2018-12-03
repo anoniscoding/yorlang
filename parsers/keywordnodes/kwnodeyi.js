@@ -43,7 +43,7 @@ class KwNodeYi extends BaseNode {
             context.skipKeyword(constants.KW.PADASI);
             context.skipPunctuation(constants.SYM.COLON);
 
-            while (context.isNotEndOfFile() && context.lexer().peek().value !== constants.SYM.R_PAREN) {
+            while (context.isNotEndOfBlock()) {
                 padasi.push(context.parseAst());
             }
         }

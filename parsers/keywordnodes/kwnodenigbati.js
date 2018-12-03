@@ -1,15 +1,22 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
-const bracketExpression = require("../nodeLiterals/bracketexpressionnl.js");
+const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
 class KwNodeNigbati extends BaseNode {
+
+    constructor() {
+        super();
+        if (!(bracketExpressionNl instanceof BaseNode)) {
+            throw new Error("Dependency bracketExpressionNl must be of type BaseNode");
+        } 
+    }
 
     getNode() {
         this.skipKeyword(constants.KW.NIGBATI);
 
         return {
             operation: constants.KW.NIGBATI,
-            condition: bracketExpression.getNode.call(this, false),
+            condition: bracketExpressionNl.getNode.call(this, false),
             body: this.parseBlock(constants.KW.NIGBATI)
         };
     }
