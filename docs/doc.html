@@ -72,11 +72,9 @@
     </section>
 
     <div id="wrapper">
-        <a href="#menu-toggle-off" class="btn" id="menu-toggle-off"><i class="fa fa-3x fa-toggle-off"></i></a>
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <a href="#menu-toggle-on" class="btn" id="menu-toggle-on"><i class="fa fa-3x fa-toggle-on"></i></a>
 
             <ul class="sidebar-nav">
                 <li>
@@ -113,7 +111,8 @@
             <div class="container-fluid">
                 <h1 id="intro">Getting Started</h1>
                 <hr>
-                <p class="fixedWidthParagraph"> To get started with yorlang, install the node package manager for yorlang  </p>
+                <p class="fixedWidthParagraph"> To get started with yorlang, download and install the node runtime <a target="" href="https://nodejs.org/en/download/">here</a> </p>
+                <p class="fixedWidthParagraph"> Then install the yorlang package with the following command: </p>
                 <div class="example">
                     <p class="example-lang"> Terminal </p>
                     <p class="example-one"> npm install -g yorlang </p>
@@ -148,12 +147,6 @@
                 </div>
                 <br>
                 <p class="fixedWidthParagraph"> You can also download the vs code extension <a href="#">here</a></p>
-                <!--
-                <p style="color:tomato"> Steps: </p>
-                <p id="black-background"> npm install -g yorlang</p>
-                <p id="black-background">Create test.yl file</code>.</p>
-                <p id="black-background">Write 'sọpé "báwo ni ayé" '>
-                <p id="black-background">Run yorl test.yl in your cli</p>-->
             </div>
            <br>
             <div class="container-fluid">
@@ -161,7 +154,7 @@
                 <hr>
                 <p class="fixedWidthParagraph">Variables can be declared in yorlang using</p>
                 <p class="fixedWidthParagraph">Yorlang: <strong>  tí </strong></p>
-                <p  class="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. The <strong>keyword (tí)</strong> must be used when initializing and re-assigning the value of a variable.
+                <p  class="fixedWidthParagraph"> Variables in yorlang must be <strong> initialized </strong> at the point of declaration. The <strong>keyword (tí)</strong> must be used when initializing and re-assigning a variable.
                    <strong> Strings </strong>in yorlang must be enclosed with <strong> double quotes</strong>. Yorlang variables can hold many
                      <strong>data types</strong> such as strings, integers, arrays and booleans</p>
                 <div class="note">
@@ -170,16 +163,12 @@
                     <p  class="fixedWidthParagraph">Boolean values are - true: <strong> òótọ́ &nbsp; </strong> false: <strong> irọ́</strong></p>
                 </div>
                 <div class="note">
-                    <p> Note:
-                        <br> Operators in Yorlang include; <br>
+                    <p>
+                        Operators in Yorlang include; <br>
                         plus: <strong>"+" </strong>, minus: <strong>"-"</strong>, multiply: <strong>"*"</strong>, divide:<strong> "/" </strong>,
                         Remainder: <strong>"%"</strong>,  Less_than:<strong> " < "</strong>, greater_than:<strong> ">"</strong>, greater_than_or_equal:<strong> ">="</strong>,
                         less_than_or_equal: <strong>"<="</strong>, not_equal: <strong>"!="</strong>, equal: <strong>"=="</strong>, assign: <strong>"="</strong>,
-                       exclamation_point: <strong>"!"</strong>, pipe: <strong>"|"</strong>, or: <strong>"||"</strong>, and: <strong>"&&"</strong>, binary_and:<strong> "&"</strong> <br> OR <br>
-
-                       plus,minus,multiply,divide,less_than,greater_than = [+, -, *, /, %, <, >]<br>
-                       greater_than_or_equal,less_than_or_equal,pipe, or = [>=, <=, |, ||] <br>
-                       not_equal, equal, assign, exclamation_point,  and, binary_and = [!=, ==, =, &&, &  ]
+                       not_operator: <strong>"!"</strong>, or: <strong>"||"</strong>, and: <strong>"&&"</strong>
 
                     </p>
                 </div>
@@ -499,23 +488,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle-on").click(function(e) {
-        e.preventDefault();
-        
-        $('#menu-toggle-off').show();
-        $("#wrapper").toggleClass("toggled");
-    });
-
-    $("#menu-toggle-off").click(function(e) {
-        e.preventDefault();
-        
-        $('#menu-toggle-off').hide();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
 
 </body>
 
