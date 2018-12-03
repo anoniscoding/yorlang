@@ -29,11 +29,15 @@ class KwNodeYi extends BaseNode {
     static getYiBody(context) {
         const yiBody = [], kwNodeIRU = new KwNodeIRU();
 
-        while (context.isNotEndOfFile() && context.lexer().peek().value == constants.KW.IRU) {
+        while (KwNodeYi.isNextTokenIru(context)) {
             yiBody.push(kwNodeIRU.getNode.call(context));
         }
 
         return yiBody;
+    }
+
+    static isNextTokenIru(context) {
+        return context.isNotEndOfFile() && context.lexer().peek().value == constants.KW.IRU;
     }
 
     static getPadasi(context) {
