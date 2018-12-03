@@ -67,7 +67,7 @@ p{
 #importFunction,
 #helperFunctions {
     font-size: 22px;
-    font-family: 'Rubik',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #0B409C;
     letter-spacing: 1px;
@@ -114,6 +114,9 @@ p{
 }
 
 /* example styles */
+.note p{
+    font-size: 14px;
+}
 .fixedWidthParagraph{
     width:60%;
     text-align: justify;
@@ -190,9 +193,9 @@ p{
 }
 @media (max-width:600px){
 
-
+    
     p{
-        font-size: 13px;
+        font-size: 12.5px;
     }
     .download_column-panel{
         flex-direction:column;
@@ -201,19 +204,20 @@ p{
     }
 
     .panel_items{
-        width: 65%;
+        width: 90%;
     }
-    #fixedWidthParagraph{
-        width:90%;
+   .fixedWidthParagraph {
+        width:100%;
         text-align: left;
+        text-align: justify;
     }
     .example, .example-output{
-        width: 95%;
+        width: 100%;
     }
     #black-background{
-        width: 50%;
+        width: 100%;
     }
     .note{
-        width: 95%;
+        width: 100%;
     }
 }

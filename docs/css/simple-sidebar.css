@@ -73,6 +73,9 @@ body {
   text-decoration: none;
   color: #000000;
   margin: 10px 0 10px 0;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:500;
+
   
 }
 
@@ -122,3 +125,17 @@ body {
   border-bottom: 1px solid #cfcccc;
 }
 
+/* index page style */
+.title {
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.header{
+    font-family: 'Montserrat',sans-serif;
+
+}
+
+.display-4 .display-5 {
+  font-family: 'Montserrat', sans-serif;
+
+}

@@ -31,6 +31,7 @@
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
  
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -112,8 +113,12 @@
             <div class="container-fluid">
                 <h1 id="intro">Getting Started</h1>
                 <hr>
-                <p class="fixedWidthParagraph"> To get started with yorlang, a yorlang runtime has to be downloaded </p>
-                <p class="fixedWidthParagraph"> Download and install the runtime installer for your platform </p>
+                <p class="fixedWidthParagraph"> To get started with yorlang, install the node package manager for yorlang  </p>
+                <div class="example">
+                    <p class="example-lang"> Terminal </p>
+                    <p class="example-one"> npm install -g yorlang </p>
+                </div>
+                <!-- <p class="fixedWidthParagraph"> Download and install the runtime installer for your platform </p>
                 <div class="download_column-panel">
                     <div class="panel_items">
                         <p> <i class="fa fa-apple"></i> MacOS</p>
@@ -128,7 +133,7 @@
                         <button> <a href="http://">Download the installer</a>  </button>
                     </div>
 
-                </div>
+                </div> -->
                
                  <p> HELLO WORLD</p>
                  <p class="fixedWidthParagraph"> Create a test.yl file and write your first yorlang statement</p>
@@ -160,9 +165,23 @@
                    <strong> Strings </strong>in yorlang must be enclosed with <strong> double quotes</strong>. Yorlang variables can hold many
                      <strong>data types</strong> such as strings, integers, arrays and booleans</p>
                 <div class="note">
-                    <p> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */</p>
+                    <p class="fixedWidthParagraph"> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */</p>
                     <p> A semi colon must be used at the end of every statement in yorlang </p>
                     <p  class="fixedWidthParagraph">Boolean values are - true: <strong> òótọ́ &nbsp; </strong> false: <strong> irọ́</strong></p>
+                </div>
+                <div class="note">
+                    <p> Note:
+                        <br> Operators in Yorlang include; <br>
+                        plus: <strong>"+" </strong>, minus: <strong>"-"</strong>, multiply: <strong>"*"</strong>, divide:<strong> "/" </strong>,
+                        Remainder: <strong>"%"</strong>,  Less_than:<strong> " < "</strong>, greater_than:<strong> ">"</strong>, greater_than_or_equal:<strong> ">="</strong>,
+                        less_than_or_equal: <strong>"<="</strong>, not_equal: <strong>"!="</strong>, equal: <strong>"=="</strong>, assign: <strong>"="</strong>,
+                       exclamation_point: <strong>"!"</strong>, pipe: <strong>"|"</strong>, or: <strong>"||"</strong>, and: <strong>"&&"</strong>, binary_and:<strong> "&"</strong> <br> OR <br>
+
+                       plus,minus,multiply,divide,less_than,greater_than = [+, -, *, /, %, <, >]<br>
+                       greater_than_or_equal,less_than_or_equal,pipe, or = [>=, <=, |, ||] <br>
+                       not_equal, equal, assign, exclamation_point,  and, binary_and = [!=, ==, =, &&, &  ]
+
+                    </p>
                 </div>
                 <div class="example">
                     <p class="example-lang" > yorlang </p>
