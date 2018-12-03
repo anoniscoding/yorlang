@@ -31,7 +31,7 @@ class MainInterpreter {
         if (leafValue == null) {
             const interpreter = registeredInterpreters[node.operation]; 
             if (interpreter instanceof IBase) return interpreter.interpreteNode.call(this, node);
-            else throw new Error(`Could not find interpreter for operation ${node.operation}`);
+            else this.throwError(`Interpreter must be of type IBase: ${node.operation}`);
         }
 
         return leafValue;
