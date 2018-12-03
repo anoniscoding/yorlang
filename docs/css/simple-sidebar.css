@@ -62,25 +62,32 @@ body {
 }
 
 .sidebar-nav li {
+  width:100%;
   text-indent: 20px;
   line-height: 40px;
 }
 
 .sidebar-nav li a {
+  width: 100%;
   display: block;
   text-decoration: none;
   color: #000000;
-  margin: 20px;
+  margin: 10px 0 10px 0;
+  
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
+  border-left: 3px solid #32903F;
   color: #32903F;
   background: linear-gradient(-35deg, #32903f15, #31588515, #32903f15, #31588515, #32903f15, #31588515, #32903f15, #31588515);
 }
 
 .sidebar-nav li a:active, .sidebar-nav li a:focus {
   text-decoration: none;
+  border-left: 3px solid #32903F !important;
+  color: #32903F;
+
 }
 
 #wrapper.toggled {
