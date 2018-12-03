@@ -1,13 +1,22 @@
 const constants = require("./constants.js");
+const fs = require("fs");
 
 class InputStream {
 
-    constructor(inputCode, yorlangFileName) {
-        this.code = inputCode;
+    constructor(fileName) {
+        this.code = this.readProgramFile(fileName);
         this.line = 1;
         this.column = 0;
         this.position = 0;
-        this.yorlangFileName = () => yorlangFileName;
+        this.yorlangFileName = () => fileName;
+    }
+
+    readProgramFile(fileName) {
+        try {
+            return fs.readFileSync(process.cwd() +"/"+ fileName, 'utf8'); 
+        } catch (e) {
+            throw new Error(`Could not read file: ${fileName}`);
+        }
     }
 
     //return the next value and also discard it from the stream
@@ -29,7 +38,7 @@ class InputStream {
     }
 
     throwError(msg) {
-        throw new Error(`There's an error at line ${this.line} near column ${this.column}.\nFile ${this.yorlangFileName()} - ${msg}`);
+        throw new Error(`There's an error at line ${this.line} near column ${this.column} in file ${this.yorlangFileName()} :\n ${msg}`);
     }
 
     isEndOfFile() {

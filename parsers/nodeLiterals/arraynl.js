@@ -1,15 +1,11 @@
 const BaseNode = require("../basenode.js");
 const constants = require("../../constants.js");
 
-
 class ArrayNl extends BaseNode {
 
     getNode(arrayNameToken) {
-        if (arrayNameToken == undefined) {
-            return ArrayNl.getParsedArrayLiteral(this);
-        } else { 
-            return ArrayNl.getParsedArrayElement(this, arrayNameToken);
-        }
+        return (arrayNameToken == undefined) ? ArrayNl.getParsedArrayLiteral(this)
+                                             : ArrayNl.getParsedArrayElement(this, arrayNameToken);
     }
 
     static getParsedArrayLiteral(context) {
@@ -35,7 +31,7 @@ class ArrayNl extends BaseNode {
     static getArrayElementIndexNodes(context) {
         const indexNodes = [ArrayNl.getArrayElementIndexNode(context)];
 
-        while (context.isNextTokenPunctuation(constants.SYM.L_SQ_BRACKET)) { //handle multi-dimensional array element
+        while (context.isNextTokenPunctuation(constants.SYM.L_SQ_BRACKET)) { //handles multi-dimensional array element
             indexNodes.push(ArrayNl.getArrayElementIndexNode(context));
         }
 

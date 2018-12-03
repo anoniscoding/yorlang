@@ -2,4 +2,4 @@ iṣẹ́ isiro(a, b) {
     padà a * b; 
 }
 
-sọpé "anu";
+sọpé counter;

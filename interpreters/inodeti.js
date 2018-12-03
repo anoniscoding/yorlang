@@ -1,49 +1,66 @@
 const IBase = require("./ibase.js");
 const constants = require("../constants.js");
+const WokeHelper = require("./helpers/woke_helper.js");
 
 class INodeTi extends IBase {
 
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
-            INodeTi.setArrayElementValue(this, node);
+            INodeTi.setArrayElement(this, node); 
+            return;
         }
 
-        this.environment().setTi(this.getCurrentScope(), node.left, this.evaluateNode(node.right));
+        if (WokeHelper.isWokeVariable(this, node.left)) {
+            INodeTi.setWokeVariable(this, node); 
+            return;
+        }
+        
+        this.environment().setTi(this.getCurrentScope(), node.left, INodeTi.getValue(this, node.right));
     }
 
-    static setArrayElementValue(context, node) {
-        const tiNode = { name: node.left.name, operation: constants.GET_TI };
-        const arrayLiteral = context.evaluateNode(tiNode);
-        const [array, index] = INodeTi.getArrayWithIndexTuple(context, node, arrayLiteral);
+    static setWokeVariable(context, node) {
+        const topIndex = context.scopeStack().length - 2;
 
-        if (array instanceof Array) array[index] = context.evaluateNode(node.right);
-        else context.throwError(`Cannot set invalid array element for array : ${tiNode.name}`);
+        for (let index = topIndex; index >= 0; index--) {
+            if (context.environment().getTi(context.scopeStack()[index], node.left) != undefined) {
+                return context.environment().setTi(context.scopeStack()[index], node.left, INodeTi.getValue(context, node.right));
+            }
+        }
     }
 
-    static getArrayWithIndexTuple(context, node, arrayLiteral) {
-        let tuple;
+    static setArrayElement(context, node) { //this also caters for setting multi-dimensional array element
+        let arrayLiteral = INodeTi.getArrayLiteral(context, node);
 
         for (let i = 0; i < node.left.indexNodes.length; i++) {
             const arrayIndex = context.evaluateNode(node.left.indexNodes[i]);
 
             if (typeof arrayIndex == "number") {
-                if (i == 0) {
-                    tuple = INodeTi.getTuple(arrayLiteral, arrayIndex) || arrayLiteral[arrayIndex];
-                } else {
-                    tuple = INodeTi.getTuple(tuple, arrayIndex) || tuple[arrayIndex];
+                if (!(Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
+                    context.throwError(`Cannot set invalid array element for array : ${node.left.name}`);
+                }
+
+                if ((Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
+                    arrayLiteral = arrayLiteral[arrayIndex];
+                }
+
+                if (i == node.left.indexNodes.length - 1) {
+                    arrayLiteral[arrayIndex] = context.evaluateNode(node.right);
                 }
             } else {
                 context.throwError(`Typeof index given for array ${node.name} must be a number`);
             }
         };
-
-        return tuple;
     }
 
-    static getTuple(arrayLiteral, index) {
-        if (!(arrayLiteral[index] instanceof Array)) {
-            return [arrayLiteral, index];
-        }
+    static getArrayLiteral(context, node) {
+        const tiNode = { name: node.left.name, operation: constants.GET_TI };
+        return context.evaluateNode(tiNode);
+    }
+
+    static getValue(context, node) {
+        const value = context.evaluateNode(node);
+        if (value == undefined) context.throwError(`Cannot set value undefined to variable ${node.left}`);
+        return value;
     }
 }
 

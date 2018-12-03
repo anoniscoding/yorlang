@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const Lexer = require("../lexer.js");
 const InputStream = require("../inputstream.js");
 const constants = require("../constants.js");
