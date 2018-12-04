@@ -16,5 +16,6 @@
   "main": "./cli.js",
   "bin": {
     "yorl": "./cli.js"
-  }
+  },
+  "dependencies": {}
 }

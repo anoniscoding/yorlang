@@ -20,7 +20,7 @@ if (arg === "-v") {
     console.log(packageJson.version);
 } else if (path.extname(arg) === constants.YL_EXT) { 
     const parser = new Parser(new Lexer(new InputStream(arg))); //arg is the filename
-    new MainInterpreter(new Environment()).interpreteProgram(parser);
+    new MainInterpreter(new Environment(), parser).interpreteProgram();
 } else {
     throw "Invalid Yorlang command line argument";
 }
