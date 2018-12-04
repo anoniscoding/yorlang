@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const notOperatorNl = require("../../../parsers/nodeliterals/notOperatorNl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
@@ -12,7 +16,7 @@ describe("NotOperatorNl test suite", () => {
     });
 
     test("It should parse valid not operator with boolean body", () => {
-        parser.lexer.inputStream.code = `${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO}`;
+        parser.lexer().inputStream.code = `${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO}`;
 
         const expectedNode = {
             operation: constants.SYM.EXCLAMATION_POINT, 
@@ -28,7 +32,7 @@ describe("NotOperatorNl test suite", () => {
     });
 
     test("It should parse valid not operator with variable body", () => {
-        parser.lexer.inputStream.code = `${constants.SYM.EXCLAMATION_POINT} isGood;`;
+        parser.lexer().inputStream.code = `${constants.SYM.EXCLAMATION_POINT} isGood;`;
 
         const expectedNode = {
             operation: constants.SYM.EXCLAMATION_POINT, 

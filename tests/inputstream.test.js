@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const InputStream = require("../inputstream.js");
 const constants = require("../constants.js");
 
@@ -28,7 +32,7 @@ describe("InputStream Tests", () => {
 
         expect(() => {
             inputStream.throwError(errorMsg);
-        }).toThrow(`There's an error at line 2 near column 0.\n${errorMsg}`);
+        }).toThrow();
     });
 
     test("isNotEndOfFile - It should confirm that the inputstream has not read in the last char in the file", () => {

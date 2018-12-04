@@ -1,7 +1,11 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const Environment = require("../../environment.js");
 const Parser = require("../../parsers/parser.js");
-const Lexer = require("../../lexer.js");
+const lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
@@ -9,13 +13,13 @@ describe("INodeSe test suite", () => {
     let mainInterpreter, parser;
 
     beforeEach(() => {
-        parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        parser = new Parser(new lexer(new InputStream()));
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
     test("it should interprete the se keyword and run the then block ", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 7;
             ${constants.KW.SE} (a > 6) {
                 ${constants.KW.TI} a = 6 * 3;
@@ -26,26 +30,24 @@ describe("INodeSe test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(18);
     });
 
     test("it should run the then block when the condition returns a truthy value that is not the keyword OOTO", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 7;
             ${constants.KW.SE} (a) {
                 ${constants.KW.SOPE} a;
             } 
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(7);
     });
 
     test("it should interprete the se keyword and run the else block ", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 6;
             ${constants.KW.SE} (a > 6) {
                 ${constants.KW.TI} a = 6 * 3;
@@ -56,13 +58,12 @@ describe("INodeSe test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(12);
     });
 
     test("it should interprete nested se keyword and run the then block ", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 7;
             ${constants.KW.SE} (a > 6) {
                 ${constants.KW.TI} a = 6 * 3;
@@ -78,14 +79,13 @@ describe("INodeSe test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(18);
         expect(global.console.log).toHaveBeenCalledWith(30);
     });
 
     test("it should interprete tabi se (else if) statments ", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 5;
 
             ${constants.KW.SE} (a < 5) {
@@ -102,8 +102,7 @@ describe("INodeSe test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(7);
     });
     

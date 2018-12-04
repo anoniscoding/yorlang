@@ -15,6 +15,7 @@ html{
     font-smooth: 2em;
     scroll-behavior: smooth;
     font-family: 'Rubik',sans-serif;
+    letter-spacing: 1.1px;
 
 }
 .title{
@@ -24,7 +25,6 @@ html{
 }
 
 p{
-    
     color: #676767;
 }
 
@@ -56,23 +56,70 @@ p{
     padding-bottom: 30px;
 }
 
-#intro, #variables, #dataTypes, #conditionals, #loops, #functions,  #arrays{
+#intro,
+#variables,
+#dataTypes,
+#conditionals,
+#loops,
+#functions,
+#arrays,
+#importFunction,
+#helperFunctions {
     font-size: 22px;
-    font-family: 'Rubik',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #0B409C;
     letter-spacing: 1px;
 }
 #black-background{
     color: #fff;
-    background-color: #000;
-    padding: 5px 5px 5px 5px;
-    width: 20%;
+    background-color: rgb(2, 21, 54);
+    padding: 5px 25px 5px 25px;
+    width: 25%;
 }
+.download_column-panel{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.panel_items{
+    width: 25%;
+    border: 1px solid #32903F;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 0 2% 2% 0%;
+}
+.panel_items p{
+    font-size: 18px;
+}
+.panel_items button{
+    background: #32903F;
+    border:none;
+    outline:none;
+    padding: 10px;
+    border-radius: 5px;
+}
+.panel_items button a{
+
+     color: #fff;
+     text-decoration:none;
+     font-size: 13px;
+
+}
+
 /* example styles */
-#fixedWidthParagraph{
+.note p{
+    font-size: 14px;
+}
+.fixedWidthParagraph{
     width:60%;
     text-align: justify;
+    font-size: 14px;
 }
 .example {
     display: flex;
@@ -113,6 +160,7 @@ p{
 
 .example-output {
     border: 1px solid #ccc;
+    background-color:  #efefef;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -128,25 +176,56 @@ p{
 
 .example-output-value {
     font-size: 16px;
+    color: black;
     padding-left: 20px;
 }
+@media (max-width:1000px){
+    .download_column-panel {
+        flex-direction: column;
+        width: 90%;
+        align-items: flex-start;
+    }
 
+    .panel_items {
+        width: 45%;
+    }
+}
 @media (max-width:600px){
 
+    
     p{
-        font-size: 13px;
+        font-size: 12.5px;
+    }
+    .download_column-panel{
+        flex-direction:column;
+        width: 90%;
+        align-items: flex-start;
     }
 
-    #fixedWidthParagraph{
-        width:90%;
+    .panel_items{
+        width: 90%;
+    }
+   .fixedWidthParagraph {
+        width:100%;
+        text-align: left;
+        text-align: justify;
     }
     .example, .example-output{
-        width: 95%;
+        width: 100%;
     }
     #black-background{
-        width: 50%;
+        width: 100%;
     }
     .note{
-        width: 95%;
+        width: 100%;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+    }
+
+    #page-content-wrapper {
+        margin-left: 0px;
     }
 }

@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const keywordNl = require("../../../parsers/nodeliterals/keywordnl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
@@ -12,7 +16,7 @@ describe("KeywordNodeLiteral test suite", () => {
     });
 
     test("it should parse keyword literal", () => {
-        parser.lexer.inputStream.code = `${constants.KW.OOTO}`;
+        parser.lexer().inputStream.code = `${constants.KW.OOTO}`;
 
         const expectedNode = {
             left: null, 
@@ -25,7 +29,7 @@ describe("KeywordNodeLiteral test suite", () => {
     });
 
     test("it should fail to parse invalid keyword literal", () => {
-        parser.lexer.inputStream.code = `${constants.KW.ISE}`;
+        parser.lexer().inputStream.code = `${constants.KW.ISE}`;
 
         expect(() => keywordNl.getNode.call(parser)).toThrow();
     });

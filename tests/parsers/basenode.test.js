@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const BaseNode = require("../../parsers/basenode.js");
 const kwNodeMock = require("../mocks/kwnode.mock.js");
 const Parser = require("../../parsers/parser.js");

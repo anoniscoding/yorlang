@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const variableNl = require("../../../parsers/nodeliterals/variablenl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
@@ -12,7 +16,7 @@ describe("VariableLiteral test suite", () => {
     });
 
     test("it should parse valid variable name", () => {
-        parser.lexer.inputStream.code = `name;`;
+        parser.lexer().inputStream.code = `name;`;
 
         const expectedNode = {
             name: "name",

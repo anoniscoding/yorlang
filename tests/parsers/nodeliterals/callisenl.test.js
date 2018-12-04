@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const callIseNl = require("../../../parsers/nodeliterals/callisenl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
@@ -12,7 +16,7 @@ describe("CallIseLiteral test suite", () => {
     });
     
     test("it should parse valid callIse syntax with parameters", () => {
-        parser.lexer.inputStream.code = `eeyan(1,"anu");`;
+        parser.lexer().inputStream.code = `eeyan(1,"anu");`;
 
         const expectedNode = {
             paramValues: [
@@ -27,7 +31,7 @@ describe("CallIseLiteral test suite", () => {
     });
 
     test("it should parse valid callIse syntax without parameters", () => {
-        parser.lexer.inputStream.code = `eeyan();`;
+        parser.lexer().inputStream.code = `eeyan();`;
 
         const expectedNode = {
             paramValues: [], 
@@ -39,7 +43,7 @@ describe("CallIseLiteral test suite", () => {
     });
 
     test("it should fail to parse invalid callIse syntax", () => {
-        parser.lexer.inputStream.code = `eeyan(`;
+        parser.lexer().inputStream.code = `eeyan(`;
         expect(() => callIseNl.getNode.call(parser)).toThrow();
     })
 });

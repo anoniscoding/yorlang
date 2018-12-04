@@ -12,7 +12,9 @@ const KEYWORDS = {
     SE: "ṣé",
     YI: "yí",
     IRU: "irú",
-    PADASI: "padàsí"
+    PADASI: "padàsí",
+    GBE_WOLE: "gbewọlé",
+    WOKE: "wòkè",
 };
 
 const SYMBOLS = {
@@ -47,14 +49,15 @@ const SYMBOLS = {
     EMPTY_SPACE: " ",
     EXCLAMATION_POINT: "!",
     PIPE: "|",
-    COLON: ":"
+    COLON: ":",
+    BACK_TICK: "`"
 };
 
 const LIST = {
     PUNCTUATIONS: [ 
         SYMBOLS.L_BRACKET, SYMBOLS.R_BRACKET, SYMBOLS.L_PAREN,
         SYMBOLS.R_PAREN, SYMBOLS.STATEMENT_TERMINATOR, SYMBOLS.COMMA,
-        SYMBOLS.L_SQ_BRACKET, SYMBOLS.R_SQ_BRACKET, SYMBOLS.COLON
+        SYMBOLS.L_SQ_BRACKET, SYMBOLS.R_SQ_BRACKET, SYMBOLS.COLON, SYMBOLS.BACK_TICK
     ],
     OPERATORS: [
         SYMBOLS.PLUS, SYMBOLS.MINUS, SYMBOLS.MULTIPLY,
@@ -69,13 +72,13 @@ const LIST = {
         KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
         KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI,
-        KEYWORDS.IRU, KEYWORDS.PADASI
+        KEYWORDS.IRU, KEYWORDS.PADASI, KEYWORDS.GBE_WOLE, KEYWORDS.WOKE
     ]
 };
 
 const REGEX = {
     DIGIT: /[0-9]/i,
-    IDENTIFIER: /[a-zA-Z]|[ÁÀÉÈẸẸ́Ẹ̀ẸĒÍÌÓÒỌỌ́Ọ̀ỌÚÙṢáàéèẹẹ́ẹíìóòọọ́ọ̀úùṣ]/i,
+    IDENTIFIER: /[a-zA-Z]|[ÁÀÉÈẸẸ́Ẹ̀ẸĒÍÌÓÒỌỌ́Ọ̀ỌÚÙṢáàéèẹẹ́ẹíìóòọọ́ọ̀úùṣŃń]/i,
 };
 
 const constants = {

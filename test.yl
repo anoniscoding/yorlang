@@ -1,9 +1,2 @@
-iṣẹ́ multiplyNumbers ( a, b)   { 
-
-    padà a * b ; 
-
-}
-
-tí X = multiplyNumbers ( 5, 6 ) ;
-
-sọpé X ;
+# This stands for a comment => print "Hello World" in Yoruba to the screen:
+sọpé "báwo ni ayé";

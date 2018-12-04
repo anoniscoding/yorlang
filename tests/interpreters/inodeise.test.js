@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const Environment = require("../../environment.js");
 const Parser = require("../../parsers/parser.js");
@@ -10,12 +14,12 @@ describe("INodeIse test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
     test("It should save an ise node", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teOruko(fname) {
                 ${constants.KW.SOPE} fname;
             }
@@ -39,13 +43,12 @@ describe("INodeIse test suite", () => {
             ]
         }
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teOruko")).toEqual(expectedNode);
     });
 
     test("It should fail to save ise node if there exist another ise node with the same name in the same scope", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teOruko(fname, lname) {
                 ${constants.KW.SOPE} fname + " "+ lname;
             }
@@ -55,12 +58,11 @@ describe("INodeIse test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        expect(() => mainInterpreter.interpreteProgram(program.astList)).toThrow();
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 
     test("It should save nested ise node", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.ISE} teName(fname, lname) {
                 ${constants.KW.SOPE} fname + " "+ lname;
                 ${constants.KW.ISE} teNumber(number) {
@@ -69,8 +71,7 @@ describe("INodeIse test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teName")).toBeTruthy();
     });
 

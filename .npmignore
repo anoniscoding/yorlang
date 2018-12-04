@@ -1,0 +1,7 @@
+/docs
+.DS_Store
+test.txt
+/sample
+/node_modules
+/coverage
+test.yl

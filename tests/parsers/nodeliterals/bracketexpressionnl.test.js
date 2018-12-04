@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const bracketExpNl = require("../../../parsers/nodeliterals/bracketexpressionnl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
@@ -12,7 +16,7 @@ describe("BracketExpressionLiteral test suite", () => {
     });
 
     test("it should parse arithmetic bracket expression", () => {
-        parser.lexer.inputStream.code = `((15 /3) + (3 * 2))`;
+        parser.lexer().inputStream.code = `((15 /3) + (3 * 2))`;
 
         const expectedNode = {
             left: {
@@ -55,7 +59,7 @@ describe("BracketExpressionLiteral test suite", () => {
     });
 
     test("it should parse boolean bracket expression", () => {
-        parser.lexer.inputStream.code = `((ikeji < aropo) && (ikeji > 0))`;
+        parser.lexer().inputStream.code = `((ikeji < aropo) && (ikeji > 0))`;
 
         const expectedNode = {
             left: {
@@ -90,7 +94,7 @@ describe("BracketExpressionLiteral test suite", () => {
     });
 
     test("it should fail to parse invalid bracket expression", () => {
-        parser.lexer.inputStream.code = `ikeji < aropo) && (ikeji > 0)`;
+        parser.lexer().inputStream.code = `ikeji < aropo) && (ikeji > 0)`;
         expect(() => bracketExpNl.getNode.call(parser)).toThrow();
     });
 

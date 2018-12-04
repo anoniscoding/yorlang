@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const Environment = require("../../environment.js");
 const Parser = require("../../parsers/parser.js");
@@ -10,12 +14,12 @@ describe("INodeNigbati test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
         global.console.log = jest.fn();
     });
 
     test("it should interprete the nigbati keyword with kuro keyword", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
@@ -30,13 +34,12 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
     test("it should interprete the nigbati keyword", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
@@ -44,13 +47,12 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(3);
     });
 
     test("it should interprete nested nigbati keyword", () => {
-        parser.lexer.inputStream.code = `
+        parser.lexer().inputStream.code = `
             ${constants.KW.TI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
@@ -63,8 +65,7 @@ describe("INodeNigbati test suite", () => {
             }
         `;
 
-        const program = parser.parseProgram();
-        mainInterpreter.interpreteProgram(program.astList);
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledTimes(4);
     });
 });

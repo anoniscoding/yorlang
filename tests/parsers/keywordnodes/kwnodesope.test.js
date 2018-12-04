@@ -1,6 +1,10 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const kwNodeSope = require("../../../parsers/keywordnodes/kwnodesope.js");
 const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
+const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
 
@@ -8,11 +12,11 @@ describe("KwNodeSope test suite", () => {
     let parser;
 
     beforeEach(() => {
-        parser = new Parser(new Lexer(new InputStream()));
+        parser = new Parser(new lexer(new InputStream()));
     });
 
     test("it should return node with operation sope with body of token number", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} 2;`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} 2;`;
         const expectedNode = {
             operation: constants.KW.SOPE,
             body: {
@@ -27,7 +31,7 @@ describe("KwNodeSope test suite", () => {
     });
 
     test("it should return node with operation sope with body of token string", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} "beautiful";`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} "beautiful";`;
         const expectedNode = {
             operation: constants.KW.SOPE,
             body: {
@@ -42,7 +46,7 @@ describe("KwNodeSope test suite", () => {
     });
 
     test("it should return node with operation sope with body of token variable", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} name;`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} name;`;
         const expectedNode = {
             operation: constants.KW.SOPE,
             body: {
@@ -55,7 +59,7 @@ describe("KwNodeSope test suite", () => {
     });
 
     test("it should return node with operation sope with body of node callIse", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} sum(1,2);`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} sum(1,2);`;
         const expectedNode = {
             operation: constants.KW.SOPE,
             body: {
@@ -69,13 +73,13 @@ describe("KwNodeSope test suite", () => {
     });
 
     test("it should return node with operation sope with body of node array element", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} a[1];`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} a[1];`;
         const expectedNode = {
             operation: constants.KW.SOPE,
             body: {
                 operation: constants.ARRAY_ELEM,
                 name: "a",
-                index: {"left": null, "operation": null, "right": null, "value": 1}
+                indexNodes: [{"left": null, "operation": null, "right": null, "value": 1}]
             }
         }
 
@@ -83,26 +87,26 @@ describe("KwNodeSope test suite", () => {
     });
 
     test(`It should skip the semicolon after the keyword ${constants.KW.SOPE}`, () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} a;`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} a;`;
         kwNodeSope.getNode.call(parser);
 
-        expect(parser.lexer.peek()).toBe(null);
+        expect(parser.lexer().peek()).toBe(null);
     });
 
     test("it should return node with operation sope with body of node array literal", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} [2,3];`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} [2,3];`;
 
         expect(kwNodeSope.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should return node with operation sope with body of an expression", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} 2 + 2;`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} 2 + 2;`;
 
         expect(kwNodeSope.getNode.call(parser)).toBeTruthy();
     });
 
     test("It should throw an error when given invalid input", () => {
-        parser.lexer.inputStream.code = `${constants.KW.SOPE} (2,3);`;
+        parser.lexer().inputStream.code = `${constants.KW.SOPE} (2,3);`;
 
         expect(() => {
             kwNodeSope.getNode.call(parser)        

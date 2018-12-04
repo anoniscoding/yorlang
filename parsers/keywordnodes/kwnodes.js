@@ -10,5 +10,7 @@ KwNodes[constants.KW.PADA] = require("./kwnodepada.js");
 KwNodes[constants.KW.KURO] = require("./kwnodekuro.js");
 KwNodes[constants.KW.ISE] = require("./kwnodeise.js");
 KwNodes[constants.KW.YI] = require("./kwnodeyi.js");
+KwNodes[constants.KW.GBE_WOLE] = require("./kwnodegbewole.js");
+KwNodes[constants.KW.WOKE] = require("./kwnodewoke.js");
 
 module.exports = KwNodes;

@@ -8,7 +8,9 @@ class INodeCallIse extends IBase {
 
         if (iseNode == null) {
             if (this.environment().isExistHelperIse(node.name))
-                return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));  
+                return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues));
+            
+            this.throwError(`Ise ${node.name} is undefined`)
         }
 
         this.pushToScopeStack(iseNode.name);

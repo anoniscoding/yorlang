@@ -1,3 +1,7 @@
+jest.mock('fs', () => ({
+    readFileSync: jest.fn()
+}));
+
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const iNodeGetTi = require("../../interpreters/inodegetti.js");
 const Environment = require("../../environment.js");
@@ -13,18 +17,18 @@ describe("INodeGetTi test suite", () => {
 
     beforeEach(() => {
         parser = new Parser(new Lexer(new InputStream()));
-        mainInterpreter = new MainInterpreter(new Environment());
+        mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
 
     test("it should get the value of a variable if it exists", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = 15 / 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.TI} a = 15 / 5;`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
         expect(iNodeGetTi.interpreteNode.call(mainInterpreter, {name: "a"})).toBe(3);
     });
 
     test("it should throw an error when attempting to get the value of a non-existent variable within the current scope", () => {
-        parser.lexer.inputStream.code = `${constants.KW.TI} a = 15 / 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.TI} a = 15 / 5;`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
         expect(() => iNodeGetTi.interpreteNode.call(mainInterpreter, {name: "b"})).toThrow();

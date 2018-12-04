@@ -1,47 +1,41 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 const kwNodeTi =  require("./kwnodeti.js");
+const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
 class KwNodeFun extends BaseNode {
 
     constructor() {
         super();
-        if (!(kwNodeTi instanceof BaseNode)) {
-            throw new Error("Dependency kwNodeTi must be of type BaseNode");
+        if (this.isDependenciesInValid()) {
+            throw new Error("Dependencies must be of type BaseNode");
         } 
+    }
+
+    isDependenciesInValid() {
+        return !(kwNodeTi instanceof BaseNode) && !(bracketExpressionNl instanceof BaseNode);
     }
 
     getNode() {
         this.skipKeyword(constants.KW.FUN);
+
         this.skipPunctuation(constants.SYM.L_BRACKET);
-
-        const init = kwNodeTi.getNode.call(this);
-
-        return KwNodeFun.getParsedFunNode(this, init);
-    }
-
-    static getParsedFunNode(context, init) {
         const node = {};
         node.operation = constants.KW.FUN;
-        node.init = init;
-
-        //This is not using bracketExpressionNl because bracketExpressionNl expects L_BRACKET
-        //L_BRACKET in fun condition is optional
-        context.setIsArithmeticExpression(false);
-        node.condition = context.parseExpression();
-        context.setIsArithmeticExpression(true); //set back to default
+        node.init = kwNodeTi.getNode.call(this);
+        node.condition = bracketExpressionNl.getNode.call(this, false, false);
         
-        context.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        node.increment = kwNodeTi.getNode.call(this);
 
-        node.increment = kwNodeTi.getNode.call(context);
+        if (KwNodeFun.isInValidFunIncrementStatement(node)) {
+            this.throwError("Invalid yorlang decrement or increment operation");
+        }
+        this.skipPunctuation(constants.SYM.R_BRACKET);
 
-        if (KwNodeFun.isInValidFunIncrementStatement(node))
-            context.lexer.throwError("Invalid yorlang decrement or increment operation");
+        node.body = this.parseBlock(constants.KW.FUN);
 
-        context.skipPunctuation(constants.SYM.R_BRACKET);
-        node.body = context.parseBlock(constants.KW.FUN);
-
-        return node;
+        return node;    
     }
 
     static isInValidFunIncrementStatement(funNode) {
