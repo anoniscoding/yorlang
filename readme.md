@@ -39,6 +39,24 @@ Local Copy
 **Contributing**
 - Contributions are welcome
 
+**Meaning of Terms**
+- VAR: "tí",
+- WHILE: "nígbàtí",
+- PRINT: "sọpé",
+- ELSE: "tàbí",
+- TRUE: "òótọ́",
+- FALSE: "irọ́",
+- FUNCTION: "iṣẹ́",
+- FOR: "fún",
+- RETURN: "padà",
+- BREAK: "kúrò",
+- IF: "ṣé",
+- SWITCH: "yí",
+- CASE: "irú",
+- DEFAULT: "padàsí",
+- IMPORT: "gbewọlé",
+- GLOBAL: "wòkè"
+
 **Author**
 - Karounwi Anuoluwapo - @anoniscoding
 
