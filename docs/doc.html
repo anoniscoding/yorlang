@@ -117,22 +117,6 @@
                     <p class="example-lang"> Terminal </p>
                     <p class="example-one"> npm install -g yorlang </p>
                 </div>
-                <!-- <p class="fixedWidthParagraph"> Download and install the runtime installer for your platform </p>
-                <div class="download_column-panel">
-                    <div class="panel_items">
-                        <p> <i class="fa fa-apple"></i> MacOS</p>
-                        <button> <a href="http://">Download the installer</a>  </button>
-                    </div>
-                    <div class="panel_items">
-                        <p> <i class="fa fa-windows"></i> Windows</p>
-                        <button> <a href="http://">Download the installer</a>  </button>
-                    </div>
-                    <div class="panel_items">
-                        <p> <i class="fa fa-linux"></i> Linux</p>
-                        <button> <a href="http://">Download the installer</a>  </button>
-                    </div>
-
-                </div> -->
                
                  <p> HELLO WORLD</p>
                  <p class="fixedWidthParagraph"> Create a yl file e.g <strong>test.yl</strong>  and write your first yorlang statement</p>
@@ -160,6 +144,7 @@
                 <div class="note">
                     <p class="fixedWidthParagraph"> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */</p>
                     <p> A semi colon must be used at the end of every statement in yorlang </p>
+                    <p> <strong>Use of accent marks in yorlang keywords is optional e.g 'jẹ́kí' is the same as 'jeki'</strong></p>
                     <p> Only english/yoruba alphabet can be used for variable names. </p>
                     <p  class="fixedWidthParagraph">Boolean values are - true: <strong> òótọ́ &nbsp; </strong> false: <strong> irọ́</strong></p>
                 </div>
@@ -175,29 +160,29 @@
                 </div>
                 <div class="example">
                     <p class="example-lang" > yorlang </p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> name </strong> = <strong id= "stringInt"> "dammy"</strong>;</p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> age </strong> =  <strong id= "stringInt">5 </strong>; </p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id="varName"> name </strong>  + " " +
-                          <strong id= "stringInt">"is" </strong> + " " + <strong id="varName"> age </strong>+  " " + <strong id= "stringInt">"years old" </strong>; 
+                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> oruko </strong> = <strong id= "stringInt"> "damilola"</strong>;</p>
+                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> odun </strong> =  <strong id= "stringInt">5 </strong>; </p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id="varName"> oruko </strong>  + " " +
+                          <strong id= "stringInt">"is" </strong> + " " + <strong id="varName"> odun </strong>+  " " + <strong id= "stringInt">"years old" </strong>; 
                         
                     </p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> dammy is 5 years old</p>
+                    <p class="example-output-value"> damilola is 5 years old</p>
                 </div>
                 <br>
                 
                 <p class ="fixedWidthParagraph"> Re-assign variable example:</p>
                  <div class="example">
                     <p class="example-lang" > yorlang </p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> oruko </strong> = <strong id= "stringInt"> "dammy"</strong>;</p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> oruko </strong> =  <strong id= "stringInt"> "michelle" </strong>; 
-                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id= "stringInt">"oruko mi ni" </strong> + " " + <strong id="varName"> oruko </strong>;</p>
+                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> orúkọ </strong> = <strong id= "stringInt"> "dammy"</strong>;</p>
+                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> orúkọ </strong> =  <strong id= "stringInt"> "tunde" </strong>; 
+                    <p class="example-one"> <strong id="print"> sọpé </strong> <strong id= "stringInt">"oruko mi ni" </strong> + " " + <strong id="varName"> orúkọ </strong>;</p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> oruko mi ni  michelle </p>
+                    <p class="example-output-value"> oruko mi ni tunde </p>
                 </div>
             </div>
             <br>
@@ -210,22 +195,22 @@
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong><strong id="varName"> time </strong> = <strong id="stringInt">15;</strong></p>
+                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong><strong id="varName"> ago </strong> = <strong id="stringInt">15;</strong></p>
                     <p class="example-one"> <strong id= "condition"> ṣé</strong> 
-                        ( <strong id="varName"> time </strong><  <strong id= "stringInt"> 12 </strong>) &nbsp;{ <br> &nbsp; &nbsp; <strong id="condition"> jẹ́kí </strong> <strong id="varName">
-                             greeting </strong>  =  <strong id= "stringInt">"good morning" </strong>;<br> <br> 
-                        }    <strong id= "condition"> tàbí ṣé </strong>   ( <strong id="varName"> time </strong>>  <strong id= "stringInt"> 12 </strong>
-                        && <strong id="varName"> time </strong><  <strong id= "stringInt"> 17 </strong> ) &nbsp;{ <br> 
-                         &nbsp; &nbsp;  <strong id="condition"> jẹ́kí </strong><strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good day"</strong> ;  <br> <br> 
+                        ( <strong id="varName"> ago </strong><  <strong id= "stringInt"> 12 </strong>) &nbsp;{ <br> &nbsp; &nbsp; <strong id="condition"> jẹ́kí </strong> <strong id="varName">
+                             ìkíni</strong>  =  <strong id= "stringInt">"e kaaro" </strong>;<br> <br> 
+                        }    <strong id= "condition"> tàbí ṣé </strong>   ( <strong id="varName"> ago </strong>>  <strong id= "stringInt"> 12 </strong>
+                        && <strong id="varName"> ago </strong><  <strong id= "stringInt"> 17 </strong> ) &nbsp;{ <br> 
+                         &nbsp; &nbsp;  <strong id="condition"> jẹ́kí </strong><strong id="varName"> ìkíni </strong>  =  <strong id= "stringInt"> "e kaasan"</strong> ;  <br> <br> 
                         }   <strong id= "condition"> tàbí </strong>   { <br> 
-                         &nbsp; &nbsp;  <strong id="condition"> jẹ́kí </strong><strong id="varName"> greeting </strong>  =  <strong id= "stringInt"> "good evening"</strong> ; <br>} <br> <br></p>
-                    <p class="example-one"> <strong id="print"> sọpé </strong>  <strong id="varName"> greeting </strong> + " " + <strong id= "stringInt"> "world" </strong>; 
+                         &nbsp; &nbsp;  <strong id="condition"> jẹ́kí </strong><strong id="varName"> ìkíni </strong>  =  <strong id= "stringInt"> "e kaale"</strong> ; <br>} <br> <br></p>
+                    <p class="example-one"> <strong id="print"> sọpé </strong>  <strong id="varName"> ìkíni </strong> + " " + <strong id= "stringInt"> "aye" </strong>; 
                         
                     </p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> good day world </p>
+                    <p class="example-output-value"> e kaasan aye </p>
                 </div>
                 <br>
                 <p  class="fixedWidthParagraph"><strong>The Switch Condition:</strong> </p>
@@ -242,22 +227,22 @@
                 </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong><strong id="varName"> age </strong> = <strong id="stringInt">10 + 8 </strong>;</p>
+                    <p class="example-one"> <strong id="condition"> jẹ́kí </strong><strong id="varName"> age </strong> = <strong id="stringInt">(2 * 5) + 8 </strong>;</p>
                     <p class="example-one"> <strong id= "condition"> yí</strong> 
                         (<strong id="varName"> age </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
                         <strong id="condition"> irú </strong> <strong id="stringInt"> 12 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a kid" </strong>;<br> &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "omode ni e" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> irú </strong>   <strong id="stringInt"> 18 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are a teenager" </strong>;<br> &nbsp; &nbsp;
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "ọ̀dọ́ ni e" </strong>;<br> &nbsp; &nbsp;
                         <strong id="condition"> irú </strong> <strong id="stringInt"> 22 </strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are an adult" </strong>;<br> &nbsp; &nbsp; 
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "agbalagba ni e" </strong>;<br> &nbsp; &nbsp; 
                         <strong id= "condition"> padàsí</strong>: <br> &nbsp; &nbsp; &nbsp; &nbsp;
-                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "you are too old" </strong>;<br> }
+                        <strong id="print"> sọpé </strong> <strong id= "stringInt"> "arugbo ni e ooooo" </strong>;<br> }
                     </p>
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> you are a teenager </p>
+                    <p class="example-output-value"> ọ̀dọ́ ni e </p>
                 </div>
             </div>
             <br>
@@ -284,14 +269,14 @@
                         ( <strong id="varName"> i </strong> ==  <strong id= "stringInt"> 3 </strong>) &nbsp;{ <br> &nbsp; &nbsp; 
                             <strong id="loop">&nbsp; &nbsp; kúrò</strong>; <br> &nbsp; &nbsp;
                         } </p>
-                    <p class="example-one"> <strong id="print">&nbsp; &nbsp; sọpé </strong>   <strong id= "stringInt"> "you can be" + " " + </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
+                    <p class="example-one"> <strong id="print">&nbsp; &nbsp; sọpé </strong>   <strong id= "stringInt"> "iwọ ni" + " " + </strong> <strong id="varName"> i </strong>; <br> <br> } </p>
 
                 </div>
                 <div class="example-output">
                     <p class="example-output-name"> OUTPUT </p>
-                    <p class="example-output-value"> you can be 0</p>
-                    <p class="example-output-value"> you can be 1</p>
-                    <p class="example-output-value"> you can be 2</p>
+                    <p class="example-output-value"> iwọ ni 0</p>
+                    <p class="example-output-value"> iwọ ni 1</p>
+                    <p class="example-output-value"> iwọ ni 2</p>
                 </div>
                 <br>
                 <p  class="fixedWidthParagraph"> The While(<strong> nígbàtí</strong>) Loop:</p>
@@ -323,12 +308,12 @@
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
 
-                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> multiplyNumbers (  <strong id="stringInt"> a, b</strong>) 
+                    <p class="example-one"> <strong id="loop"> iṣẹ́ </strong> isiro (  <strong id="stringInt"> a, b</strong>) 
                         <strong id="stringInt"> </strong> &nbsp; {  <br> <br> &nbsp; &nbsp;
                             <strong id="loop"> padà </strong>  <strong id="stringInt"> a * b</strong> ; <br> <br> }
                     </p>
                     <p class="example-one"> <strong id="condition"> jẹ́kí </strong> <strong id="varName"> X </strong> = 
-                        multiplyNumbers(<strong id="stringInt"> 5, 6</strong>);
+                        isiro(<strong id="stringInt"> 5, 6</strong>);
                     </p>
                     <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> X </strong>;
 
@@ -354,13 +339,13 @@
                     <p class="example-one">
                             <strong id="condition">jẹ́kí</strong> <strong id="varName"> a </strong> = <strong id="stringInt">3;</strong> <br><br>
 
-                            <strong id="loop"> iṣẹ́ </strong> test () 
+                            <strong id="loop"> iṣẹ́ </strong> àpẹrẹ () 
                                 <strong id="stringInt"> </strong> &nbsp; {  <br> &nbsp; &nbsp;
                                 <strong id="condition">jẹ́kí</strong> <strong id="varName"> a </strong> = <strong id="varName">a</strong> +<strong id="stringInt"> 1</strong>; <br><br> &nbsp; &nbsp;
                                 <strong id="print"> sọpé </strong> <strong id="varName">a;</strong><br>
                             } <br> <br>
                             
-                            test();<br><br>
+                            àpẹrẹ();<br><br>
 
                             <strong id="print"> sọpé </strong> <strong id="varName">a;</strong>
                     </p>
@@ -403,11 +388,11 @@
                 <p  class="fixedWidthParagraph">One-dimensional array example </p>
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí    </strong> <strong id="varName"> cars </strong> =
+                    <p class="example-one"> <strong id="condition"> jẹ́kí    </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong> =
                         [<strong id="stringInt">"G-Wagon", "S-class" </strong>]; 
                     </p>
                     
-                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> cars </strong>[0];
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong>[0];
 
                 </div>
                 <div class="example-output">
@@ -420,11 +405,11 @@
                 
                 <div class="example">
                     <p class="example-lang"> yorlang </p>
-                    <p class="example-one"> <strong id="condition"> jẹ́kí    </strong> <strong id="varName"> cars </strong> = [  [<strong id="stringInt">"corolla", "camry"</strong>],
+                    <p class="example-one"> <strong id="condition"> jẹ́kí    </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong> = [  [<strong id="stringInt">"corolla", "camry"</strong>],
                         [<strong id="stringInt">"G-Wagon", "S-class" </strong>], [<strong id="stringInt">"Elantra", "sonata"</strong>] ]; 
                     </p>
                     
-                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> cars </strong>[1][1];
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong>[1][1];
 
                 </div>
                 <div class="example-output">
