@@ -1,2 +1,2 @@
 # This stands for a comment => print "Hello World" in Yoruba to the screen:
-sọpé "báwo ni ayé";
+sọpé teSibi("what is your name");
