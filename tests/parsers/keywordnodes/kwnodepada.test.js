@@ -57,7 +57,7 @@ describe("KwNodePada test suite", () => {
             operation: constants.KW.PADA,
             body: {
                 name: "sum",
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         };
 
@@ -75,7 +75,7 @@ describe("KwNodePada test suite", () => {
                 name: "sum",
                 paramValues: [
                     {left: null, operation: null, right: null, value: 1}, 
-                    {name: "a", operation: constants.GET_TI}
+                    {name: "a", operation: constants.GET_JEKI}
                 ]
             }
         };

@@ -4,7 +4,7 @@ const contansts = require("../constants.js");
 class INodeArrayElement extends IBase {
 
     interpreteNode(node) {
-        const jekiNode = {name: node.name, operation: contansts.GET_TI}
+        const jekiNode = {name: node.name, operation: contansts.GET_JEKI}
         const arrayLiteral = this.evaluateNode(jekiNode);
         
         return INodeArrayElement.getArrayElement(this, node, arrayLiteral);

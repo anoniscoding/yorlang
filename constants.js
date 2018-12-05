@@ -95,7 +95,7 @@ const constants = {
     PROGRAM: "program",
     PUNCTUATION: "punctuation",
     OPERATOR: "operator",
-    GET_TI: "getTi",
+    GET_JEKI: "getJeki",
     CALL_ISE: "callIse",
     EXP_PUNC: "expression_punctuations",
     YL_EXT: ".yl"

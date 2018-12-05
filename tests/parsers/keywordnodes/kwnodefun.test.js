@@ -23,7 +23,7 @@ describe("KwNodeFun test suite", () => {
             condition: {
                 left: {
                     name: "i", 
-                    operation: constants.GET_TI
+                    operation: constants.GET_JEKI
                 }, 
                 operation: constants.SYM.L_THAN, 
                 right: {
@@ -40,7 +40,7 @@ describe("KwNodeFun test suite", () => {
                 right: {
                     left: {
                         name: "i", 
-                        operation: constants.GET_TI
+                        operation: constants.GET_JEKI
                     },
                     operation: constants.SYM.PLUS, 
                     right: {

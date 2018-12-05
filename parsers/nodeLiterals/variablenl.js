@@ -15,7 +15,7 @@ class VariableNl extends BaseNode {
         }
 
         return {
-            operation: constants.GET_TI,
+            operation: constants.GET_JEKI,
             name: varNameToken.value
         };
     }

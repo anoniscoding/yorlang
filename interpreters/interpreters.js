@@ -29,7 +29,7 @@ interpreters[constants.KW.GBE_WOLE] = require("./inodegbewole.js");
 interpreters[constants.KW.WOKE] = require("./inodewoke.js");
 
 interpreters[constants.CALL_ISE] = require("./inodecallise.js");
-interpreters[constants.GET_TI] = require("./inodegetjeki.js");
+interpreters[constants.GET_JEKI] = require("./inodegetjeki.js");
 interpreters[constants.ARRAY] = require("./inodearray.js");
 interpreters[constants.ARRAY_ELEM] = require("./inodearrayelem.js");
 

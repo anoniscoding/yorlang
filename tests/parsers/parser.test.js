@@ -102,7 +102,7 @@ describe("Parser test suite", () => {
             left: {
                 left: {
                     name: "a", 
-                    operation: constants.GET_TI
+                    operation: constants.GET_JEKI
                 }, 
                 operation: constants.SYM.ASSIGN, 
                 right: {

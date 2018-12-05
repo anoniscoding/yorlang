@@ -53,7 +53,7 @@ class INodeJeki extends IBase {
     }
 
     static getArrayLiteral(context, node) {
-        const jekiNode = { name: node.left.name, operation: constants.GET_TI };
+        const jekiNode = { name: node.left.name, operation: constants.GET_JEKI };
         return context.evaluateNode(jekiNode);
     }
 

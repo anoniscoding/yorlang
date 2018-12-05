@@ -57,7 +57,7 @@ describe("KwNodeTi test suite", () => {
             left: "a",
             right: {
                 name: "b",
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         }
         
@@ -76,7 +76,7 @@ describe("KwNodeTi test suite", () => {
             },
             right: {
                 name: "b",
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         }
         
@@ -94,7 +94,7 @@ describe("KwNodeTi test suite", () => {
                 body: [
                     {left: null, operation: null, right: null, value: 1}, 
                     {left: null, operation: null, right: null, value: "anu"},
-                    {name: "b", operation: constants.GET_TI},
+                    {name: "b", operation: constants.GET_JEKI},
                     {indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], name: "c", operation: constants.ARRAY_ELEM},
                     {body: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}], operation: constants.ARRAY}
                 ], 

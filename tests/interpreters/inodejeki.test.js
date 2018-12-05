@@ -11,7 +11,7 @@ const lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("INodeTi test suite", () => {
+describe("INodeJeki test suite", () => {
     let mainInterpreter, parser;
 
     beforeEach(() => {

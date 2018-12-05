@@ -38,7 +38,7 @@ describe("KwNodeNigbati test suite", () => {
                     right: {
                         left: {
                             name: "ikeji", 
-                            operation: constants.GET_TI
+                            operation: constants.GET_JEKI
                         }, 
                         operation: "+", 
                         right: {
@@ -55,12 +55,12 @@ describe("KwNodeNigbati test suite", () => {
                 left: {
                     left: {
                         name: "ikeji", 
-                        operation: constants.GET_TI
+                        operation: constants.GET_JEKI
                     }, 
                     operation: constants.SYM.L_THAN, 
                     right: {
                         name: "aropo", 
-                        operation: constants.GET_TI
+                        operation: constants.GET_JEKI
                     }, 
                     value: null
                 }, 
@@ -68,7 +68,7 @@ describe("KwNodeNigbati test suite", () => {
                 right: {
                     left: {
                         name: "ikeji", 
-                        operation: constants.GET_TI
+                        operation: constants.GET_JEKI
                     }, 
                     operation: constants.SYM.G_THAN, 
                     right: {

@@ -30,7 +30,7 @@ describe("INodeIse test suite", () => {
                 operation: constants.KW.SOPE,
                 body: {
                     name: "fname",
-                    operation: constants.GET_TI
+                    operation: constants.GET_JEKI
                 }
             }], 
             name: "teOruko", 
