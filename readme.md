@@ -61,7 +61,7 @@ npm install
 #### Link Yorl Command to Terminal
 In order to run a file using the ``yorl`` command, run the following: 
 ```
-npm run link
+npm link
 ```
 
 ## Hello World
