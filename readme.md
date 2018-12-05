@@ -30,7 +30,7 @@ If you have [Docker](https://www.docker.com/get-started) installed, you can proc
 To start a docker container for Yorlang, run this command in the terminal:
 
 ```
-./bin/start_disposable.sh
+./start_container.sh
 ```
 
 ``N/B``: You might have permission problems on a Unix, please visit the following [link](https://askubuntu.com/questions/409025/permission-denied-when-running-sh-scripts) to resolve potential file permission issues.
