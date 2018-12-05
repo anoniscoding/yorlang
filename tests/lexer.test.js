@@ -33,6 +33,10 @@ describe("Lexer Tests", () => {
         expect(lexer.isPunctuation("+")).toBe(false);
     });
 
+    test("getIdentifierWithoutAccentMarks - it should remove accent marks from string", () => {
+        expect(lexer.getIdentifierWithoutAccentMarks("jẹ́kí")).toBe("jeki");
+    });
+
     test("IsIdentifier - it should confirm that it is an identifier", () => {
         expect(lexer.isIdentifier("í")).toBe(true);
     });
