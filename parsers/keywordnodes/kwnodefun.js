@@ -1,6 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
-const kwNodeTi =  require("./kwnodeti.js");
+const kwNodeJeki =  require("./kwNodeJeki.js");
 const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
 class KwNodeFun extends BaseNode {
@@ -13,7 +13,7 @@ class KwNodeFun extends BaseNode {
     }
 
     isDependenciesInValid() {
-        return !(kwNodeTi instanceof BaseNode) && !(bracketExpressionNl instanceof BaseNode);
+        return !(kwNodeJeki instanceof BaseNode) && !(bracketExpressionNl instanceof BaseNode);
     }
 
     getNode() {
@@ -22,11 +22,11 @@ class KwNodeFun extends BaseNode {
         this.skipPunctuation(constants.SYM.L_BRACKET);
         const node = {};
         node.operation = constants.KW.FUN;
-        node.init = kwNodeTi.getNode.call(this);
+        node.init = kwNodeJeki.getNode.call(this);
         node.condition = bracketExpressionNl.getNode.call(this, false, false);
         
         this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
-        node.increment = kwNodeTi.getNode.call(this);
+        node.increment = kwNodeJeki.getNode.call(this);
 
         if (KwNodeFun.isInValidFunIncrementStatement(node)) {
             this.throwError("Invalid yorlang decrement or increment operation");
@@ -44,7 +44,7 @@ class KwNodeFun extends BaseNode {
         if ([constants.SYM.PLUS, constants.SYM.MINUS].indexOf(incrementNode.operation) >= 0) {
             //e.g fun (tí i =0; i < 10; tí i = i + 1;)
             //make sure there is variable 'i' in atleast one child of the incrementNode 
-            //i.e ti i = i + 1 or ti i = 1 + i or ti i = i + i
+            //i.e jeki i = i + 1 or jeki i = 1 + i or jeki i = i + i
             if ([incrementNode.left.name, incrementNode.right.name].indexOf(funNode.init.left) >= 0) {
                 return false;
             }

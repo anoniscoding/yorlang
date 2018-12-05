@@ -20,12 +20,12 @@ describe("INodeSe test suite", () => {
 
     test("it should interprete the se keyword and run the then block ", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 7;
+            ${constants.KW.JEKI} a = 7;
             ${constants.KW.SE} (a > 6) {
-                ${constants.KW.TI} a = 6 * 3;
+                ${constants.KW.JEKI} a = 6 * 3;
                 ${constants.KW.SOPE} a;
             } ${constants.KW.TABI} {
-                ${constants.KW.TI} a = 6 * 2;
+                ${constants.KW.JEKI} a = 6 * 2;
                 ${constants.KW.SOPE} a;
             }
         `;
@@ -36,7 +36,7 @@ describe("INodeSe test suite", () => {
 
     test("it should run the then block when the condition returns a truthy value that is not the keyword OOTO", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 7;
+            ${constants.KW.JEKI} a = 7;
             ${constants.KW.SE} (a) {
                 ${constants.KW.SOPE} a;
             } 
@@ -48,12 +48,12 @@ describe("INodeSe test suite", () => {
 
     test("it should interprete the se keyword and run the else block ", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 6;
+            ${constants.KW.JEKI} a = 6;
             ${constants.KW.SE} (a > 6) {
-                ${constants.KW.TI} a = 6 * 3;
+                ${constants.KW.JEKI} a = 6 * 3;
                 ${constants.KW.SOPE} a;
             } ${constants.KW.TABI} {
-                ${constants.KW.TI} a = 6 * 2;
+                ${constants.KW.JEKI} a = 6 * 2;
                 ${constants.KW.SOPE} a;
             }
         `;
@@ -64,17 +64,17 @@ describe("INodeSe test suite", () => {
 
     test("it should interprete nested se keyword and run the then block ", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 7;
+            ${constants.KW.JEKI} a = 7;
             ${constants.KW.SE} (a > 6) {
-                ${constants.KW.TI} a = 6 * 3;
+                ${constants.KW.JEKI} a = 6 * 3;
                 ${constants.KW.SOPE} a;
 
                 ${constants.KW.SE} (a > 14) {
-                    ${constants.KW.TI} a = 6 * 5;
+                    ${constants.KW.JEKI} a = 6 * 5;
                     ${constants.KW.SOPE} a;
                 }
             } ${constants.KW.TABI} {
-                ${constants.KW.TI} a = 6 * 2;
+                ${constants.KW.JEKI} a = 6 * 2;
                 ${constants.KW.SOPE} a;
             }
         `;
@@ -86,7 +86,7 @@ describe("INodeSe test suite", () => {
 
     test("it should interprete tabi se (else if) statments ", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 5;
+            ${constants.KW.JEKI} a = 5;
 
             ${constants.KW.SE} (a < 5) {
                 ${constants.KW.SOPE} a + 4;

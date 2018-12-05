@@ -61,8 +61,12 @@ class Lexer {
         
         return {
             type: this.isKeyword(identifier)  ? constants.KEYWORD : constants.VARIABLE,
-            value: identifier
+            value: this.getNonAccentedIdentifier(identifier)
         };
+    }
+
+    getNonAccentedIdentifier(identifier) {
+        return identifier.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     }
 
     readNumber() {

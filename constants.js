@@ -1,20 +1,20 @@
 const KEYWORDS = {
-    TI: "tí",
-    NIGBATI: "nígbàtí",
-    SOPE: "sọpé",
-    TABI: "tàbí",
-    OOTO: "òótọ́",
-    IRO: "irọ́",
-    ISE: "iṣẹ́",
-    FUN: "fún",
-    PADA: "padà",
-    KURO: "kúrò",
-    SE: "ṣé",
-    YI: "yí",
-    IRU: "irú",
-    PADASI: "padàsí",
-    GBE_WOLE: "gbewọlé",
-    WOKE: "wòkè",
+    JEKI: "jeki",
+    NIGBATI: "nigbati",
+    SOPE: "sope",
+    TABI: "tabi",
+    OOTO: "ooto",
+    IRO: "iro",
+    ISE: "ise",
+    FUN: "fun",
+    PADA: "pada",
+    KURO: "kuro",
+    SE: "se",
+    YI: "yi",
+    IRU: "iru",
+    PADASI: "padasi",
+    GBE_WOLE: "gbewole",
+    WOKE: "woke",
 };
 
 const SYMBOLS = {
@@ -69,7 +69,7 @@ const LIST = {
         SYMBOLS.EMPTY_SPACE, SYMBOLS.TAB_SPACE, SYMBOLS.NEW_LINE 
     ],
     KEYWORDS: [
-        KEYWORDS.TI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
+        KEYWORDS.JEKI, KEYWORDS.NIGBATI, KEYWORDS.SE, KEYWORDS.SOPE, 
         KEYWORDS.TABI, KEYWORDS.OOTO, KEYWORDS.IRO, KEYWORDS.ISE, 
         KEYWORDS.FUN, KEYWORDS.PADA, KEYWORDS.KURO, KEYWORDS.YI,
         KEYWORDS.IRU, KEYWORDS.PADASI, KEYWORDS.GBE_WOLE, KEYWORDS.WOKE

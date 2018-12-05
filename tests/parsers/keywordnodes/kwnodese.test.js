@@ -66,7 +66,7 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should return a valid se and tabi node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} tàbí {}`;
+        parser.lexer().inputStream.code = `${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} ${constants.KW.TABI} {}`;
 
         const expectedNode = {
             condition: {

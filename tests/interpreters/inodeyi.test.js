@@ -20,7 +20,7 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete a valid yi node", () => {
         parser.lexer().inputStream.code = `
-        ${constants.KW.TI} oruko = "femi";
+        ${constants.KW.JEKI} oruko = "femi";
 
         ${constants.KW.YI} (oruko) {
             ${constants.KW.IRU} "anu":
@@ -35,7 +35,7 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete a nested yi node", () => {
         parser.lexer().inputStream.code = `
-        ${constants.KW.TI} oruko = 1;
+        ${constants.KW.JEKI} oruko = 1;
 
         ${constants.KW.YI} (oruko) {
             ${constants.KW.IRU} 1:
@@ -55,7 +55,7 @@ describe("INodeFun test suite", () => {
 
     test("it should interprete yi node with padasi", () => {
         parser.lexer().inputStream.code = `
-        ${constants.KW.TI} oruko = "funmi";
+        ${constants.KW.JEKI} oruko = "funmi";
 
         ${constants.KW.YI} (oruko) {
             ${constants.KW.IRU} "anu":

@@ -21,7 +21,7 @@ describe("Parser test suite", () => {
     });
 
     test("isNextTokenPunctuation - it should confirm that the next token in the stream does not match the punctuation given", () => {
-        parser.lexer().inputStream.code = `${constants.SYM.TI}`;
+        parser.lexer().inputStream.code = `${constants.SYM.JEKI}`;
 
         expect(parser.isNextTokenPunctuation(constants.SYM.L_PAREN)).toBeFalsy();
     });
@@ -39,15 +39,15 @@ describe("Parser test suite", () => {
     });
 
     test("isNextTokenKeyword - it should confirm that the given token is an operator and it matches the next token in the stream", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI}`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI}`;
 
-        expect(parser.isNextTokenKeyword(constants.KW.TI)).toBeTruthy();
+        expect(parser.isNextTokenKeyword(constants.KW.JEKI)).toBeTruthy();
     });
 
     test("isNextTokenKeyword - it should confirm that the next token in the stream does not match the keyword given", () => {
         parser.lexer().inputStream.code = `${constants.SYM.PIPE}`;
 
-        expect(parser.isNextTokenKeyword(constants.KW.TI)).toBeFalsy();
+        expect(parser.isNextTokenKeyword(constants.KW.JEKI)).toBeFalsy();
     });
 
     test("SkipPunctuation - it should skip the punctuation token L_PAREN", () => {
@@ -76,21 +76,21 @@ describe("Parser test suite", () => {
         expect(() => parser.skipOperator(constants.SYM.ASSIGN)).toThrow();
     });
 
-    test("SkipKeyword - it should skip the keyword token TI", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI};`;
-        parser.skipKeyword(constants.KW.TI);
+    test("SkipKeyword - it should skip the keyword token JEKI", () => {
+        parser.lexer().inputStream.code = `${constants.KW.JEKI};`;
+        parser.skipKeyword(constants.KW.JEKI);
 
         expect(parser.isNextTokenPunctuation(constants.SYM.STATEMENT_TERMINATOR)).toBeTruthy();
     });
 
-    test("SkipKeyword - it should fail to skip the keyword token TI", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI};`;
+    test("SkipKeyword - it should fail to skip the keyword token JEKI", () => {
+        parser.lexer().inputStream.code = `${constants.KW.JEKI};`;
 
         expect(() => parser.skipKeyword(constants.KW.SOPE)).toThrow();
     });
 
     test("GetCurrentTokenValue - it should get the current token value", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI};`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI};`;
 
         expect(parser.getCurrentTokenValue()).toBeTruthy();
     });

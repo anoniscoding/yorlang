@@ -36,7 +36,7 @@ describe("INodeSope test suite", () => {
 
     test("it should print the value of variable to the console", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 5;
+            ${constants.KW.JEKI} a = 5;
             ${constants.KW.SOPE} a;
         `;
 
@@ -55,7 +55,7 @@ describe("INodeSope test suite", () => {
 
     test("it should print the value of variable to the console", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = [1,5];
+            ${constants.KW.JEKI} a = [1,5];
             ${constants.KW.SOPE} a[1];
         `;
 

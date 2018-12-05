@@ -102,9 +102,9 @@ describe("Lexer Tests", () => {
     });
 
     test("ReadIdentifier - it should return a keyword token", () => {
-        lexer.inputStream.code = `${constants.KW.TI}`;
+        lexer.inputStream.code = `${constants.KW.JEKI}`;
 
-        expect(lexer.readIdentifier()).toEqual({type: constants.KEYWORD, value: `${constants.KW.TI}`});
+        expect(lexer.readIdentifier()).toEqual({type: constants.KEYWORD, value: `${constants.KW.JEKI}`});
     });
 
     test("ReadNumber - it should return a number token", () => {
@@ -126,8 +126,8 @@ describe("Lexer Tests", () => {
     });
 
     test("SkipWhiteSpaces - it should should skip whitespaces", () => {
-        lexer.inputStream.code = "    \n\ttí";
-        expect(lexer.next()).toEqual({type: constants.KEYWORD, value: `${constants.KW.TI}`});
+        lexer.inputStream.code = `    \n\t${constants.KW.JEKI}`;
+        expect(lexer.next()).toEqual({type: constants.KEYWORD, value: `${constants.KW.JEKI}`});
     });
 
     test("ReadNext - it should return the next token", () => {

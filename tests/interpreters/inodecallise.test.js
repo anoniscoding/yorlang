@@ -46,7 +46,7 @@ describe("INodeCallIse test suite", () => {
 
     test("it should have access to variables in a parent scope", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} sname = "karounwi";
+            ${constants.KW.JEKI} sname = "karounwi";
 
             ${constants.KW.ISE} teOruko(fname) {
                 ${constants.KW.SOPE} sname +" "+ fname;
@@ -69,7 +69,7 @@ describe("INodeCallIse test suite", () => {
 
     test("it should maintain scope within nested ise node", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} sname = "karounwi";
+            ${constants.KW.JEKI} sname = "karounwi";
 
             ${constants.KW.ISE} teOruko(fname) {
                 ${constants.KW.SOPE} sname +" "+ fname;
@@ -91,7 +91,7 @@ describe("INodeCallIse test suite", () => {
 
     test("it should call an ise function in a parent scope", () => {
         parser.lexer().inputStream.code = `
-        ${constants.KW.TI} sname = "karounwi";
+        ${constants.KW.JEKI} sname = "karounwi";
 
             ${constants.KW.ISE} tePhoneNoPeluOruko(no) {
                 ${constants.KW.SOPE} no;
@@ -114,8 +114,8 @@ describe("INodeCallIse test suite", () => {
     test("it should return a value from an se block within an ise function", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.ISE} gbaOruko(fname) {
-                ${constants.KW.TI} b = [1,2,3];
-                ${constants.KW.TI} c = 4;
+                ${constants.KW.JEKI} b = [1,2,3];
+                ${constants.KW.JEKI} c = 4;
 
                 ${constants.KW.SE} (c > b[0]) {
                     ${constants.KW.PADA} b[0] +" "+ fname;
@@ -124,7 +124,7 @@ describe("INodeCallIse test suite", () => {
                 }
             }
 
-            ${constants.KW.TI} a = gbaOruko("femi");
+            ${constants.KW.JEKI} a = gbaOruko("femi");
             ${constants.KW.SOPE} a;
         `;
 
@@ -135,15 +135,15 @@ describe("INodeCallIse test suite", () => {
     test("it should return a value from a nigbati block within an ise function", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.ISE} gbaOnka() {
-                ${constants.KW.TI} b = [1,2,3];
-                ${constants.KW.TI} c = 4;
+                ${constants.KW.JEKI} b = [1,2,3];
+                ${constants.KW.JEKI} c = 4;
 
                 ${constants.KW.NIGBATI} (c < 6) {
                     ${constants.KW.PADA} c;
                 }
             }
 
-            ${constants.KW.TI} a = gbaOnka();
+            ${constants.KW.JEKI} a = gbaOnka();
             ${constants.KW.SOPE} a;
         `;
 
@@ -154,15 +154,15 @@ describe("INodeCallIse test suite", () => {
     test("it should return a value from a fun block within an ise function", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.ISE} gbaOnka() {
-                ${constants.KW.TI} b = [1,2,3];
-                ${constants.KW.TI} c = 4;
+                ${constants.KW.JEKI} b = [1,2,3];
+                ${constants.KW.JEKI} c = 4;
 
-                ${constants.KW.FUN} (${constants.KW.TI} i = 0; i < 10; ${constants.KW.TI} i = i + 1;) {
+                ${constants.KW.FUN} (${constants.KW.JEKI} i = 0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
                     ${constants.KW.PADA} i;
                 }
             }
 
-            ${constants.KW.TI} a = gbaOnka();
+            ${constants.KW.JEKI} a = gbaOnka();
             ${constants.KW.SOPE} a;
         `;
 

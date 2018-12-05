@@ -2,10 +2,10 @@ const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 const variableNl = require("../nodeLiterals/variablenl.js");
 
-class KwNodeTi extends BaseNode {
+class KwNodeJeki extends BaseNode {
 
     getNode() {
-        this.skipKeyword(constants.KW.TI);
+        this.skipKeyword(constants.KW.JEKI);
 
         const node =  {};
         node.operation = constants.SYM.ASSIGN;
@@ -20,4 +20,4 @@ class KwNodeTi extends BaseNode {
     }
 }
 
-module.exports = new KwNodeTi();
+module.exports = new KwNodeJeki();

@@ -39,9 +39,9 @@ describe("KwNodeIse test suite", () => {
 
     test("it should return valid ise node for nested blocks", () => {
         parser.lexer().inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
-            tí oruko = orukoMi;
+            ${constants.KW.JEKI} oruko = orukoMi;
             
-            ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
+            ${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
                 ${constants.KW.SOPE} i;
             }
         
@@ -57,13 +57,13 @@ describe("KwNodeIse test suite", () => {
 
     test("it should fail to create an ise node within an invalid block", () => {
         parser.lexer().inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
-            tí oruko = orukoMi;
+            ${constants.KW.JEKI} oruko = orukoMi;
             
             ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
-                sopé i;
+                ${constants.KW.SOPE} i;
 
                 ${constants.KW.ISE} teAkori() {
-                    sopé "adupe";
+                    ${constants.KW.SOPE} "adupe";
                 }
             }
         

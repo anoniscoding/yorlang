@@ -20,10 +20,10 @@ describe("INodeNigbati test suite", () => {
 
     test("it should interprete the nigbati keyword with kuro keyword", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 0;
+            ${constants.KW.JEKI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
-                ${constants.KW.TI} a = a + 1;
+                ${constants.KW.JEKI} a = a + 1;
                 ${constants.KW.SE} (a == 2) {
                     ${constants.KW.KURO};
                 }
@@ -40,10 +40,10 @@ describe("INodeNigbati test suite", () => {
 
     test("it should interprete the nigbati keyword", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 0;
+            ${constants.KW.JEKI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
-                ${constants.KW.TI} a = a + 1;
+                ${constants.KW.JEKI} a = a + 1;
             }
         `;
 
@@ -53,14 +53,14 @@ describe("INodeNigbati test suite", () => {
 
     test("it should interprete nested nigbati keyword", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 0;
+            ${constants.KW.JEKI} a = 0;
             ${constants.KW.NIGBATI} (a < 3) {
                 ${constants.KW.SOPE} a;
-                ${constants.KW.TI} a = a + 1;
-                ${constants.KW.TI} b = a + 1;
+                ${constants.KW.JEKI} a = a + 1;
+                ${constants.KW.JEKI} b = a + 1;
                 ${constants.KW.NIGBATI} (b < 3) {
                     ${constants.KW.SOPE} "anu";
-                    ${constants.KW.TI} b = b + 1;
+                    ${constants.KW.JEKI} b = b + 1;
                 }
             }
         `;
