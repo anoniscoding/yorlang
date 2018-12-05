@@ -1,6 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
-const leafnl = require("../nodeLiterals/leafnl.js");
+const leafnl = require("../node-literals/leafnl.js");
 const path = require("path");
 
 class KwNodeGbeWole extends BaseNode {

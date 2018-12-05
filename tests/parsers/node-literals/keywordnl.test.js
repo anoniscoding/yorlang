@@ -2,7 +2,7 @@ jest.mock('fs', () => ({
     readFileSync: jest.fn()
 }));
 
-const keywordNl = require("../../../parsers/nodeliterals/keywordnl.js");
+const keywordNl = require("../../../parsers/node-literals/keywordnl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");

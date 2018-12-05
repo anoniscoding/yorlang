@@ -2,7 +2,7 @@ jest.mock('fs', () => ({
     readFileSync: jest.fn()
 }));
 
-const kwNodePada = require("../../../parsers/keywordnodes/kwnodepada.js");
+const kwNodePada = require("../../../parsers/keyword-nodes/kwnodepada.js");
 const Parser = require("../../../parsers/parser.js");
 const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");

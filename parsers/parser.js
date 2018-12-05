@@ -1,6 +1,6 @@
 const constants = require("../constants.js");
-const kwnodes = require("./keywordnodes/kwnodes.js");
-const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
+const kwnodes = require("./keyword-nodes/kwnodes.js");
+const nodeLiterals = require("./node-literals/nodeliterals.js");
 const BaseNode = require("./basenode.js");
 
 class Parser {
