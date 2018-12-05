@@ -4,7 +4,7 @@ jest.mock('fs', () => ({
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const iMultiply = require("../../interpreters/inodemultiply.js");
-const kwNodeTi = require("../../parsers/keywordnodes/kwnodejeki.js");
+const kwNodeTi = require("../../parsers/keyword-nodes/kwnodejeki.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
