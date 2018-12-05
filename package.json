@@ -7,7 +7,7 @@
   },
   "scripts": {
     "test": "jest",
-    "coverage": "node_modules/.bin/jest --coverage",
+    "coverage": "node_modules/.bin/jest --coverage"
   },
   "devDependencies": {
     "jest": "^23.6.0"
