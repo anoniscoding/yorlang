@@ -1,11 +1,11 @@
 const constants = require("../../constants.js");
 const leafNl = require("./leafnl.js");
-const BaseNode = require("../basenode.js");
+const BaseNode = require("../baseNode.js");
 
 class KeywordNl extends BaseNode {
 
     constructor() {
-        super()
+        super();
         if (!(leafNl instanceof BaseNode)) {
             throw new Error("Dependency leafNl must be of type BaseNode");
         } 

@@ -1,7 +1,7 @@
 const IBase = require("./ibase.js");
 const Parser = require("../parsers/parser.js");
 const Lexer = require("../lexer.js");
-const InputStream = require("../inputstream.js");
+const InputStream = require("../inputStream.js");
 
 class INodeGbeWole extends IBase {
 

@@ -1,4 +1,4 @@
-const BaseNode = require("../basenode.js");
+const BaseNode = require("../baseNode.js");
 
 class NotOperatorNl extends BaseNode {
 

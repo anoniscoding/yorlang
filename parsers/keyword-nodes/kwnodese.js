@@ -1,10 +1,10 @@
 const constants = require("../../constants.js");
-const BaseNode = require("../basenode.js");
+const BaseNode = require("../baseNode.js");
 const bracketExpressionNl = require("../node-literals/bracketexpressionnl.js");
 class KwNodeSe extends BaseNode {
 
     constructor() {
-        super()
+        super();
         if (!(bracketExpressionNl instanceof BaseNode)) {
             throw new Error("Dependency brackExpressionNl must be of type BaseNode");
         } 

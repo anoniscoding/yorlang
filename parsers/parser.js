@@ -1,9 +1,9 @@
 const path = require('path');
 
-const constants = require(path.join(appRoot, "constants.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 const kwnodes = require("./keyword-nodes/kwnodes.js");
 const nodeLiterals = require("./node-literals/nodeliterals.js");
-const BaseNode = require("./basenode.js");
+const BaseNode = require("./baseNode.js");
 
 class Parser {
 
@@ -18,7 +18,7 @@ class Parser {
         var _blockTypeStack = [];
         this.pushToBlockTypeStack = (blockName) => {
             _blockTypeStack.push(blockName);
-        }
+        };
         this.popBlockTypeStack = () => _blockTypeStack.pop();
         this.peekBlockTypeStack = () => _blockTypeStack[_blockTypeStack.length - 1];
         this.getBlockTypeStack = () => [..._blockTypeStack];
@@ -28,7 +28,7 @@ class Parser {
         var _isArithmeticExpression = true;
         this.setIsArithmeticExpression = (isArithmetic) => {
             _isArithmeticExpression = isArithmetic;
-        }
+        };
         this.isArithmeticExpression = () => _isArithmeticExpression;
     }
 

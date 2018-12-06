@@ -1,5 +1,5 @@
 const constants = require("../../constants.js");
-const BaseNode = require("../basenode.js");
+const BaseNode = require("../baseNode.js");
 const variableNl = require("../node-literals/variablenl.js");
 
 class KwNodeJeki extends BaseNode {

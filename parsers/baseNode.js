@@ -2,7 +2,7 @@ class BaseNode {
 
     //Make BaseNode act like an interface.
     constructor() {
-        if (this.constructor == BaseNode) {
+        if (this.constructor === BaseNode) {
             throw new Error("Cannot instantiate abstract class BaseNode");
         }
     }

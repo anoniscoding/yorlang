@@ -1,4 +1,4 @@
-const BaseNode = require("../basenode.js");
+const BaseNode = require("../baseNode.js");
 const constants = require("../../constants.js");
 
 class ArrayNl extends BaseNode {

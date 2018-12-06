@@ -1,5 +1,5 @@
 const constants = require("../../constants.js");
-const BaseNode = require("../basenode.js");
+const BaseNode = require("../baseNode.js");
 const variableNlTypes = require("./variablenltypes");
 
 class VariableNl extends BaseNode {
