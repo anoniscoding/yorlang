@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-//we are telling *nix systems that the interpreter of our JavaScript file should be /usr/bin/env node which looks up for the locally-installed node executable.
+//since the interpreter works through this file(which is in the root directory), we can create a global variable for the app directory here
+global.appRoot = process.cwd();
 
+//we are telling *nix systems that the interpreter of our JavaScript file should be /usr/bin/env node which looks up for the locally-installed node executable.
 const packageJson = require("./package.json");
 const path = require("path");
 const InputStream = require("./inputstream.js");

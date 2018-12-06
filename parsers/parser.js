@@ -1,4 +1,6 @@
-const constants = require("../constants.js");
+const path = require('path');
+
+const constants = require(path.join(appRoot, "constants.js"));
 const kwnodes = require("./keyword-nodes/kwnodes.js");
 const nodeLiterals = require("./node-literals/nodeliterals.js");
 const BaseNode = require("./basenode.js");
