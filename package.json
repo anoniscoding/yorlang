@@ -11,14 +11,14 @@
     "link": "npm link"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "23.6.0"
   },
   "main": "./cli.js",
   "bin": {
     "yorl": "./cli.js"
   },
   "dependencies": {
-    "commander": "^2.19.0",
-    "readline-sync": "^1.4.9"
+    "commander": "2.19.0",
+    "readline-sync": "1.4.9"
   }
 }
