@@ -1,13 +1,11 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const MainInterpreter = require("../../interpreters/maininterpreter.js");
-const Environment = require("../../environment.js");
-const Parser = require("../../parsers/parser.js");
-const Lexer = require("../../lexer.js");
-const InputStream = require("../../inputstream.js");
-const constants = require("../../constants.js");
+const MainInterpreter = require(path.join(rootDir, "interpreters/maininterpreter.js"));
+const Environment = require(path.join(rootDir, "environment.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const Lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("INodeFun test suite", () => {
     let mainInterpreter, parser;

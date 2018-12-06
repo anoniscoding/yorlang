@@ -1,11 +1,9 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const leafNl = require("../../../parsers/node-literals/leafnl.js");
-const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
+const leafNl = require(path.join(rootDir, "parsers/node-literals/leafnl.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const Lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
 
 describe("LeafLiteral test suite", () => {
     let parser;

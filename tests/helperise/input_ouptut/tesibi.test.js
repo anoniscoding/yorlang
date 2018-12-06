@@ -1,9 +1,7 @@
-jest.mock('readline-sync', () => ({
-    question: jest.fn()
-}));
+const path = require('path');
 
 const readlineSync = require('readline-sync');
-const teSibi = require("../../../helperise/input_output/tesibi.js");
+const teSibi = require(path.join(rootDir, "helperise/input_output/tesibi.js"));
 
 describe("TeSibi Test suite", () => {
 

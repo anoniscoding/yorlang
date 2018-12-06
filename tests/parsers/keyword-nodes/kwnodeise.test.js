@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const kwNodeIse = require("../../../parsers/keyword-nodes/kwnodeise.js");
-const Parser = require("../../../parsers/parser.js");
-const lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
+const kwNodeIse = require(path.join(rootDir, "parsers/keyword-nodes/kwnodeise.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("KwNodeIse test suite", () => {
     let parser;
@@ -32,7 +30,7 @@ describe("KwNodeIse test suite", () => {
                     value: "b"
                 }
             ]
-        }
+        };
 
         expect(kwNodeIse.getNode.call(parser)).toEqual(expectedNode);
     });

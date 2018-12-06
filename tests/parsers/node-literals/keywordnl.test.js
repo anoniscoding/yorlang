@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const keywordNl = require("../../../parsers/node-literals/keywordnl.js");
-const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
+const keywordNl = require(path.join(rootDir, "parsers/node-literals/keywordnl.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const Lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("KeywordNodeLiteral test suite", () => {
     let parser;
@@ -23,7 +21,7 @@ describe("KeywordNodeLiteral test suite", () => {
             operation: null, 
             right: null, 
             value: constants.KW.OOTO
-        }
+        };
 
         expect(keywordNl.getNode.call(parser)).toEqual(expectedNode);
     });

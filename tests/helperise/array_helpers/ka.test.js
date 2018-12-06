@@ -1,4 +1,6 @@
-const ka = require("../../../helperise/array_helpers/ka.js");
+const path = require('path');
+
+const ka = require(path.join(rootDir, "helperise/array_helpers/ka.js"));
 
 describe("Ka Test suite", () => {
 

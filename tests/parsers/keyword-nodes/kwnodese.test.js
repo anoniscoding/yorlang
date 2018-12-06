@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const kwNodeSe = require("../../../parsers/keyword-nodes/kwnodese.js");
-const Parser = require("../../../parsers/parser.js");
-const lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
+const kwNodeSe = require(path.join(rootDir, "parsers/keyword-nodes/kwnodese.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("KwNodeSe test suite", () => {
     let parser;
@@ -37,7 +35,7 @@ describe("KwNodeSe test suite", () => {
                     operation: constants.KW.SOPE
                 }
             ]
-        }
+        };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -52,7 +50,7 @@ describe("KwNodeSe test suite", () => {
             }, 
             operation: constants.KW.SE, 
             then: []
-        }
+        };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -143,7 +141,7 @@ describe("KwNodeSe test suite", () => {
             },
             "operation": constants.KW.SE,
             "then": []
-        }
+        };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });

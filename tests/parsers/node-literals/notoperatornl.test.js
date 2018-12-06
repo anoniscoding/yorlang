@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const notOperatorNl = require("../../../parsers/node-literals/notoperatornl.js");
-const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
+const notOperatorNl = require(path.join(rootDir, "parsers/node-literals/notoperatornl.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const Lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("NotOperatorNl test suite", () => {
     let parser;
@@ -26,7 +24,7 @@ describe("NotOperatorNl test suite", () => {
                 right: null, 
                 value: constants.KW.OOTO
             }
-        }
+        };
 
         expect(notOperatorNl.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -40,7 +38,7 @@ describe("NotOperatorNl test suite", () => {
                 operation: constants.GET_JEKI, 
                 name: "isGood"
             }
-        }
+        };
 
         expect(notOperatorNl.getNode.call(parser)).toEqual(expectedNode);
     });

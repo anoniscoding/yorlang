@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const kwNodeTi = require("../../../parsers/keyword-nodes/kwnodejeki.js");
-const Parser = require("../../../parsers/parser.js");
-const lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
+const kwNodeTi = require(path.join(rootDir, "parsers/keyword-nodes/kwnodejeki.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("KwNodeTi test suite", () => {
     let parser;
@@ -27,7 +25,7 @@ describe("KwNodeTi test suite", () => {
                 right: null,
                 operation: null
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -44,7 +42,7 @@ describe("KwNodeTi test suite", () => {
                 right: null,
                 operation: null
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -59,7 +57,7 @@ describe("KwNodeTi test suite", () => {
                 name: "b",
                 operation: constants.GET_JEKI
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -78,7 +76,7 @@ describe("KwNodeTi test suite", () => {
                 name: "b",
                 operation: constants.GET_JEKI
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -99,7 +97,7 @@ describe("KwNodeTi test suite", () => {
                     {body: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}], operation: constants.ARRAY}
                 ], 
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -116,7 +114,7 @@ describe("KwNodeTi test suite", () => {
                 left: {left: null, operation: null, right: null, value: 5},
                 value: null
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -163,7 +161,7 @@ describe("KwNodeTi test suite", () => {
                 }, 
                 value: null
             }
-        }
+        };
         
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -183,4 +181,4 @@ describe("KwNodeTi test suite", () => {
             kwNodeTi.getNode.call(parser)
         }).toThrow();
     });
-})
+});

@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const kwNodeWoke = require("../../../parsers/keyword-nodes/kwnodewoke.js");
-const Parser = require("../../../parsers/parser.js");
-const Lexer = require("../../../lexer.js");
-const InputStream = require("../../../inputstream.js");
-const constants = require("../../../constants.js");
+const kwNodeWoke = require(path.join(rootDir, "parsers/keyword-nodes/kwnodewoke.js"));
+const Parser = require(path.join(rootDir, "parsers/parser.js"));
+const Lexer = require(path.join(rootDir, "lexer.js"));
+const InputStream = require(path.join(rootDir, "inputStream.js"));
+const constants = require(path.join(rootDir, "constants.js"));
 
 describe("KwNodeWoke test suite", () => {
     let parser;

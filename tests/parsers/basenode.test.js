@@ -1,12 +1,10 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
-}));
+const path = require('path');
 
-const BaseNode = require("../../parsers/basenode.js");
-const kwNodeMock = require("../mocks/kwnode.mock.js");
-const Parser = require("../../parsers/parser.js");
-const Lexer = require("../../lexer.js");
-const InputStream = require("../../inputstream.js");
+const BaseNode = require(path.join(rootDir, "parsers/baseNode.js"));
+const kwNodeMock = require(path.join(rootDir, "tests/mocks/kwNode.mock.js"));
+const Parser = require(path.join(rootDir,"parsers/parser.js"));
+const Lexer = require(path.join(rootDir,"lexer.js"));
+const InputStream = require(path.join(rootDir,"inputStream.js"));
 
 describe("BaseNode test suite ", () => {
 
@@ -23,4 +21,4 @@ describe("BaseNode test suite ", () => {
             kwNodeMock.getNode.call(this);
         }).toThrow("Class of type BaseNode must implement getNode()");
     });
-})
+});

@@ -1,5 +1,9 @@
+const path = require('path');
 module.exports = {
     globals: {
-        "appRoot": process.cwd(), //set app root directory for jest tests
+        rootDir: path.dirname(__filename), //set app root directory for jest tests
     },
+    setupFiles: [
+        '<rootDir>/jest.setup.js',
+    ],
 };

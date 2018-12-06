@@ -2,7 +2,7 @@ jest.mock('fs', () => ({
     readFileSync: jest.fn()
 }));
 
-const InputStream = require("../inputstream.js");
+const InputStream = require("../inputStream.js");
 const constants = require("../constants.js");
 
 describe("InputStream Tests", () => {

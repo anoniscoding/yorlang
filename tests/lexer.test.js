@@ -3,7 +3,7 @@ jest.mock('fs', () => ({
 }));
 
 const Lexer = require("../lexer.js");
-const InputStream = require("../inputstream.js");
+const InputStream = require("../inputStream.js");
 const constants = require("../constants.js");
 
 describe("Lexer Tests", () => {
@@ -14,7 +14,7 @@ describe("Lexer Tests", () => {
     });
 
     test("IsWhiteSpace - it should confirm that they are whitespaces", () => {
-        constants.LIST.WHITESPACES.forEach((ws_char,i,a) => {
+        constants.LIST.WHITESPACES.forEach((ws_char) => {
             expect(lexer.isWhiteSpace(ws_char)).toBe(true);
         });
     });
@@ -24,7 +24,7 @@ describe("Lexer Tests", () => {
     });
 
     test("isPunctuation - it should confirm that they are punctuations", () => {
-        constants.LIST.PUNCTUATIONS.forEach((punc_char,i,a) => {
+        constants.LIST.PUNCTUATIONS.forEach((punc_char) => {
             expect(lexer.isPunctuation(punc_char)).toBe(true);
         });    
     });
@@ -46,7 +46,7 @@ describe("Lexer Tests", () => {
     });
 
     test("isOperator - it should confirm that they are operators", () => {
-        constants.LIST.OPERATORS.forEach((op_char,i,a) => {
+        constants.LIST.OPERATORS.forEach((op_char) => {
             expect(lexer.isOperator(op_char)).toBe(true);
         });    
     });
@@ -56,7 +56,7 @@ describe("Lexer Tests", () => {
     });
 
     test("isKeyword - it should confirm that they are keywords", () => {
-        constants.LIST.KEYWORDS.forEach((kw_char,i,a) => {
+        constants.LIST.KEYWORDS.forEach((kw_char) => {
             expect(lexer.isKeyword(kw_char)).toBe(true);
         });    
     });
