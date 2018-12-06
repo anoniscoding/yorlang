@@ -16,12 +16,12 @@ const constants = require("./constants.js");
 //process.argv will usually have length two, the zeroth item being the "node" interpreter 
 //and the first being the script that node is currently running, items after that were passed on the command line
 
-const arg = process.argv[2];
+const filename = process.argv[2];
 
-if (arg === "-v") {
+if (filename === "-v") {
     console.log(packageJson.version);
-} else if (path.extname(arg) === constants.YL_EXT) { 
-    const parser = new Parser(new Lexer(new InputStream(arg))); //arg is the filename
+} else if (path.extname(filename) === constants.YL_EXT) {
+    const parser = new Parser(new Lexer(new InputStream(filename)));
     new MainInterpreter(new Environment(), parser).interpreteProgram();
 } else {
     throw "Invalid Yorlang command line argument";
