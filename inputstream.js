@@ -8,7 +8,7 @@ class InputStream {
         this.line = 1;
         this.column = 0;
         this.position = 0;
-        this.yorlangFileName = () => fileName;
+        this.yorlangFileName = fileName;
     }
 
     readProgramFile(fileName) {
@@ -38,7 +38,7 @@ class InputStream {
     }
 
     throwError(msg) {
-        throw new Error(`There's an error at line ${this.line} near column ${this.column} in file ${this.yorlangFileName()} :\n ${msg}`);
+        throw new Error(`There's an error at line ${this.line} near column ${this.column} in file ${this.yorlangFileName} :\n ${msg}`);
     }
 
     isEndOfFile() {
