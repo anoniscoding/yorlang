@@ -5,7 +5,7 @@ class CallIseNl extends BaseNode {
 
     /*
      * Whenever iseNameToken is provided, then the function call is being used in an expression
-     * e.g ti a = sum(1,2);
+     * e.g jeki a = sum(1,2);
      * Whenever iseNameToken is not provided, then the function call is not being used in an expression
      * e.g printName("femi");
     */

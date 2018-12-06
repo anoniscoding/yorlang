@@ -7,7 +7,7 @@ class Environment {
         this.iseDeclarations = {};
     }
 
-    setTi(scope, name, value) {
+    setJeki(scope, name, value) {
         if (this.vars[scope] == undefined) {
             this.vars[scope] = {};
         }
@@ -15,7 +15,7 @@ class Environment {
         this.vars[scope][name] = value;
     }
 
-    getTi(scope, name) {
+    getJeki(scope, name) {
         if (this.vars[scope] != undefined)
             return this.vars[scope][name];
     }

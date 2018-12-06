@@ -3,16 +3,16 @@ jest.mock('fs', () => ({
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
-const iNodeGetTi = require("../../interpreters/inodegetti.js");
+const iNodeGetJeki = require("../../interpreters/inodegetjeki.js");
 const Environment = require("../../environment.js");
-const iNodeTi = require("../../interpreters/inodeti.js");
-const kwNodeTi = require("../../parsers/keywordnodes/kwnodeti.js");
+const iNodeTi = require("../../interpreters/inodejeki.js");
+const kwNodeTi = require("../../parsers/keywordnodes/kwnodejeki.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 const constants = require("../../constants.js");
 
-describe("INodeGetTi test suite", () => {
+describe("INodegetJeki test suite", () => {
     let mainInterpreter, parser;
 
     beforeEach(() => {
@@ -21,16 +21,16 @@ describe("INodeGetTi test suite", () => {
     });
 
     test("it should get the value of a variable if it exists", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = 15 / 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 15 / 5;`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
-        expect(iNodeGetTi.interpreteNode.call(mainInterpreter, {name: "a"})).toBe(3);
+        expect(iNodeGetJeki.interpreteNode.call(mainInterpreter, {name: "a"})).toBe(3);
     });
 
     test("it should throw an error when attempting to get the value of a non-existent variable within the current scope", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = 15 / 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 15 / 5;`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
-        expect(() => iNodeGetTi.interpreteNode.call(mainInterpreter, {name: "b"})).toThrow();
+        expect(() => iNodeGetJeki.interpreteNode.call(mainInterpreter, {name: "b"})).toThrow();
     });
 });

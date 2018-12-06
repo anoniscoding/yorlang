@@ -2,7 +2,7 @@ jest.mock('fs', () => ({
     readFileSync: jest.fn()
 }));
 
-const kwNodeTi = require("../../../parsers/keywordnodes/kwnodeti.js");
+const kwNodeTi = require("../../../parsers/keywordnodes/kwnodejeki.js");
 const Parser = require("../../../parsers/parser.js");
 const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
@@ -16,7 +16,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for a number assignment operation", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = 1;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 1;`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
@@ -33,7 +33,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for a string assignment operation", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = "blue";`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = "blue";`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
@@ -50,14 +50,14 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for a variable assignment operation", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = b;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = b;`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
             left: "a",
             right: {
                 name: "b",
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         }
         
@@ -65,7 +65,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for an array elemnt variable assignment operation", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a[0] = b;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a[0] = b;`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
@@ -76,7 +76,7 @@ describe("KwNodeTi test suite", () => {
             },
             right: {
                 name: "b",
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         }
         
@@ -84,7 +84,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for an array assignment operation", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = [1,"anu",b, c[0], [1,2]];`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = [1,"anu",b, c[0], [1,2]];`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
@@ -94,7 +94,7 @@ describe("KwNodeTi test suite", () => {
                 body: [
                     {left: null, operation: null, right: null, value: 1}, 
                     {left: null, operation: null, right: null, value: "anu"},
-                    {name: "b", operation: constants.GET_TI},
+                    {name: "b", operation: constants.GET_JEKI},
                     {indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], name: "c", operation: constants.ARRAY_ELEM},
                     {body: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}], operation: constants.ARRAY}
                 ], 
@@ -105,7 +105,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation equals", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = 5 ==5 ;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 5 ==5 ;`;
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
@@ -122,7 +122,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should return node with operation assign for bracket expression", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = (15 /3) + (3 * 2);`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = (15 /3) + (3 * 2);`;
 
         const expectedNode = {
             left: "a",  
@@ -169,7 +169,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should throw an error when given invalid assignment operation", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = ;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = ;`;
         
         expect(() => {
             kwNodeTi.getNode.call(parser)
@@ -177,7 +177,7 @@ describe("KwNodeTi test suite", () => {
     });
 
     test("it should throw an error when variable is not initialized", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a ;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a ;`;
         
         expect(() => {
             kwNodeTi.getNode.call(parser)

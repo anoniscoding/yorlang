@@ -5,7 +5,7 @@ jest.mock('fs', () => ({
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
 const Environment = require("../../environment.js");
 const iNodeNotEq = require("../../interpreters/inodenoteq.js");
-const kwNodeTi = require("../../parsers/keywordnodes/kwnodeti.js");
+const kwNodeTi = require("../../parsers/keywordnodes/kwnodejeki.js");
 const Parser = require("../../parsers/parser.js");
 const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
@@ -20,24 +20,24 @@ describe("INodeNotEqual test suite", () => {
     });
 
     test("it should return ooto for a not equal true condition", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = 4 != 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 4 != 5;`;
         const node = kwNodeTi.getNode.call(parser);
         expect(iNodeNotEq.interpreteNode.call(mainInterpreter, node.right)).toBe(constants.KW.OOTO);
     });
 
     test("it should return iro for a not equal false condition", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = 5 != 5;`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 5 != 5;`;
         const node = kwNodeTi.getNode.call(parser);
         expect(iNodeNotEq.interpreteNode.call(mainInterpreter, node.right)).toBe(constants.KW.IRO);
     });
 
     test("it should get the value of a variable and test it in a not equal condition", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 6;
-            ${constants.KW.TI} b = a != 7;
+            ${constants.KW.JEKI} a = 6;
+            ${constants.KW.JEKI} b = a != 7;
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual(constants.KW.OOTO);
     });
 });

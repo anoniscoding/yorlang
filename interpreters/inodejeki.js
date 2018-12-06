@@ -2,34 +2,34 @@ const IBase = require("./ibase.js");
 const constants = require("../constants.js");
 const WokeHelper = require("./helpers/woke_helper.js");
 
-class INodeTi extends IBase {
+class INodeJeki extends IBase {
 
     interpreteNode(node) {
         if (node.left.operation === constants.ARRAY_ELEM) {
-            INodeTi.setArrayElement(this, node); 
+            INodeJeki.setArrayElement(this, node); 
             return;
         }
 
         if (WokeHelper.isWokeVariable(this, node.left)) {
-            INodeTi.setWokeVariable(this, node); 
+            INodeJeki.setWokeVariable(this, node); 
             return;
         }
         
-        this.environment().setTi(this.getCurrentScope(), node.left, INodeTi.getValue(this, node.right));
+        this.environment().setJeki(this.getCurrentScope(), node.left, INodeJeki.getValue(this, node.right));
     }
 
     static setWokeVariable(context, node) {
         const topIndex = context.scopeStack().length - 2;
 
         for (let index = topIndex; index >= 0; index--) {
-            if (context.environment().getTi(context.scopeStack()[index], node.left) != undefined) {
-                return context.environment().setTi(context.scopeStack()[index], node.left, INodeTi.getValue(context, node.right));
+            if (context.environment().getJeki(context.scopeStack()[index], node.left) != undefined) {
+                return context.environment().setJeki(context.scopeStack()[index], node.left, INodeJeki.getValue(context, node.right));
             }
         }
     }
 
     static setArrayElement(context, node) { //this also caters for setting multi-dimensional array element
-        let arrayLiteral = INodeTi.getArrayLiteral(context, node);
+        let arrayLiteral = INodeJeki.getArrayLiteral(context, node);
 
         for (let i = 0; i < node.left.indexNodes.length; i++) {
             const arrayIndex = context.evaluateNode(node.left.indexNodes[i]);
@@ -53,8 +53,8 @@ class INodeTi extends IBase {
     }
 
     static getArrayLiteral(context, node) {
-        const tiNode = { name: node.left.name, operation: constants.GET_TI };
-        return context.evaluateNode(tiNode);
+        const jekiNode = { name: node.left.name, operation: constants.GET_JEKI };
+        return context.evaluateNode(jekiNode);
     }
 
     static getValue(context, node) {
@@ -64,4 +64,4 @@ class INodeTi extends IBase {
     }
 }
 
-module.exports = new INodeTi(); 
+module.exports = new INodeJeki(); 

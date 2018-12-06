@@ -82,7 +82,7 @@ describe("KwNodeYi test suite", () => {
             ], 
             yivalue: {
                 name: "firstname", 
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         };
 

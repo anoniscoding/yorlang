@@ -57,12 +57,16 @@ class Lexer {
     }
 
     readIdentifier() {
-        const identifier = this.readWhile(this.isIdentifier);
+        const identifier = this.getIdentifierWithoutAccentMarks(this.readWhile(this.isIdentifier));
         
         return {
             type: this.isKeyword(identifier)  ? constants.KEYWORD : constants.VARIABLE,
             value: identifier
         };
+    }
+
+    getIdentifierWithoutAccentMarks(identifier) {
+        return identifier.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     }
 
     readNumber() {

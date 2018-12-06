@@ -4,12 +4,12 @@ const constants = require("../constants.js");
 class INodeWoke extends IBase {
 
     interpreteNode(node) {
-        let woke = this.environment().getTi(this.getCurrentScope(), constants.KW.WOKE);
+        let woke = this.environment().getJeki(this.getCurrentScope(), constants.KW.WOKE);
 
         if (woke == undefined) woke = node.varNames;
         else woke.push(...node.varNames);
 
-        this.environment().setTi(this.getCurrentScope(), constants.KW.WOKE, woke);
+        this.environment().setJeki(this.getCurrentScope(), constants.KW.WOKE, woke);
     }
 }
 

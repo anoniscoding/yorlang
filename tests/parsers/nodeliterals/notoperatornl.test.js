@@ -37,7 +37,7 @@ describe("NotOperatorNl test suite", () => {
         const expectedNode = {
             operation: constants.SYM.EXCLAMATION_POINT, 
             body: {
-                operation: constants.GET_TI, 
+                operation: constants.GET_JEKI, 
                 name: "isGood"
             }
         }

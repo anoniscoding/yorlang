@@ -40,7 +40,7 @@ class INodeCallIse extends IBase {
 
     static setIseNodeParam(context, iseNodeParamTokens, iseNodeParamValues) {
         for (let i = 0; i < iseNodeParamTokens.length; i++) {
-            context.environment().setTi(context.getCurrentScope(), iseNodeParamTokens[i].value, context.evaluateNode(iseNodeParamValues[i]));
+            context.environment().setJeki(context.getCurrentScope(), iseNodeParamTokens[i].value, context.evaluateNode(iseNodeParamValues[i]));
         }
     }
 

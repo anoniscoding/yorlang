@@ -51,7 +51,7 @@ describe("KwNodeSope test suite", () => {
             operation: constants.KW.SOPE,
             body: {
                 name: "name",
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }
         }
 

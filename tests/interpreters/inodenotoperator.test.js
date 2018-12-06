@@ -18,26 +18,26 @@ describe("INodeNotOperator test suite", () => {
     });
 
     test("it should apply not operation and return iro", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO};`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO};`;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
     });
 
     test("it should apply not operation and return ooto", () => {
-        parser.lexer().inputStream.code = `${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.IRO};`;
+        parser.lexer().inputStream.code = `${constants.KW.JEKI} a = ${constants.SYM.EXCLAMATION_POINT} ${constants.KW.IRO};`;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.OOTO);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.OOTO);
     });
 
     test("it should apply not operation and return iro for a valid variable", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.TI} a = 5;
-            ${constants.KW.TI} a = ${constants.SYM.EXCLAMATION_POINT} a;
+            ${constants.KW.JEKI} a = 5;
+            ${constants.KW.JEKI} a = ${constants.SYM.EXCLAMATION_POINT} a;
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getTi(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toBe(constants.KW.IRO);
     });
 });

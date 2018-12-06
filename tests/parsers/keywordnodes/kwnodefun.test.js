@@ -16,14 +16,14 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should return a valid fun node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {}`;
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {}`;
 
         const expectedNode = {
             body: [], 
             condition: {
                 left: {
                     name: "i", 
-                    operation: constants.GET_TI
+                    operation: constants.GET_JEKI
                 }, 
                 operation: constants.SYM.L_THAN, 
                 right: {
@@ -40,7 +40,7 @@ describe("KwNodeFun test suite", () => {
                 right: {
                     left: {
                         name: "i", 
-                        operation: constants.GET_TI
+                        operation: constants.GET_JEKI
                     },
                     operation: constants.SYM.PLUS, 
                     right: {
@@ -69,16 +69,16 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should return a valid fun node for nested blocks", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {
-            ${constants.KW.FUN} (tí i =0; i < 10; tí i = i + 1;) {}
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
+            ${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {}
         }`;
 
         expect(kwNodeFun.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should throw an error when given invalid fun node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} tí i =0; i < 10; tí i = i + 1;) {
-            sopé i;
+        parser.lexer().inputStream.code = `${constants.KW.FUN} ${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
+            ${constants.KW.SOPE} i;
         }`;
 
         expect(() => {
@@ -87,8 +87,8 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should throw an error when given invalid fun increment node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} (tí i =0; i < 10; tí i = j + 1;) {
-            sopé i;
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = j + 1;) {
+            ${constants.KW.SOPE} i;
         }`;
 
         expect(() => {

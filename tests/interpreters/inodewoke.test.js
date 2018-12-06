@@ -21,16 +21,16 @@ describe("INodeWoke test suite", () => {
     test("it should set global(woke) variables properly within local context", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.ISE} count() {
-                ${constants.KW.TI} counter = 3;
-                ${constants.KW.TI} i = 15;  
-                ${constants.KW.TI} j = [6,7];  
+                ${constants.KW.JEKI} counter = 3;
+                ${constants.KW.JEKI} i = 15;  
+                ${constants.KW.JEKI} j = [6,7];  
             
                 ${constants.KW.ISE} incrementCounter() { 
                     ${constants.KW.WOKE} \`counter, j\`;
 
-                    ${constants.KW.TI} counter = counter + 1;
-                    ${constants.KW.TI} i = i + 1;
-                    ${constants.KW.TI} j[0] = j[0] + 8;
+                    ${constants.KW.JEKI} counter = counter + 1;
+                    ${constants.KW.JEKI} i = i + 1;
+                    ${constants.KW.JEKI} j[0] = j[0] + 8;
                     ${constants.KW.SOPE} i;
                 }
                 incrementCounter();
@@ -54,16 +54,16 @@ describe("INodeWoke test suite", () => {
     test("it should set global(woke) variables properly within local context - second example", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.ISE} count() {
-                ${constants.KW.TI} i = 15;  
+                ${constants.KW.JEKI} i = 15;  
             
                 ${constants.KW.ISE} incrementCounter() {
                     ${constants.KW.WOKE} \`i\`;
-                    ${constants.KW.TI} i = i + 1;
+                    ${constants.KW.JEKI} i = i + 1;
                     
                     ${constants.KW.ISE} increase() { 
                         ${constants.KW.WOKE} \`i\`;
     
-                        ${constants.KW.TI} i = i + 2;
+                        ${constants.KW.JEKI} i = i + 2;
                     }
                     increase();
                 }

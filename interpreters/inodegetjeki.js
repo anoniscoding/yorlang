@@ -1,12 +1,12 @@
 const IBase = require("./ibase.js");
 const WokeHelper = require("./helpers/woke_helper.js");
 
-class INodeGetTi extends IBase {
+class INodeGetJeki extends IBase {
 
     interpreteNode(node) {
-        for (let index = INodeGetTi.getTopIndex(this, node.name); index >= 0; index--) {
-            if (this.environment().getTi(this.scopeStack()[index], node.name) != undefined) {
-                return this.environment().getTi(this.scopeStack()[index], node.name);
+        for (let index = INodeGetJeki.getTopIndex(this, node.name); index >= 0; index--) {
+            if (this.environment().getJeki(this.scopeStack()[index], node.name) != undefined) {
+                return this.environment().getJeki(this.scopeStack()[index], node.name);
             }
         }
 
@@ -24,4 +24,4 @@ class INodeGetTi extends IBase {
     
 }
 
-module.exports = new INodeGetTi();
+module.exports = new INodeGetJeki();

@@ -1,7 +1,7 @@
 const constants = require("../../constants.js");
 
 const KwNodes = {};
-KwNodes[constants.KW.TI] = require("./kwnodeti.js");
+KwNodes[constants.KW.JEKI] = require("./kwnodejeki.js");
 KwNodes[constants.KW.SOPE] = require("./kwnodesope.js");
 KwNodes[constants.KW.SE] = require("./kwnodese");
 KwNodes[constants.KW.NIGBATI] = require("./kwnodenigbati.js");

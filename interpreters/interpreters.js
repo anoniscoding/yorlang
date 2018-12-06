@@ -6,7 +6,7 @@ interpreters[constants.SYM.MINUS] = require("./inodeminus.js");
 interpreters[constants.SYM.DIVIDE] = require("./inodedivide.js");
 interpreters[constants.SYM.MULTIPLY] = require("./inodemultiply.js");
 interpreters[constants.SYM.REMAINDER] = require("./inoderemainder.js");
-interpreters[constants.SYM.ASSIGN] = require("./inodeti.js");
+interpreters[constants.SYM.ASSIGN] = require("./inodejeki.js");
 interpreters[constants.SYM.EQ] = require("./inodeequals.js");
 interpreters[constants.SYM.G_THAN] = require("./inodegthan.js");
 interpreters[constants.SYM.OR] = require("./inodeor.js");
@@ -29,7 +29,7 @@ interpreters[constants.KW.GBE_WOLE] = require("./inodegbewole.js");
 interpreters[constants.KW.WOKE] = require("./inodewoke.js");
 
 interpreters[constants.CALL_ISE] = require("./inodecallise.js");
-interpreters[constants.GET_TI] = require("./inodegetti.js");
+interpreters[constants.GET_JEKI] = require("./inodegetjeki.js");
 interpreters[constants.ARRAY] = require("./inodearray.js");
 interpreters[constants.ARRAY_ELEM] = require("./inodearrayelem.js");
 

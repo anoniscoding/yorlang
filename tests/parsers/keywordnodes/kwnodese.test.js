@@ -23,7 +23,7 @@ describe("KwNodeSe test suite", () => {
         const expectedNode = {
             condition: {
                 name: "niOruko", 
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }, 
             operation: constants.KW.SE, 
             then: [
@@ -48,7 +48,7 @@ describe("KwNodeSe test suite", () => {
         const expectedNode = {
             condition: {
                 name: "niOruko", 
-                operation: constants.GET_TI
+                operation: constants.GET_JEKI
             }, 
             operation: constants.KW.SE, 
             then: []
@@ -66,13 +66,13 @@ describe("KwNodeSe test suite", () => {
     });
 
     test("it should return a valid se and tabi node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} tàbí {}`;
+        parser.lexer().inputStream.code = `${constants.KW.SE} (aropo && ${constants.KW.OOTO}) {} ${constants.KW.TABI} {}`;
 
         const expectedNode = {
             condition: {
                 left: {
                     name: "aropo", 
-                    operation: constants.GET_TI
+                    operation: constants.GET_JEKI
                 }, 
                 operation: constants.SYM.AND, 
                 right: {
@@ -111,7 +111,7 @@ describe("KwNodeSe test suite", () => {
             "condition": {
                 "left": {
                     "name": "aropo",
-                    "operation": constants.GET_TI
+                    "operation": constants.GET_JEKI
                 },
                 "operation": "&&",
                 "right": {
@@ -125,7 +125,7 @@ describe("KwNodeSe test suite", () => {
             "else": {
                 "condition": {
                     "name": "niOruko",
-                    "operation": constants.GET_TI
+                    "operation": constants.GET_JEKI
                 },
                 "else": {
                     "condition": {
