@@ -8,9 +8,17 @@
   "scripts": {
     "test": "jest",
     "coverage": "node_modules/.bin/jest --coverage",
-    "link": "npm link"
+    "link": "npm link",
+    "lint": "eslint ./ --color",
+    "lint:fix": "eslint ./ --fix"
   },
   "devDependencies": {
+    "eslint": "5.9.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
     "jest": "23.6.0"
   },
   "main": "./cli.js",
