@@ -67,6 +67,26 @@ describe("INodeJeki test suite", () => {
         expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
     });
 
+    test("it should assign value to the last position of an array element with empty index", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} a = [1,2];
+            ${constants.KW.JEKI} a[] = "funmi";
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([1,2, "funmi"]);
+    });
+
+    test("it should assign value to the last position of a multidimensional array element with empty index", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} a = [1,[2]];
+            ${constants.KW.JEKI} a[1][] = "funmi";
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual( [1,[2, "funmi"]]);
+    });
+
     test("it should assign value to a multi-dimensional array element", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.JEKI} a = [[1,2], [[3,4], 5]];

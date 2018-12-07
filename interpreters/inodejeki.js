@@ -34,6 +34,12 @@ class INodeJeki extends IBase {
         for (let i = 0; i < node.left.indexNodes.length; i++) {
             const arrayIndex = context.evaluateNode(node.left.indexNodes[i]);
 
+            if (arrayIndex === "" && i == node.left.indexNodes.length - 1) { 
+                //push right node to the last location in the array when index is empty
+                arrayLiteral.push(context.evaluateNode(node.right));
+                return;
+            }
+
             if (typeof arrayIndex == "number") {
                 if (!(Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
                     context.throwError(`Cannot set invalid array element for array : ${node.left.name}`);
@@ -43,12 +49,12 @@ class INodeJeki extends IBase {
                     arrayLiteral = arrayLiteral[arrayIndex];
                 }
 
-                if (i == node.left.indexNodes.length - 1) {
+                if (i === node.left.indexNodes.length - 1) {
                     arrayLiteral[arrayIndex] = context.evaluateNode(node.right);
                 }
             } else {
                 context.throwError(`Typeof index given for array ${node.name} must be a number`);
-            }
+            } 
         };
     }
 
