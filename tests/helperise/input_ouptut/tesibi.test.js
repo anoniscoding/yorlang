@@ -7,11 +7,18 @@ const teSibi = require("../../../helperise/input_output/tesibi.js");
 
 describe("TeSibi Test suite", () => {
 
-    test("It should read user input", () => {
+    test("It should read user input as string", () => {
         readlineSync.question.mockReturnValueOnce("anu");
 
         const array = ["What is your name?"];
         expect(teSibi(array)).toBe("anu");
+    });
+
+    test("It should read user input as number", () => {
+        readlineSync.question.mockReturnValueOnce("2");
+
+        const array = ["What is your age?"];
+        expect(teSibi(array)).toBe(2);
     });
 
     test("It should fail to read user input", () => {
