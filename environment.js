@@ -1,4 +1,4 @@
-const helperIseDeclarations = require("./helperise/registeredHelperIse.js");
+const helperIseDeclarations = require("./helper-ise/registeredHelperIse.js");
 
 class Environment {
 

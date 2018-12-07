@@ -1,7 +1,7 @@
 const path = require('path');
 
 const readlineSync = require('readline-sync');
-const teSibi = require(path.join(rootDir, "helperise/input_output/tesibi.js"));
+const teSibi = require(path.join(rootDir, "helper-ise/input-output/teSibi.js"));
 
 describe("TeSibi Test suite", () => {
 

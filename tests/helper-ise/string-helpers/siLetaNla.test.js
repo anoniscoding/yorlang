@@ -1,6 +1,6 @@
 const path = require('path');
 
-const siLetaNla = require(path.join(rootDir, "helperise/string_helpers/si_leta_nla.js"));
+const siLetaNla = require(path.join(rootDir, "helper-ise/string-helpers/siLetaNla.js"));
 
 describe("SiLetaNla Test suite", () => {
 
