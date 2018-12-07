@@ -139,7 +139,7 @@ describe("INodeJeki test suite", () => {
 
     test("it should assign transformed (lowercase) string to variable", () => {
         parser.lexer().inputStream.code = `
-            ${constants.KW.JEKI} a = síLẹ́tàkékeré("FUNMI");
+            ${constants.KW.JEKI} a = síLẹ́tàKékeré("FUNMI");
         `;
 
         mainInterpreter.interpreteProgram();
