@@ -44,7 +44,7 @@ class Environment {
         }
     }
 
-    sope(value) {
+    scope(value) {
         console.log(value);
     }
 }
