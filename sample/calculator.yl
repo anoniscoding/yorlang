@@ -1,0 +1,31 @@
+sope "Kaabo si eto isise isiro";
+sope "";
+sope "Awon itoni to maa tele ree";
+sope "te ami + lati se aropo";
+sope "te ami - lati se iyokuro";
+sope "te ami / lati se pipin";
+sope "te ami * lati se isodipupo";
+sope "te ami % lati se iseku";
+
+nigbati (ooto) {
+    jeki operation =  tèSíbí("te iru isiro to fe: ");
+    jeki akoko = tèSíbí("te nonba akoko: ");
+    jeki ikeji = tèSíbí("te nonba ikeji: ");
+
+    yí ( operation )  { 
+        irú "+" : 
+            sọpé akoko + ikeji;
+        irú "-" : 
+            sọpé akoko - ikeji;
+        irú "/" : 
+            sọpé akoko / ikeji;
+        irú "*" : 
+            sọpé akoko * ikeji;
+        irú "%" : 
+            sọpé akoko % ikeji;
+        padàsí: 
+            sọpé "Jowo tele itoni to so bo se maa mu iru isiro to fe";
+    }
+}
+
+

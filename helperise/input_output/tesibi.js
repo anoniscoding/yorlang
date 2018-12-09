@@ -4,7 +4,10 @@ const readlineSync = require('readline-sync');
 function teSibi(args) {
     if (args instanceof Array) {
         const [param] = args;
-        if (typeof param === "string") return readlineSync.question(param);
+        if (typeof param === "string"){
+            const input = readlineSync.question(param);
+            return parseFloat(input) || input;
+        } 
 
         throw new Error (`Invalid param given to helper ise teSibi.`);
     } 

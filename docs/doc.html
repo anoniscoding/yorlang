@@ -145,7 +145,7 @@
                 <div class="note">
                     <p class="fixedWidthParagraph"> Note: <br>Use the<strong> #</strong> symbol for single line comments. There's no multiline comments like /** */</p>
                     <p> A semi colon must be used at the end of every statement in yorlang </p>
-                    <p> <strong>Use of accent marks in yorlang keywords is optional e.g 'jẹ́kí' is the same as 'jeki'</strong></p>
+                    <p> <strong> Yorlang is not accent mark sensitive but it is case sensitive. </strong></p>
                     <p> Only english/yoruba alphabet can be used for variable names. </p>
                     <p  class="fixedWidthParagraph">Boolean values are - true: <strong> òótọ́ &nbsp; </strong> false: <strong> irọ́</strong></p>
                 </div>
@@ -417,6 +417,25 @@
                     <p class="example-output-name"> OUTPUT </p>
                     <p class="example-output-value"> S-class </p>
                 </div>
+
+                <hr>
+                <p class="fixedWidthParagraph">Add elements to the last position of an array by making the index empty</p>
+                <div class="example">
+                    <p class="example-lang"> yorlang </p>
+                    <p class="example-one"> <strong id="condition"> jẹ́kí    </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong> = [  [<strong id="stringInt">"corolla", "camry"</strong>], "benz" ]; 
+                    </p>
+                    <p class="example-one"><strong id="condition">jẹ́kí</strong> <strong id="varName"> àwọnMọ́tọ̀[0][] </strong> = <strong id="varName">"S-class";</strong> </p>
+                        <p class="example-one"><strong id="condition">jẹ́kí</strong> <strong id="varName"> àwọnMọ́tọ̀[] </strong> = <strong id="varName">"G-Wagon";</strong> </p>
+
+                    
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong>[0][2];
+                    <p class="example-one"> <strong id="print"> sọpé </strong> </strong> <strong id="varName"> àwọnMọ́tọ̀ </strong>[2];
+                </div>
+                <div class="example-output">
+                    <p class="example-output-name"> OUTPUT </p>
+                    <p class="example-output-value"> S-class </p>
+                    <p class="example-output-value"> G-Wagon </p>
+                </div>
             </div>
             <br>
             <div class="container-fluid">
@@ -454,9 +473,9 @@
                     takes a <strong> string </strong> as its parameter. <br>
                     For example, síLẹ́tàŃlá("KaYode"); returns <strong> "KAYODE"</strong>
                 </p>
-                <p  class="fixedWidthParagraph"> <strong> síLẹ́tàkékeré  </strong>: <br> This is used for converting <strong> strings</strong> to lowercase. síLẹ́tàkékeré 
+                <p  class="fixedWidthParagraph"> <strong> síLẹ́tàKékeré  </strong>: <br> This is used for converting <strong> strings</strong> to lowercase. síLẹ́tàkékeré 
                     takes a <strong> string </strong> as its parameter. <br>
-                    For example, síLẹ́tàkékeré("KaYode"); returns <strong> "kayode"</strong>
+                    For example, síLẹ́tàKékeré("KaYode"); returns <strong> "kayode"</strong>
                 </p>
                 <p  class="fixedWidthParagraph"> <strong> tèSíbí  </strong>: <br> This is used for reading user inputs. tèsíbí 
                     takes a <strong> string </strong> as its parameter. <br>

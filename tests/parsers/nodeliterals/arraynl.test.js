@@ -43,6 +43,20 @@ describe("ArrayNodeLiteral test suite", () => {
         expect(arrayNl.getNode.call(parser, arrayNameToken)).toEqual(expectedNode);
     });
 
+    test("It should parse array element with empty index", () => {
+        parser.lexer().inputStream.code = `a[]`;
+        const arrayNameToken = {value: parser.parseVarname()};
+
+        const expectedNode = {
+            indexNodes: [{"left": null, "operation": null, "right": null, "value": ""}], 
+            name: "a", 
+            operation: constants.ARRAY_ELEM
+        };
+
+
+        expect(arrayNl.getNode.call(parser, arrayNameToken)).toEqual(expectedNode);
+    });
+
     test("It should parse multidimensional array", () => {
         parser.lexer().inputStream.code = "[[\"corolla\", \"camry\"], [\"G-Wagon\", \"S-class\" ], [\"Elantra\", \"sonata\"] ]";
 

@@ -39,11 +39,17 @@ class ArrayNl extends BaseNode {
     }
 
     static getArrayElementIndexNode(context) {
+        let indexNode = { operation: null, right: null, left: null, value: "" };
+
         context.skipPunctuation(constants.SYM.L_SQ_BRACKET);
-        const indexNode = context.parseExpression();
+        if (ArrayNl.isNotEmptyArrayIndex(context)) indexNode = context.parseExpression();
         context.skipPunctuation(constants.SYM.R_SQ_BRACKET);
 
         return indexNode;
+    }
+
+    static isNotEmptyArrayIndex(context) {
+        return context.lexer().peek().value != constants.SYM.R_SQ_BRACKET;
     }
 }
 
