@@ -1,22 +1,21 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
-const kwNodeJeki =  require("./kwNodeJeki.js");
+const kwNodeJeki = require("./kwNodeJeki.js");
 const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
 class KwNodeFun extends BaseNode {
-
-    constructor() {
+    constructor () {
         super();
         if (this.isDependenciesInValid()) {
             throw new Error("Dependencies must be of type BaseNode");
-        } 
+        }
     }
 
-    isDependenciesInValid() {
+    isDependenciesInValid () {
         return !(kwNodeJeki instanceof BaseNode) && !(bracketExpressionNl instanceof BaseNode);
     }
 
-    getNode() {
+    getNode () {
         this.skipKeyword(constants.KW.FUN);
 
         this.skipPunctuation(constants.SYM.L_BRACKET);
@@ -24,7 +23,7 @@ class KwNodeFun extends BaseNode {
         node.operation = constants.KW.FUN;
         node.init = kwNodeJeki.getNode.call(this);
         node.condition = bracketExpressionNl.getNode.call(this, false, false);
-        
+
         this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
         node.increment = kwNodeJeki.getNode.call(this);
 
@@ -35,17 +34,17 @@ class KwNodeFun extends BaseNode {
 
         node.body = this.parseBlock(constants.KW.FUN);
 
-        return node;    
+        return node;
     }
 
-    static isInValidFunIncrementStatement(funNode) {
+    static isInValidFunIncrementStatement (funNode) {
         const incrementNode = funNode.increment.right;
 
-        if ([constants.SYM.PLUS, constants.SYM.MINUS].indexOf(incrementNode.operation) >= 0) {
-            //e.g fun (tí i =0; i < 10; tí i = i + 1;)
-            //make sure there is variable 'i' in atleast one child of the incrementNode 
-            //i.e jeki i = i + 1 or jeki i = 1 + i or jeki i = i + i
-            if ([incrementNode.left.name, incrementNode.right.name].indexOf(funNode.init.left) >= 0) {
+        if ([constants.SYM.PLUS, constants.SYM.MINUS, ].indexOf(incrementNode.operation) >= 0) {
+            // e.g fun (tí i =0; i < 10; tí i = i + 1;)
+            // make sure there is variable 'i' in atleast one child of the incrementNode
+            // i.e jeki i = i + 1 or jeki i = 1 + i or jeki i = i + i
+            if ([incrementNode.left.name, incrementNode.right.name, ].indexOf(funNode.init.left) >= 0) {
                 return false;
             }
         }
