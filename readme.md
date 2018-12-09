@@ -1,6 +1,7 @@
+[![Build Status](https://travis-ci.com/adexot/yorlang.svg?branch=master)](https://travis-ci.com/adexot/yorlang)
+
 # Yorlang Programming Language
 **Yorlang** was created so we can have fun writing code in one of the native languages (i.e Yoruba) in Nigeria .
-[![Build Status](https://travis-ci.com/adexot/yorlang.svg?branch=master)](https://travis-ci.com/adexot/yorlang)
 
 ## Feature List
 - Variable Declaration
