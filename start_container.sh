@@ -18,7 +18,7 @@ docker run \
     --rm \
     -v ${ROOT}:/src \
     ${IMAGE_NAME} \
-    bash
+    sh -c "npm i && bash"
 
 echo " ----- EXITED from Disposable Container -----"
 echo " ----- REMOVED Exited Container -----"

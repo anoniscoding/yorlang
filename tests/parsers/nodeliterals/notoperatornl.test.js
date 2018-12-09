@@ -1,8 +1,8 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
-const notOperatorNl = require("../../../parsers/nodeliterals/notOperatorNl.js");
+const notOperatorNl = require("../../../parsers/nodeLiterals/notoperatornl.js");
 const Parser = require("../../../parsers/parser.js");
 const Lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
@@ -19,14 +19,14 @@ describe("NotOperatorNl test suite", () => {
         parser.lexer().inputStream.code = `${constants.SYM.EXCLAMATION_POINT} ${constants.KW.OOTO}`;
 
         const expectedNode = {
-            operation: constants.SYM.EXCLAMATION_POINT, 
+            operation: constants.SYM.EXCLAMATION_POINT,
             body: {
-                left: null, 
-                operation: null, 
-                right: null, 
-                value: constants.KW.OOTO
-            }
-        }
+                left: null,
+                operation: null,
+                right: null,
+                value: constants.KW.OOTO,
+            },
+        };
 
         expect(notOperatorNl.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -35,14 +35,13 @@ describe("NotOperatorNl test suite", () => {
         parser.lexer().inputStream.code = `${constants.SYM.EXCLAMATION_POINT} isGood;`;
 
         const expectedNode = {
-            operation: constants.SYM.EXCLAMATION_POINT, 
+            operation: constants.SYM.EXCLAMATION_POINT,
             body: {
-                operation: constants.GET_JEKI, 
-                name: "isGood"
-            }
-        }
+                operation: constants.GET_JEKI,
+                name: "isGood",
+            },
+        };
 
         expect(notOperatorNl.getNode.call(parser)).toEqual(expectedNode);
     });
-
 });
