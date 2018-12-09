@@ -1,5 +1,6 @@
 # Yorlang Programming Language
 **Yorlang** was created so we can have fun writing code in one of the native languages (i.e Yoruba) in Nigeria .
+[![Build Status](https://travis-ci.com/adexot/yorlang.svg?branch=master)](https://travis-ci.com/adexot/yorlang)
 
 ## Feature List
 - Variable Declaration
@@ -8,9 +9,9 @@
 
 For the full documentation showcasing examples and language use, visit the [Website](https://anoniscoding.github.io/yorlang/).
 
-This project assumes you have [Git](https://git-scm.com/downloads) installed. 
+This project assumes you have [Git](https://git-scm.com/downloads) installed.
 
-# Setup 
+# Setup
 For developers to get started with this project, you'll need to create a local copy of the project.
 
 Run the following in your terminal:
@@ -40,7 +41,7 @@ You can then proceed to the **Hello World** Section or the **Unit and Integratio
 ## Non-Docker Setup
 If you don't have Docker installed or **you prefer to pollute your PC's environment** :), you'll need to install [Node.js](https://nodejs.org).
 
-This project uses ES6+ features and requires a Node version that supports ES6+ features. 
+This project uses ES6+ features and requires a Node version that supports ES6+ features.
 
 ``N/B``: Yorlang was built with Nodejs ``v8.9.4``
 
@@ -53,19 +54,19 @@ You should get something like ``v8.9.4``
 
 
 #### Install Node.js Modules
-To install all dependencies, run the following in your terminal: 
+To install all dependencies, run the following in your terminal:
 ```
 npm install
 ```
 
 #### Link Yorl Command to Terminal
-In order to run a file using the ``yorl`` command, run the following: 
+In order to run a file using the ``yorl`` command, run the following:
 ```
 npm run link
 ```
 
 ## Hello World
-You can run sample code by running the following in your terminal: 
+You can run sample code by running the following in your terminal:
 ```
 yorl test.yl
 ```
@@ -74,7 +75,7 @@ You should get something like: ``báwo ni ayé``
 
 
 ## Unit and Integration Tests
-To run tests in the project, run the following in your terminal: 
+To run tests in the project, run the following in your terminal:
 ```
 npm test
 ```
