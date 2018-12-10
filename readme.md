@@ -69,7 +69,7 @@ npm run link
 ## Hello World
 You can run sample code by running the following in your terminal:
 ```
-yorl test.yl
+yorl sample/test.yl
 ```
 
 You should get something like: ``báwo ni ayé``
