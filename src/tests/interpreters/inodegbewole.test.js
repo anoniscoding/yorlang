@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -11,7 +11,6 @@ const constants = require("../../constants.js");
 const fs = require("fs");
 
 describe("INodeGbeWole test suite", () => {
-
     beforeEach(() => {
         global.console.log = jest.fn();
     });
@@ -23,7 +22,7 @@ describe("INodeGbeWole test suite", () => {
             `).mockReturnValueOnce(`${constants.KW.ISE} isiro(a, b) { 
                 ${constants.KW.PADA} a * b; 
             }`);
-            
+
         const parser = new Parser(new Lexer(new InputStream()));
         const mainInterpreter = new MainInterpreter(new Environment(), parser);
         mainInterpreter.interpreteProgram();
@@ -35,10 +34,10 @@ describe("INodeGbeWole test suite", () => {
                 ${constants.KW.JEKI} b = isiro(14, 2);
                 ${constants.KW.SOPE} b;         
             `);
-            
+
         const parser = new Parser(new Lexer(new InputStream()));
         const mainInterpreter = new MainInterpreter(new Environment(), parser);
-        
+
         expect(() => mainInterpreter.interpreteProgram()).toThrow();
     });
 });

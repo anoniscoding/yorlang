@@ -2,20 +2,19 @@ const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 
 class KwNodePada extends BaseNode {
-
-    getNode() {        
+    getNode () {
         if (KwNodePada.isExpectedPadaStatement(this)) {
             return KwNodePada.getParsedPadaNode(this);
         }
-        
+
         this.throwError("Yorlang pada keyword not expected in a non function(ise) block");
     }
 
-    static isExpectedPadaStatement(context) {
-        return context.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0
+    static isExpectedPadaStatement (context) {
+        return context.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0;
     }
 
-    static getParsedPadaNode(context) {
+    static getParsedPadaNode (context) {
         context.skipKeyword(constants.KW.PADA);
         const node = {};
         node.operation = constants.KW.PADA;

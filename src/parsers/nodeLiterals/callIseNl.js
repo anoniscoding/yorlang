@@ -20,7 +20,7 @@ class CallIseNl extends BaseNode {
             this.parseExpression.bind(this), null
         );
 
-        if (iseNameToken.value == undefined) this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        if (iseNameToken.value === undefined) this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }

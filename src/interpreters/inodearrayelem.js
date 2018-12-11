@@ -2,21 +2,20 @@ const IBase = require("./ibase.js");
 const contansts = require("../constants.js");
 
 class INodeArrayElement extends IBase {
-
-    interpreteNode(node) {
-        const jekiNode = {name: node.name, operation: contansts.GET_JEKI}
+    interpreteNode (node) {
+        const jekiNode = { name: node.name, operation: contansts.GET_JEKI, };
         const arrayLiteral = this.evaluateNode(jekiNode);
-        
+
         return INodeArrayElement.getArrayElement(this, node, arrayLiteral);
     }
 
-    static getArrayElement(context, node, arrayLiteral) {
-        let arrayElement, isOnedimensionalArray = true;
+    static getArrayElement (context, node, arrayLiteral) {
+        let arrayElement; let isOnedimensionalArray = true;
 
-        node.indexNodes.map(indexNode => { //if this callback run more than once, then the array is multi-dimensional
+        node.indexNodes.map(indexNode => { // if this callback run more than once, then the array is multi-dimensional
             const index = context.evaluateNode(indexNode);
 
-            if (typeof index == "number") {
+            if (typeof index === "number") {
                 arrayElement = (isOnedimensionalArray) ? arrayLiteral[index] : arrayElement[index];
                 isOnedimensionalArray = false;
             } else {
@@ -24,7 +23,7 @@ class INodeArrayElement extends IBase {
             }
         });
 
-        if (arrayElement == undefined) context.throwError(`Index given for array ${node.name} does not exist`);
+        if (!arrayElement) context.throwError(`Index given for array ${node.name} does not exist`);
 
         return arrayElement;
     }

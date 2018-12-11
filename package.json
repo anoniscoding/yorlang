@@ -9,8 +9,8 @@
     "test": "jest",
     "coverage": "node_modules/.bin/jest --coverage",
     "link": "npm link",
-    "lint": "eslint ./ --color",
-    "lint:fix": "eslint ./ --fix"
+    "lint": "eslint ./src --color",
+    "lint:fix": "eslint ./src --fix"
   },
   "devDependencies": {
     "eslint": "5.9.0",
@@ -19,7 +19,9 @@
     "eslint-plugin-node": "8.0.0",
     "eslint-plugin-promise": "4.0.1",
     "eslint-plugin-standard": "4.0.0",
-    "jest": "23.6.0"
+    "husky": "1.2.0",
+    "jest": "23.6.0",
+    "lint-staged": "8.1.0"
   },
   "main": "./cli.js",
   "bin": {
@@ -28,5 +30,16 @@
   "dependencies": {
     "commander": "2.19.0",
     "readline-sync": "1.4.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

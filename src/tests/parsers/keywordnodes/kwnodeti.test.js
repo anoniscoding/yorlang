@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeTi = require("../../../parsers/keywordnodes/kwnodejeki.js");
@@ -25,10 +25,10 @@ describe("KwNodeTi test suite", () => {
                 value: 1,
                 left: null,
                 right: null,
-                operation: null
-            }
-        }
-        
+                operation: null,
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
@@ -37,15 +37,15 @@ describe("KwNodeTi test suite", () => {
 
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
-            left:  "a",
+            left: "a",
             right: {
                 value: "blue",
                 left: null,
                 right: null,
-                operation: null
-            }
-        }
-        
+                operation: null,
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
@@ -57,10 +57,10 @@ describe("KwNodeTi test suite", () => {
             left: "a",
             right: {
                 name: "b",
-                operation: constants.GET_JEKI
-            }
-        }
-        
+                operation: constants.GET_JEKI,
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
@@ -70,16 +70,16 @@ describe("KwNodeTi test suite", () => {
         const expectedNode = {
             operation: constants.SYM.ASSIGN,
             left: {
-                indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], 
-                name: "a", 
-                operation: constants.ARRAY_ELEM
+                indexNodes: [{ "left": null, "operation": null, "right": null, "value": 0, }, ],
+                name: "a",
+                operation: constants.ARRAY_ELEM,
             },
             right: {
                 name: "b",
-                operation: constants.GET_JEKI
-            }
-        }
-        
+                operation: constants.GET_JEKI,
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
@@ -92,15 +92,15 @@ describe("KwNodeTi test suite", () => {
             right: {
                 operation: constants.ARRAY,
                 body: [
-                    {left: null, operation: null, right: null, value: 1}, 
-                    {left: null, operation: null, right: null, value: "anu"},
-                    {name: "b", operation: constants.GET_JEKI},
-                    {indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], name: "c", operation: constants.ARRAY_ELEM},
-                    {body: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}], operation: constants.ARRAY}
-                ], 
-            }
-        }
-        
+                    { left: null, operation: null, right: null, value: 1, },
+                    { left: null, operation: null, right: null, value: "anu", },
+                    { name: "b", operation: constants.GET_JEKI, },
+                    { indexNodes: [{ "left": null, "operation": null, "right": null, "value": 0, }, ], name: "c", operation: constants.ARRAY_ELEM, },
+                    { body: [{ left: null, operation: null, right: null, value: 1, }, { left: null, operation: null, right: null, value: 2, }, ], operation: constants.ARRAY, },
+                ],
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
@@ -112,12 +112,12 @@ describe("KwNodeTi test suite", () => {
             left: "a",
             right: {
                 operation: constants.SYM.EQ,
-                right: {left: null, operation: null, right: null, value: 5},
-                left: {left: null, operation: null, right: null, value: 5},
-                value: null
-            }
-        }
-        
+                right: { left: null, operation: null, right: null, value: 5, },
+                left: { left: null, operation: null, right: null, value: 5, },
+                value: null,
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
@@ -125,62 +125,62 @@ describe("KwNodeTi test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.JEKI} a = (15 /3) + (3 * 2);`;
 
         const expectedNode = {
-            left: "a",  
-            operation: constants.SYM.ASSIGN,        
+            left: "a",
+            operation: constants.SYM.ASSIGN,
             right: {
                 left: {
                     left: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: 15
-                    }, 
-                    operation: "/", 
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: 15,
+                    },
+                    operation: "/",
                     right: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: 3
-                    }, 
-                    value: null
-                }, 
-                operation: "+", 
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: 3,
+                    },
+                    value: null,
+                },
+                operation: "+",
                 right: {
                     left: {
                         left: null,
-                        operation: null, 
-                        right: null, 
-                        value: 3
-                    }, 
-                    operation: "*", 
+                        operation: null,
+                        right: null,
+                        value: 3,
+                    },
+                    operation: "*",
                     right: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: 2
-                    }, 
-                    value: null
-                }, 
-                value: null
-            }
-        }
-        
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: 2,
+                    },
+                    value: null,
+                },
+                value: null,
+            },
+        };
+
         expect(kwNodeTi.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should throw an error when given invalid assignment operation", () => {
         parser.lexer().inputStream.code = `${constants.KW.JEKI} a = ;`;
-        
+
         expect(() => {
-            kwNodeTi.getNode.call(parser)
+            kwNodeTi.getNode.call(parser);
         }).toThrow();
     });
 
     test("it should throw an error when variable is not initialized", () => {
         parser.lexer().inputStream.code = `${constants.KW.JEKI} a ;`;
-        
+
         expect(() => {
-            kwNodeTi.getNode.call(parser)
+            kwNodeTi.getNode.call(parser);
         }).toThrow();
     });
-})
+});

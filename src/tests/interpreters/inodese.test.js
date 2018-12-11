@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -105,5 +105,4 @@ describe("INodeSe test suite", () => {
         mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(7);
     });
-    
 });

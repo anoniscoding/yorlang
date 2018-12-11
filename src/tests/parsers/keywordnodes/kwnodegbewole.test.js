@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const KwNodeGbeWole = require("../../../parsers/keywordnodes/kwnodegbewole.js");
@@ -25,14 +25,14 @@ describe("KwNodeGbeWole test suite", () => {
                 operation: null,
                 right: null,
                 value: "./test.yl",
-            }
+            },
         };
 
         expect(KwNodeGbeWole.getNode.call(parser))
             .toEqual(expectedNode);
     });
 
-    test("It should fail when gbewole is given invalid parameter", () => { 
+    test("It should fail when gbewole is given invalid parameter", () => {
         parser.lexer().inputStream.code = `
             ${constants.KW.GBE_WOLE} "./test.yal";
         `;

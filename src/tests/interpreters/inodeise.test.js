@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -30,18 +30,18 @@ describe("INodeIse test suite", () => {
                 operation: constants.KW.SOPE,
                 body: {
                     name: "fname",
-                    operation: constants.GET_JEKI
-                }
-            }], 
-            name: "teOruko", 
-            operation: constants.KW.ISE, 
+                    operation: constants.GET_JEKI,
+                },
+            }, ],
+            name: "teOruko",
+            operation: constants.KW.ISE,
             paramTokens: [
                 {
-                    type: constants.VARIABLE, 
-                    value: "fname"
-                }
-            ]
-        }
+                    type: constants.VARIABLE,
+                    value: "fname",
+                },
+            ],
+        };
 
         mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teOruko")).toEqual(expectedNode);
@@ -74,5 +74,4 @@ describe("INodeIse test suite", () => {
         mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getIse(mainInterpreter.getCurrentScope(), "teName")).toBeTruthy();
     });
-
 });

@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const Lexer = require("../lexer.js");
@@ -10,11 +10,11 @@ describe("Lexer Tests", () => {
     let lexer;
 
     beforeEach(() => {
-       lexer = new Lexer(new InputStream()); 
+        lexer = new Lexer(new InputStream());
     });
 
     test("IsWhiteSpace - it should confirm that they are whitespaces", () => {
-        constants.LIST.WHITESPACES.forEach((ws_char,i,a) => {
+        constants.LIST.WHITESPACES.forEach((ws_char, i, a) => {
             expect(lexer.isWhiteSpace(ws_char)).toBe(true);
         });
     });
@@ -24,9 +24,9 @@ describe("Lexer Tests", () => {
     });
 
     test("isPunctuation - it should confirm that they are punctuations", () => {
-        constants.LIST.PUNCTUATIONS.forEach((punc_char,i,a) => {
+        constants.LIST.PUNCTUATIONS.forEach((punc_char, i, a) => {
             expect(lexer.isPunctuation(punc_char)).toBe(true);
-        });    
+        });
     });
 
     test("isPunctuation - it should confirm that it is not a punctuation", () => {
@@ -46,9 +46,9 @@ describe("Lexer Tests", () => {
     });
 
     test("isOperator - it should confirm that they are operators", () => {
-        constants.LIST.OPERATORS.forEach((op_char,i,a) => {
+        constants.LIST.OPERATORS.forEach((op_char, i, a) => {
             expect(lexer.isOperator(op_char)).toBe(true);
-        });    
+        });
     });
 
     test("isOperator - it should confirm that it is not an operator", () => {
@@ -56,9 +56,9 @@ describe("Lexer Tests", () => {
     });
 
     test("isKeyword - it should confirm that they are keywords", () => {
-        constants.LIST.KEYWORDS.forEach((kw_char,i,a) => {
+        constants.LIST.KEYWORDS.forEach((kw_char, i, a) => {
             expect(lexer.isKeyword(kw_char)).toBe(true);
-        });    
+        });
     });
 
     test("isKeyword - it should confirm that it is not a keyword", () => {
@@ -86,13 +86,13 @@ describe("Lexer Tests", () => {
     });
 
     test("ReadString - it should identify a string literal, while stripping off the quote symbols, and return the string token", () => {
-        lexer.inputStream.code = `"a23"`;
+        lexer.inputStream.code = "\"a23\"";
 
-        expect(lexer.readString()).toEqual({ type: constants.STRING, value: "a23" });
+        expect(lexer.readString()).toEqual({ type: constants.STRING, value: "a23", });
     });
 
     test("ReadString - it should identify an incomplete string literal, and throw an error msg ", () => {
-        lexer.inputStream.code = `"a23`;
+        lexer.inputStream.code = "\"a23";
 
         expect(() => {
             lexer.readString();
@@ -102,25 +102,25 @@ describe("Lexer Tests", () => {
     test("ReadIdentifier - it should return an variable token", () => {
         lexer.inputStream.code = "name";
 
-        expect(lexer.readIdentifier()).toEqual({type: constants.VARIABLE, value: "name"});
+        expect(lexer.readIdentifier()).toEqual({ type: constants.VARIABLE, value: "name", });
     });
 
     test("ReadIdentifier - it should return a keyword token", () => {
         lexer.inputStream.code = `${constants.KW.JEKI}`;
 
-        expect(lexer.readIdentifier()).toEqual({type: constants.KEYWORD, value: `${constants.KW.JEKI}`});
+        expect(lexer.readIdentifier()).toEqual({ type: constants.KEYWORD, value: `${constants.KW.JEKI}`, });
     });
 
     test("ReadNumber - it should return a number token", () => {
         lexer.inputStream.code = "50.32";
 
-        expect(lexer.readNumber()).toEqual({type: constants.NUMBER, value: 50.32});
+        expect(lexer.readNumber()).toEqual({ type: constants.NUMBER, value: 50.32, });
     });
 
     test("ReadNumber - it should return a number token with a single decimal points", () => {
         lexer.inputStream.code = "50.32.5";
 
-        expect(lexer.readNumber()).toEqual({type: constants.NUMBER, value: 50.32});
+        expect(lexer.readNumber()).toEqual({ type: constants.NUMBER, value: 50.32, });
     });
 
     test("SkipComments - it should skip all comments", () => {
@@ -131,33 +131,33 @@ describe("Lexer Tests", () => {
 
     test("SkipWhiteSpaces - it should should skip whitespaces", () => {
         lexer.inputStream.code = `    \n\t${constants.KW.JEKI}`;
-        expect(lexer.next()).toEqual({type: constants.KEYWORD, value: `${constants.KW.JEKI}`});
+        expect(lexer.next()).toEqual({ type: constants.KEYWORD, value: `${constants.KW.JEKI}`, });
     });
 
     test("ReadNext - it should return the next token", () => {
         lexer.inputStream.code = `${constants.KW.SOPE} 2`;
 
-        expect(lexer.readNext()).toEqual({type: constants.KEYWORD, value: `${constants.KW.SOPE}`});
+        expect(lexer.readNext()).toEqual({ type: constants.KEYWORD, value: `${constants.KW.SOPE}`, });
     });
 
     test("ReadNext - it should throw an error when it can't recognize a token", () => {
         lexer.inputStream.code = "â";
 
         expect(() => {
-            lexer.readNext()
+            lexer.readNext();
         }).toThrow("Cant handle character  'â'");
     });
 
     test("Peek - it peek at the next token without discarding it", () => {
         lexer.inputStream.code = "name";
 
-        expect(lexer.peek()).toEqual({type: constants.VARIABLE, value: "name"});
+        expect(lexer.peek()).toEqual({ type: constants.VARIABLE, value: "name", });
     });
 
     test("Next - it peek at the next token and also discard it", () => {
         lexer.inputStream.code = "name";
 
-        expect(lexer.next()).toEqual({type: constants.VARIABLE, value: "name"});
+        expect(lexer.next()).toEqual({ type: constants.VARIABLE, value: "name", });
         expect(lexer.next()).toBe(null);
     });
 

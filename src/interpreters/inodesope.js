@@ -1,8 +1,7 @@
 const IBase = require("./ibase.js");
 
 class INodeSope extends IBase {
-
-    interpreteNode(node) {
+    interpreteNode (node) {
         this.environment().sope(this.evaluateNode(node.body));
     }
 }

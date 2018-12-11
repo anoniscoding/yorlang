@@ -1,7 +1,6 @@
 const IBase = require("./ibase.js");
 class INodeArray extends IBase {
-
-    interpreteNode(arrayNode) {
+    interpreteNode (arrayNode) {
         const arr = [];
 
         arrayNode.body.forEach(arrayItemNode => {

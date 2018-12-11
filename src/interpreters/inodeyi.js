@@ -1,8 +1,7 @@
 const IBase = require("./ibase.js");
 
 class INodeYi extends IBase {
-
-    interpreteNode(node) {
+    interpreteNode (node) {
         const yivalue = this.evaluateNode(node.yivalue);
 
         for (let IRUIndex = 0; IRUIndex < node.yibody.length; IRUIndex++) {
@@ -17,21 +16,21 @@ class INodeYi extends IBase {
         }
     }
 
-    static isIRUValueMatchYiValue(context, IRUvalueNode, yivalue) {
+    static isIRUValueMatchYiValue (context, IRUvalueNode, yivalue) {
         return context.evaluateNode(IRUvalueNode) === yivalue;
     }
 
-    static runMatchedIRUBody(context, IRUBody) {
+    static runMatchedIRUBody (context, IRUBody) {
         for (let i = 0; i < IRUBody.length; i++) {
             context.evaluateNode(IRUBody[i]);
         }
     }
 
-    static canRunPadasi(IRUIndex, node) {
-        return (IRUIndex === node.yibody.length - 1) && (node.padasi != undefined);
+    static canRunPadasi (IRUIndex, node) {
+        return (IRUIndex === node.yibody.length - 1) && (node.padasi !== undefined);
     }
 
-    static runPadasi(context, padasi) {
+    static runPadasi (context, padasi) {
         for (let padasiIndex = 0; padasiIndex < padasi.length; padasiIndex++) {
             context.evaluateNode(padasi[padasiIndex]);
         }

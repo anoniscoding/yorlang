@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeFun = require("../../../parsers/keywordnodes/kwnodefun.js");
@@ -19,50 +19,50 @@ describe("KwNodeFun test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {}`;
 
         const expectedNode = {
-            body: [], 
+            body: [],
             condition: {
                 left: {
-                    name: "i", 
-                    operation: constants.GET_JEKI
-                }, 
-                operation: constants.SYM.L_THAN, 
+                    name: "i",
+                    operation: constants.GET_JEKI,
+                },
+                operation: constants.SYM.L_THAN,
                 right: {
-                    left: null, 
-                    operation: null, 
-                    right: null, 
-                    value: 10
-                }, 
-                value: null
-            }, 
+                    left: null,
+                    operation: null,
+                    right: null,
+                    value: 10,
+                },
+                value: null,
+            },
             increment: {
-                left: "i", 
-                operation: constants.SYM.ASSIGN, 
+                left: "i",
+                operation: constants.SYM.ASSIGN,
                 right: {
                     left: {
-                        name: "i", 
-                        operation: constants.GET_JEKI
+                        name: "i",
+                        operation: constants.GET_JEKI,
                     },
-                    operation: constants.SYM.PLUS, 
+                    operation: constants.SYM.PLUS,
                     right: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: 1
-                    }, 
-                    value: null
-                }
-            }, 
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: 1,
+                    },
+                    value: null,
+                },
+            },
             init: {
-                left: "i", 
-                operation: constants.SYM.ASSIGN, 
+                left: "i",
+                operation: constants.SYM.ASSIGN,
                 right: {
-                    left: null, 
-                    operation: null, 
-                    right: null, 
-                    value: 0
-                }
-            }, 
-            operation: constants.KW.FUN
+                    left: null,
+                    operation: null,
+                    right: null,
+                    value: 0,
+                },
+            },
+            operation: constants.KW.FUN,
         };
 
         expect(kwNodeFun.getNode.call(parser)).toEqual(expectedNode);
@@ -95,5 +95,4 @@ describe("KwNodeFun test suite", () => {
             kwNodeFun.getNode.call(parser);
         }).toThrow();
     });
-
 });

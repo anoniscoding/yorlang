@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeIse = require("../../../parsers/keywordnodes/kwnodeise.js");
@@ -19,20 +19,20 @@ describe("KwNodeIse test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.ISE} teOruko(a,b) {}`;
 
         const expectedNode = {
-            body: [], 
-            name: "teOruko", 
-            operation: constants.KW.ISE, 
+            body: [],
+            name: "teOruko",
+            operation: constants.KW.ISE,
             paramTokens: [
                 {
-                    type: constants.VARIABLE, 
-                    value: "a"
-                }, 
+                    type: constants.VARIABLE,
+                    value: "a",
+                },
                 {
-                    type: constants.VARIABLE, 
-                    value: "b"
-                }
-            ]
-        }
+                    type: constants.VARIABLE,
+                    value: "b",
+                },
+            ],
+        };
 
         expect(kwNodeIse.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -77,7 +77,7 @@ describe("KwNodeIse test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.ISE} (teOruko(a,b) {}`;
 
         expect(() => {
-            kwNodeIse.getNode.call(parser)
+            kwNodeIse.getNode.call(parser);
         }).toThrow();
     });
 });

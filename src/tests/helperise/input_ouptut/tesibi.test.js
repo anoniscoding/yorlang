@@ -1,28 +1,27 @@
-jest.mock('readline-sync', () => ({
-    question: jest.fn()
+jest.mock("readline-sync", () => ({
+    question: jest.fn(),
 }));
 
-const readlineSync = require('readline-sync');
+const readlineSync = require("readline-sync");
 const teSibi = require("../../../helperise/input_output/tesibi.js");
 
 describe("TeSibi Test suite", () => {
-
     test("It should read user input as string", () => {
         readlineSync.question.mockReturnValueOnce("anu");
 
-        const array = ["What is your name?"];
+        const array = ["What is your name?", ];
         expect(teSibi(array)).toBe("anu");
     });
 
     test("It should read user input as number", () => {
         readlineSync.question.mockReturnValueOnce("2");
 
-        const array = ["What is your age?"];
+        const array = ["What is your age?", ];
         expect(teSibi(array)).toBe(2);
     });
 
     test("It should fail to read user input", () => {
-        const array = [1];
+        const array = [1, ];
         expect(() => teSibi(array)).toThrow();
     });
 

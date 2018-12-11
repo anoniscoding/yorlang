@@ -3,24 +3,23 @@ const leafNl = require("./leafnl.js");
 const BaseNode = require("../basenode.js");
 
 class KeywordNl extends BaseNode {
-
-    constructor() {
-        super()
+    constructor () {
+        super();
         if (!(leafNl instanceof BaseNode)) {
             throw new Error("Dependency leafNl must be of type BaseNode");
-        } 
+        }
     }
 
-    getNode() {
+    getNode () {
         if (KeywordNl.isKeywordNl(this)) {
             return leafNl.getNode.call(this);
         }
-            
-        this.throwError(`Expecting yorlang keyword value e.g boolean(iró|òótó) but found ${token.value}`);
+
+        this.throwError("Expecting yorlang keyword value e.g boolean(iró|òótó)");
     }
 
-    static isKeywordNl(context) {
-        return [constants.KW.OOTO, constants.KW.IRO].indexOf(context.lexer().peek().value) >= 0
+    static isKeywordNl (context) {
+        return [ constants.KW.OOTO, constants.KW.IRO, ].indexOf(context.lexer().peek().value) >= 0;
     }
 }
 

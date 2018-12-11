@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -46,6 +46,6 @@ describe("INodePada test suite", () => {
         parser.pushToBlockTypeStack(constants.KW.ISE);
         const node = kwNodePada.getNode.call(parser);
 
-        expect(iNodePada.interpreteNode.call(new MainInterpreter(), node)).toEqual([1,2]);
+        expect(iNodePada.interpreteNode.call(new MainInterpreter(), node)).toEqual([1, 2, ]);
     });
 });

@@ -2,8 +2,7 @@ const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 
 class KwNodeSope extends BaseNode {
-
-    getNode() {
+    getNode () {
         this.skipKeyword(constants.KW.SOPE);
         const node = {};
         node.operation = constants.KW.SOPE;

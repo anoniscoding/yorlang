@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeYi = require("../../../parsers/keywordnodes/kwnodeyi.js");
@@ -31,59 +31,59 @@ describe("KwNodeYi test suite", () => {
                     IRUbody: [
                         {
                             body: {
-                                left: null, 
-                                operation: null, 
-                                right: null, 
-                                value: "it is anu"
-                            }, 
-                            operation: constants.KW.SOPE
-                        }
-                    ], 
+                                left: null,
+                                operation: null,
+                                right: null,
+                                value: "it is anu",
+                            },
+                            operation: constants.KW.SOPE,
+                        },
+                    ],
                     IRUvalue: {
                         value: "anu",
                         left: null,
                         right: null,
-                        operation: null
-                    }, 
-                    operation: constants.KW.IRU
-                }, 
+                        operation: null,
+                    },
+                    operation: constants.KW.IRU,
+                },
                 {
                     IRUbody: [
                         {
                             body: {
-                                left: null, 
-                                operation: null, 
-                                right: null, 
-                                value: "it femi"
-                            }, 
-                            operation: constants.KW.SOPE
-                        }
-                    ], 
+                                left: null,
+                                operation: null,
+                                right: null,
+                                value: "it femi",
+                            },
+                            operation: constants.KW.SOPE,
+                        },
+                    ],
                     IRUvalue: {
                         value: "femi",
                         left: null,
                         right: null,
-                        operation: null
-                    }, 
-                    operation: constants.KW.IRU
-                }
-            ], 
-            operation: constants.KW.YI, 
+                        operation: null,
+                    },
+                    operation: constants.KW.IRU,
+                },
+            ],
+            operation: constants.KW.YI,
             padasi: [
                 {
                     body: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: "mi o mo"
-                    }, 
-                    operation: constants.KW.SOPE
-                }
-            ], 
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: "mi o mo",
+                    },
+                    operation: constants.KW.SOPE,
+                },
+            ],
             yivalue: {
-                name: "firstname", 
-                operation: constants.GET_JEKI
-            }
+                name: "firstname",
+                operation: constants.GET_JEKI,
+            },
         };
 
         expect(kwNodeYi.getNode.call(parser)).toEqual(expectedNode);
@@ -105,5 +105,4 @@ describe("KwNodeYi test suite", () => {
             kwNodeYi.getNode.call(parser);
         }).toThrow();
     });
-
 });

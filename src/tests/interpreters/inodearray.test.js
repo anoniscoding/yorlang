@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -39,7 +39,7 @@ describe("INodeArray test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,5]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual([1, 2, 5, ]);
     });
 
     test("it should interprete expression that contains an array element reference", () => {
@@ -49,7 +49,7 @@ describe("INodeArray test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual([1,2,3]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual([1, 2, 3, ]);
     });
 
     test("it should interprete a multidimensional array", () => {
@@ -59,7 +59,7 @@ describe("INodeArray test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual([[1,2],[3,4]]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "b")).toEqual([[1, 2, ], [3, 4, ], ]);
     });
 
     test("it should interprete a multidimensional array element", () => {

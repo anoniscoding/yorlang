@@ -1,8 +1,7 @@
 const IBase = require("./ibase.js");
 
 class INodePada extends IBase {
-
-    interpreteNode(node) {
+    interpreteNode (node) {
         return this.evaluateNode(node.body);
     }
 }

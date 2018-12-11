@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -44,7 +44,7 @@ describe("INodeJeki test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.JEKI} a = [1,2];`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([1,2]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([1, 2, ]);
     });
 
     test("it should interprete expression that contains a variable reference", () => {
@@ -64,7 +64,7 @@ describe("INodeJeki test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi",2]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual(["funmi", 2, ]);
     });
 
     test("it should assign value to the last position of an array element with empty index", () => {
@@ -74,7 +74,7 @@ describe("INodeJeki test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([1,2, "funmi"]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([1, 2, "funmi", ]);
     });
 
     test("it should assign value to the last position of a multidimensional array element with empty index", () => {
@@ -84,7 +84,7 @@ describe("INodeJeki test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual( [1,[2, "funmi"]]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([1, [2, "funmi", ], ]);
     });
 
     test("it should assign value to a multi-dimensional array element", () => {
@@ -94,7 +94,7 @@ describe("INodeJeki test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([ [1,2], [["funmi",4],5] ]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([ [1, 2, ], [["funmi", 4, ], 5, ], ]);
     });
 
     test("it should fail to assign value to an invalid multi-dimensional array element", () => {
@@ -125,7 +125,7 @@ describe("INodeJeki test suite", () => {
         `;
 
         mainInterpreter.interpreteProgram();
-        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([[1,2], "funmi", 5]);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toEqual([[1, 2, ], "funmi", 5, ]);
     });
 
     test("it should assign transformed (uppercase) string to variablet", () => {
