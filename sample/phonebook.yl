@@ -1,0 +1,29 @@
+sope "Kaabo si eto isise gbigba isofunni";
+sope "";
+jeki address = [];
+
+nigbati (ooto) {
+    jeki name = tèSíbí("Ko oruko re: ");
+    jeki number = tèSíbí("Ko nonba foonu re: ");
+    jeki address[] = [name, number];
+    sope "O ti wo inu akamo";
+
+    jeki fiMiSi = tèSíbí("So fe fi isofunni elomii si? Y/N: ");
+
+    se (siLetaKekere(fiMiSi) == "n") {
+        kuro;
+    }
+}
+
+sope " Awon oruko" + " "+"Awon nonba";
+
+fun (jeki i = 0; i < ka(address); jeki i = i + 1;) {
+    jeki eeyan = "";
+
+    fun (jeki j = 0; j < ka(address[i]); jeki j = j + 1;) {
+        jeki eeyan = eeyan +" "+ address[i][j];
+    }
+
+    sope eeyan;
+    jeki eeyan = "";
+}

@@ -111,15 +111,6 @@ body {
   margin-left: 0;
 }
 
-#menu-toggle-on, #menu-toggle-off {
-  color: #32903F;
-  background: transparent;
-}
-
-#menu-toggle-off {
-  display: none;
-}
-
 .cid-qTkzRZLJNu .navbar{
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.10);
   border-bottom: 1px solid #cfcccc;

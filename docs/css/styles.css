@@ -25,7 +25,6 @@ html{
 }
 
 p{
-    
     color: #676767;
 }
 
@@ -219,5 +218,14 @@ p{
     }
     .note{
         width: 100%;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+    }
+
+    #page-content-wrapper {
+        margin-left: 0px;
     }
 }
