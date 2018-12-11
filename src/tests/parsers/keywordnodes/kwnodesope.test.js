@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeSope = require("../../../parsers/keywordnodes/kwnodesope.js");
@@ -23,9 +23,9 @@ describe("KwNodeSope test suite", () => {
                 value: 2,
                 left: null,
                 right: null,
-                operation: null
-            }
-        }
+                operation: null,
+            },
+        };
 
         expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -38,9 +38,9 @@ describe("KwNodeSope test suite", () => {
                 value: "beautiful",
                 left: null,
                 right: null,
-                operation: null
-            }
-        }
+                operation: null,
+            },
+        };
 
         expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -51,9 +51,9 @@ describe("KwNodeSope test suite", () => {
             operation: constants.KW.SOPE,
             body: {
                 name: "name",
-                operation: constants.GET_JEKI
-            }
-        }
+                operation: constants.GET_JEKI,
+            },
+        };
 
         expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -65,9 +65,9 @@ describe("KwNodeSope test suite", () => {
             body: {
                 operation: constants.CALL_ISE,
                 name: "sum",
-                paramValues: [{left: null, operation: null, right: null, value: 1}, {left: null, operation: null, right: null, value: 2}]
-            }
-        }
+                paramValues: [{ left: null, operation: null, right: null, value: 1, }, { left: null, operation: null, right: null, value: 2, }, ],
+            },
+        };
 
         expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -79,9 +79,9 @@ describe("KwNodeSope test suite", () => {
             body: {
                 operation: constants.ARRAY_ELEM,
                 name: "a",
-                indexNodes: [{"left": null, "operation": null, "right": null, "value": 1}]
-            }
-        }
+                indexNodes: [{ "left": null, "operation": null, "right": null, "value": 1, }, ],
+            },
+        };
 
         expect(kwNodeSope.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -109,7 +109,7 @@ describe("KwNodeSope test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.SOPE} (2,3);`;
 
         expect(() => {
-            kwNodeSope.getNode.call(parser)        
+            kwNodeSope.getNode.call(parser);
         }).toThrow();
     });
 });

@@ -44,15 +44,14 @@ describe("ArrayNodeLiteral test suite", () => {
     });
 
     test("It should parse array element with empty index", () => {
-        parser.lexer().inputStream.code = `a[]`;
-        const arrayNameToken = {value: parser.parseVarname()};
+        parser.lexer().inputStream.code = "a[]";
+        const arrayNameToken = { value: parser.parseVarname(), };
 
         const expectedNode = {
-            indexNodes: [{"left": null, "operation": null, "right": null, "value": ""}], 
-            name: "a", 
-            operation: constants.ARRAY_ELEM
+            indexNodes: [{ "left": null, "operation": null, "right": null, "value": "", }, ],
+            name: "a",
+            operation: constants.ARRAY_ELEM,
         };
-
 
         expect(arrayNl.getNode.call(parser, arrayNameToken)).toEqual(expectedNode);
     });

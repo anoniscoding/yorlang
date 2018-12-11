@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const BaseNode = require("../../parsers/basenode.js");
@@ -9,10 +9,9 @@ const Lexer = require("../../lexer.js");
 const InputStream = require("../../inputstream.js");
 
 describe("BaseNode test suite ", () => {
-
     test("Constructor - it should throw error while attempting to instantiate constructor", () => {
         expect(() => {
-            new BaseNode()
+            new BaseNode();
         }).toThrow("Cannot instantiate abstract class BaseNode");
     });
 
@@ -23,4 +22,4 @@ describe("BaseNode test suite ", () => {
             kwNodeMock.getNode.call(this);
         }).toThrow("Class of type BaseNode must implement getNode()");
     });
-})
+});

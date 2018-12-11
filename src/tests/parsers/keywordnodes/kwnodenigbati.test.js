@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeNigbati = require("../../../parsers/keywordnodes/kwnodenigbati.js");
@@ -25,64 +25,64 @@ describe("KwNodeNigbati test suite", () => {
             body: [
                 {
                     body: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: "a jura wa lo tijakadi ko"
-                    }, 
-                    operation: constants.KW.SOPE
-                }, 
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: "a jura wa lo tijakadi ko",
+                    },
+                    operation: constants.KW.SOPE,
+                },
                 {
-                    left: "ikeji", 
-                    operation: constants.SYM.ASSIGN, 
+                    left: "ikeji",
+                    operation: constants.SYM.ASSIGN,
                     right: {
                         left: {
-                            name: "ikeji", 
-                            operation: constants.GET_JEKI
-                        }, 
-                        operation: "+", 
+                            name: "ikeji",
+                            operation: constants.GET_JEKI,
+                        },
+                        operation: "+",
                         right: {
-                            left: null, 
-                            operation:null, 
-                            right: null, 
-                            value: 1
-                        }, 
-                        value: null
-                    }
-                }
-            ], 
+                            left: null,
+                            operation: null,
+                            right: null,
+                            value: 1,
+                        },
+                        value: null,
+                    },
+                },
+            ],
             condition: {
                 left: {
                     left: {
-                        name: "ikeji", 
-                        operation: constants.GET_JEKI
-                    }, 
-                    operation: constants.SYM.L_THAN, 
+                        name: "ikeji",
+                        operation: constants.GET_JEKI,
+                    },
+                    operation: constants.SYM.L_THAN,
                     right: {
-                        name: "aropo", 
-                        operation: constants.GET_JEKI
-                    }, 
-                    value: null
-                }, 
-                operation: constants.SYM.AND, 
+                        name: "aropo",
+                        operation: constants.GET_JEKI,
+                    },
+                    value: null,
+                },
+                operation: constants.SYM.AND,
                 right: {
                     left: {
-                        name: "ikeji", 
-                        operation: constants.GET_JEKI
-                    }, 
-                    operation: constants.SYM.G_THAN, 
+                        name: "ikeji",
+                        operation: constants.GET_JEKI,
+                    },
+                    operation: constants.SYM.G_THAN,
                     right: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: 0
-                    }, 
-                    value: null
-                }, 
-                value: null
-            }, 
-            operation: constants.KW.NIGBATI
-        }
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: 0,
+                    },
+                    value: null,
+                },
+                value: null,
+            },
+            operation: constants.KW.NIGBATI,
+        };
 
         expect(kwNodeNigbati.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -107,7 +107,7 @@ describe("KwNodeNigbati test suite", () => {
         }`;
 
         expect(() => {
-            kwNodeNigbati.getNode.call(parser)
+            kwNodeNigbati.getNode.call(parser);
         }).toThrow();
     });
 });

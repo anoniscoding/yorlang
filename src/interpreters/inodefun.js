@@ -2,8 +2,7 @@ const IBase = require("./ibase.js");
 const constants = require("../constants.js");
 
 class INodeFun extends IBase {
-
-    interpreteNode(node) {
+    interpreteNode (node) {
         this.evaluateNode(node.init);
 
         while (this.evaluateNode(node.condition) !== constants.KW.IRO) {
@@ -11,8 +10,8 @@ class INodeFun extends IBase {
                 const returnedValue = this.evaluateNode(node.body[i]);
                 if (returnedValue === constants.KW.KURO) return;
                 if (returnedValue != undefined) return returnedValue;
-            }            
-            
+            }
+
             this.evaluateNode(node.increment);
         }
     }

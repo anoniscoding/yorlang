@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeSe = require("../../../parsers/keywordnodes/kwnodese.js");
@@ -22,22 +22,22 @@ describe("KwNodeSe test suite", () => {
 
         const expectedNode = {
             condition: {
-                name: "niOruko", 
-                operation: constants.GET_JEKI
-            }, 
-            operation: constants.KW.SE, 
+                name: "niOruko",
+                operation: constants.GET_JEKI,
+            },
+            operation: constants.KW.SE,
             then: [
                 {
                     body: {
-                        left: null, 
-                        operation: null, 
-                        right: null, 
-                        value: "o ni oruko"
-                    }, 
-                    operation: constants.KW.SOPE
-                }
-            ]
-        }
+                        left: null,
+                        operation: null,
+                        right: null,
+                        value: "o ni oruko",
+                    },
+                    operation: constants.KW.SOPE,
+                },
+            ],
+        };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -47,12 +47,12 @@ describe("KwNodeSe test suite", () => {
 
         const expectedNode = {
             condition: {
-                name: "niOruko", 
-                operation: constants.GET_JEKI
-            }, 
-            operation: constants.KW.SE, 
-            then: []
-        }
+                name: "niOruko",
+                operation: constants.GET_JEKI,
+            },
+            operation: constants.KW.SE,
+            then: [],
+        };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
@@ -71,21 +71,21 @@ describe("KwNodeSe test suite", () => {
         const expectedNode = {
             condition: {
                 left: {
-                    name: "aropo", 
-                    operation: constants.GET_JEKI
-                }, 
-                operation: constants.SYM.AND, 
+                    name: "aropo",
+                    operation: constants.GET_JEKI,
+                },
+                operation: constants.SYM.AND,
                 right: {
-                    left: null, 
-                    operation: null, 
+                    left: null,
+                    operation: null,
                     right: null,
-                    value: constants.KW.OOTO
-                }, 
-                value: null
-            }, 
-            else: [], 
-            operation: constants.KW.SE, 
-            then: []
+                    value: constants.KW.OOTO,
+                },
+                value: null,
+            },
+            else: [],
+            operation: constants.KW.SE,
+            then: [],
         };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
@@ -111,41 +111,40 @@ describe("KwNodeSe test suite", () => {
             "condition": {
                 "left": {
                     "name": "aropo",
-                    "operation": constants.GET_JEKI
+                    "operation": constants.GET_JEKI,
                 },
                 "operation": "&&",
                 "right": {
                     "left": null,
                     "operation": null,
                     "right": null,
-                    "value": constants.KW.OOTO
+                    "value": constants.KW.OOTO,
                 },
-                "value": null
+                "value": null,
             },
             "else": {
                 "condition": {
                     "name": "niOruko",
-                    "operation": constants.GET_JEKI
+                    "operation": constants.GET_JEKI,
                 },
                 "else": {
                     "condition": {
                         "left": null,
                         "operation": null,
                         "right": null,
-                        "value": constants.KW.OOTO
+                        "value": constants.KW.OOTO,
                     },
                     "else": [],
                     "operation": constants.KW.SE,
-                    "then": []
+                    "then": [],
                 },
                 "operation": constants.KW.SE,
-                "then": []
+                "then": [],
             },
             "operation": constants.KW.SE,
-            "then": []
-        }
+            "then": [],
+        };
 
         expect(kwNodeSe.getNode.call(parser)).toEqual(expectedNode);
     });
-
 });

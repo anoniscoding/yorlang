@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeKuro = require("../../../parsers/keywordnodes/kwnodekuro.js");
@@ -18,7 +18,7 @@ describe("KwNodeKuro test suite", () => {
     });
 
     test("It should return a kúrò node ast when kuro node is expected because it is within a loop", () => {
-        const expectedNode = {operation: constants.KW.KURO};
+        const expectedNode = { operation: constants.KW.KURO, };
         parser.pushToBlockTypeStack(constants.KW.NIGBATI);
 
         expect(kwNodeKuro.getNode.call(parser))
@@ -28,7 +28,7 @@ describe("KwNodeKuro test suite", () => {
     test("It should skip the semicolon after an expected keyword kúrò", () => {
         parser.pushToBlockTypeStack(constants.KW.NIGBATI);
         kwNodeKuro.getNode.call(parser);
-        
+
         expect(parser.lexer().peek()).toBe(null);
     });
 

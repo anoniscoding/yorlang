@@ -1,12 +1,11 @@
 const BaseNode = require("../basenode.js");
 
 class NotOperatorNl extends BaseNode {
-
-    getNode() {
+    getNode () {
         return {
             operation: this.lexer().next().value,
             body: this.parseExpression(),
-        }    
+        };
     }
 }
 

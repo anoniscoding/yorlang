@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -23,14 +23,14 @@ describe("INodeSope test suite", () => {
     test("it should print a string to the console", () => {
         parser.lexer().inputStream.code = `${constants.KW.SOPE} "femi";`;
         const node = kwNodeSope.getNode.call(parser);
-        iNodeSope.interpreteNode.call(mainInterpreter, node)
+        iNodeSope.interpreteNode.call(mainInterpreter, node);
         expect(global.console.log).toHaveBeenCalledWith("femi");
     });
 
     test("it should print a number to the console", () => {
         parser.lexer().inputStream.code = `${constants.KW.SOPE} 3;`;
         const node = kwNodeSope.getNode.call(parser);
-        iNodeSope.interpreteNode.call(mainInterpreter, node)
+        iNodeSope.interpreteNode.call(mainInterpreter, node);
         expect(global.console.log).toHaveBeenCalledWith(3);
     });
 

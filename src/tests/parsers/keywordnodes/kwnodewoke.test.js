@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodeWoke = require("../../../parsers/keywordnodes/kwnodewoke.js");
@@ -20,7 +20,7 @@ describe("KwNodeWoke test suite", () => {
 
         const expectedNode = {
             operation: constants.KW.WOKE,
-            varNames: ["counter", "name"]
+            varNames: ["counter", "name", ],
         };
         parser.pushToBlockTypeStack(constants.KW.ISE);
 

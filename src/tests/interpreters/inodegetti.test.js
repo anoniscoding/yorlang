@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -24,13 +24,13 @@ describe("INodegetJeki test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 15 / 5;`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
-        expect(iNodeGetJeki.interpreteNode.call(mainInterpreter, {name: "a"})).toBe(3);
+        expect(iNodeGetJeki.interpreteNode.call(mainInterpreter, { name: "a", })).toBe(3);
     });
 
     test("it should throw an error when attempting to get the value of a non-existent variable within the current scope", () => {
         parser.lexer().inputStream.code = `${constants.KW.JEKI} a = 15 / 5;`;
         const node = kwNodeTi.getNode.call(parser);
         iNodeTi.interpreteNode.call(mainInterpreter, node);
-        expect(() => iNodeGetJeki.interpreteNode.call(mainInterpreter, {name: "b"})).toThrow();
+        expect(() => iNodeGetJeki.interpreteNode.call(mainInterpreter, { name: "b", })).toThrow();
     });
 });

@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const Parser = require("../../parsers/parser.js");
@@ -96,49 +96,49 @@ describe("Parser test suite", () => {
     });
 
     test("ParseExpression - it should parse array elemement expression", () => {
-        parser.lexer().inputStream.code = `a = b[0] = 1`;
-          
+        parser.lexer().inputStream.code = "a = b[0] = 1";
+
         const expectedNode = {
             left: {
                 left: {
-                    name: "a", 
-                    operation: constants.GET_JEKI
-                }, 
-                operation: constants.SYM.ASSIGN, 
+                    name: "a",
+                    operation: constants.GET_JEKI,
+                },
+                operation: constants.SYM.ASSIGN,
                 right: {
-                    indexNodes: [{"left": null, "operation": null, "right": null, "value": 0}], 
-                    name: "b", 
-                    operation: constants.ARRAY_ELEM
-                }, 
-                value: null
-            }, 
-            operation: constants.SYM.ASSIGN, 
+                    indexNodes: [{ "left": null, "operation": null, "right": null, "value": 0, }, ],
+                    name: "b",
+                    operation: constants.ARRAY_ELEM,
+                },
+                value: null,
+            },
+            operation: constants.SYM.ASSIGN,
             right: {
-                left: null, 
-                operation: null, 
-                right: null, 
-                value: 1
-            }, 
-            value: null
+                left: null,
+                operation: null,
+                right: null,
+                value: 1,
+            },
+            value: null,
         };
 
         expect(parser.parseExpression()).toEqual(expectedNode);
     });
 
     test("ParseAst - it should parse a function call in a program block", () => {
-        parser.lexer().inputStream.code = `koOruko();`;
+        parser.lexer().inputStream.code = "koOruko();";
 
         const expectedNode = {
-            paramValues: [], 
-            name: "koOruko", 
-            operation: constants.CALL_ISE
+            paramValues: [],
+            name: "koOruko",
+            operation: constants.CALL_ISE,
         };
 
         expect(parser.parseAst()).toEqual(expectedNode);
     });
 
     test("ParseAst - it should fail to parse a non function call in a program block", () => {
-        parser.lexer().inputStream.code = `a[];`;
+        parser.lexer().inputStream.code = "a[];";
 
         expect(() => parser.parseAst()).toThrow();
     });

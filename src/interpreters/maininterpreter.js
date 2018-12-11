@@ -3,22 +3,21 @@ const constants = require("../constants.js");
 const IBase = require("./ibase.js");
 
 class MainInterpreter {
-
-    constructor(environment, parser) {
+    constructor (environment, parser) {
         this.environment = () => environment;
         this.parser = () => parser;
         this.initScopeStack();
     }
 
-    initScopeStack() {
-        const _scopeStack = ["global"];
+    initScopeStack () {
+        const _scopeStack = ["global", ];
         this.getCurrentScope = () => _scopeStack[_scopeStack.length - 1];
-        this.scopeStack = () => [..._scopeStack];
+        this.scopeStack = () => [..._scopeStack, ];
         this.pushToScopeStack = (scope) => _scopeStack.push(scope);
         this.popFromScopeStack = () => _scopeStack.pop();
     }
 
-    getLeafValue(leaf) {
+    getLeafValue (leaf) {
         if (leaf.value != null) {
             return leaf.value;
         }
@@ -26,10 +25,10 @@ class MainInterpreter {
         return null;
     }
 
-    evaluateNode(node) {
+    evaluateNode (node) {
         const leafValue = this.getLeafValue(node);
         if (leafValue == null) {
-            const interpreter = registeredInterpreters[node.operation]; 
+            const interpreter = registeredInterpreters[node.operation];
             if (interpreter instanceof IBase) return interpreter.interpreteNode.call(this, node);
             else this.throwError(`Interpreter must be of type IBase: ${node.operation}`);
         }
@@ -37,11 +36,11 @@ class MainInterpreter {
         return leafValue;
     }
 
-    throwError(msg) {
+    throwError (msg) {
         this.parser().throwError(msg);
     }
 
-    interpreteProgram() {
+    interpreteProgram () {
         this.parser().pushToBlockTypeStack(constants.PROGRAM);
         while (this.parser().isNotEndOfFile()) {
             this.evaluateNode(this.parser().parseAst());
@@ -49,7 +48,7 @@ class MainInterpreter {
         this.parser().popBlockTypeStack();
     }
 
-    interpreteImportedProgram(parser) {
+    interpreteImportedProgram (parser) {
         new MainInterpreter(this.environment(), parser).interpreteProgram();
     }
 }

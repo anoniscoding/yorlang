@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -71,5 +71,4 @@ describe("INodeFun test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith("i don't know");
         expect(global.console.log).toHaveBeenCalledWith("Yoruba - mi o mo");
     });
-
 });

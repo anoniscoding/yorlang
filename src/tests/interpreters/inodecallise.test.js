@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -86,7 +86,6 @@ describe("INodeCallIse test suite", () => {
         mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi");
         expect(global.console.log).toHaveBeenCalledWith("karounwi femi 0812035532");
-
     });
 
     test("it should call an ise function in a parent scope", () => {

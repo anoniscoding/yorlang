@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const kwNodePada = require("../../../parsers/keywordnodes/kwnodepada.js");
@@ -25,8 +25,8 @@ describe("KwNodePada test suite", () => {
                 value: 2,
                 left: null,
                 right: null,
-                operation: null
-            }
+                operation: null,
+            },
         };
 
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
@@ -42,8 +42,8 @@ describe("KwNodePada test suite", () => {
                 value: "anu",
                 left: null,
                 right: null,
-                operation: null
-            }
+                operation: null,
+            },
         };
 
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
@@ -57,8 +57,8 @@ describe("KwNodePada test suite", () => {
             operation: constants.KW.PADA,
             body: {
                 name: "sum",
-                operation: constants.GET_JEKI
-            }
+                operation: constants.GET_JEKI,
+            },
         };
 
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
@@ -74,10 +74,10 @@ describe("KwNodePada test suite", () => {
                 operation: constants.CALL_ISE,
                 name: "sum",
                 paramValues: [
-                    {left: null, operation: null, right: null, value: 1}, 
-                    {name: "a", operation: constants.GET_JEKI}
-                ]
-            }
+                    { left: null, operation: null, right: null, value: 1, },
+                    { name: "a", operation: constants.GET_JEKI, },
+                ],
+            },
         };
 
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
@@ -92,8 +92,8 @@ describe("KwNodePada test suite", () => {
             body: {
                 operation: constants.ARRAY_ELEM,
                 name: "sum",
-                indexNodes: [{"left": null, "operation": null, "right": null, "value": 1}]
-            }
+                indexNodes: [{ "left": null, "operation": null, "right": null, "value": 1, }, ],
+            },
         };
 
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
@@ -109,8 +109,8 @@ describe("KwNodePada test suite", () => {
                 value: `${constants.KW.IRO}`,
                 left: null,
                 right: null,
-                operation: null
-            }
+                operation: null,
+            },
         };
 
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
@@ -121,16 +121,16 @@ describe("KwNodePada test suite", () => {
         parser.pushToBlockTypeStack(constants.KW.ISE);
 
         const expectedNode = {
-                operation: constants.KW.PADA,
-                body: {
-                    operation: constants.ARRAY,
-                    body: [
-                        {left: null, operation: null, right: null, value: 1}, 
-                        {left: null, operation: null, right: null, value: 2}]
-                }
-            };
-    
-                expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
+            operation: constants.KW.PADA,
+            body: {
+                operation: constants.ARRAY,
+                body: [
+                    { left: null, operation: null, right: null, value: 1, },
+                    { left: null, operation: null, right: null, value: 2, }, ],
+            },
+        };
+
+        expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("It should return node with body.operation 'array' when array is empty", () => {
@@ -141,10 +141,10 @@ describe("KwNodePada test suite", () => {
             operation: constants.KW.PADA,
             body: {
                 operation: constants.ARRAY,
-                body: []
-            }
+                body: [],
+            },
         };
-    
+
         expect(kwNodePada.getNode.call(parser)).toEqual(expectedNode);
     });
 

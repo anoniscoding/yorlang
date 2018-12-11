@@ -9,8 +9,8 @@
     "test": "jest",
     "coverage": "node_modules/.bin/jest --coverage",
     "link": "npm link",
-    "lint": "eslint ./ --color",
-    "lint:fix": "eslint ./ --fix"
+    "lint": "eslint ./src --color",
+    "lint:fix": "eslint ./src --fix"
   },
   "devDependencies": {
     "eslint": "5.9.0",

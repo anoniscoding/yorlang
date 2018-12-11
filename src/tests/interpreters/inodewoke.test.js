@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const MainInterpreter = require("../../interpreters/maininterpreter.js");
@@ -13,7 +13,7 @@ describe("INodeWoke test suite", () => {
     let mainInterpreter, parser;
 
     beforeEach(() => {
-        global.console.log = jest.fn()
+        global.console.log = jest.fn();
         parser = new Parser(new lexer(new InputStream()));
         mainInterpreter = new MainInterpreter(new Environment(), parser);
     });
@@ -44,7 +44,7 @@ describe("INodeWoke test suite", () => {
             ${constants.KW.SOPE} count();
         `;
 
-        mainInterpreter.interpreteProgram()
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(16);
         expect(global.console.log).toHaveBeenCalledWith(14);
         expect(global.console.log).toHaveBeenCalledWith(15);
@@ -76,7 +76,7 @@ describe("INodeWoke test suite", () => {
             count();
         `;
 
-        mainInterpreter.interpreteProgram()
+        mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(18);
     });
 });

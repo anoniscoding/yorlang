@@ -4,11 +4,10 @@ const Lexer = require("../lexer.js");
 const InputStream = require("../inputstream.js");
 
 class INodeGbeWole extends IBase {
-
-    interpreteNode(node) {
+    interpreteNode (node) {
         const fileName = this.evaluateNode(node.path);
         const parser = new Parser(new Lexer(new InputStream(fileName)));
-        this.interpreteImportedProgram(parser);    
+        this.interpreteImportedProgram(parser);
     }
 }
 

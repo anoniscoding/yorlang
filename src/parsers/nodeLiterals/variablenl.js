@@ -3,8 +3,7 @@ const BaseNode = require("../basenode.js");
 const variableNlTypes = require("./variablenltypes");
 
 class VariableNl extends BaseNode {
-
-    getNode() { 
+    getNode () {
         const varNameToken = this.lexer().next();
 
         const nextTokenValue = this.lexer().peek().value;
@@ -16,7 +15,7 @@ class VariableNl extends BaseNode {
 
         return {
             operation: constants.GET_JEKI,
-            name: varNameToken.value
+            name: varNameToken.value,
         };
     }
 }

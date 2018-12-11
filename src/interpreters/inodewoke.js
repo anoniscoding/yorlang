@@ -2,8 +2,7 @@ const IBase = require("./ibase.js");
 const constants = require("../constants.js");
 
 class INodeWoke extends IBase {
-
-    interpreteNode(node) {
+    interpreteNode (node) {
         let woke = this.environment().getJeki(this.getCurrentScope(), constants.KW.WOKE);
 
         if (woke == undefined) woke = node.varNames;

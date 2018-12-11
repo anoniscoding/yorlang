@@ -1,5 +1,5 @@
-jest.mock('fs', () => ({
-    readFileSync: jest.fn()
+jest.mock("fs", () => ({
+    readFileSync: jest.fn(),
 }));
 
 const InputStream = require("../inputstream.js");
@@ -27,7 +27,7 @@ describe("InputStream Tests", () => {
 
     test("ThrowError - It should throw an error message while specifying the location of the error accurately", () => {
         inputStream.code = `${constants.SYM.NEW_LINE}`;
-        inputStream.next(); //read in the new line character
+        inputStream.next(); // read in the new line character
         const errorMsg = "Testing error msg";
 
         expect(() => {
@@ -46,5 +46,4 @@ describe("InputStream Tests", () => {
 
         expect(inputStream.isEndOfFile()).toBe(true);
     });
-
 });
