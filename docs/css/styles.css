@@ -111,7 +111,12 @@ p{
      font-size: 13px;
 
 }
-
+.video_accordion{
+    
+}
+.panel{
+    display:none;
+}
 /* example styles */
 .note p{
     font-size: 14px;
