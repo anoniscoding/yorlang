@@ -3,7 +3,7 @@ const constants = require("../../constants.js");
 
 class ArrayNl extends BaseNode {
     getNode (arrayNameToken) {
-        return (arrayNameToken == undefined) ? ArrayNl.getParsedArrayLiteral(this)
+        return (!arrayNameToken) ? ArrayNl.getParsedArrayLiteral(this)
             : ArrayNl.getParsedArrayElement(this, arrayNameToken);
     }
 
@@ -28,7 +28,7 @@ class ArrayNl extends BaseNode {
     }
 
     static getArrayElementIndexNodes (context) {
-        const indexNodes = [ArrayNl.getArrayElementIndexNode(context), ];
+        const indexNodes = [ ArrayNl.getArrayElementIndexNode(context), ];
 
         while (context.isNextTokenPunctuation(constants.SYM.L_SQ_BRACKET)) { // handles multi-dimensional array element
             indexNodes.push(ArrayNl.getArrayElementIndexNode(context));
@@ -48,7 +48,7 @@ class ArrayNl extends BaseNode {
     }
 
     static isNotEmptyArrayIndex (context) {
-        return context.lexer().peek().value != constants.SYM.R_SQ_BRACKET;
+        return context.lexer().peek().value !== constants.SYM.R_SQ_BRACKET;
     }
 }
 

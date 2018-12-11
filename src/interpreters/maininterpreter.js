@@ -10,9 +10,9 @@ class MainInterpreter {
     }
 
     initScopeStack () {
-        const _scopeStack = ["global", ];
+        const _scopeStack = [ "global", ];
         this.getCurrentScope = () => _scopeStack[_scopeStack.length - 1];
-        this.scopeStack = () => [..._scopeStack, ];
+        this.scopeStack = () => [ ..._scopeStack, ];
         this.pushToScopeStack = (scope) => _scopeStack.push(scope);
         this.popFromScopeStack = () => _scopeStack.pop();
     }

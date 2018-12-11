@@ -1,5 +1,4 @@
 const IBase = require("./ibase.js");
-const constants = require("../constants.js");
 
 class INodeCallIse extends IBase {
     interpreteNode (node) {
@@ -21,7 +20,7 @@ class INodeCallIse extends IBase {
 
     static getIseNode (context, iseName) {
         for (let index = context.scopeStack().length - 1; index >= 0; index--) {
-            if (context.environment().getIse(context.scopeStack()[index], iseName) != undefined) {
+            if (context.environment().getIse(context.scopeStack()[index], iseName) !== undefined) {
                 return context.environment().getIse(context.scopeStack()[index], iseName);
             }
         }
@@ -45,7 +44,7 @@ class INodeCallIse extends IBase {
     static runIseNodeBody (context, iseNodeBody) {
         for (let i = 0; i < iseNodeBody.length; i++) {
             const returnedValue = context.evaluateNode(iseNodeBody[i]);
-            if (returnedValue != undefined) return returnedValue;
+            if (returnedValue !== undefined) return returnedValue;
         }
     }
 }

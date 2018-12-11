@@ -9,7 +9,7 @@ class INodeFun extends IBase {
             for (let i = 0; i < node.body.length; i++) {
                 const returnedValue = this.evaluateNode(node.body[i]);
                 if (returnedValue === constants.KW.KURO) return;
-                if (returnedValue != undefined) return returnedValue;
+                if (returnedValue !== undefined) return returnedValue;
             }
 
             this.evaluateNode(node.increment);

@@ -4,7 +4,7 @@ const WokeHelper = require("./helpers/woke_helper.js");
 class INodeGetJeki extends IBase {
     interpreteNode (node) {
         for (let index = INodeGetJeki.getTopIndex(this, node.name); index >= 0; index--) {
-            if (this.environment().getJeki(this.scopeStack()[index], node.name) != undefined) {
+            if (this.environment().getJeki(this.scopeStack()[index], node.name) !== undefined) {
                 return this.environment().getJeki(this.scopeStack()[index], node.name);
             }
         }

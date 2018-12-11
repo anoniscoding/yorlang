@@ -5,7 +5,7 @@ class INodeWoke extends IBase {
     interpreteNode (node) {
         let woke = this.environment().getJeki(this.getCurrentScope(), constants.KW.WOKE);
 
-        if (woke == undefined) woke = node.varNames;
+        if (!woke) woke = node.varNames;
         else woke.push(...node.varNames);
 
         this.environment().setJeki(this.getCurrentScope(), constants.KW.WOKE, woke);

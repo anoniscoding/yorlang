@@ -18,7 +18,7 @@ class Parser {
         };
         this.popBlockTypeStack = () => _blockTypeStack.pop();
         this.peekBlockTypeStack = () => _blockTypeStack[_blockTypeStack.length - 1];
-        this.getBlockTypeStack = () => [..._blockTypeStack, ];
+        this.getBlockTypeStack = () => [ ..._blockTypeStack, ];
     }
 
     initIsArithmeticExpression () {
@@ -31,17 +31,17 @@ class Parser {
 
     isNextTokenPunctuation (punc) {
         const token = this.lexer().peek();
-        return token && token.type == constants.PUNCTUATION && (token.value == punc);
+        return token && token.type === constants.PUNCTUATION && (token.value === punc);
     }
 
     isNextTokenOperator (op) {
         const token = this.lexer().peek();
-        return token && token.type == constants.OPERATOR && (token.value == op);
+        return token && token.type === constants.OPERATOR && (token.value === op);
     }
 
     isNextTokenKeyword (kw) {
         const token = this.lexer().peek();
-        return token && token.type == constants.KEYWORD && (token.value == kw);
+        return token && token.type === constants.KEYWORD && (token.value === kw);
     }
 
     skipPunctuation (punc) {
@@ -70,15 +70,15 @@ class Parser {
     }
 
     parseAssign () {
-        return this.parseWhile([constants.SYM.ASSIGN, ], this.parseOr);
+        return this.parseWhile([ constants.SYM.ASSIGN, ], this.parseOr);
     }
 
     parseOr () {
-        return this.parseWhile([constants.SYM.OR, ], this.parseAnd);
+        return this.parseWhile([ constants.SYM.OR, ], this.parseAnd);
     }
 
     parseAnd () {
-        return this.parseWhile([constants.SYM.AND, ], this.parseGreaterLesserEquality);
+        return this.parseWhile([ constants.SYM.AND, ], this.parseGreaterLesserEquality);
     }
 
     parseGreaterLesserEquality () {
@@ -92,11 +92,11 @@ class Parser {
     }
 
     parsePlusMinus () {
-        return this.parseWhile([constants.SYM.PLUS, constants.SYM.MINUS, ], this.parseMultiplyDivisionRemainder);
+        return this.parseWhile([ constants.SYM.PLUS, constants.SYM.MINUS, ], this.parseMultiplyDivisionRemainder);
     }
 
     parseMultiplyDivisionRemainder () {
-        return this.parseWhile([constants.SYM.MULTIPLY, constants.SYM.DIVIDE, constants.SYM.REMAINDER, ], this.parseNodeLiteral);
+        return this.parseWhile([ constants.SYM.MULTIPLY, constants.SYM.DIVIDE, constants.SYM.REMAINDER, ], this.parseNodeLiteral);
     }
 
     parseWhile (operatorList, parseOperationWithLesserPrecedence) {
@@ -121,14 +121,14 @@ class Parser {
     parseNodeLiteral () {
         const token = this.lexer().peek();
 
-        if (nodeLiterals[token.type] != undefined) {
+        if (nodeLiterals[token.type]) {
             const nodeliteral = nodeLiterals[token.type];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
             else throw new Error(`${token.value} must be of type BaseNode`);
         }
 
         // check if the token value is a punctuation that can be used in an expression e.g (, [
-        if (nodeLiterals[constants.EXP_PUNC][token.value] != undefined) {
+        if (nodeLiterals[constants.EXP_PUNC][token.value]) {
             const nodeliteral = nodeLiterals[constants.EXP_PUNC][token.value];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
             else throw new Error(`${token.value} must be of type BaseNode`);
@@ -151,11 +151,11 @@ class Parser {
     }
 
     isNotEndOfBlock () {
-        return this.isNotEndOfFile() && (this.lexer().peek().value != constants.SYM.R_PAREN);
+        return this.isNotEndOfFile() && (this.lexer().peek().value !== constants.SYM.R_PAREN);
     }
 
     parseVarname () {
-        return (this.lexer().peek().type == constants.VARIABLE)
+        return (this.lexer().peek().type === constants.VARIABLE)
             ? this.lexer().next().value
             : this.lexer().throwError(this.getGenericErrorMsg(this.lexer().peek().value));
     }
@@ -189,7 +189,7 @@ class Parser {
     parseAst () {
         const token = this.lexer().peek();
 
-        if (kwnodes[token.value] != undefined) {
+        if (kwnodes[token.value]) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); // call the method getNode in kwNode object like an extension function to the Parser class
             else throw new Error(`${kwNode} must be of type BaseNode`);

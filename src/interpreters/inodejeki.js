@@ -21,7 +21,7 @@ class INodeJeki extends IBase {
         const topIndex = context.scopeStack().length - 2;
 
         for (let index = topIndex; index >= 0; index--) {
-            if (context.environment().getJeki(context.scopeStack()[index], node.left) != undefined) {
+            if (context.environment().getJeki(context.scopeStack()[index], node.left) !== undefined) {
                 return context.environment().setJeki(context.scopeStack()[index], node.left, INodeJeki.getValue(context, node.right));
             }
         }
@@ -33,7 +33,7 @@ class INodeJeki extends IBase {
         for (let i = 0; i < node.left.indexNodes.length; i++) {
             const arrayIndex = context.evaluateNode(node.left.indexNodes[i]);
 
-            if (arrayIndex === "" && i == node.left.indexNodes.length - 1) {
+            if (arrayIndex === "" && i === node.left.indexNodes.length - 1) {
                 // push right node to the last location in the array when index is empty
                 arrayLiteral.push(context.evaluateNode(node.right));
                 return;
@@ -64,7 +64,7 @@ class INodeJeki extends IBase {
 
     static getValue (context, node) {
         const value = context.evaluateNode(node);
-        if (value == undefined) context.throwError(`Cannot set value undefined to variable ${node.left}`);
+        if (value === undefined) context.throwError(`Cannot set value undefined to variable ${node.left}`);
         return value;
     }
 }

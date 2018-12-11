@@ -40,11 +40,11 @@ class KwNodeFun extends BaseNode {
     static isInValidFunIncrementStatement (funNode) {
         const incrementNode = funNode.increment.right;
 
-        if ([constants.SYM.PLUS, constants.SYM.MINUS, ].indexOf(incrementNode.operation) >= 0) {
+        if ([ constants.SYM.PLUS, constants.SYM.MINUS, ].indexOf(incrementNode.operation) >= 0) {
             // e.g fun (tí i =0; i < 10; tí i = i + 1;)
             // make sure there is variable 'i' in atleast one child of the incrementNode
             // i.e jeki i = i + 1 or jeki i = 1 + i or jeki i = i + i
-            if ([incrementNode.left.name, incrementNode.right.name, ].indexOf(funNode.init.left) >= 0) {
+            if ([ incrementNode.left.name, incrementNode.right.name, ].indexOf(funNode.init.left) >= 0) {
                 return false;
             }
         }

@@ -1,6 +1,6 @@
 class IBase {
     constructor () {
-        if (this.constructor == IBase) {
+        if (this.constructor === IBase) {
             throw new Error("Cannot instantiate abstract class IBase");
         }
     }

@@ -41,11 +41,11 @@ class InputStream {
     }
 
     isEndOfFile () {
-        return this.peek() == "";
+        return this.peek() === "";
     }
 
     isNotEndOfFile () {
-        return this.peek() != "";
+        return this.peek() !== "";
     }
 }
 

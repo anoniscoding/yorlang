@@ -27,7 +27,7 @@ class INodeYi extends IBase {
     }
 
     static canRunPadasi (IRUIndex, node) {
-        return (IRUIndex === node.yibody.length - 1) && (node.padasi != undefined);
+        return (IRUIndex === node.yibody.length - 1) && (node.padasi !== undefined);
     }
 
     static runPadasi (context, padasi) {

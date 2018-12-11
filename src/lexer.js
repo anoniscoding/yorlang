@@ -44,10 +44,10 @@ class Lexer {
         const stringEnd = constants.SYM.STR_QUOTE;
         this.inputStream.next(); // needed to skip the opening quote symbol '"'
         const str = this.readWhile((ch) => {
-            return ch != stringEnd;
+            return ch !== stringEnd;
         });
 
-        if (this.inputStream.peek() == stringEnd) { this.inputStream.next(); } // needed to skip the closing quote symbol '"'
+        if (this.inputStream.peek() === stringEnd) this.inputStream.next();// needed to skip the closing quote symbol '"'
         else { this.throwError(`Expecting '${stringEnd}' but found unexpected char`); }
 
         return { type: constants.STRING, value: str, };
@@ -69,7 +69,7 @@ class Lexer {
     readNumber () {
         let hasDot = false;
         const num = this.readWhile((ch) => {
-            if (ch == constants.SYM.PERIOD) {
+            if (ch === constants.SYM.PERIOD) {
                 if (hasDot) return false;
                 hasDot = true;
                 return true;
@@ -82,7 +82,7 @@ class Lexer {
 
     skipComments () {
         this.readWhile((ch) => {
-            return ch != constants.SYM.NEW_LINE;
+            return ch !== constants.SYM.NEW_LINE;
         });
         this.inputStream.next(); // skips the "\n" symbol
     }
@@ -92,11 +92,11 @@ class Lexer {
         if (this.inputStream.isEndOfFile()) return null;
 
         const ch = this.inputStream.peek();
-        if (ch == constants.SYM.COMMENT) {
+        if (ch === constants.SYM.COMMENT) {
             this.skipComments();
             return this.readNext();
         }
-        if (ch == constants.SYM.STR_QUOTE) return this.readString();
+        if (ch === constants.SYM.STR_QUOTE) return this.readString();
         if (this.isDigit(ch)) return this.readNumber();
         if (this.isIdentifier(ch)) return this.readIdentifier();
         if (this.isPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.inputStream.next(), };

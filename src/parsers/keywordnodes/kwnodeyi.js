@@ -36,7 +36,7 @@ class KwNodeYi extends BaseNode {
     }
 
     static isNextTokenIru (context) {
-        return context.isNotEndOfFile() && context.lexer().peek().value == constants.KW.IRU;
+        return context.isNotEndOfFile() && context.lexer().peek().value === constants.KW.IRU;
     }
 
     static getPadasi (context) {

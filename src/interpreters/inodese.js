@@ -5,7 +5,7 @@ class INodeSe extends IBase {
     interpreteNode (node) {
         if (this.evaluateNode(node.condition) !== constants.KW.IRO) {
             return INodeSe.runBody(this, node.then);
-        } else if (node.else != undefined) {
+        } else if (node.else !== undefined) {
             return INodeSe.runBody(this, node.else);
         }
     }
@@ -16,7 +16,7 @@ class INodeSe extends IBase {
 
         for (let i = 0; i < body.length; i++) {
             const returnedValue = context.evaluateNode(body[i]);
-            if (returnedValue != undefined) return returnedValue; // it's an ise pada value or kuro statement
+            if (returnedValue !== undefined) return returnedValue; // it's an ise pada value or kuro statement
         }
     }
 }

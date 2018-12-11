@@ -7,7 +7,7 @@ class Environment {
     }
 
     setJeki (scope, name, value) {
-        if (this.vars[scope] == undefined) {
+        if (!this.vars[scope]) {
             this.vars[scope] = {};
         }
 
@@ -15,11 +15,11 @@ class Environment {
     }
 
     getJeki (scope, name) {
-        if (this.vars[scope] != undefined) { return this.vars[scope][name]; }
+        if (this.vars[scope]) { return this.vars[scope][name]; }
     }
 
     setIse (scope, iseName, iseNode) {
-        if (this.iseDeclarations[scope] == undefined) {
+        if (!this.iseDeclarations[scope]) {
             this.iseDeclarations[scope] = {};
         }
 
@@ -27,13 +27,13 @@ class Environment {
     }
 
     getIse (scope, iseName) {
-        if (this.iseDeclarations[scope] != undefined) {
+        if (this.iseDeclarations[scope]) {
             return this.iseDeclarations[scope][iseName];
         }
     }
 
     isExistHelperIse (iseName) {
-        return helperIseDeclarations[iseName] != undefined;
+        return helperIseDeclarations[iseName] !== undefined;
     }
 
     runHelperIse (iseName, iseArgs) {

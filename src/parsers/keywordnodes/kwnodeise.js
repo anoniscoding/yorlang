@@ -11,7 +11,7 @@ class KwNodeIse extends BaseNode {
     }
 
     static isExpectedIseDeclaration (context) {
-        return context.getBlockTypeStack().length == 0 || context.peekBlockTypeStack() === constants.PROGRAM ||
+        return context.getBlockTypeStack().length === 0 || context.peekBlockTypeStack() === constants.PROGRAM ||
                                                     context.peekBlockTypeStack() === constants.KW.ISE;
     }
 

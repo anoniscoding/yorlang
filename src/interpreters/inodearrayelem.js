@@ -23,7 +23,7 @@ class INodeArrayElement extends IBase {
             }
         });
 
-        if (arrayElement == undefined) context.throwError(`Index given for array ${node.name} does not exist`);
+        if (!arrayElement) context.throwError(`Index given for array ${node.name} does not exist`);
 
         return arrayElement;
     }
