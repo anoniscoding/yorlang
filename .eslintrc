@@ -1,0 +1,11 @@
+{
+    "extends": "standard",
+    "rules": {
+        "comma-dangle": ["error", "always"],
+        "semi": [1,"always"],
+        "indent": ["error", 4],
+        "quotes": ["error", "double", {
+            "avoidEscape": true
+        }]
+    }
+}
