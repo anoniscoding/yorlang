@@ -6,12 +6,11 @@ class INodeYi extends IBase {
 
         for (let IRUIndex = 0; IRUIndex < node.yibody.length; IRUIndex++) {
             if (INodeYi.isIRUValueMatchYiValue(this, node.yibody[IRUIndex].IRUvalue, yivalue)) {
-                INodeYi.runMatchedBody(this, node.yibody[IRUIndex].IRUbody);
-                break;
+                return INodeYi.runMatchedBody(this, node.yibody[IRUIndex].IRUbody);
             }
 
             if (INodeYi.canRunPadasi(IRUIndex, node)) {
-                INodeYi.runMatchedBody(this, node.padasi);
+                return INodeYi.runMatchedBody(this, node.padasi);
             }
         }
     }
@@ -22,7 +21,8 @@ class INodeYi extends IBase {
 
     static runMatchedBody (context, body) {
         for (let i = 0; i < body.length; i++) {
-            context.evaluateNode(body[i]);
+            const returnedValue = context.evaluateNode(body[i]);
+            if (returnedValue !== undefined) return returnedValue; // it's an ise pada value or kuro statement
         }
     }
 

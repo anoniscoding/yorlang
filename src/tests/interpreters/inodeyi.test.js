@@ -71,4 +71,25 @@ describe("INodeFun test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith("i don't know");
         expect(global.console.log).toHaveBeenCalledWith("Yoruba - mi o mo");
     });
+
+    test("it should interprete a valid yi node and return a value from within it", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} oruko = "femi";
+
+            ${constants.KW.ISE} apere(oruko) {
+
+                ${constants.KW.YI} (oruko) {
+                    ${constants.KW.IRU} "anu":
+                        ${constants.KW.PADA} "it is anu";
+                    ${constants.KW.IRU} "femi":
+                        ${constants.KW.PADA} "it is femi";
+                }
+            }
+            
+            ${constants.KW.SOPE} apere(oruko);
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(global.console.log).toHaveBeenCalledWith("it is femi");
+    });
 });
