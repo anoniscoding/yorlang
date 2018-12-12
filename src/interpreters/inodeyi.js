@@ -6,12 +6,12 @@ class INodeYi extends IBase {
 
         for (let IRUIndex = 0; IRUIndex < node.yibody.length; IRUIndex++) {
             if (INodeYi.isIRUValueMatchYiValue(this, node.yibody[IRUIndex].IRUvalue, yivalue)) {
-                INodeYi.runMatchedIRUBody(this, node.yibody[IRUIndex].IRUbody);
+                INodeYi.runMatchedBody(this, node.yibody[IRUIndex].IRUbody);
                 break;
             }
 
             if (INodeYi.canRunPadasi(IRUIndex, node)) {
-                INodeYi.runPadasi(this, node.padasi);
+                INodeYi.runMatchedBody(this, node.padasi);
             }
         }
     }
@@ -20,7 +20,7 @@ class INodeYi extends IBase {
         return context.evaluateNode(IRUvalueNode) === yivalue;
     }
 
-    static runMatchedIRUBody (context, IRUBody) {
+    static runMatchedBody (context, IRUBody) {
         for (let i = 0; i < IRUBody.length; i++) {
             context.evaluateNode(IRUBody[i]);
         }
@@ -28,12 +28,6 @@ class INodeYi extends IBase {
 
     static canRunPadasi (IRUIndex, node) {
         return (IRUIndex === node.yibody.length - 1) && (node.padasi !== undefined);
-    }
-
-    static runPadasi (context, padasi) {
-        for (let padasiIndex = 0; padasiIndex < padasi.length; padasiIndex++) {
-            context.evaluateNode(padasi[padasiIndex]);
-        }
     }
 }
 
