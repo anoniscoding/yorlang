@@ -111,7 +111,9 @@ p{
      font-size: 13px;
 
 }
-
+.panel{
+    display:none;
+}
 /* example styles */
 .note p{
     font-size: 14px;
