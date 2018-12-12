@@ -12,7 +12,7 @@ class INodeSe extends IBase {
 
     static runBody (context, body) {
         // It is expected to be a 'tabi se' block when body is not an instance of an array
-        if (!(body instanceof Array)) context.evaluateNode(body);
+        if (!(body instanceof Array)) return context.evaluateNode(body);
 
         for (let i = 0; i < body.length; i++) {
             const returnedValue = context.evaluateNode(body[i]);
