@@ -2,7 +2,7 @@ const readlineSync = require("readline-sync");
 
 // Takes command line input
 function teSibi (args) {
-    if (args instanceof Array) {
+    if (Array.isArray(args)) {
         const [ question, ] = args;
         if (typeof question === "string") {
             const input = readlineSync.question(question);

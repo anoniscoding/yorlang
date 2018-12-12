@@ -1,6 +1,6 @@
 // Get array length
 function ka (args) {
-    if (args instanceof Array) {
+    if (Array.isArray(args)) {
         const [ param, ] = args;
         if (param instanceof Array) return param.length;
 

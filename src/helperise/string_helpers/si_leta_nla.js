@@ -1,6 +1,6 @@
 // Convert String to upper case
 function siLetaNla (args) {
-    if (args instanceof Array) {
+    if (Array.isArray(args)) {
         const [ param, ] = args;
         if (typeof param === "string") return param.toUpperCase();
 
