@@ -5,7 +5,8 @@
  * @returns {[ number, number, number, number, number, number, number ]} [ year, month, day, hours, minutes, seconds, milliseconds ]
  */
 function aago(args) {
-    if (args instanceof Array) {
+    args = (args || []);
+    if (Array.isArray(args)) {
         const d = new Date(...args);
         return [ 
             d.getFullYear(), 
@@ -16,9 +17,8 @@ function aago(args) {
             d.getSeconds(), 
             d.getMilliseconds()
         ];
-    } 
-    
-    throw new Error('Yorlang system error');
+    }
+    throw new Error("Yorlang system error: arguments[0] should be Array");
 }
 
 module.exports = aago;
