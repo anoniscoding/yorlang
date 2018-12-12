@@ -3,7 +3,7 @@ const aago = require("../../../helperise/datetime_helpers/aago.js");
 describe("Aago Test suite", () => {
     test("It should return current date", () => {
         const date = new Date();
-        const aagoList = aago();
+        const aagoList = aago([]);
         expect(aagoList[0]).toBe(date.getFullYear());
         expect(aagoList[1]).toBe(date.getMonth() + 1)
         expect(aagoList[2]).toBe(date.getDate()) 
@@ -33,5 +33,9 @@ describe("Aago Test suite", () => {
         expect(aagoList[4]).toBe(date.getMinutes()) 
         expect(aagoList[5]).toBe(date.getSeconds())
         expect(aagoList[6]).toBe(date.getMilliseconds())
+    });
+
+    test("It should fail to return date because the yorlang system fails to pass it an array as parameter", () => {
+        expect(() => aago()).toThrow();
     });
 });

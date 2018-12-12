@@ -5,7 +5,6 @@
  * @returns {[ number, number, number, number, number, number, number ]} [ year, month, day, hours, minutes, seconds, milliseconds ]
  */
 function aago (args) {
-    args = (args || []);
     if (Array.isArray(args)) {
         const date = new Date(...args);
         return [
@@ -18,6 +17,7 @@ function aago (args) {
             date.getMilliseconds(),
         ];
     }
+
     throw new Error("Yorlang system error: arguments[0] should be Array");
 }
 
