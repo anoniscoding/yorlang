@@ -20,9 +20,9 @@ class INodeYi extends IBase {
         return context.evaluateNode(IRUvalueNode) === yivalue;
     }
 
-    static runMatchedBody (context, IRUBody) {
-        for (let i = 0; i < IRUBody.length; i++) {
-            context.evaluateNode(IRUBody[i]);
+    static runMatchedBody (context, body) {
+        for (let i = 0; i < body.length; i++) {
+            context.evaluateNode(body[i]);
         }
     }
 
