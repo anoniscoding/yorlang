@@ -1,3 +1,7 @@
+/**
+ * Get or Set object property
+ * @param {[ object, string, string ]} args object, key, value
+ */
 function omo(args) {
     if (Array.isArray(args)) {
         const [ dict, key, value ] = args;

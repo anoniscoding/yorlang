@@ -1,3 +1,9 @@
+/**
+ * Create object
+ * @param {[ string, string ]} args key, value
+ *
+ * @returns {object}
+ */
 function ebi(args) {
     args = args || [];
     let key, dict = {}
