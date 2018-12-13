@@ -4,18 +4,17 @@
  *
  * @returns {object}
  */
-function ebi(args) {
+function ebi (args) {
     args = args || [];
-    let key, dict = {}
+    let key; let dict = {};
     for (let obj of args) {
-        if (typeof (obj) != 'object') {
+        if (typeof (obj) !== "object") {
             if (!key) key = obj;
             else {
                 dict[key] = obj;
                 key = undefined;
             }
-        }
-        else {
+        } else {
             if (!key) Object.assign(dict, obj);
             else {
                 dict[key] = obj;
