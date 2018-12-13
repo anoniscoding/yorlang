@@ -12,8 +12,8 @@ class INodeGetJeki extends IBase {
         this.throwError(`Variable ${node.name} is undefined`);
     }
 
-    static getTopIndex (context, tiName) {
-        if (WokeHelper.isWokeVariable(context, tiName)) {
+    static getTopIndex (context, jekiName) {
+        if (WokeHelper.isWokeVariable(context, jekiName)) {
             return context.scopeStack().length - 2;
         }
 
