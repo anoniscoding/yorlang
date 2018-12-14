@@ -14,6 +14,23 @@ class INodeCallIse extends IBase {
         return INodeCallIse.startNewScope(this, iseNode, INodeCallIse.getResolvedParameterValues(this, node.paramValues));
     }
 
+    static getIseNode (context, iseName) {
+        for (let index = context.scopeStack().length - 1; index >= 0; index--) {
+            if (context.environment().getIse(context.scopeStack()[index], iseName) !== undefined) {
+                return context.environment().getIse(context.scopeStack()[index], iseName);
+            }
+        }
+        return null;
+    }
+
+    static getIseHelperParams (context, paramNodeList) {
+        const params = [];
+        paramNodeList.forEach(paramNode => {
+            params.push(context.evaluateNode(paramNode));
+        });
+        return params;
+    }
+
     static getResolvedParameterValues (context, paramValueNodes) {
         const paramValues = [];
         paramValueNodes.forEach(paramValueNode => {
@@ -30,23 +47,6 @@ class INodeCallIse extends IBase {
         context.popFromScopeStack();
 
         return returnedValue;
-    }
-
-    static getIseNode (context, iseName) {
-        for (let index = context.scopeStack().length - 1; index >= 0; index--) {
-            if (context.environment().getIse(context.scopeStack()[index], iseName) !== undefined) {
-                return context.environment().getIse(context.scopeStack()[index], iseName);
-            }
-        }
-        return null;
-    }
-
-    static getIseHelperParams (context, paramNodeList) {
-        const params = [];
-        paramNodeList.forEach(paramNode => {
-            params.push(context.evaluateNode(paramNode));
-        });
-        return params;
     }
 
     static setIseNodeParam (context, iseNodeParamTokens, iseParamValues) {
