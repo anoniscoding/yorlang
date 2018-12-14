@@ -12,7 +12,7 @@ class INodeCallIse extends IBase {
 
         // It is important to run this before pushing a new scope
         // because you need to capture the state of parameters of
-        // type variable in the current scope.
+        // the form 'variable' in the current scope.
         const paramValues = INodeCallIse.getResolvedParameterValues(this, node.paramValues);
 
         this.pushToScopeStack(iseNode.name);
