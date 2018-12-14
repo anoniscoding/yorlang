@@ -1,7 +1,0 @@
-jeki oruko = "Yoruba da pupo";
-
-sope waNinu(oruko, "pupo");
-
-sope fiRopo(oruko, "pupo", "daada");
-sope siLetaKekere("YORUBA");
-sope siLetaNla("yoruba");
