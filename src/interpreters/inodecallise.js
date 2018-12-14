@@ -10,12 +10,26 @@ class INodeCallIse extends IBase {
             this.throwError(`Ise ${node.name} is undefined`);
         }
 
+        // It is important to run this before pushing a new scope
+        // because you need to capture the state of parameters of
+        // type variable in the current scope.
+        const paramValues = INodeCallIse.getResolvedParameterValues(this, node.paramValues);
+
         this.pushToScopeStack(iseNode.name);
-        INodeCallIse.setIseNodeParam(this, iseNode.paramTokens, node.paramValues);
+        INodeCallIse.setIseNodeParam(this, iseNode.paramTokens, paramValues);
         const returnedValue = INodeCallIse.runIseNodeBody(this, iseNode.body);
         this.popFromScopeStack();
 
         return returnedValue; // return the value that is returned by an encountered pada statement within an ise body
+    }
+
+    static getResolvedParameterValues (context, paramValueNodes) {
+        const paramValues = [];
+        paramValueNodes.forEach(paramValueNode => {
+            paramValues.push(context.evaluateNode(paramValueNode));
+        });
+
+        return paramValues;
     }
 
     static getIseNode (context, iseName) {
@@ -35,9 +49,9 @@ class INodeCallIse extends IBase {
         return params;
     }
 
-    static setIseNodeParam (context, iseNodeParamTokens, iseNodeParamValues) {
+    static setIseNodeParam (context, iseNodeParamTokens, iseParamValues) {
         for (let i = 0; i < iseNodeParamTokens.length; i++) {
-            context.environment().setJeki(context.getCurrentScope(), iseNodeParamTokens[i].value, context.evaluateNode(iseNodeParamValues[i]));
+            context.environment().setJeki(context.getCurrentScope(), iseNodeParamTokens[i].value, iseParamValues[i]);
         }
     }
 

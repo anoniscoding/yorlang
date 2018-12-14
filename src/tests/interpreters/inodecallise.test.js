@@ -168,4 +168,21 @@ describe("INodeCallIse test suite", () => {
         mainInterpreter.interpreteProgram();
         expect(global.console.log).toHaveBeenCalledWith(0);
     });
+
+    test("Capture the state of parameters of type variable before passing them as params to function", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.ISE} output(i) {
+                ${constants.KW.SOPE} i;
+            }
+
+            ${constants.KW.FUN} (${constants.KW.JEKI} i = 1; i <= 3; ${constants.KW.JEKI} i = i + 1;) { 
+                output(i);
+            }
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(global.console.log).toHaveBeenCalledWith(1);
+        expect(global.console.log).toHaveBeenCalledWith(2);
+        expect(global.console.log).toHaveBeenCalledWith(3);
+    });
 });
