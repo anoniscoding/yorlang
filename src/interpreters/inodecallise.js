@@ -1,11 +1,12 @@
 const IBase = require("./ibase.js");
+const getFormattedInput = require("./helpers/helper_ise_adapter");
 
 class INodeCallIse extends IBase {
     interpreteNode (node) {
         const iseNode = INodeCallIse.getIseNode(this, node.name);
 
         if (iseNode == null) {
-            if (this.environment().isExistHelperIse(node.name)) { return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues)); }
+            if (this.environment().isExistHelperIse(node.name)) { return getFormattedInput(this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues))); }
 
             this.throwError(`Ise ${node.name} is undefined`);
         }
