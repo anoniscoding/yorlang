@@ -1,21 +1,17 @@
 const IBase = require("./ibase.js");
+const getFormattedInput = require("./helpers/helper_ise_adapter");
 
 class INodeCallIse extends IBase {
     interpreteNode (node) {
         const iseNode = INodeCallIse.getIseNode(this, node.name);
 
         if (iseNode == null) {
-            if (this.environment().isExistHelperIse(node.name)) { return this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues)); }
+            if (this.environment().isExistHelperIse(node.name)) { return getFormattedInput(this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues))); }
 
             this.throwError(`Ise ${node.name} is undefined`);
         }
 
-        this.pushToScopeStack(iseNode.name);
-        INodeCallIse.setIseNodeParam(this, iseNode.paramTokens, node.paramValues);
-        const returnedValue = INodeCallIse.runIseNodeBody(this, iseNode.body);
-        this.popFromScopeStack();
-
-        return returnedValue; // return the value that is returned by an encountered pada statement within an ise body
+        return INodeCallIse.startNewScope(this, iseNode, INodeCallIse.getResolvedParameterValues(this, node.paramValues));
     }
 
     static getIseNode (context, iseName) {
@@ -35,9 +31,27 @@ class INodeCallIse extends IBase {
         return params;
     }
 
-    static setIseNodeParam (context, iseNodeParamTokens, iseNodeParamValues) {
+    static getResolvedParameterValues (context, paramValueNodes) {
+        const paramValues = [];
+        paramValueNodes.forEach(paramValueNode => {
+            paramValues.push(context.evaluateNode(paramValueNode));
+        });
+
+        return paramValues;
+    }
+
+    static startNewScope (context, iseNode, paramValues) {
+        context.pushToScopeStack(iseNode.name);
+        INodeCallIse.setIseNodeParam(context, iseNode.paramTokens, paramValues);
+        const returnedValue = INodeCallIse.runIseNodeBody(context, iseNode.body);
+        context.popFromScopeStack();
+
+        return returnedValue;
+    }
+
+    static setIseNodeParam (context, iseNodeParamTokens, iseParamValues) {
         for (let i = 0; i < iseNodeParamTokens.length; i++) {
-            context.environment().setJeki(context.getCurrentScope(), iseNodeParamTokens[i].value, context.evaluateNode(iseNodeParamValues[i]));
+            context.environment().setJeki(context.getCurrentScope(), iseNodeParamTokens[i].value, iseParamValues[i]);
         }
     }
 
