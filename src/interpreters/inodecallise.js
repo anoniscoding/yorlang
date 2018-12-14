@@ -11,17 +11,7 @@ class INodeCallIse extends IBase {
             this.throwError(`Ise ${node.name} is undefined`);
         }
 
-        // It is important to run this before pushing a new scope
-        // because you need to capture the state of parameters of
-        // the form 'variable' in the current scope.
-        const paramValues = INodeCallIse.getResolvedParameterValues(this, node.paramValues);
-
-        this.pushToScopeStack(iseNode.name);
-        INodeCallIse.setIseNodeParam(this, iseNode.paramTokens, paramValues);
-        const returnedValue = INodeCallIse.runIseNodeBody(this, iseNode.body);
-        this.popFromScopeStack();
-
-        return returnedValue; // return the value that is returned by an encountered pada statement within an ise body
+        return INodeCallIse.startNewScope(this, iseNode, INodeCallIse.getResolvedParameterValues(this, node.paramValues));
     }
 
     static getResolvedParameterValues (context, paramValueNodes) {
@@ -31,6 +21,15 @@ class INodeCallIse extends IBase {
         });
 
         return paramValues;
+    }
+
+    static startNewScope (context, iseNode, paramValues) {
+        context.pushToScopeStack(iseNode.name);
+        INodeCallIse.setIseNodeParam(context, iseNode.paramTokens, paramValues);
+        const returnedValue = INodeCallIse.runIseNodeBody(context, iseNode.body);
+        context.popFromScopeStack();
+
+        return returnedValue;
     }
 
     static getIseNode (context, iseName) {
