@@ -1,7 +1,7 @@
 const readlineSync = require("readline-sync");
 const fs = require("fs");
 
-var lang = [
+const lang = [
     "english",
     "yoruba",
 ];
@@ -13,7 +13,7 @@ const inputLowerCase = input.toLowerCase();
 
 (lang.includes(inputLowerCase)) ? defaultLang = inputLowerCase : console.warn("Inputed Language not available yet!");
 
-fs.writeFile("src/language.js", 'export default { Language: { defaultLang: "' + defaultLang + '" } };', (err) => {
+fs.writeFile("src/config/language.js", 'module.exports = {defaultLang:"' + defaultLang + '"};', (err) => {
     if (err) {
         throw new Error(err);
     } else {

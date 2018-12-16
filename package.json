@@ -11,7 +11,7 @@
     "link": "npm link",
     "lint": "eslint ./src --color",
     "lint:fix": "eslint ./src --fix",
-    "postinstall": "node src/selectLanguageConfig.js"
+    "postinstall": "node src/config/selectLanguage.js"
   },
   "devDependencies": {
     "eslint": "5.9.0",

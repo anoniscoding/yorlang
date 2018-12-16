@@ -1,4 +1,5 @@
 const constants = require("../constants.js");
+const feedbackMessage = require("../feedbackMessages.js");
 const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const BaseNode = require("./basenode.js");
@@ -124,14 +125,14 @@ class Parser {
         if (nodeLiterals[token.type]) {
             const nodeliteral = nodeLiterals[token.type];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(`${token.value} must be of type BaseNode`);
+            else throw new Error(feedbackMessage.BaseNodeType(token.value));
         }
 
         // check if the token value is a punctuation that can be used in an expression e.g (, [
         if (nodeLiterals[constants.EXP_PUNC][token.value]) {
             const nodeliteral = nodeLiterals[constants.EXP_PUNC][token.value];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(`${token.value} must be of type BaseNode`);
+            else throw new Error(feedbackMessage.BaseNodeType(token.value));
         }
 
         this.lexer().throwError(this.getGenericErrorMsg(token.value));
@@ -192,13 +193,13 @@ class Parser {
         if (kwnodes[token.value]) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); // call the method getNode in kwNode object like an extension function to the Parser class
-            else throw new Error(`${kwNode} must be of type BaseNode`);
+            else throw new Error(feedbackMessage.BaseNodeType(kwNode));
         }
 
         if (token.type === constants.VARIABLE) { // then a function call is expected
             const callIseNodeLiteral = nodeLiterals[constants.CALL_ISE];
             if (callIseNodeLiteral instanceof BaseNode) return callIseNodeLiteral.getNode.call(this);
-            else throw new Error(`${callIseNodeLiteral} must be of type BaseNode`);
+            else throw new Error(feedbackMessage.BaseNodeType(callIseNodeLiteral));
         }
 
         this.throwError(this.getGenericErrorMsg(token.value));
