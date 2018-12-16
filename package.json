@@ -10,7 +10,8 @@
     "coverage": "node_modules/.bin/jest --coverage",
     "link": "npm link",
     "lint": "eslint ./src --color",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix",
+    "postinstall": "node src/selectLanguageConfig.js"
   },
   "devDependencies": {
     "eslint": "5.9.0",
