@@ -185,4 +185,17 @@ describe("INodeCallIse test suite", () => {
         expect(global.console.log).toHaveBeenCalledWith(2);
         expect(global.console.log).toHaveBeenCalledWith(3);
     });
+
+    test("Make sure ise can take negative values as parameters", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.ISE} teAropoNonba(a, b) {
+                ${constants.KW.SOPE} a + b;
+            }
+
+            teAropoNonba(-3, 2);
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(global.console.log).toHaveBeenCalledWith(-1);
+    });
 });

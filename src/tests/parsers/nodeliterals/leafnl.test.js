@@ -39,4 +39,17 @@ describe("LeafLiteral test suite", () => {
 
         expect(leafNl.getNode.call(parser)).toEqual(expectedNode);
     });
+
+    test("it should parse valid negative leaf number literal", () => {
+        parser.lexer().inputStream.code = "-7.51;";
+
+        const expectedNode = {
+            left: null,
+            operation: null,
+            right: null,
+            value: -7.51,
+        };
+
+        expect(leafNl.getNode.call(parser)).toEqual(expectedNode);
+    });
 });
