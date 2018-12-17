@@ -11,7 +11,7 @@ const constants = require("./src/constants.js");
 const commander = require("commander");
 
 commander.on("--help", function () {
-    console.log("")
+    console.log("");
     console.log("Examples:");
     console.log("  $ yorl test.yl");
     console.log("  $ yorl -h");
