@@ -4,12 +4,9 @@
  */
 function fiRopo (args) {
     if (Array.isArray(args)) {
-        if (args.length === 3) {
-            const [ parentString, regex, newString, ] = args;
-            if ((typeof parentString === "string") && (typeof regex === "string") && (typeof newString === "string")) {
-                return parentString.replace(regex, newString);
-            }
-            throw new Error("Yorlang system error: arguments should be three strings");
+        const [ parentString, regex, newString, ] = args;
+        if ((typeof parentString === "string") && (typeof regex === "string") && (typeof newString === "string")) {
+            return parentString.replace(regex, newString);
         }
         throw new Error("Yorlang system error: arguments should be three strings");
     }

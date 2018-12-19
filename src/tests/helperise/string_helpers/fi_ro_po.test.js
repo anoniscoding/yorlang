@@ -6,10 +6,6 @@ describe("fiRopo Test Suite", () => {
         expect(fiRopo([oruko, "pupo", "gidi gan"])).toBe("Yoruba da gidi gan");
     });
 
-    test("It should fail because helper function fiRopo takes only 3 arguments", () => {
-        expect(()=> fiRopo(["yoruba da pupo", "yoruba"])).toThrow();
-    });
-
     test("It should fail because helper function takes only 3 strings", ()=> {
         expect(()=> fiRopo(["yoruba da pupo", 47, 56])).toThrow();
     });
