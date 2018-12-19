@@ -11,7 +11,10 @@ function oTobiJulo () {
         array = obj;
     } else {
         for (var i = 0; i < arguments.length; i++) {
-            array.push(arguments[i]);
+            if (isNaN(arguments[i])) {
+            } else {
+                array.push(arguments[i]);
+            }
         }
     }
     return Math.max(...array);
