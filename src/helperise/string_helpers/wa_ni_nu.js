@@ -1,6 +1,6 @@
 /**
  * @param args receives two strings parent string and the substring
- * @returns string
+ * @returns boolean
  */
 function waNinu (args) {
     if (Array.isArray(args)) {

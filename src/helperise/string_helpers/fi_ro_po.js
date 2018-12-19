@@ -1,5 +1,5 @@
 /**
- * @param args receives three strings parent string and the string to be replaced.
+ * @param args receives three strings parent string , the string to be replaced, and the new string.
  * @returns string
  */
 function fiRopo (args) {
