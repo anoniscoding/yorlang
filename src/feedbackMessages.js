@@ -6,7 +6,7 @@ const message = {
 
     yoruba: {
         baseNodeType: (arg) => `${arg} gbọdọ jẹ ti iru BaseNode`,
-        genericErrorMsg: (arg) => `Ko le ṣe itọju aami ifihan lairotẹlẹ : ${arg}`,
+        genericErrorMsg: (arg) => `yoju lairotẹlẹ : ${arg}`,
     },
 };
 
