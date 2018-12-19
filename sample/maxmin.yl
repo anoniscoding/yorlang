@@ -1,0 +1,19 @@
+sope "eleyi a fun wa ni nomba to tobi julo";
+sope "";
+jeki maxNumber = oTobiJulo(3,6,87,2,32,33);
+sope maxNumber;
+
+sope "eleyi a fun wa ni nomba to kere julo";
+sope "";
+jeki minNumber = oKereJulo(3,6,87,2,32,33);
+sope minNumber;
+
+sope "eleyi a fun wa ni nomba to tobi julo";
+sope "";
+jeki maximum = oTobiJulo([3,6,87,2,32,33]);
+sope maximum;
+
+sope "eleyi a fun wa ni nomba to kere julo";
+sope "";
+jeki minimum = oKereJulo([3,6,87,2,32,33],23,22,232);
+sope minimum;
