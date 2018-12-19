@@ -14,7 +14,7 @@ commander.on("--help", function () {
     console.log("");
     console.log("Examples:");
     console.log("  $ yorl test.yl");
-    console.log("  $ yorl test.yl -w yoruba");
+    console.log("  $ yorl test.yl -l yoruba");
     console.log("  $ yorl -h");
     console.log("  $ yorl -v");
 });
@@ -22,7 +22,7 @@ commander.on("--help", function () {
 commander.version(packageJson.version, "-v, --version");
 
 commander.arguments("[file]")
-    .option("-w, --lang [lang]", "Select language to use")
+    .option("-l, --lang [lang]", "Select language to use")
     .action((file, options) => {
         if (path.extname(file) === constants.YL_EXT) {
             const lang = [ "english", "yoruba", ];
