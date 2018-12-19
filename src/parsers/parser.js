@@ -116,7 +116,7 @@ class Parser {
     }
 
     isNextTokenInOperatorList (operatorList) {
-        return this.isNotEndOfFile() && (operatorList.indexOf(this.lexer().peek().value) >= 0);
+        return this.isNotEndOfFile() && (operatorList.includes(this.lexer().peek().value));
     }
 
     parseNodeLiteral () {

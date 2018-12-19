@@ -11,8 +11,8 @@ class KwNodeKuro extends BaseNode {
     }
 
     static isExpectedKuroStatement (context) {
-        return context.getBlockTypeStack().indexOf(constants.KW.FUN) >= 0 ||
-                                            context.getBlockTypeStack().indexOf(constants.KW.NIGBATI) >= 0;
+        return context.getBlockTypeStack().includes(constants.KW.FUN) ||
+                                            context.getBlockTypeStack().includes(constants.KW.NIGBATI);
     }
 
     static getParsedKuroNode (context) {

@@ -11,17 +11,22 @@ const constants = require("./src/constants.js");
 const commander = require("commander");
 
 commander.on("--help", function () {
-    console.log("")
+    console.log("");
     console.log("Examples:");
     console.log("  $ yorl test.yl");
+    console.log("  $ yorl test.yl -l yoruba");
     console.log("  $ yorl -h");
     console.log("  $ yorl -v");
 });
 
 commander.version(packageJson.version, "-v, --version");
-commander.arguments("<file>")
-    .action((file) => {
+
+commander.arguments("[file]")
+    .option("-l, --lang [lang]", "Select language to use")
+    .action((file, options) => {
         if (path.extname(file) === constants.YL_EXT) {
+            const lang = [ "english", "yoruba", ];
+            global.defaultLang = lang.includes(options.lang) ? options.lang : "english";
             const parser = new Parser(new Lexer(new InputStream(file)));
             new MainInterpreter(new Environment(), parser).interpreteProgram();
         } else {

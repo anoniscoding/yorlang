@@ -11,7 +11,7 @@ class KwNodeWoke extends BaseNode {
     }
 
     static isExpectedWokeStatement (context) {
-        return context.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0;
+        return context.getBlockTypeStack().includes(constants.KW.ISE);
     }
 
     static getParsedWokeNode (context) {

@@ -7,11 +7,11 @@ class Lexer {
     }
 
     isWhiteSpace (whiteSpaceChar) {
-        return constants.LIST.WHITESPACES.indexOf(whiteSpaceChar) >= 0;
+        return constants.LIST.WHITESPACES.includes(whiteSpaceChar);
     }
 
     isPunctuation (punctuationChar) {
-        return constants.LIST.PUNCTUATIONS.indexOf(punctuationChar) >= 0;
+        return constants.LIST.PUNCTUATIONS.includes(punctuationChar);
     }
 
     isIdentifier (id) {
@@ -19,11 +19,11 @@ class Lexer {
     }
 
     isOperator (operatorChar) {
-        return constants.LIST.OPERATORS.indexOf(operatorChar) >= 0;
+        return constants.LIST.OPERATORS.includes(operatorChar);
     }
 
     isKeyword (keywordChar) {
-        return constants.LIST.KEYWORDS.indexOf(keywordChar) >= 0;
+        return constants.LIST.KEYWORDS.includes(keywordChar);
     }
 
     isDigit (digitChar) {

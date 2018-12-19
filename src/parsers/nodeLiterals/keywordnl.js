@@ -19,7 +19,7 @@ class KeywordNl extends BaseNode {
     }
 
     static isKeywordNl (context) {
-        return [ constants.KW.OOTO, constants.KW.IRO, ].indexOf(context.lexer().peek().value) >= 0;
+        return [ constants.KW.OOTO, constants.KW.IRO, ].includes(context.lexer().peek().value);
     }
 }
 

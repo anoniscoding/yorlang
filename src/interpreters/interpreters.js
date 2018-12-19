@@ -32,5 +32,6 @@ interpreters[constants.CALL_ISE] = require("./inodecallise.js");
 interpreters[constants.GET_JEKI] = require("./inodegetjeki.js");
 interpreters[constants.ARRAY] = require("./inodearray.js");
 interpreters[constants.ARRAY_ELEM] = require("./inodearrayelem.js");
+interpreters[constants.NEGATE_EXPRESSION] = require("./inodenegateexpression.js");
 
 module.exports = interpreters;
