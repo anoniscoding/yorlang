@@ -99,6 +99,7 @@ const constants = {
     CALL_ISE: "callIse",
     EXP_PUNC: "expression_punctuations",
     YL_EXT: ".yl",
+    NEGATE_EXPRESSION: "negate_exp",
 };
 
 module.exports = constants;
