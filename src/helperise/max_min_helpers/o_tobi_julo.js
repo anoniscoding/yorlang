@@ -10,9 +10,8 @@ function oTobiJulo () {
     if (isArray(obj)) {
         array = obj;
     } else {
-        for ( var i=0; i < arguments.length; i++ ) {
+        for (var i = 0; i < arguments.length; i++) {
             array.push(arguments[i]);
-
         }
     }
     return Math.max(...array);
@@ -21,4 +20,4 @@ function isArray (obj) {
     return !!obj && obj.constructor === Array;
 }
 
-module.exports = o_tobi_julo;
+module.exports = oTobiJulo;
