@@ -14,14 +14,19 @@ commander.on("--help", function () {
     console.log("");
     console.log("Examples:");
     console.log("  $ yorl test.yl");
+    console.log("  $ yorl test.yl -w yoruba");
     console.log("  $ yorl -h");
     console.log("  $ yorl -v");
 });
 
 commander.version(packageJson.version, "-v, --version");
-commander.arguments("<file>")
-    .action((file) => {
+
+commander.arguments("[file]")
+    .option("-w, --warning_lang [lang]", "Which warning language to use")
+    .action((file, options) => {
         if (path.extname(file) === constants.YL_EXT) {
+            const lang = [ "english", "yoruba", ];
+            global.defaultLang = lang.includes(options.warning_lang) ? options.warning_lang : "english";
             const parser = new Parser(new Lexer(new InputStream(file)));
             new MainInterpreter(new Environment(), parser).interpreteProgram();
         } else {
