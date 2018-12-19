@@ -1,19 +1,12 @@
 const message = {
     english: {
-        baseNodeType: function (arg) {
-            return `${arg} must be of type BaseNode`;
-        },
-        getGenericErrorMsg: function (arg) {
-            return `Cannot process unexpected token : ${arg}`;
-        },
+        baseNodeType: (arg) => `${arg} must be of type BaseNode`,
+        getGenericErrorMsg: (arg) => `Cannot process unexpected token : ${arg}`,
     },
+
     yoruba: {
-        baseNodeType: function (arg) {
-            return `${arg} gbọdọ jẹ ti iru BaseNode`;
-        },
-        getGenericErrorMsg: function (arg) {
-            return `Ko le ṣe itọju aami ifihan lairotẹlẹ : ${arg}`;
-        },
+        baseNodeType: (arg) => `${arg} gbọdọ jẹ ti iru BaseNode`,
+        getGenericErrorMsg: (arg) => `Ko le ṣe itọju aami ifihan lairotẹlẹ : ${arg}`,
     },
 };
 
