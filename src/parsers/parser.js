@@ -47,17 +47,17 @@ class Parser {
 
     skipPunctuation (punc) {
         if (this.isNextTokenPunctuation(punc)) this.lexer().next();
-        else this.throwError(feedbackMessages.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipOperator (op) {
         if (this.isNextTokenOperator(op)) this.lexer().next();
-        else this.throwError(feedbackMessages.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipKeyword (kw) {
         if (this.isNextTokenKeyword(kw)) this.lexer().next();
-        else this.throwError(feedbackMessages.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
     getCurrentTokenValue () {
@@ -135,7 +135,7 @@ class Parser {
             else throw new Error(feedbackMessages.baseNodeType(token.value));
         }
 
-        this.lexer().throwError(feedbackMessages.getGenericErrorMsg(token.value));
+        this.lexer().throwError(feedbackMessages.genericErrorMsg(token.value));
     }
 
     parseBlock (currentBlock) {
@@ -158,7 +158,7 @@ class Parser {
     parseVarname () {
         return (this.lexer().peek().type === constants.VARIABLE)
             ? this.lexer().next().value
-            : this.lexer().throwError(feedbackMessages.getGenericErrorMsg(this.lexer().peek().value));
+            : this.lexer().throwError(feedbackMessages.genericErrorMsg(this.lexer().peek().value));
     }
 
     parseDelimited (start, stop, separator, parser, predicate) {
@@ -180,7 +180,7 @@ class Parser {
         var token = this.lexer().next();
         if (predicate(token)) return token;
 
-        this.throwError(feedbackMessages.getGenericErrorMsg(token.type));
+        this.throwError(feedbackMessages.genericErrorMsg(token.type));
     }
 
     parseAst () {
@@ -198,7 +198,7 @@ class Parser {
             else throw new Error(feedbackMessages.baseNodeType(callIseNodeLiteral));
         }
 
-        this.throwError(feedbackMessages.getGenericErrorMsg(token.value));
+        this.throwError(feedbackMessages.genericErrorMsg(token.value));
     }
 
     isNotEndOfFile () {
