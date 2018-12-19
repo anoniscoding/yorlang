@@ -2,7 +2,7 @@
 function ka (args) {
     if (Array.isArray(args)) {
         const [ param, ] = args;
-        if (param instanceof Array) return param.length;
+        if (Array.isArray(param)) return param.length;
 
         throw new Error("Invalid param given to helper ise ka.");
     }

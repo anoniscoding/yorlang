@@ -1,12 +1,12 @@
-function getFormattedInput (input) {
-    switch (typeof input) {
+function getFormattedReturnValue (returnedValue) {
+    switch (typeof returnedValue) {
     case "string":
-    case "number": return input;
-    case "boolean": return (input) ? "ooto" : "iro";
-    case "object": if (Array.isArray(input)) return input;
+    case "number": return returnedValue;
+    case "boolean": return (returnedValue) ? "ooto" : "iro";
+    case "object": if (Array.isArray(returnedValue)) return returnedValue;
     }
 
     throw new Error("Yorlang system error: invalid result returned from helper function");
 }
 
-module.exports = getFormattedInput;
+module.exports = getFormattedReturnValue;

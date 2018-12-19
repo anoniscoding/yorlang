@@ -6,28 +6,28 @@ class Lexer {
         this.currentToken = null;
     }
 
-    isWhiteSpace (ws) {
-        return constants.LIST.WHITESPACES.indexOf(ws) >= 0;
+    isWhiteSpace (whiteSpaceChar) {
+        return constants.LIST.WHITESPACES.indexOf(whiteSpaceChar) >= 0;
     }
 
-    isPunctuation (punc) {
-        return constants.LIST.PUNCTUATIONS.indexOf(punc) >= 0;
+    isPunctuation (punctuationChar) {
+        return constants.LIST.PUNCTUATIONS.indexOf(punctuationChar) >= 0;
     }
 
     isIdentifier (id) {
         return constants.REGEX.IDENTIFIER.test(id);
     }
 
-    isOperator (op) {
-        return constants.LIST.OPERATORS.indexOf(op) >= 0;
+    isOperator (operatorChar) {
+        return constants.LIST.OPERATORS.indexOf(operatorChar) >= 0;
     }
 
-    isKeyword (kw) {
-        return constants.LIST.KEYWORDS.indexOf(kw) >= 0;
+    isKeyword (keywordChar) {
+        return constants.LIST.KEYWORDS.indexOf(keywordChar) >= 0;
     }
 
-    isDigit (dig) {
-        return constants.REGEX.DIGIT.test(dig);
+    isDigit (digitChar) {
+        return constants.REGEX.DIGIT.test(digitChar);
     }
 
     readWhile (predicate) {
