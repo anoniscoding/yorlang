@@ -1,5 +1,5 @@
 const constants = require("../constants.js");
-const feedbackMessage = require("../feedbackMessages.js");
+const feedbackMessages = require("../feedbackMessages.js");
 const kwnodes = require("./keywordnodes/kwnodes.js");
 const nodeLiterals = require("./nodeLiterals/nodeliterals.js");
 const BaseNode = require("./basenode.js");
@@ -47,17 +47,17 @@ class Parser {
 
     skipPunctuation (punc) {
         if (this.isNextTokenPunctuation(punc)) this.lexer().next();
-        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(feedbackMessages.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipOperator (op) {
         if (this.isNextTokenOperator(op)) this.lexer().next();
-        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(feedbackMessages.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     skipKeyword (kw) {
         if (this.isNextTokenKeyword(kw)) this.lexer().next();
-        else this.throwError(this.getGenericErrorMsg(this.getCurrentTokenValue()));
+        else this.throwError(feedbackMessages.getGenericErrorMsg(this.getCurrentTokenValue()));
     }
 
     getCurrentTokenValue () {
@@ -125,17 +125,17 @@ class Parser {
         if (nodeLiterals[token.type]) {
             const nodeliteral = nodeLiterals[token.type];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(feedbackMessage.BaseNodeType(token.value));
+            else throw new Error(feedbackMessages.baseNodeType(token.value));
         }
 
         // check if the token value is a punctuation that can be used in an expression e.g (, [
         if (nodeLiterals[constants.EXP_PUNC][token.value]) {
             const nodeliteral = nodeLiterals[constants.EXP_PUNC][token.value];
             if (nodeliteral instanceof BaseNode) return nodeliteral.getNode.call(this);
-            else throw new Error(feedbackMessage.BaseNodeType(token.value));
+            else throw new Error(feedbackMessages.baseNodeType(token.value));
         }
 
-        this.lexer().throwError(this.getGenericErrorMsg(token.value));
+        this.lexer().throwError(feedbackMessages.getGenericErrorMsg(token.value));
     }
 
     parseBlock (currentBlock) {
@@ -158,7 +158,7 @@ class Parser {
     parseVarname () {
         return (this.lexer().peek().type === constants.VARIABLE)
             ? this.lexer().next().value
-            : this.lexer().throwError(this.getGenericErrorMsg(this.lexer().peek().value));
+            : this.lexer().throwError(feedbackMessages.getGenericErrorMsg(this.lexer().peek().value));
     }
 
     parseDelimited (start, stop, separator, parser, predicate) {
@@ -180,12 +180,14 @@ class Parser {
         var token = this.lexer().next();
         if (predicate(token)) return token;
 
-        this.throwError(this.getGenericErrorMsg(token.type));
+        this.throwError(feedbackMessages.getGenericErrorMsg(token.type));
     }
 
-    getGenericErrorMsg (value) {
-        return `Cannot process unexpected token : ${value}`;
-    }
+    // Not neccessary anymore
+
+    // getGenericErrorMsg (value) {
+    //     return `Cannot process unexpected token : ${value}`;
+    // }
 
     parseAst () {
         const token = this.lexer().peek();
@@ -193,16 +195,16 @@ class Parser {
         if (kwnodes[token.value]) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); // call the method getNode in kwNode object like an extension function to the Parser class
-            else throw new Error(feedbackMessage.BaseNodeType(kwNode));
+            else throw new Error(feedbackMessages.baseNodeType(kwNode));
         }
 
         if (token.type === constants.VARIABLE) { // then a function call is expected
             const callIseNodeLiteral = nodeLiterals[constants.CALL_ISE];
             if (callIseNodeLiteral instanceof BaseNode) return callIseNodeLiteral.getNode.call(this);
-            else throw new Error(feedbackMessage.BaseNodeType(callIseNodeLiteral));
+            else throw new Error(feedbackMessages.baseNodeType(callIseNodeLiteral));
         }
 
-        this.throwError(this.getGenericErrorMsg(token.value));
+        this.throwError(feedbackMessages.getGenericErrorMsg(token.value));
     }
 
     isNotEndOfFile () {
