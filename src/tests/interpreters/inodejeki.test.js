@@ -145,4 +145,33 @@ describe("INodeJeki test suite", () => {
         mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "a")).toBe("funmi");
     });
+
+    test("it should test integration of helper fiRopo", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} text = fiRopo("Yoruba da pupo", "pupo", "gidigan");
+
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "text")).toBe("Yoruba da gidigan");
+    });
+
+    test("it should test integration of helper waNinu", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} text = waNinu("Yoruba da pupo", "pupo");
+
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "text")).toBe("ooto");
+    });
+
+    test("it should test integration of helper aago", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} time = aago();
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "time")).toBeTruthy();
+    });
 });
