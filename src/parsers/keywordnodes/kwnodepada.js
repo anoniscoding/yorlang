@@ -11,7 +11,7 @@ class KwNodePada extends BaseNode {
     }
 
     static isExpectedPadaStatement (context) {
-        return context.getBlockTypeStack().indexOf(constants.KW.ISE) >= 0;
+        return context.getBlockTypeStack().includes(constants.KW.ISE);
     }
 
     static getParsedPadaNode (context) {
