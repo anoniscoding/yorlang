@@ -22,11 +22,11 @@ commander.on("--help", function () {
 commander.version(packageJson.version, "-v, --version");
 
 commander.arguments("[file]")
-    .option("-w, --warning_lang [lang]", "Which warning language to use")
+    .option("-w, --lang [lang]", "Select language to use")
     .action((file, options) => {
         if (path.extname(file) === constants.YL_EXT) {
             const lang = [ "english", "yoruba", ];
-            global.defaultLang = lang.includes(options.warning_lang) ? options.warning_lang : "english";
+            global.defaultLang = lang.includes(options.lang) ? options.lang : "english";
             const parser = new Parser(new Lexer(new InputStream(file)));
             new MainInterpreter(new Environment(), parser).interpreteProgram();
         } else {
