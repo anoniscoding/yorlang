@@ -183,12 +183,6 @@ class Parser {
         this.throwError(feedbackMessages.getGenericErrorMsg(token.type));
     }
 
-    // Not neccessary anymore
-
-    // getGenericErrorMsg (value) {
-    //     return `Cannot process unexpected token : ${value}`;
-    // }
-
     parseAst () {
         const token = this.lexer().peek();
 
