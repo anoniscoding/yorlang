@@ -1,5 +1,7 @@
 const IBase = require("./ibase.js");
 const WokeHelper = require("./helpers/woke_helper.js");
+const feedbackMessages = require("../feedbackMessages.js");
+const constants = require("../constants.js");
 
 class INodeGetJeki extends IBase {
     interpreteNode (node) {
@@ -9,7 +11,7 @@ class INodeGetJeki extends IBase {
             }
         }
 
-        this.throwError(`Variable ${node.name} is undefined`);
+        this.throwError(feedbackMessages.varDoesNotExist(constants.VARIABLE, node.name));
     }
 
     static getTopIndex (context, jekiName) {

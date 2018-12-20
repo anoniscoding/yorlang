@@ -1,24 +1,25 @@
 const constants = require("../../constants.js");
 const leafNl = require("./leafnl.js");
 const BaseNode = require("../basenode.js");
+const feedbackMessages = require("../../feedbackMessages.js");
 
 class KeywordNl extends BaseNode {
     constructor () {
         super();
         if (!(leafNl instanceof BaseNode)) {
-            throw new Error("Dependency leafNl must be of type BaseNode");
+            throw new Error(feedbackMessages.baseNodeType("Dependency leafnl"));
         }
     }
 
     getNode () {
-        if (KeywordNl.isKeywordNl(this)) {
+        if (KeywordNl.isBooleanKeywordNl(this)) {
             return leafNl.getNode.call(this);
         }
 
-        this.throwError("Expecting yorlang keyword value e.g boolean(iró|òótó)");
+        this.throwError(feedbackMessages.expectBooleanMsg());
     }
 
-    static isKeywordNl (context) {
+    static isBooleanKeywordNl (context) {
         return [ constants.KW.OOTO, constants.KW.IRO, ].includes(context.lexer().peek().value);
     }
 }

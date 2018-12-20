@@ -1,5 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
+const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodeIse extends BaseNode {
     getNode () {
@@ -7,7 +8,7 @@ class KwNodeIse extends BaseNode {
             return KwNodeIse.getParsedIseNode(this);
         }
 
-        this.throwError("Cannot create a yorlang function within a non function block");
+        this.throwError(feedbackMessages.unexpectedDeclaration(constants.KW.ISE));
     }
 
     static isExpectedIseDeclaration (context) {

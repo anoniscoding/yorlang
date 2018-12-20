@@ -1,6 +1,7 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 const variableNlTypes = require("./variablenltypes");
+const feedbackMessages = require("../../feedbackMessages.js");
 
 class VariableNl extends BaseNode {
     getNode () {
@@ -10,7 +11,7 @@ class VariableNl extends BaseNode {
         if (variableNlTypes[nextTokenValue]) {
             const variableNlType = variableNlTypes[nextTokenValue];
             if (variableNlType instanceof BaseNode) return variableNlType.getNode.call(this, varNameToken);
-            else throw new Error(`Dependency ${variableNlType} must be of type BaseNode`);
+            else throw new Error(feedbackMessages.baseNodeType(variableNlType));
         }
 
         return {

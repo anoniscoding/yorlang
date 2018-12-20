@@ -1,13 +1,14 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 const kwNodeJeki = require("./kwnodejeki.js");
+const feedbackMessages = require("../../feedbackMessages.js");
 const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
 
 class KwNodeFun extends BaseNode {
     constructor () {
         super();
         if (this.isDependenciesInValid()) {
-            throw new Error("Dependencies must be of type BaseNode");
+            throw new Error(feedbackMessages.baseNodeType("Dependencies"));
         }
     }
 
@@ -28,7 +29,7 @@ class KwNodeFun extends BaseNode {
         node.increment = kwNodeJeki.getNode.call(this);
 
         if (KwNodeFun.isInValidFunIncrementStatement(node)) {
-            this.throwError("Invalid yorlang decrement or increment operation");
+            this.throwError(feedbackMessages.funIncrementAndDecrementMsg());
         }
         this.skipPunctuation(constants.SYM.R_BRACKET);
 

@@ -1,5 +1,7 @@
 const IBase = require("./ibase.js");
 const getFormattedReturnValue = require("./helpers/helper_ise_adapter");
+const feedbackMessages = require("../feedbackMessages.js");
+const constants = require("../constants.js");
 
 class INodeCallIse extends IBase {
     interpreteNode (node) {
@@ -10,7 +12,7 @@ class INodeCallIse extends IBase {
                 return getFormattedReturnValue(this.environment().runHelperIse(node.name, INodeCallIse.getIseHelperParams(this, node.paramValues)));
             }
 
-            this.throwError(`Ise ${node.name} is undefined`);
+            this.throwError(feedbackMessages.varDoesNotExist(constants.KW.ISE, node.name));
         }
 
         return INodeCallIse.startNewScope(this, iseNode, INodeCallIse.getResolvedParameterValues(this, node.paramValues));

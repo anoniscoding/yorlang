@@ -1,12 +1,13 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
 const bracketExpressionNl = require("../nodeLiterals/bracketexpressionnl.js");
+const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodeYi extends BaseNode {
     constructor () {
         super();
         if (!(bracketExpressionNl instanceof BaseNode)) {
-            throw new Error("Dependency brackExpressionNl must be of type BaseNode");
+            throw new Error(feedbackMessages.baseNodeType("Dependency bracketExpressionNl"));
         }
     }
 

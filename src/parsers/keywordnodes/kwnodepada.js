@@ -1,5 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
+const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodePada extends BaseNode {
     getNode () {
@@ -7,7 +8,7 @@ class KwNodePada extends BaseNode {
             return KwNodePada.getParsedPadaNode(this);
         }
 
-        this.throwError("Yorlang pada keyword not expected in a non function(ise) block");
+        this.throwError(feedbackMessages.unexpectedDeclaration(constants.KW.PADA));
     }
 
     static isExpectedPadaStatement (context) {

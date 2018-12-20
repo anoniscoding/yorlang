@@ -1,6 +1,7 @@
 const IBase = require("./ibase.js");
 const constants = require("../constants.js");
 const WokeHelper = require("./helpers/woke_helper.js");
+const feedbackMessages = require("../feedbackMessages.js");
 
 class INodeJeki extends IBase {
     interpreteNode (node) {
@@ -41,7 +42,7 @@ class INodeJeki extends IBase {
 
             if (typeof arrayIndex === "number") {
                 if (!(Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
-                    context.throwError(`Cannot set invalid array element for array : ${node.left.name}`);
+                    context.throwError(feedbackMessages.arrayIndexDoesNotExistMsg(node.left.name));
                 }
 
                 if ((Array.isArray(arrayLiteral[arrayIndex])) && (i < node.left.indexNodes.length - 1)) {
@@ -52,7 +53,7 @@ class INodeJeki extends IBase {
                     arrayLiteral[arrayIndex] = context.evaluateNode(node.right);
                 }
             } else {
-                context.throwError(`Typeof index given for array ${node.name} must be a number`);
+                context.throwError(feedbackMessages.invalidArrayIndexTypeMsg(node.name));
             }
         };
     }
@@ -64,7 +65,7 @@ class INodeJeki extends IBase {
 
     static getValue (context, node) {
         const value = context.evaluateNode(node);
-        if (value === undefined) context.throwError(`Cannot set value undefined to variable ${node.left}`);
+        if (value === undefined) context.throwError(feedbackMessages.undefinedValueMsg(node.left));
         return value;
     }
 }

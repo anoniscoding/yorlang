@@ -1,5 +1,6 @@
 const constants = require("../../constants.js");
 const BaseNode = require("../basenode.js");
+const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodeKuro extends BaseNode {
     getNode () {
@@ -7,7 +8,7 @@ class KwNodeKuro extends BaseNode {
             return KwNodeKuro.getParsedKuroNode(this);
         }
 
-        this.throwError("Yorlang Kuro keyword not expected");
+        this.throwError(feedbackMessages.unexpectedDeclaration(constants.KW.KURO));
     }
 
     static isExpectedKuroStatement (context) {

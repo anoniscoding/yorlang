@@ -1,5 +1,6 @@
 const IBase = require("./ibase.js");
 const contansts = require("../constants.js");
+const feedbackMessages = require("../feedbackMessages.js");
 
 class INodeArrayElement extends IBase {
     interpreteNode (node) {
@@ -19,11 +20,11 @@ class INodeArrayElement extends IBase {
                 arrayElement = (isOnedimensionalArray) ? arrayLiteral[index] : arrayElement[index];
                 isOnedimensionalArray = false;
             } else {
-                context.throwError(`Typeof index given for array ${node.name} must be a number`);
+                context.throwError(feedbackMessages.invalidArrayIndexTypeMsg(node.name));
             }
         });
 
-        if (!arrayElement) context.throwError(`Index given for array ${node.name} does not exist`);
+        if (!arrayElement) context.throwError(feedbackMessages.arrayIndexDoesNotExistMsg(node.name));
 
         return arrayElement;
     }
