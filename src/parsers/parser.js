@@ -13,7 +13,7 @@ class Parser {
 
     initBlockTypeStack () {
         // a work around for creating a private field with public accessors
-        var _blockTypeStack = [];
+        const _blockTypeStack = [];
         this.pushToBlockTypeStack = (blockName) => {
             _blockTypeStack.push(blockName);
         };
@@ -23,7 +23,7 @@ class Parser {
     }
 
     initIsArithmeticExpression () {
-        var _isArithmeticExpression = true;
+        let _isArithmeticExpression = true;
         this.setIsArithmeticExpression = (isArithmetic) => {
             _isArithmeticExpression = isArithmetic;
         };
