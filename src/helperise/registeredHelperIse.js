@@ -6,5 +6,6 @@ helperIseDeclarations["waNinu"] = require("./string_helpers/wa_ni_nu.js");
 helperIseDeclarations["fiRopo"] = require("./string_helpers/fi_ro_po.js");
 helperIseDeclarations["teSibi"] = require("./input_output/tesibi.js");
 helperIseDeclarations["aago"] = require("./datetime_helpers/aago.js");
+helperIseDeclarations["yipo"] = require("./random_helpers/yipo.js");
 
 module.exports = helperIseDeclarations;
