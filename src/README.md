@@ -104,4 +104,4 @@ This returns the current token, while preventing the InputStream from advancing.
 
 ## Parser
 
-The Parser instance accepts a Lexer as an argument, and attempts to read each token, and build an abstract syntax tree.
+The Parser instance accepts a Lexer as an argument, and uses the recursive descent parsing technique and backtracking, to read each token, handle operator precendence, and build an abstract syntax tree.
