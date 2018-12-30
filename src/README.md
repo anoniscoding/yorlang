@@ -40,19 +40,37 @@ This will retrieve the next characters from the InputStream until a character is
 
 ### - readNext()
 
-This makes sure to skip whitespaces and comments, and depending on the nature of a character read, it calls and returns other methods such as:
+This makes sure to skip whitespaces and comments, and depending on the nature of a character read, it calls and returns any of other methods such as:
 
 ### - readString()
 
-This is called by `readNext()` when a quote character is found. It will attempt to read the characters until a closing quote is found.
+This is called by `readNext()` when a quote character is found. It will attempt to read the characters until a closing quote is found. It returns a token object like:
+
+```json
+{ "type": "string", "value": "example string" }
+```
 
 ### - readNumber()
 
-This is called by `readNext()` when a digit is found. It will attempt to read a valid number (including dots), until no more digits can be found.
+This is called by `readNext()` when a digit is found. It will attempt to read a valid number (including dots), until no more digits can be found. It returns a token object like:
+
+```json
+{ "type": "number", "value": 0.123 }
+```
 
 ### - readIdentifier()
 
-This is called by `readNext()` when a character is found that matches the `constants.REGEX.IDENTIFIER` regex pattern. It will attempt to read subsequent characters that match the pattern, till either one is found that does not, or the end of file is reached.
+This is called by `readNext()` when a character is found that matches the `constants.REGEX.IDENTIFIER` regex pattern. It will attempt to read subsequent characters that match the pattern, till either one is found that does not, or the end of file is reached. It returns a token object like:
+
+```json
+{ "type": "keyword", "value": "jeki" }
+```
+
+or
+
+```json
+{ "type": "variable", "value": "foo" }
+```
 
 ### - isPunctuation()
 
@@ -61,3 +79,11 @@ This determines whether a character read is a punctuation. The list of punctuati
 ### - isOperator()
 
 This determines whether a character read is an operator. The list of operators can be found in `constants.LIST.OPERATORS`.
+
+### - next ()
+
+This returns the token returned by the `readNext()` function.
+
+### - peek ()
+
+This returns the current token, while preventing the InputStream from advancing.
