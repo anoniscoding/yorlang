@@ -100,5 +100,8 @@ This returns the token returned by the `readNext()` function.
 
 This returns the current token, while preventing the InputStream from advancing.
 
+> This [repl](https://repl.it/@mykeels/yl-input-lexer-demo) shows the output tokens of the Lexer.
+
 ## Parser
 
+The Parser instance accepts a Lexer as an argument, and attempts to read each token, and build an abstract syntax tree.
