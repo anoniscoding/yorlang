@@ -86,6 +86,10 @@ yorl sample/test.yl
 
 You should get something like: ``báwo ni ayé``
 
+## Developer Guide
+
+For Developers, [these docs](./src/README.md) will help you understand Yorlang's internal architecture, should you wish to make adjustments.
+
 ## Unit and Integration Tests
 
 To run tests in the project, run the following in your terminal:
