@@ -76,9 +76,21 @@ or
 
 This determines whether a character read is a punctuation. The list of punctuations can be found in `constants.LIST.PUNCTUATIONS`.
 
+When `readNext()` detects a punctuation, it returns a token object like:
+
+```json
+{ "type": "punctuation", "value": "{" }
+```
+
 ### - isOperator()
 
 This determines whether a character read is an operator. The list of operators can be found in `constants.LIST.OPERATORS`.
+
+When `readNext()` detects an operator, it returns a token object like:
+
+```json
+{ "type": "operator", "value": "+" }
+```
 
 ### - next ()
 
@@ -87,3 +99,6 @@ This returns the token returned by the `readNext()` function.
 ### - peek ()
 
 This returns the current token, while preventing the InputStream from advancing.
+
+## Parser
+
