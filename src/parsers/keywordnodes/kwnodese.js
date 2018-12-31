@@ -16,7 +16,7 @@ class KwNodeSe extends BaseNode {
 
         const node = {};
         node.operation = constants.KW.SE;
-        node.condition = bracketExpressionNl.getNode.call(this, false);
+        node.condition = bracketExpressionNl.getNode.call(this, { isArithmeticExpression: false, isBracketExpected: true, });
         node.then = this.parseBlock(constants.KW.SE);
 
         if (this.isNextTokenKeyword(constants.KW.TABI)) {

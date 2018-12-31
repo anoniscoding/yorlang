@@ -23,7 +23,7 @@ class KwNodeFun extends BaseNode {
         const node = {};
         node.operation = constants.KW.FUN;
         node.init = kwNodeJeki.getNode.call(this);
-        node.condition = bracketExpressionNl.getNode.call(this, false, false);
+        node.condition = bracketExpressionNl.getNode.call(this, { isArithmeticExpression: false, isBracketExpected: false, });
 
         this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
         node.increment = kwNodeJeki.getNode.call(this);
