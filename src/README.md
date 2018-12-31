@@ -14,6 +14,10 @@ An InputStream contains methods such as `next`, `peek` and `isEndOfFile`.
 
 It maintains a cursor position which begins at the beginning of the file, and everytime `next()` is called, the character at the position of the cursor is returned, and the cursor moved one-char forward.
 
+---
+
+[![How Yorlang's InputStream's `next()` works](https://user-images.githubusercontent.com/11996508/50557529-6fd8c780-0ce6-11e9-8129-50729991b236.png)](https://repl.it/@mykeels/yl-input-stream-next-demo)
+
 > This [repl](https://repl.it/@mykeels/yl-input-stream-next-demo) shows how InputStream's `next()` works.
 
 ### - peek()
@@ -23,6 +27,10 @@ Rather than update the cursor position, the `peek()` function returns the charac
 ### - isEndOfFile()
 
 This returns a boolean value when the cursor has reached the end of the input file.
+
+---
+
+[![How Yorlang's InputStream's peek() and isEndOfFile() work](https://user-images.githubusercontent.com/11996508/50557505-0f498a80-0ce6-11e9-9616-4008d9fe0c87.png)](https://repl.it/@mykeels/yl-input-stream-peek-demo)
 
 > This [repl](https://repl.it/@mykeels/yl-input-stream-peek-demo) shows how InputStream's `peek()` and `isEndOfFile()` work.
 
@@ -100,8 +108,23 @@ This returns the token returned by the `readNext()` function.
 
 This returns the current token, while preventing the InputStream from advancing.
 
+---
+
+[![The Output Tokens of Yorlang's Lexer](https://user-images.githubusercontent.com/11996508/50558891-e62ef700-0cf1-11e9-993c-5c3b210eea2a.png)](https://repl.it/@mykeels/yl-input-lexer-demo)
+
 > This [repl](https://repl.it/@mykeels/yl-input-lexer-demo) shows the output tokens of the Lexer.
 
 ## Parser
 
 The Parser instance accepts a Lexer as an argument, and uses the recursive descent parsing technique and backtracking, to read each token, handle operator precendence, and build an abstract syntax tree.
+
+To do this, the Parser makes use of Parser Nodes. Each Parser Node contains logic for ensuring grammar expectations for a particular Yorlang construct are met.
+
+> A Yorlang construct can be either a keyword such as `jeki` and `sope`, or a node literal such an `array` or `bracket expression`.
+
+Each Parser Node instance has a `getNode()` method, which contains logic for ensuring the
+
+Available Parser Nodes are:
+
+### - Keyword Node Fun
+
