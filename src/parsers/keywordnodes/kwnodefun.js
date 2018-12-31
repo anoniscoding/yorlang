@@ -26,7 +26,7 @@ class KwNodeFun extends BaseNode {
         node.condition = bracketExpressionNl.getNode.call(this, false, false);
 
         this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
-        node.increment = kwNodeJeki.getNode.call(this);
+        node.increment = kwNodeJeki.getNode.call(this, { isTerminatorOptional: true, isJekiOptional: true, });
 
         if (KwNodeFun.isInValidFunIncrementStatement(node)) {
             this.throwError(feedbackMessages.funIncrementAndDecrementMsg());

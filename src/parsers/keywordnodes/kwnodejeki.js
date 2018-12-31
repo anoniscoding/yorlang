@@ -4,8 +4,10 @@ const variableNl = require("../nodeLiterals/variablenl.js");
 const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodeJeki extends BaseNode {
-    getNode () {
-        this.skipKeyword(constants.KW.JEKI);
+    getNode (opts) {
+        opts = opts || { isTerminatorOptional: false, isJekiOptional: false, };
+
+        this.skipKeyword(constants.KW.JEKI, opts.isJekiOptional);
 
         const node = {};
         node.operation = constants.SYM.ASSIGN;
@@ -14,7 +16,7 @@ class KwNodeJeki extends BaseNode {
         node.left = (varNode.operation === constants.GET_JEKI) ? varNode.name : varNode;
         this.skipOperator(constants.SYM.ASSIGN);
         node.right = this.parseExpression();
-        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR, opts.isTerminatorOptional);
 
         return node;
     }

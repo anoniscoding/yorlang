@@ -45,8 +45,14 @@ class Parser {
         return token && token.type === constants.KEYWORD && (token.value === kw);
     }
 
-    skipPunctuation (punc) {
+    /**
+     * ignores the next token if its value is a specific punctuation character
+     * @param {string} punc the char to be ignored e.g. semi-colon ";"
+     * @param {boolean} isOptional ensures it's not compulsory the next token contains such a punctuation character
+     */
+    skipPunctuation (punc, isOptional = false) {
         if (this.isNextTokenPunctuation(punc)) this.lexer().next();
+        else if (isOptional);
         else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
@@ -55,8 +61,14 @@ class Parser {
         else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
-    skipKeyword (kw) {
+    /**
+     * ignores the next token if its value is a specific keyword
+     * @param {string} kw the keyword to be ignored e.g. jeki
+     * @param {boolean} isOptional ensures it's not compulsory the next token contains such a keyword
+     */
+    skipKeyword (kw, isOptional = false) {
         if (this.isNextTokenKeyword(kw)) this.lexer().next();
+        else if (isOptional);
         else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
@@ -186,12 +198,14 @@ class Parser {
     parseAst () {
         const token = this.lexer().peek();
 
+        // check if the token's value is a keyword
         if (kwnodes[token.value]) {
             const kwNode = kwnodes[token.value];
             if (kwNode instanceof BaseNode) return kwNode.getNode.call(this); // call the method getNode in kwNode object like an extension function to the Parser class
             else throw new Error(feedbackMessages.baseNodeType(kwNode));
         }
 
+        // check if the token's type is a variable
         if (token.type === constants.VARIABLE) { // then a function call is expected
             const callIseNodeLiteral = nodeLiterals[constants.CALL_ISE];
             if (callIseNodeLiteral instanceof BaseNode) return callIseNodeLiteral.getNode.call(this);

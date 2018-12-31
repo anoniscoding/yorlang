@@ -7,6 +7,52 @@ const Parser = require("../../../parsers/parser.js");
 const lexer = require("../../../lexer.js");
 const InputStream = require("../../../inputstream.js");
 const constants = require("../../../constants.js");
+const expectedNode = {
+    body: [],
+    condition: {
+        left: {
+            name: "i",
+            operation: constants.GET_JEKI,
+        },
+        operation: constants.SYM.L_THAN,
+        right: {
+            left: null,
+            operation: null,
+            right: null,
+            value: 10,
+        },
+        value: null,
+    },
+    increment: {
+        left: "i",
+        operation: constants.SYM.ASSIGN,
+        right: {
+            left: {
+                name: "i",
+                operation: constants.GET_JEKI,
+            },
+            operation: constants.SYM.PLUS,
+            right: {
+                left: null,
+                operation: null,
+                right: null,
+                value: 1,
+            },
+            value: null,
+        },
+    },
+    init: {
+        left: "i",
+        operation: constants.SYM.ASSIGN,
+        right: {
+            left: null,
+            operation: null,
+            right: null,
+            value: 0,
+        },
+    },
+    operation: constants.KW.FUN,
+};
 
 describe("KwNodeFun test suite", () => {
     let parser;
@@ -18,53 +64,18 @@ describe("KwNodeFun test suite", () => {
     test("it should return a valid fun node", () => {
         parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {}`;
 
-        const expectedNode = {
-            body: [],
-            condition: {
-                left: {
-                    name: "i",
-                    operation: constants.GET_JEKI,
-                },
-                operation: constants.SYM.L_THAN,
-                right: {
-                    left: null,
-                    operation: null,
-                    right: null,
-                    value: 10,
-                },
-                value: null,
-            },
-            increment: {
-                left: "i",
-                operation: constants.SYM.ASSIGN,
-                right: {
-                    left: {
-                        name: "i",
-                        operation: constants.GET_JEKI,
-                    },
-                    operation: constants.SYM.PLUS,
-                    right: {
-                        left: null,
-                        operation: null,
-                        right: null,
-                        value: 1,
-                    },
-                    value: null,
-                },
-            },
-            init: {
-                left: "i",
-                operation: constants.SYM.ASSIGN,
-                right: {
-                    left: null,
-                    operation: null,
-                    right: null,
-                    value: 0,
-                },
-            },
-            operation: constants.KW.FUN,
-        };
+        expect(kwNodeFun.getNode.call(parser)).toEqual(expectedNode);
+    });
 
+    test("it should return a valid fun node (without jeki in increment)", () => {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; i = i + 1;) {}`;
+
+        expect(kwNodeFun.getNode.call(parser)).toEqual(expectedNode);
+    });
+
+    test("it should return a valid fun node (without jeki and terminator in increment)", () => {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; i = i + 1) {}`;
+        
         expect(kwNodeFun.getNode.call(parser)).toEqual(expectedNode);
     });
 
