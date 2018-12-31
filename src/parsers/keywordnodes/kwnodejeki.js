@@ -5,9 +5,9 @@ const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodeJeki extends BaseNode {
     getNode (opts) {
-        opts = opts || { isTerminatorOptional: false, isJekiOptional: false, };
+        opts = opts || { noTerminator: false, };
 
-        this.skipKeyword(constants.KW.JEKI, opts.isJekiOptional);
+        this.skipKeyword(constants.KW.JEKI);
 
         const node = {};
         node.operation = constants.SYM.ASSIGN;
@@ -16,7 +16,7 @@ class KwNodeJeki extends BaseNode {
         node.left = (varNode.operation === constants.GET_JEKI) ? varNode.name : varNode;
         this.skipOperator(constants.SYM.ASSIGN);
         node.right = this.parseExpression();
-        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR, opts.isTerminatorOptional);
+        if (!opts.noTerminator) this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }

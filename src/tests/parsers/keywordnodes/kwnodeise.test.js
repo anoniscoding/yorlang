@@ -41,7 +41,7 @@ describe("KwNodeIse test suite", () => {
         parser.lexer().inputStream.code = `${constants.KW.ISE} koOruko(orukoMi) {
             ${constants.KW.JEKI} oruko = orukoMi;
             
-            ${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
+            ${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1) {
                 ${constants.KW.SOPE} i;
             }
         

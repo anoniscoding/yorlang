@@ -50,9 +50,8 @@ class Parser {
      * @param {string} punc the char to be ignored e.g. semi-colon ";"
      * @param {boolean} isOptional ensures it's not compulsory the next token contains such a punctuation character
      */
-    skipPunctuation (punc, isOptional = false) {
+    skipPunctuation (punc) {
         if (this.isNextTokenPunctuation(punc)) this.lexer().next();
-        else if (isOptional);
         else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
@@ -66,9 +65,8 @@ class Parser {
      * @param {string} kw the keyword to be ignored e.g. jeki
      * @param {boolean} isOptional ensures it's not compulsory the next token contains such a keyword
      */
-    skipKeyword (kw, isOptional = false) {
+    skipKeyword (kw) {
         if (this.isNextTokenKeyword(kw)) this.lexer().next();
-        else if (isOptional);
         else this.throwError(feedbackMessages.genericErrorMsg(this.getCurrentTokenValue()));
     }
 
