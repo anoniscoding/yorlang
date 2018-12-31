@@ -1,13 +1,11 @@
 const registeredInterpreters = require("./interpreters.js");
 const constants = require("../constants.js");
 const IBase = require("./ibase.js");
-const feedbackMessages = require("../feedbackMessages.js");
 
 class MainInterpreter {
     constructor (environment, parser) {
         this.environment = () => environment;
         this.parser = () => parser;
-        this.feedbackMessages = feedbackMessages;
         this.initScopeStack();
     }
 
