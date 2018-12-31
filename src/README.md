@@ -36,7 +36,7 @@ This returns a boolean value when the cursor has reached the end of the input fi
 
 ## Lexical Analyser
 
-The [Lexer](./lexer.js) instance accepts an InputStream as an argument, and attempts to read each character, and recognise token such as identifiers, operators, keywords, and numbers.
+The [Lexer](./lexer.js) instance accepts an `InputStream` as an argument, and attempts to read each character, and recognise token such as identifiers, operators, keywords, and numbers.
 
 A Lexer contains methods such as:
 
@@ -116,7 +116,7 @@ This returns the current token, while preventing the InputStream from advancing.
 
 ## Parser
 
-The `Parser` instance accepts a `Lexer` as an argument, and uses the [recursive descent parsing](https://en.wikipedia.org/wiki/Recursive_descent_parser) technique with backtracking, to read each token, handle operator precendence, and build an abstract syntax tree.
+The [Parser](./parsers/parser.js) instance accepts a `Lexer` as an argument, and uses the [recursive descent parsing](https://en.wikipedia.org/wiki/Recursive_descent_parser) technique with backtracking, to read each token, handle operator precendence, and build an abstract syntax tree.
 
 To do this, the Parser makes use of Parser Nodes. Each Parser Node contains logic for ensuring grammar expectations for a particular Yorlang construct are met.
 
