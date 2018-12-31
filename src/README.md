@@ -153,7 +153,7 @@ The `getNode()` function output for the above code returns:
 }
 ```
 
-Notice how the `right` and `left` properties indicate a tree structure? This is an Abstract Syntax Tree.
+Notice how the `right` and `left` properties indicate a tree structure? This is an [Abstract Syntax Tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
 ---
 
