@@ -171,7 +171,7 @@ The `Parser` instance contains methods such as:
 
 This function takes a list of operators, and a function containing another `parseWhile` function as arguments, creating a recursive flow.
 
-It will attempt to evaluate the function argument, before performing its own evaluation, which checks that the next token in the AST, can be found in the operator list argument.
+It will attempt to evaluate the function argument, before performing its own evaluation, which checks that the value of the next token from the lexer, can be found in its operator list argument.
 
 If found, it'll return an object with properties `left`, `operation`, `right` and `value`.
 
