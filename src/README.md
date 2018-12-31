@@ -12,13 +12,13 @@ An InputStream contains methods such as `next`, `peek` and `isEndOfFile`.
 
 ### - next()
 
-It maintains a cursor position which begins at the beginning of the file, and everytime `next()` is called, the character immediately after the cursor is returned, and the cursor moved one-char forward.
+It maintains a cursor position which begins at the beginning of the file, and everytime `next()` is called, the character at the position of the cursor is returned, and the cursor moved one-char forward.
 
 > This [repl](https://repl.it/@mykeels/yl-input-stream-next-demo) shows how InputStream's `next()` works.
 
 ### - peek()
 
-Rather than update the cursor position, the `peek()` function returns the character immediately after the cursor, and keeps its position the same.
+Rather than update the cursor position, the `peek()` function returns the character at the position of the cursor, and keeps its position the same.
 
 ### - isEndOfFile()
 
