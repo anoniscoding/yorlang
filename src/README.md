@@ -116,15 +116,63 @@ This returns the current token, while preventing the InputStream from advancing.
 
 ## Parser
 
-The Parser instance accepts a Lexer as an argument, and uses the recursive descent parsing technique and backtracking, to read each token, handle operator precendence, and build an abstract syntax tree.
+The `Parser` instance accepts a `Lexer` as an argument, and uses the [recursive descent parsing](https://en.wikipedia.org/wiki/Recursive_descent_parser) technique with backtracking, to read each token, handle operator precendence, and build an abstract syntax tree.
 
 To do this, the Parser makes use of Parser Nodes. Each Parser Node contains logic for ensuring grammar expectations for a particular Yorlang construct are met.
 
 > A Yorlang construct can be either a keyword such as `jeki` and `sope`, or a node literal such an `array` or `bracket expression`.
 
-Each Parser Node instance has a `getNode()` method, which contains logic for ensuring the
+### - getNode()
 
-Available Parser Nodes are:
+Each Parser Node instance has a `getNode()` method, which contains logic for ensuring the keyword's or literal's grammar is correct.
 
-### - Keyword Node Fun
+Here's an example of the grammar for `jeki`:
 
+```txt
+jeki<whitespace><identifier><whitespace>=<expression>;
+```
+
+such as
+
+```js
+jeki name = "Yorlang";
+```
+
+The `getNode()` function output for the above code returns:
+
+```json
+{
+  "operation": "=",
+  "left": "name",
+  "right": {
+    "value": "Yorlang",
+    "left": null,
+    "right": null,
+    "operation": null
+  }
+}
+```
+
+Notice how the `right` and `left` properties indicate a tree structure? This is an Abstract Syntax Tree.
+
+---
+
+[![The AST Output of Yorlang's Parser](https://user-images.githubusercontent.com/11996508/50559756-825cfc00-0cfa-11e9-9776-863bd5052f8d.png)](https://repl.it/@mykeels/yl-parser-demo)
+
+> This [repl](https://repl.it/@mykeels/yl-parser-demo) shows the Abstract Syntax Tree outputs of the Parser.
+
+---
+
+See list of [other available parser nodes](./parsers/README.md).
+
+The `Parser` instance contains methods such as:
+
+### - parseWhile(list, fn)
+
+This function takes a list of operators, and a function containing another `parseWhile` function as arguments, creating a recursive flow.
+
+It will attempt to evaluate the function argument, before performing its own evaluation, which checks that the next token in the AST, can be found in the operator list argument.
+
+If found, it'll return an object with properties `left`, `operation`, `right` and `value`.
+
+### - parseExpression
