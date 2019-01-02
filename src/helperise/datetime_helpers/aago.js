@@ -7,7 +7,7 @@ function aago (args) {
     if (Array.isArray(args)) {
         // make sure an array can be passed in as the first param
         if (Array.isArray(args[0])) args = args[0];
-        if (args[1]) --args[1]; // convert month value to 0-based index for JavaScript
+        if (args[1]) --args[1]; // convert yorlang 1-based index month value to 0-based index for JavaScript
         const date = new Date(...args);
         return [
             date.getFullYear(),
