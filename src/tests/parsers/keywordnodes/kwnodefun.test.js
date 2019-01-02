@@ -16,8 +16,6 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should return a valid fun node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {}`;
-
         const expectedNode = {
             body: [],
             condition: {
@@ -65,19 +63,21 @@ describe("KwNodeFun test suite", () => {
             operation: constants.KW.FUN,
         };
 
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1) {}`;
+
         expect(kwNodeFun.getNode.call(parser)).toEqual(expectedNode);
     });
 
     test("it should return a valid fun node for nested blocks", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
-            ${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {}
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1) {
+            ${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1) {}
         }`;
 
         expect(kwNodeFun.getNode.call(parser)).toBeTruthy();
     });
 
     test("it should throw an error when given invalid fun node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} ${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1;) {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} ${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = i + 1) {
             ${constants.KW.SOPE} i;
         }`;
 
@@ -87,7 +87,7 @@ describe("KwNodeFun test suite", () => {
     });
 
     test("it should throw an error when given invalid fun increment node", () => {
-        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = j + 1;) {
+        parser.lexer().inputStream.code = `${constants.KW.FUN} (${constants.KW.JEKI} i =0; i < 10; ${constants.KW.JEKI} i = j + 1) {
             ${constants.KW.SOPE} i;
         }`;
 

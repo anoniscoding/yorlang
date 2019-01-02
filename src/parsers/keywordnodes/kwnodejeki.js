@@ -4,7 +4,9 @@ const variableNl = require("../nodeLiterals/variablenl.js");
 const feedbackMessages = require("../../feedbackMessages.js");
 
 class KwNodeJeki extends BaseNode {
-    getNode () {
+    getNode (config) {
+        config = config || { shouldExpectTerminator: true, };
+
         this.skipKeyword(constants.KW.JEKI);
 
         const node = {};
@@ -14,7 +16,7 @@ class KwNodeJeki extends BaseNode {
         node.left = (varNode.operation === constants.GET_JEKI) ? varNode.name : varNode;
         this.skipOperator(constants.SYM.ASSIGN);
         node.right = this.parseExpression();
-        this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
+        if (config.shouldExpectTerminator) this.skipPunctuation(constants.SYM.STATEMENT_TERMINATOR);
 
         return node;
     }
