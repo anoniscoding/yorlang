@@ -4,10 +4,10 @@
  * note that if the first argument is an array, all other arguments are neglected
  * @returns {[number]} minimumNumber
  */
-function oKereJulo () {
-    var obj = arguments[0];
-    var array = [];
-    if (isArray(obj)) {
+function eyiToKereJu () {
+    const obj = arguments[0];
+    let array = [];
+    if (Array.isArray(obj)) {
         array = obj;
     } else {
         for (var i = 0; i < arguments.length; i++) {
@@ -17,10 +17,12 @@ function oKereJulo () {
             }
         }
     }
-    return Math.min(...array);
-}
-function isArray (obj) {
-    return !!obj && obj.constructor === Array;
+    const minValue = Math.min(...array);
+    if (isNaN(minValue)) {
+        throw new Error("Invalid param given to helper ise eyiToKereJu.");
+    } else {
+        return minValue;
+    }
 }
 
-module.exports = oKereJulo;
+module.exports = eyiToKereJu;

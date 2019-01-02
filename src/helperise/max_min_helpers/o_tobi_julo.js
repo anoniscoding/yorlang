@@ -4,10 +4,10 @@
  * note that if the first argument is an array, all other arguments are neglected
  * @returns {[number]} maximumNumber
  */
-function oTobiJulo () {
-    var obj = arguments[0];
-    var array = [];
-    if (isArray(obj)) {
+function eyiToTobiJu () {
+    const obj = arguments[0];
+    let array = [];
+    if (Array.isArray(obj)) {
         array = obj;
     } else {
         for (var i = 0; i < arguments.length; i++) {
@@ -17,10 +17,12 @@ function oTobiJulo () {
             }
         }
     }
-    return Math.max(...array);
-}
-function isArray (obj) {
-    return !!obj && obj.constructor === Array;
+    const maxValue = Math.max(...array);
+    if (isNaN(maxValue)) {
+        throw new Error("Invalid param given to helper ise eyiToTobiJu.");
+    } else {
+        return maxValue;
+    }
 }
 
-module.exports = oTobiJulo;
+module.exports = eyiToTobiJu;
