@@ -48,7 +48,7 @@ This will retrieve the next characters from the InputStream until a character is
 
 ### - readNext()
 
-This makes sure to skip whitespaces and comments, and depending on the nature of a character read, it calls and returns any of other methods such as:
+This makes sure to skip whitespaces and comments, and depending on the nature of a character read, it calls and returns the value of other methods such as:
 
 ### - readString()
 
@@ -129,7 +129,7 @@ Each Parser Node instance has a `getNode()` method, which contains logic for ens
 Here's an example of the grammar for `jeki`:
 
 ```txt
-jeki<whitespace><identifier><whitespace>=<expression>;
+jeki<whitespace><identifier>=<expression>;
 ```
 
 such as

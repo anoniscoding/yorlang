@@ -9,7 +9,7 @@ Available Parser Nodes are:
 Here's an example of the grammar for `fun`:
 
 ```txt
-fun<whitespace>(<jeki-expression>;<whitespace><expression>;<whitespace><jeki-expression>) {
+fun<whitespace>(<jeki-expression>;<expression>;<jeki-expression>) {
     <body>
 }
 ```
