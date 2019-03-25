@@ -15,6 +15,9 @@ class Lexer {
     }
 
     isIdentifier (id) {
+        /**
+         * @todo replace this with a dictionary matching, rather than use regex (much faster)
+         */
         return constants.REGEX.IDENTIFIER.test(id);
     }
 
