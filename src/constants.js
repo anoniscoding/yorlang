@@ -19,6 +19,7 @@ const KEYWORDS = {
 
 const SYMBOLS = {
     STR_QUOTE: '"',
+    STR_QUOTE_SINGLE: "'",
     PERIOD: ".",
     OR: "||",
     AND: "&&",

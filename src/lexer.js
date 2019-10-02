@@ -43,8 +43,8 @@ class Lexer {
         return str;
     }
 
-    readString () {
-        const stringEnd = constants.SYM.STR_QUOTE;
+    readString (singleQuote = false) {
+        const stringEnd = singleQuote ? constants.SYM.STR_QUOTE_SINGLE : constants.SYM.STR_QUOTE;
         this.inputStream.next(); // needed to skip the opening quote symbol '"'
         const str = this.readWhile((ch) => {
             return ch !== stringEnd;
@@ -100,6 +100,7 @@ class Lexer {
             return this.readNext();
         }
         if (ch === constants.SYM.STR_QUOTE) return this.readString();
+        if (ch === constants.SYM.STR_QUOTE_SINGLE) return this.readString(true);
         if (this.isDigit(ch)) return this.readNumber();
         if (this.isIdentifier(ch)) return this.readIdentifier();
         if (this.isPunctuation(ch)) return { type: constants.PUNCTUATION, value: this.inputStream.next(), };
