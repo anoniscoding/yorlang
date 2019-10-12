@@ -8,10 +8,10 @@ helperIseDeclarations["teSibi"] = require("./input_output/tesibi.js");
 helperIseDeclarations["aago"] = require("./datetime_helpers/aago.js");
 helperIseDeclarations["yipo"] = require("./random_helpers/yipo.js");
 helperIseDeclarations["pipoto"] = require("./string_helpers/pipoto.js");
-helperIseDeclarations["pinoro"] = require("./string_helpers/okun_pin_si_orun.js");
-helperIseDeclarations["yipooro"] = require("./random_helpers/yipo_oro.js");
-helperIseDeclarations["iyeoro"] = require("./string_helpers/iye_oro.js");
-helperIseDeclarations["nombalasan"] = require("./math_helpers/nombalasan.js");
-helperIseDeclarations["igunmerin"] = require("./math_helpers/onigun_merin.js");
+helperIseDeclarations["pinOro"] = require("./string_helpers/okun_pin_si_orun.js");
+helperIseDeclarations["yipoOro"] = require("./random_helpers/yipo_oro.js");
+helperIseDeclarations["iyeOro"] = require("./string_helpers/iye_oro.js");
+helperIseDeclarations["nombaLasan"] = require("./math_helpers/nomba_lasan.js");
+helperIseDeclarations["irinKeji"] = require("./math_helpers/irin_keji.js");
 
 module.exports = helperIseDeclarations;

@@ -1,18 +1,18 @@
-/** Takes a number
- * Returns square root of number
+/** Takes any number
+ * Returns absolute value of number
  *
  * @returns {number}
  */
-function igunmerin (args) {
+function nombaLasan (args) {
     if (Array.isArray(args)) {
         let [ number, ] = args;
 
         if (!isNaN(number)) {
-            return Math.sqrt(number);
+            return Math.abs(number);
         }
         throw new Error("Param must be a number");
     }
     throw new Error("Yorlang system error");
 }
 
-module.exports = igunmerin;
+module.exports = nombaLasan;

@@ -3,7 +3,7 @@
  *
  * @returns {number}
  */
-function iyeoro (args) {
+function iyeOro (args) {
     if (Array.isArray(args)) {
         let [ string, ] = args;
 
@@ -16,4 +16,4 @@ function iyeoro (args) {
     throw new Error("Yorlang system error");
 }
 
-module.exports = iyeoro;
+module.exports = iyeOro;
