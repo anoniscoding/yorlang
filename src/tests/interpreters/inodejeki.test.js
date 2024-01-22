@@ -174,4 +174,57 @@ describe("INodeJeki test suite", () => {
         mainInterpreter.interpreteProgram();
         expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "time")).toBeTruthy();
     });
+
+    test("it should retrieve array element with value 0 (falsy but valid)", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} arr = [0, 1, 2];
+            ${constants.KW.JEKI} result = arr[0];
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "result")).toBe(0);
+    });
+
+    test("it should retrieve array element with value false (falsy but valid)", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} arr = [${constants.KW.IRO}, ${constants.KW.OOTO}];
+            ${constants.KW.JEKI} result = arr[0];
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "result")).toBe(constants.KW.IRO);
+    });
+
+    test("it should retrieve array element with empty string (falsy but valid)", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} arr = ["", "hello"];
+            ${constants.KW.JEKI} result = arr[0];
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "result")).toBe("");
+    });
+
+    test("it should retrieve multidimensional array element with falsy values", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} arr = [[0, ${constants.KW.IRO}], ["", 1]];
+            ${constants.KW.JEKI} result1 = arr[0][0];
+            ${constants.KW.JEKI} result2 = arr[0][1];
+            ${constants.KW.JEKI} result3 = arr[1][0];
+        `;
+
+        mainInterpreter.interpreteProgram();
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "result1")).toBe(0);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "result2")).toBe(constants.KW.IRO);
+        expect(mainInterpreter.environment().getJeki(mainInterpreter.getCurrentScope(), "result3")).toBe("");
+    });
+
+    test("it should still throw error for truly undefined array index", () => {
+        parser.lexer().inputStream.code = `
+            ${constants.KW.JEKI} arr = [1, 2, 3];
+            ${constants.KW.JEKI} result = arr[10];
+        `;
+
+        expect(() => mainInterpreter.interpreteProgram()).toThrow();
+    });
 });

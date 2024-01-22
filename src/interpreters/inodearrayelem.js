@@ -24,7 +24,7 @@ class INodeArrayElement extends IBase {
             }
         });
 
-        if (!arrayElement) context.throwError(feedbackMessages.arrayIndexDoesNotExistMsg(node.name));
+        if (arrayElement === undefined) context.throwError(feedbackMessages.arrayIndexDoesNotExistMsg(node.name));
 
         return arrayElement;
     }
