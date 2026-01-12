@@ -1,8 +1,13 @@
 const IBase = require("./ibase.js");
+const feedbackMessages = require("../feedbackMessages.js");
 
 class INodeRemainder extends IBase {
     interpreteNode (node) {
-        return this.evaluateNode(node.left) % this.evaluateNode(node.right);
+        const leftNodeValue = this.evaluateNode(node.left);
+        const rightNodeValue = this.evaluateNode(node.right);
+        if (rightNodeValue === 0) this.throwError(feedbackMessages.yorlangArithmeticException());
+
+        return leftNodeValue % rightNodeValue;
     }
 }
 
