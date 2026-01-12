@@ -34,13 +34,13 @@ class Lexer {
     }
 
     readWhile (predicate) {
-        let str = "";
+        const chars = [];
 
         while (this.inputStream.isNotEndOfFile() && predicate(this.inputStream.peek())) {
-            str += this.inputStream.next();
+            chars.push(this.inputStream.next());
         }
 
-        return str;
+        return chars.join("");
     }
 
     readString () {
